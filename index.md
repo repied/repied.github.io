@@ -1,5 +1,9 @@
-# title
-## sutitle 
+---
+title: Home
+---
+
+# a md title
+## a md sutitle 
 this is the index.md file *bold* and _under_
 
 
@@ -8,8 +12,7 @@ def main(a,b):
     return 21+2
 ```
 
-
-yas
+yes
 > quote
 
 this is `single` back tick
