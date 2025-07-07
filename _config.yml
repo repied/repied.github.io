@@ -4,4 +4,4 @@ plugins:
 
 title: repied's homepage
 description: repied's homepage description
-show_downloads: true
+show_downloads: false
