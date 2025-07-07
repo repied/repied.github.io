@@ -1,3 +1,7 @@
+layout: page
+title: "README"
+
+
 # title
 ## sutitle 
 this is the readme file *bold* and _under_
@@ -13,3 +17,6 @@ yas
 > quote
 
 this is `single` back tick
+
+
+[Link to a page]({{ site.baseurl }}{% link another_page.md %})
