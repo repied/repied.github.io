@@ -1,3 +1,7 @@
+---
+title: About title
+---
+
 # about.md
 ## about.md
 about.md
