@@ -1,18 +1,9 @@
 ---
 layout: page
-title: "this is a title olgf my jekyl page"
-permalink: /pierreurl
+title: "This is the title of another page"
+permalink: /another_page_url
 ---
 
-# this is the content
-newpagepierre.md
 
-`dsnjfghkjdfs`
-
-> fdghgf
-
-
-```python
-def main():
-    return 2
-```
+# Content
+bla bla

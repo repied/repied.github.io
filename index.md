@@ -1,21 +1,26 @@
 ---
-title: Home
+layout: page
+title: "This is the title of index page"
 ---
 
 # a md title
 ## a md sutitle 
 this is the index.md file *bold* and _under_
 
+# This is the content
+
+There is `some` content
+
+> a quote
+
+And some python code
 
 ```python
-def main(a,b):
-    return 21+2
+def main():
+    return 2
 ```
 
-yes
-> quote
-
-this is `single` back tick
+Trying some math `\mu` or $$\mu$$ or $\mu$
 
 
 [Link to a page]({{ site.baseurl }}{% link another_page.md %})
