@@ -2,10 +2,7 @@
 
 source "https://rubygems.org"
 
-# gem "rails"
-
-gem "jekyll", "~> 4.4"
-
-group :jekyll_plugins do
-  gem "jekyll-sitemap"
-end
+gem "jekyll"
+gem "jekyll-remote-theme"
+gem "github-pages", group: :jekyll_plugins
+gem "jekyll-sitemap", group: :jekyll_plugins

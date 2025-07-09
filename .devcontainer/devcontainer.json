@@ -29,6 +29,7 @@
 				"github.copilot-chat",
 				"github.copilot",
 				"github.vscode-pull-request-github",
+				"github.vscode-github-actions",
 				// "google.geminicodeassist",
 				// "googlecloudtools.cloudcode",
 				"johnpapa.vscode-peacock",
