@@ -1,5 +1,4 @@
 ---
-layout: page
 title: "This is the title of index page"
 ---
 
