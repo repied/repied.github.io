@@ -2,7 +2,7 @@
 title: "This is the title of index page"
 ---
 
-# This is index.md file
+# This is index.md file JEKYLL
 ## A subtitle
 this is the index.md file *bold* and _under_.
 
