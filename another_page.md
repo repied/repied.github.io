@@ -5,5 +5,5 @@ permalink: /another_page_url
 ---
 
 
-# Content
+# Content of another_page.md rendered at another_page_url
 bla bla
