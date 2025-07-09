@@ -3,11 +3,9 @@ layout: page
 title: "This is the title of index page"
 ---
 
-# a md title
-## a md sutitle 
-this is the index.md file *bold* and _under_
-
-# This is the content
+# This is index.md file
+## A subtitle
+this is the index.md file *bold* and _under_.
 
 There is `some` content
 
