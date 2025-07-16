@@ -1,4 +1,0 @@
-Now Eqe has got a [homepage http://rlehy.free.fr]. You should go directly there as I will not maintain the page on the wiki anymore. I'll just keep the screenshot to give you an idea.
-
-Eqe is the window on the right. I'm in the process of dragging my equation (with transparent background) to an OpenOffice presentation.
-httpr://images/andrinople/lehy/media/images/apps/screenshot_eqe.png

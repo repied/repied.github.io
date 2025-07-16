@@ -1,5 +1,0 @@
-= Comment transformer une vieille Indy en plateforme de visioconférence : =
-
-
-On a rallumé l'Indy amalthee.
-on a tout branché, y compris une webcam et ça donne CA :

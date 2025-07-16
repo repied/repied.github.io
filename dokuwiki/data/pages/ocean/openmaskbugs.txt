@@ -1,3 +1,0 @@
-* if you forget the value for an option, PsMultipleConfigurationParameter::clone() crashes
-* how to pause the simulation? sending MaskSuspend to the controller stops it
-* if you registerForSignal(XEvent) and then registerForSignalBy(XEvent, visualisation), you will receive XEvents twice

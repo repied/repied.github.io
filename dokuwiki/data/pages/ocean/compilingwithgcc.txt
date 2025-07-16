@@ -1,4 +1,0 @@
-=== Seeing the preprocessor output ===
-This is very useful when debugging macros. This shows on stdout the source file once all [=#include], [=#define]... directives have been preprocessed:
-  g++ -E monfichier.cpp
-(of course you might need to add [=-I] flags to specifiy the include directories)

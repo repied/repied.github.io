@@ -1,5 +1,0 @@
-MPlayer-0.91 sur ocean:
-  ./configure --prefix=/scratch --enable-largefiles --enable-menu --cc=gcc-3.2 --language=fr --with-codecsdir=/scratch/lib/win32 --with-win32libdir=/scratch/lib/win32 --with-reallibdir=/scratch/lib/win32 --with-xanimlibdir=/scratch/lib/win32
-
-MPlayer 1.0-pre3 sur arturo:
- ./configure --prefix=/usr/local --enable-largefiles --enable-menu --cc=gcc-3.3 --language=fr --with-codecsdir=/usr/local/lib/win32 --with-win32libdir=/usr/local/lib/win32 --with-reallibdir=/usr/local/lib/win32 --with-xanimlibdir=/usr/local/lib/win32 --enable-live

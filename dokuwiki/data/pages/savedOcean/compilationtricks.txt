@@ -1,7 +1,0 @@
-* MPlayer (MPlayer ./configure options I use)
-
-* CompilingWithGCC (tricks to compile programs with the GNU Compiler suite)
-* LinkingWithGCC (creating libraries, traps from the linker command line)
-* MakeReplacements (the quest for a better build tool)
-
-* DebuggingWithGdbUnderEmacs: utiliser gdb (avec des trucs pour emacs, mais pas que)

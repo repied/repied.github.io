@@ -1,4 +1,0 @@
-Au fait, comment générer la doc doxygen de ProBT en local?
- cd $(PLDIR)/source/system/linux
- make pldoxy 
-(avec PLDIR le répertoire ou vous avez ProBT).

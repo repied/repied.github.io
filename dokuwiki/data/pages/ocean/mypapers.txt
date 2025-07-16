@@ -1,5 +1,0 @@
-==== Teaching Bayesian Behaviours to Video Game Characters 
-Ronan Le Hy, Anthony Arrigoni, Pierre Bessière, Olivier Lebeltel
-
-IROS 03 Workshop on Learning by Demonstration, accepted
-httpr://../papers/article_learning.pdf
