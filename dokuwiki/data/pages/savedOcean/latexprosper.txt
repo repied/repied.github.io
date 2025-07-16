@@ -1,0 +1,14 @@
+Prosper est un package LaTeX pour faire des transparents.
+
+Il y a [une doc sur bulle http://bulle.inrialpes.fr/latex.html].
+
+=== placer des images dans des slides prosper ===
+
+* Placer une image au point (4cm,-3cm)  sur une slide. Attention l'origine du repère est situe au point TeX courant (les unites par defaut sont en cm), mais l'image ne modifie pas le point TeX courant.
+    \rput(4,-3){\includegraphics[width=5cm]{image.eps}} 
+
+* Afficher le repere et une grille pour déboguer le placement sur un transparent.
+    \begin{slide}{test slide}
+    \psgrid(0,0)(12,-7)
+    \rput(4,-3){\includegraphics[width=5cm]{image.eps}}
+    \end{slide}

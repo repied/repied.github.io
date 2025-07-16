@@ -1,0 +1,59 @@
+=== /etc/apt/sources.list ===
+Dans ce fichier, on déclare les sources de paquets debian: serveurs de paquets binaires et sources officiels pour les différentes distributions (stable/woody, testing/sarge, unstable/sid), et non officiels.
+Par exemple, celui d'ocean:
+  # note: using the italian mirror, since the french one seems to be down
+  # (08/07/2003)
+
+  deb file:/local/admin/debian-mirror/debian woody main contrib non-free
+  #deb file:/local/admin/debian-mirror/debian dists/woody-proposed-updates/
+  deb file:/local/admin/debian-mirror/debian-non-US woody/non-US main contrib non-free
+
+  # testing
+  deb http://ftp.it.debian.org/debian testing main non-free contrib
+  deb http://ftp.it.debian.org/debian-non-US testing/non-US main non-free contrib
+  deb http://security.debian.org/ testing/updates main contrib non-free
+
+  # unstable
+  deb http://ftp.it.debian.org/debian unstable main non-free contrib
+  deb http://ftp.it.debian.org/debian-non-US unstable/non-US main non-free contrib
+  #deb http://security.debian.org/ unstable/updates main contrib non-free
+
+  # ocaml from zack
+  deb http://mowgli.cs.unibo.it/zack/debian/ ocaml-woody/
+  deb-src http://mowgli.cs.unibo.it/zack/debian/ ocaml-woody/
+  deb http://www.fs.tum.de/~bunk/debian woody/bunk-1 main contrib non-free
+  deb-src http://www.fs.tum.de/~bunk/debian woody/bunk-1 main contrib non-free
+
+
+  # tentative Ronan
+  #deb http://ftp.it.debian.org/debian testing main non-free contrib
+
+  # OpenOffice, yes!
+  # now installing by hand to get 1.1 with pdf export
+  # deb http://ftp.kulnet.kuleuven.ac.be/pub/mirror/ftp.vpn-junkies.de/openoffice/ testing main contrib
+
+  # giftcurs
+  # deb http://fnord.hemmet.chalmers.se/giftcurs testing main
+
+  # lmule
+  # deb http://www.imoqland.com/debs/skyhusker/woody/ ./
+
+  # Blackdown java
+  #deb file:/local/admin/debian-mirror/blackdown testing non-free
+  #deb file:/local/admin/debian-mirror/local ./
+  # deb ftp://ftp.tux.org/java/debian testing non-free
+  #deb ftp://ftp.oleane.net/pub/java-linux/debian stable main non-free
+  deb ftp://ftp.oleane.net/pub/java-linux/debian testing main non-free
+  deb ftp://ftp.oleane.net/pub/java-linux/debian unstable main non-free
+
+  # sources
+  # deb-src http://ftp.fr.debian.org/debian stable main contrib non-free
+  deb-src http://ftp.it.debian.org/debian stable main contrib non-free
+  deb-src http://ftp.it.debian.org/debian testing main contrib non-free
+  deb-src http://ftp.it.debian.org/debian unstable main contrib non-free
+  #deb-src http://non-us.debian.org/debian-non-US stable non-US
+
+* /etc/apt/apt.conf
+Celui d'ocean, qui va bien avec le sources.list ci-dessus. Il augmente la taille du cache à cause du grand nombre de serveurs déclarés dans sources.list, et il dit que la distribution à suivre quand on ne réclame pas une version spécifique d'un paquet (apt-get install glade-2/unstable) est testing (aka sarge à ce jour).
+  APT::Cache-Limit "12000000";
+  APT::Default-Release "testing";

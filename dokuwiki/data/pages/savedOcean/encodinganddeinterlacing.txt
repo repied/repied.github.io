@@ -1,0 +1,28 @@
+=== le conseil de David ===
+
+Voila l'option que j'utilise pour desentrelacer 1 fichier avec mencoder :
+-vop pp=0x20000
+                                                                                           
+Dans le man (et avec mplayer -pphelp) j'ai trouve plein d'autres
+options (et bien sur pas celle-la) a mettre a la suite d'1 -vop ou -vf.
+Toutes semblent liees a ton probleme...
+  pp=lb
+  pp=li
+  pp=ci
+  pp=md
+  pp=fd
+  dint[=sense:level]
+  lavcdeint
+  il=[d|i][s][:[d|i][s]]
+  fil=[i|d]
+  detc[=var1=value2:var2=value2:...]
+  ivtc[=1]
+  pullup
+  filmdint[=options]
+
+=== solution en cours d'evaluation ===
+Utiliser [=-vf lavcdeint] pour désentrelacer. Comme je fais aussi un crop et un scale, l'option complète est :
+  -vf lavcdeint,crop=<w>:<h>:<x>:<y>,scale=<ws>:<hs>
+en prenant bien garde que les dimensions du scale (ws, hs) soient des multiples de 16 (quitte à briser un peu l'aspect w/h original).
+
+J'ai un script qui fait l'encodage en trois passes, avec calcul automatique du crop, du bitrate video, et des dimensions du scale, à partir d'une taille de fichier cible. Y'a qu'à demander si vous êtes intéressé. RonanLeHy

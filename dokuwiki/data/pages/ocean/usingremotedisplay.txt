@@ -1,0 +1,18 @@
+Ma machine, c'est rouille. Je veux me connecter sur encre pour y faire tourner OpenOffice (par exemple parce qu'OpenOffice n'est pas installé sur rouille, ou que la version installée est trop vieille). 
+
+= méthode simple et moderne =
+ xhost +encre
+ ssh -X encre soffice
+
+= vieille méthode =
+Supposons que mon shell soit tcsh ('echo $SHELL' pour savoir).
+  rouille> xhost +encre
+  rouille> telnet encre
+  # taper son login et mot de passe
+  ivoire> setenv DISPLAY rouille:0
+  ivoire> openoffice
+
+OpenOffice va tourner sur encre, mais s'afficher sur rouille. Merci Francis.
+
+Ah, si votre shell est bash ou zsh, remplacez la ligne avec setenv par
+  export DISPLAY=rouille:0

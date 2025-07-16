@@ -1,0 +1,99 @@
+This is the place for *simple and short* examples of how to use the ProBT Python bindings. Particularly interesting are those places where the Python version differs from the C++ API. Short examples that show how to use the C++ API (not the Python one) are also welcome.
+
+= importer tout ProBT dans l'espace de nom courant =
+ from pl import *
+
+= construire une plFloatMatrix =
+ m = plFloatMatrix(2,3)
+ for i in range(0,2):
+   for j in range(0,3):
+     if i == j:
+       m.set(i,j,1.0)
+     else:
+       m.set(i,j,0.0)
+ print m
+
+= building a plProbTable =
+ >>> a = plSymbol('a', plIntegerType(0,1))
+ # the final argument (1) means that ProBT should do the normalisation itself
+ >>> t = plProbTable(a, [0.3, 0.8], 1)
+ >>> print t
+ P(a) =
+ a               Probability
+ 0               0.272727
+ 1               0.727273
+
+= construire un noyau conditionnel avec une plExternalProbFunction =
+ p_a_knowing_b_c = plCndAnonymousKernel(a, b ^ c, 
+                                    make_plExternalProbFunction(
+    a ^ b ^ c, 
+    """
+    #include <pl.h>
+    #include <cmath>
+
+    using namespace std;
+    // beware: a plExternalProbFunction should return properly normalised distributions
+    extern "C" plProbValue f(const plValues& input)
+    {
+      // input[0] is a, input[1] is b, input[2] is c
+      if (input[0] == input[1] || input[0] == input[2])
+      {
+        return 0.1;
+      }
+      else
+      {
+        return 0.0;
+      }
+    }
+    """, 'f', '-I../pl/include', '-L../lib -lpl', '/usr/bin/g++-3.2'))
+
+= utiliser des plArray =
+  a = pl1DArray('1d_array', plIntegerType(0,5), 3)        # instead of plArray('1d_array', plIntegerType(0,5), 1, 3) in C++
+  b = pl2DArray('2d_array', plIntegerType(0,5), 3, 4)
+  c = pl3DArray('3d_array', plIntegerType(0,5), 3, 4, 5)
+(In general, constructor with varargs, like the ordinary one for plArray, don't remain as is in the Python bindings.)
+  v = plValues(b)
+  v[b.at(1,2)] = 5 # instead of v[b(1,2)] = 5 in C++
+
+= creating an alias, copying an object =
+ s = plSymbol('toto', plIntegerType(0,5))
+ v = plValues(s)
+ alias_to_v = v
+ copy_of_v = plValues(v)
+ 
+ alias_to_v[s] = 2 # modifies v also
+ copy_of_v[s]  = 3 # does not modify v, this is a full copy
+
+= getting the number of possible cases in a type, in a variable =
+The current API contains a [=cardinality()] method for plVariable objects, but not for type objects. So for variables, do:
+ print plSymbol("my_variable", plIntegerType(-1,13)).cardinality()
+And for types, you can create a dummy variable:
+ >>> def type_cardinality(t):
+ ...     return plSymbol("dummy", t).cardinality()
+ ...
+ >>> type_cardinality(plIntegerType(-1, 10))
+ 12.0
+ >>> type_cardinality(plRealType(0,2.5,10))
+ 10.0
+ >>> type_cardinality(plSparseType([1.,2.,7.,9.]))
+ 4.0
+
+= building a conjunction from a list of variables =
+ >>> from pl import *
+ >>> vars = [plSymbol("var_%d"%i, plIntegerType(0,2)) for i in range(5)]
+ >>> print vars
+ [<C plSymbol instance at _58061808_p_plSymbol>, <C plSymbol instance at _105f1a08_p_plSymbol>, <C plSymbol instance at _78551c08_p_plSymbol>, <C plSymbol instance at _d0f91a08_p_plSymbol>, <C plSymbol instance at _38101b08_p_plSymbol>]
+ >>> conj = reduce(lambda x,y:x^y, vars)
+ >>> print conj
+ {var_0 var_1 var_2 var_3 var_4}
+The same trick can be used to build the product of distributions in a list:
+ product = reduce(lambda x,y:x*y, distribs)
+
+= Tabulating a distribution =
+plKernel::tabulate() is useful if you want to compile a complete (non conditional) distribution into a vector. Usage in Python is special:
+ from pl import *
+ k = plUniform(plSymbol("a",plIntegerType(0,5)))
+ v = plProbValueVector()
+ k.tabulate(v)
+ print v[0], v[1]
+ print [x for x in v]

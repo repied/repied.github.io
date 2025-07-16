@@ -1,0 +1,54 @@
+NIS est le Name Information Service, aka Yellow Pages (YP).
+
+D'abord telecharger NIS :
+ apt-get install nis
+
+Apt va vous demander le domaine par défaut. Pour l'inrialpes, c'est raminis.
+
+Il y a 4 fichiers de configuration à changer :
+ /etc/yp.conf
+ /etc/ypserv.conf
+ /etc/nsswitch.conf
+ /etc/defaultdomain # celui-là est généré par Apt, normalement pas besoin de le toucher
+
+Les exemples ci-dessous sont pris sur pamplemousse. Ils peuvent être copiés tels quels pour n'importe quelle machine dans l'UR, a priori.
+
+Un exemple de //etc/yp.conf/ :
+ ypserver nis1-serv.inrialpes.fr nis2-serv.inrialpes.fr nis3-serv.inrialpes.fr
+
+Un exemple de //etc/ypserv.conf/ :
+ *                            : *       : shadow.byname    : port
+ *                            : *       : passwd.adjunct.byname : port
+ *                            : *       : *                : none
+
+Un exemple de //etc/nsswitch.conf/ :
+ passwd:     files nisplus nis 
+ shadow:     files nisplus nis
+ group:      files nisplus nis
+
+ hosts:      files dns
+
+ services:   nisplus [NOTFOUND=return] files
+ networks:   nisplus [NOTFOUND=return] files
+ protocols:  nisplus [NOTFOUND=return] files
+ rpc:        nisplus [NOTFOUND=return] files
+ ethers:     nisplus [NOTFOUND=return] files
+ netmasks:   nisplus [NOTFOUND=return] files
+ bootparams: nisplus [NOTFOUND=return] files
+ 
+ netgroup:   nisplus
+ 
+ publickey:  nisplus 
+
+ automount:  files nis
+ aliases:    files nisplus
+
+Et pour //etc/defaultdomain/, normalement Apt s'en est occupé tout seul :
+ raminis
+
+Pour relancer NIS, pour que la configuration prenne effet :
+  /etc/init.d/nis restart # sous Debian
+
+Ah, et puis pour tester, on peut essayer de se connecter. Il y a aussi ypcat :
+  ypcat passwd
+et zou, la liste des gens avec un compte ouvert sur le serveur YP.

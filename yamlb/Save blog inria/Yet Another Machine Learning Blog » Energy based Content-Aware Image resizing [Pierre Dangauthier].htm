@@ -1,0 +1,646 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11">
+
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Yet Another Machine Learning Blog » Energy based Content-Aware Image resizing [Pierre Dangauthier]</title>
+
+	
+	
+	<meta name="generator" content="WordPress 2.0.2"><!-- leave this for stats please --> 
+
+	<style type="text/css" media="screen">
+		@import url(http://emotion.inrialpes.fr/~dangauthier/blog/wp-content/themes/pool/style.css);
+	</style>
+
+	<link rel="Shortcut Icon" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/wp-content/themes/pool/images/favicon.ico" type="image/x-icon">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/feed/">
+	<link rel="alternate" type="text/xml" title="RSS .92" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/feed/rss/">
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/feed/atom/">
+	
+	<link rel="pingback" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/xmlrpc.php">
+    	<link rel="archives" title="December 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/12/">
+	<link rel="archives" title="September 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/09/">
+	<link rel="archives" title="August 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/">
+	<link rel="archives" title="July 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/07/">
+	<link rel="archives" title="June 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/06/">
+	<link rel="archives" title="May 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/05/">
+	<link rel="archives" title="April 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/04/">
+	<link rel="archives" title="March 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/03/">
+	<link rel="archives" title="February 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/02/">
+	<link rel="archives" title="January 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/01/">
+	<link rel="archives" title="December 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/12/">
+	<link rel="archives" title="November 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/11/">
+	<link rel="archives" title="September 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/09/">
+	<link rel="archives" title="August 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/08/">
+	<link rel="archives" title="June 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/06/">
+	<link rel="archives" title="May 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/05/">
+	<link rel="archives" title="April 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/04/">
+	<link rel="archives" title="March 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/03/">
+	<link rel="archives" title="February 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/02/">
+	<link rel="archives" title="December 2005" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2005/12/">
+		<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/xmlrpc.php?rsd">
+<link rel="stylesheet" href="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20Energy%20based%20Content-Aware%20Image%20resizing%20%5BPierre%20Dangauthier%5D_fichiers/syntax_hilite_css.css" type="text/css" media="all">
+	<script language="javascript" type="text/javascript" src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20Energy%20based%20Content-Aware%20Image%20resizing%20%5BPierre%20Dangauthier%5D_fichiers/syntax_hilite_js.js"></script>
+	<script language="javascript" type="text/javascript">
+	var arrCode = new Array();
+	</script></head><body>
+<div id="content">
+	
+	<div id="header" onclick="location.href='http://emotion.inrialpes.fr/~dangauthier/blog';" style="cursor: pointer;">
+		<h1><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog">Yet Another Machine Learning Blog</a></h1>
+	</div>
+
+	<div id="pages">
+			<div class="alignleft">
+				<ul>
+				<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog">Blog</a></li>
+								</ul>
+			</div>
+		
+			<div id="search">
+				<form id="searchform" method="get" action="/~dangauthier/blog/index.php">
+					<input name="s" id="s" size="20" value="search in blog..." type="text">
+				</form>
+			</div>
+	</div>
+	
+<!-- end header -->			
+	<div id="bloque">
+		
+		<div id="noticias">
+		
+		 
+		
+			<div class="entrada">
+				<h2 id="post-70"><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/23/energy-based-content-aware-image-resizing/" rel="bookmark" title="Permanent Link to Energy based Content-Aware Image resizing">Energy based Content-Aware Image resizing</a></h2>
+				<small>August 23, 2007 on 12:57 pm | In <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/misc/" title="View all posts in Misc" rel="category tag">Misc</a> | </small>
+						
+		<p>In a SIGGRAPH 2007 paper, Shai Avidan, <a href="http://www.faculty.idc.ac.il/arik/">Ariel Shamir</a> presents an amazing method for intelligent image resizing.<br>
+<a style="left: 425px ! important; top: 21px ! important;" title="Cliquer ici afin qu'Adblock Plus bloque cet objet" class="abp-objtab-08674916980038252 visible ontop" href="http://www.youtube.com/v/c-SSu3tJ3ns"></a><object height="350" width="425"><br>
+<param name="movie" value="http://www.youtube.com/v/c-SSu3tJ3ns">
+<param name="wmode" value="transparent"><embed src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20Energy%20based%20Content-Aware%20Image%20resizing%20%5BPierre%20Dangauthier%5D_fichiers/c-SSu3tJ3ns.swf" type="application/x-shockwave-flash" wmode="transparent" height="350" width="425"></object><br>
+Because the<a href="http://www.faculty.idc.ac.il.nyud.net/arik/imret.pdf"> original paper</a> is difficult to download (20Mb), I mirrored it <a href="http://emotion.inrialpes.fr/%7Edangauthier/images/resizing2007.pdf">here</a>.
+</p>
+ <!-- Changed by pierre, andded nb of character to keep-->
+							
+				<div class="feedback"></div>
+
+			<!--
+			<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	    xmlns:dc="http://purl.org/dc/elements/1.1/"
+	    xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://emotion.inrialpes.fr/~dangauthier/blog/2007/08/23/energy-based-content-aware-image-resizing/"
+    dc:identifier="http://emotion.inrialpes.fr/~dangauthier/blog/2007/08/23/energy-based-content-aware-image-resizing/"
+    dc:title="Energy based Content-Aware Image resizing"
+    trackback:ping="http://emotion.inrialpes.fr/~dangauthier/blog/2007/08/23/energy-based-content-aware-image-resizing/trackback/" />
+</rdf:RDF>			-->
+
+			</div>
+				
+		
+
+<h2 id="comments">33 Comments 
+	<a href="#postcomment" title="Leave a comment">»</a>
+</h2>
+
+
+<p>
+<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/23/energy-based-content-aware-image-resizing/feed/"><abbr title="Really Simple Syndication">RSS</abbr> feed for comments on this post.</a> 
+
+<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/23/energy-based-content-aware-image-resizing/trackback/" rel="trackback">TrackBack <abbr title="Uniform Resource Identifier">URI</abbr></a>
+</p>
+
+<ol id="commentlist">
+
+
+
+	<li id="comment-45380" class="class_comment1">
+	<p>You can try it <a href="http://swieskowski.net/carve/" rel="nofollow"> here</a>.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://emotion.inrialpes.fr/%7Edangauthier/" rel="external nofollow">Pierre</a> &#8212; September 3, 2007 <a href="#comment-45380">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72221" class="class_comment2">
+	<p><strong>Effects of vicodin&#8230;.</strong></p>
+<p>Darvocet vs vicodin. Vicodin. Drug vicodin&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://blogs.ign.com/buyvicodin" rel="external nofollow">Vicodin.</a> &#8212; April 21, 2008 <a href="#comment-72221">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72227" class="class_comment1">
+	<p><strong>Vicodin and no consults and no prescription&#8230;.</strong></p>
+<p>Vicodin. Long term vicodin use. Buy vicodin online without a prescription. Effects of vicodin&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://vicodin.blog-br.com/" rel="external nofollow">Next day delivery vicodin.</a> &#8212; April 21, 2008 <a href="#comment-72227">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72337" class="class_comment2">
+	<p><strong>Amoxicillin pregnancy&#8230;.</strong></p>
+<p>Buy amoxicillin without prescription. Amoxicillin. Amoxicillin drug interactions. Amoxicillin and strep throat&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://amoxicillin500mg.blog-br.com/" rel="external nofollow">Amoxicillin effects on a fetus.</a> &#8212; April 22, 2008 <a href="#comment-72337">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72383" class="class_comment1">
+	<p><strong>Somas with carisoprodol doese t contain codeine&#8230;.</strong></p>
+<p>Do somas show up in aurine test&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://ssomas.informe.com/" rel="external nofollow">No somas esclavos.</a> &#8212; April 22, 2008 <a href="#comment-72383">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72410" class="class_comment2">
+	<p><strong>Percocet&#8230;.</strong></p>
+<p>Percocet 7.5. Fun with percocet. Percocet&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://percocet.forumi.bg/" rel="external nofollow">Effects of long term percocet use.</a> &#8212; April 22, 2008 <a href="#comment-72410">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72551" class="class_comment1">
+	<p><strong>Xanax without a prescription&#8230;.</strong></p>
+<p>Xanax addiction. Xanax xr crushed. No prescription xanax. Xanax with herbal medicines&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://xaanx.invisioni.com/" rel="external nofollow">Xanax.</a> &#8212; April 24, 2008 <a href="#comment-72551">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72582" class="class_comment2">
+	<p><strong>Penis Enlargement Method&#8230;</strong></p>
+<p>Question: What&#8217;s another name for the &#8220;Intel Inside&#8221; sticker they put on Pentiums? Answer: The warning label&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://ps4.penis-enlargement-system.net/" rel="external nofollow">Penis Enlargement Method</a> &#8212; April 24, 2008 <a href="#comment-72582">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72894" class="class_comment1">
+	<p><strong>Lexapro generic&#8230;.</strong></p>
+<p>Lexapro medication generic. Generic lexapro. Color of generic lexapro&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://lexapro.informe.com/" rel="external nofollow">Generic lexapro.</a> &#8212; April 27, 2008 <a href="#comment-72894">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72995" class="class_comment2">
+	<p><strong>Phentermine yellow&#8230;.</strong></p>
+<p>Phentermine. Phentermine cod. Phentermine yellow&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://groups.google.com/group/best-phentermine-online/web/cheap-phentermine-online" rel="external nofollow">Phentermine.</a> &#8212; April 28, 2008 <a href="#comment-72995">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73067" class="class_comment1">
+	<p><strong>Side effects of percocet&#8230;.</strong></p>
+<p>Dosages for percocet. Half life of percocet. Percocet. Long term percocet withdrawal symptoms. Percocet withdrawal&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://aspercocet.0x.ro/" rel="external nofollow">Gereric names for percocet 5 325.</a> &#8212; April 29, 2008 <a href="#comment-73067">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73114" class="class_comment2">
+	<p><strong>Phentermine no prescription&#8230;.</strong></p>
+<p>Phentermine 37 5mg. Discount phentermine. Phentermine no prescription. Order phentermine. Buy no phentermine prescription&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.scrapbook.com/profiles/248479.html" rel="external nofollow">Phentermine price.</a> &#8212; April 29, 2008 <a href="#comment-73114">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73400" class="class_comment1">
+	<p><strong>Hydrocodone m357&#8230;.</strong></p>
+<p>Hydrocodone. Buy hydrocodone online consultation&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://groups.google.com/group/best-pharmacy-online/web/cheap-hydrocodone-online" rel="external nofollow">Effects of hydrocodone.</a> &#8212; May 2, 2008 <a href="#comment-73400">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73624" class="class_comment2">
+	<p>I don&#8217;t generally feel anything until noon; then it&#8217;s time for my nap.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://groups.msn.com/AirlineTicket" rel="external nofollow">Airline Ticket</a> &#8212; May 4, 2008 <a href="#comment-73624">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73625" class="class_comment1">
+	<p>Art is either plagiarism or revolution.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://groups.msn.com/CheapCarInsurance" rel="external nofollow">Cheap Car Insurance</a> &#8212; May 4, 2008 <a href="#comment-73625">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73626" class="class_comment2">
+	<p>Writing
+gives you the illusion of control, and then you realize it&#8217;s just an
+illusion, that people are going to bring their own stuff into it.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://groups.msn.com/Valium1" rel="external nofollow">valium</a> &#8212; May 4, 2008 <a href="#comment-73626">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73627" class="class_comment1">
+	<p>Life engenders life. Energy creates energy. It is by spending oneself that one becomes rich.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://groups.msn.com/buy-viagra" rel="external nofollow">Buy Viagra</a> &#8212; May 4, 2008 <a href="#comment-73627">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73628" class="class_comment2">
+	<p>The
+radical of one century is the conservative of the next. The radical
+invents the views. When he has worn them out the conservative adopts
+them.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://groups.msn.com/buy-phentermine" rel="external nofollow">Buy phentermine</a> &#8212; May 4, 2008 <a href="#comment-73628">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73780" class="class_comment1">
+	<p><strong>Teen anal porn video gay&#8230;.</strong></p>
+<p>Free hot sexy video porn teen ametuers&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://teen-porn-video.weebly.com/" rel="external nofollow">Free teen porn video.</a> &#8212; May 5, 2008 <a href="#comment-73780">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73922" class="class_comment2">
+	<p>penis enlargement
+</p>
+	<p class="alignright"><small>Comment by <a href="http://penisenlargementx.blogbugs.org/" rel="external nofollow">penis enlargement</a> &#8212; May 6, 2008 <a href="#comment-73922">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74001" class="class_comment1">
+	<p><strong>Zoo sex&#8230;.</strong></p>
+<p>Gallery sex zoo free. Free zoo sex. Zoo sex. Animals sex zoo&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://grabaforum.com/freezoosexvideo" rel="external nofollow">Zoo sex.</a> &#8212; May 6, 2008 <a href="#comment-74001">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74181" class="class_comment2">
+	<p>soma buy can <a href="http://buysomaa.beeplog.de/" rel="nofollow">to buy soma</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://buysomaa.beeplog.de/" rel="external nofollow">soa soma buy</a> &#8212; May 8, 2008 <a href="#comment-74181">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74361" class="class_comment1">
+	<p><strong>Carisoprodol&#8230;.</strong></p>
+<p>Carisoprodol soma drug test. Soma carisoprodol abuse information. Carisoprodol&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://carisoprodolfedex.blogtownhall.com/" rel="external nofollow">Carisoprodol fedex cod.</a> &#8212; May 9, 2008 <a href="#comment-74361">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74616" class="class_comment2">
+	<p><strong>Fioricet&#8230;.</strong></p>
+<p>Fioricet online&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://fioricet.manblog.net/" rel="external nofollow">Fioricet.</a> &#8212; May 12, 2008 <a href="#comment-74616">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74639" class="class_comment1">
+	<p><strong>HntEXltSeHHobIA&#8230;</strong></p>
+<p>TJVgHDZkyAGivY&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://ctqylqx.com/" rel="external nofollow">fTqpfcm</a> &#8212; May 12, 2008 <a href="#comment-74639">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74916" class="class_comment2">
+	<p><strong>Prozac&#8230;.</strong></p>
+<p>Prozac menopause. Side effects of prozac. Prozac. Order prozac&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://prozac.iforums.us/" rel="external nofollow">Prozac.</a> &#8212; May 14, 2008 <a href="#comment-74916">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74991" class="class_comment1">
+	<p><strong>Zelnorm&#8230;.</strong></p>
+<p>Zelnorm&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://zelnorn.wikidot.com/" rel="external nofollow">Zelnorm.</a> &#8212; May 14, 2008 <a href="#comment-74991">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75026" class="class_comment2">
+	<p><strong>Buying phentermine&#8230;.</strong></p>
+<p>Phentermine diet pills. Phentermine. Order phentermine uk. Adipexdrug addiction order phentermine online. Phentermine cod&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.scrapbook.com/resumes/240603.html" rel="external nofollow">Phentermine.</a> &#8212; May 14, 2008 <a href="#comment-75026">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75100" class="class_comment1">
+	<p><strong>Buy levitra&#8230;.</strong></p>
+<p>Buy levitra&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://levirta.weebly.com/" rel="external nofollow">Buy levitra.</a> &#8212; May 15, 2008 <a href="#comment-75100">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-76024" class="class_comment2">
+	<p>A good man would prefer to be defeated than to defeat injustice by evil means.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.clipclip.org/clips/detail/155800/buy-xanax-without-prescription" rel="external nofollow">Chicago</a> &#8212; May 20, 2008 <a href="#comment-76024">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-76091" class="class_comment1">
+	<p><strong>What color is ambien&#8230;.</strong></p>
+<p>Generic ambien. Ambien cr&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://groups.google.ru/group/buy_ambien_online/web/best-ambien-prices-free-overnight-shipping" rel="external nofollow">Ambien not working.</a> &#8212; May 20, 2008 <a href="#comment-76091">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-76105" class="class_comment2">
+	<p><strong>Medlineplus drug information tramadol and&#8230;.</strong></p>
+<p>Comparative potencies of opioids tramadol. Tramadol. Soma synalar
+tramadol. Buying tramadol experience fundeling com. Hydrochloride
+tramadol&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://tramadoll.yourblog.in/" rel="external nofollow">Tramadol sr 100.</a> &#8212; May 20, 2008 <a href="#comment-76105">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-76182" class="class_comment1">
+	<p>Listen.
+Do not have an opinion while you listen because frankly, your opinion
+doesn?t hold much water outside of Your Universe. Just listen. Listen
+until their brain has been twisted like a dripping towel and what they
+have to say is all over the floor.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.clipclip.org/clips/detail/155792/generic-xanax" rel="external nofollow">Houston</a> &#8212; May 20, 2008 <a href="#comment-76182">#</a></small></p>
+	</li>
+
+
+</ol>
+
+
+<h2 id="postcomment">Leave a comment</h2>
+
+
+<form action="http://emotion.inrialpes.fr/~dangauthier/blog/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input name="author" id="author" value="" size="22" tabindex="1" type="text">
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input name="email" id="email" value="" size="22" tabindex="2" type="text">
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input name="url" id="url" value="" size="22" tabindex="3" type="text">
+<label for="url"><small>Website</small></label></p>
+
+
+<p><textarea name="comment" id="comment" cols="50" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" id="submit" tabindex="5" value="Submit Comment" type="submit"></p>
+<p><small><strong>XHTML:</strong> &lt;a href="" title=""&gt; &lt;abbr
+title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote
+cite=""&gt; &lt;code&gt; &lt;em&gt; &lt;i&gt; &lt;strike&gt;
+&lt;strong&gt; </small>
+<input name="comment_post_ID" value="70" type="hidden">
+</p>
+
+</form>
+
+
+			
+		
+				</div>
+
+<!-- begin footer -->
+
+
+<!-- begin sidebar -->
+		<div id="sidebar">
+		
+		
+
+		<table id="wp-calendar">
+	<caption>August 2007</caption>
+	<thead>
+	<tr>
+		<th abbr="Monday" scope="col" title="Monday">M</th>
+		<th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+		<th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+		<th abbr="Thursday" scope="col" title="Thursday">T</th>
+		<th abbr="Friday" scope="col" title="Friday">F</th>
+		<th abbr="Saturday" scope="col" title="Saturday">S</th>
+		<th abbr="Sunday" scope="col" title="Sunday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td abbr="July" colspan="3" id="prev"><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/07/" title="View posts for July 2007">« Jul</a></td>
+		<td class="pad">&nbsp;</td>
+		<td abbr="September" colspan="3" id="next"><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/09/" title="View posts for September 2007">Sep »</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="2" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+	</tr>
+	<tr>
+		<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+	</tr>
+	<tr>
+		<td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+	</tr>
+	<tr>
+		<td>20</td><td><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/21/" title="A Bayesian Poker Player">21</a></td><td>22</td><td><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/23/" title="Religion, art and NLP, Energy based Content-Aware Image resizing, Why 2 random vectors are orthogonal in high dimention?">23</a></td><td>24</td><td>25</td><td>26</td>
+	</tr>
+	<tr>
+		<td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+		<td class="pad" colspan="2">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table>		<br>
+		
+			
+				
+							<h3>Recent Comments</h3>
+				<ul>
+					<li> - <a href="http://www.clipclip.org/clips/detail/155792/generic-xanax" title="Houston">Houston</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/09/05/mlss-2007-videos-and-category-theory/#comment-76183" title="MLSS 2007 Videos and Category theory">MLSS 2007 Videos and Category theory</a>: Listen. Do not have an opinion while you...</li>
+	<li> - <a href="http://www.clipclip.org/clips/detail/155792/generic-xanax" title="Houston">Houston</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/23/energy-based-content-aware-image-resizing/#comment-76182" title="Energy based Content-Aware Image resizing">Energy based Content-Aware Image resizing</a>: Listen. Do not have an opinion while you...</li>
+	<li> - <a href="http://www.clipclip.org/clips/detail/155792/generic-xanax" title="Houston">Houston</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/03/16/machine-learning-videos/#comment-76181" title="Machine learning videos">Machine learning videos</a>: Listen. Do not have an opinion while you listen because...</li>
+	<li> - <a href="http://www.esnips.com/user/valium" title="valium online">valium online</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/03/09/ranking-conferences/#comment-76175" title="Ranking conferences">Ranking conferences</a>: Hi! valium online</li>
+	<li> - <a href="http://phpbbi.com/?mforum=sheldondarfing" title="huge">huge</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/09/05/machine-learning-list-volume-18-number-6/#comment-76170" title="Machine Learning List: Volume 18, Number 6">Machine Learning List: Volume 18, Number 6</a>: Fist /gen act/ - fisting. Kelli closed her...</li>
+	<li> - <a href="http://www.zimbra.com/forums/members/replica-handbags.html" title="Fernando">Fernando</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2005/12/15/todo/#comment-76169" title="Introduction - todo list">Introduction - todo list</a>: http://www.zimbra.com/forums/m...</li>
+	<li> - <a href="http://www.yourhealthforum.com/forum/forum_posts.asp?TID=9052" title="keftabs">keftabs</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/06/07/on-line-machine-learning-journals/#comment-76166" title="On-line machine learning journals">On-line machine learning journals</a>: zwxj vrfwu keftabs</li>
+				</ul>
+				
+			 
+			
+			<div id="blogroll">
+			<h3>Blogroll</h3>
+				<!-- Avant mes modifs
+				<ul>
+				<li>- <a href="http://www.dataminingblog.com/">dataminingblog</a></li>
+<li>- <a href="http://hunch.net/">Machine Learning (Theory)</a></li>
+<li>- <a href="http://ml.typepad.com/">Machine Learning Thoughts</a></li>
+<li>- <a href="http://yaroslavvb.blogspot.com/">Machine Learning, etc</a></li>
+<li>- <a href="http://golem.ph.utexas.edu/category/">n-category cafe</a></li>
+<li>- <a href="http://nuit-blanche.blogspot.com/">nuit-blanche</a></li>
+<li>- <a href="http://www.stat.columbia.edu/~cook/movabletype/mlm/">Statistical Modeling [...]</a></li>
+<li>- <a href="http://terrytao.wordpress.com/">What&#039;s new</a></li>
+				</ul>
+				-->
+				<ul><a href="http://www.dataminingblog.com/">dataminingblog</a><br>
+<a href="http://hunch.net/">Machine Learning (Theory)</a><br>
+<a href="http://ml.typepad.com/">Machine Learning Thoughts</a><br>
+<a href="http://yaroslavvb.blogspot.com/">Machine Learning, etc</a><br>
+<a href="http://golem.ph.utexas.edu/category/">n-category cafe</a><br>
+<a href="http://nuit-blanche.blogspot.com/">nuit-blanche</a><br>
+<a href="http://www.stat.columbia.edu/%7Ecook/movabletype/mlm/">Statistical Modeling [...]</a><br>
+<a href="http://terrytao.wordpress.com/">What's new</a><br>
+</ul>
+				
+			</div>			
+			
+			<div id="categories">			
+			<h3>Categories:</h3>
+				<ul>
+					<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/decision/" title="View all posts filed under Decision">Decision</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/decision/feed/" title="rss">rss</a>) (2)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/events/" title="View all posts filed under Events">Events</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/events/feed/" title="rss">rss</a>) (2)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/inference/" title="View all posts filed under Inference">Inference</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/inference/feed/" title="rss">rss</a>) (5)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/jobs/" title="View all posts filed under jobs">jobs</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/jobs/feed/" title="rss">rss</a>) (2)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/misc/" title="View all posts filed under Misc">Misc</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/misc/feed/" title="rss">rss</a>) (23)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/modeling/" title="View all posts filed under Modeling">Modeling</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/modeling/feed/" title="rss">rss</a>) (8)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/philosophy/" title="View all posts filed under philosophy">philosophy</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/philosophy/feed/" title="rss">rss</a>) (8)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/priors/" title="View all posts filed under Priors">Priors</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/priors/feed/" title="rss">rss</a>) (7)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/research-life/" title="View all posts filed under research life">research life</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/research-life/feed/" title="rss">rss</a>) (5)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/uncategorized/feed/" title="rss">rss</a>) (1)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/work/" title="View all posts filed under Work">Work</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/work/feed/" title="rss">rss</a>) (3)
+</li>
+				</ul>
+			</div>
+			
+			<div id="archives">			
+			<h3>Archives:</h3>
+				<ul>
+					<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/12/" title="December 2007">December 2007</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/09/" title="September 2007">September 2007</a>&nbsp;(2)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/" title="August 2007">August 2007</a>&nbsp;(4)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/07/" title="July 2007">July 2007</a>&nbsp;(2)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/06/" title="June 2007">June 2007</a>&nbsp;(3)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/05/" title="May 2007">May 2007</a>&nbsp;(2)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/04/" title="April 2007">April 2007</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/03/" title="March 2007">March 2007</a>&nbsp;(2)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/02/" title="February 2007">February 2007</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/01/" title="January 2007">January 2007</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/12/" title="December 2006">December 2006</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/11/" title="November 2006">November 2006</a>&nbsp;(2)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/09/" title="September 2006">September 2006</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/08/" title="August 2006">August 2006</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/06/" title="June 2006">June 2006</a>&nbsp;(3)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/05/" title="May 2006">May 2006</a>&nbsp;(4)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/04/" title="April 2006">April 2006</a>&nbsp;(8)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/03/" title="March 2006">March 2006</a>&nbsp;(6)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/02/" title="February 2006">February 2006</a>&nbsp;(8)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2005/12/" title="December 2005">December 2005</a>&nbsp;(1)</li>
+				</ul>
+			</div>
+
+			<div id="stats">
+			<h3>Statistics</h3>
+
+			<script type="text/javascript" src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20Energy%20based%20Content-Aware%20Image%20resizing%20%5BPierre%20Dangauthier%5D_fichiers/k3dh367va.js"></script><div id="technorati"><p id="te_l" class="te_l"><a href="http://www.technorati.com/search/http://emotion.inrialpes.fr/%7Edangauthier/blog?cc=k3dh367va" id="te_lh">» Blogs that link here</a></p><p id="te_lo" class="te_lo"><a href="http://www.technorati.com/?cc=k3dh367va"><img src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20Energy%20based%20Content-Aware%20Image%20resizing%20%5BPierre%20Dangauthier%5D_fichiers/tn-tiny.gif" alt="Powered by Technorati" border="0"></a></p></div>
+			
+			<a href="http://www.gvisit.com/map.php?sid=fb0ba0dcd32d4f730e91c305647d142c"> 20 last visitor locations</a>
+
+			<script language="JavaScript" src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20Energy%20based%20Content-Aware%20Image%20resizing%20%5BPierre%20Dangauthier%5D_fichiers/record.htm" type="text/javascript"></script>
+			
+			<!-- Google ananlytics -->
+			<script src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20Energy%20based%20Content-Aware%20Image%20resizing%20%5BPierre%20Dangauthier%5D_fichiers/urchin.js" type="text/javascript">
+			</script>
+			<script type="text/javascript">
+				_uacct = "UA-308694-1";
+				urchinTracker();
+			</script>
+			</div>
+			
+			<a href="http://whos.amung.us/show/wwc6jhi6"><img src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20Energy%20based%20Content-Aware%20Image%20resizing%20%5BPierre%20Dangauthier%5D_fichiers/wwc6jhi6.png" alt="website counter" border="0" height="29" width="81"></a>
+			
+			<div id="meta">
+				<h3>Meta:</h3>
+				<ul>
+				<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/wp-register.php">Register</a></li>				<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/wp-login.php">Login</a></li>
+				<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/feed/">rss feed</a></li>
+				
+				
+								</ul>
+			</div>
+		
+		</div>
+			
+<div class="both"></div>
+			
+</div>
+
+<!-- end sidebar -->
+
+<p id="credits">
+<a href="http://emotion.inrialpes.fr/%7Edangauthier">Pierre Dangauthier</a> <br>
+
+<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/feed/">Entries</a> and <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/comments/feed/">comments</a> feeds. 
+Valid <a href="http://validator.w3.org/check/referer">XHTML</a> and <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>. ^<a href="#">Top</a>^<br>
+
+<!-- 22 queries. 0.763 seconds. -->
+</p>
+
+</div>
+
+<!--  removed my ouam-->
+</body></html>

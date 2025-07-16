@@ -1,0 +1,12 @@
+* un joli message d'erreur:
+ heThing.cpp: In constructor `heThing::heThing(int)':                                                                                                                       heThing.cpp:79: could not convert `*(((this +
+   192)->buLaplaceTableManager::form()() == 0) ? 0 : __dynamic_cast(const
+   <anonymous>*, const __cxxabiv1::__class_type_info*, const
+   __cxxabiv1::__class_type_info*, int)((this +
+   192)->buLaplaceTableManager::form()(), (&_ZTI18plComputableObject),
+   (&_ZTI11plProbTable), 0))' to `plKernelTable&'
+* un plantage dans la STL, joie:
+ Program received signal SIGSEGV, Segmentation fault.
+ [Switching to Thread 16384 (LWP 32391)]
+ 0x4183c558 in std::vector<std::pair<int, int>,  std::allocator<std::pair<int, int> > >* std::__uninitialized_copy_aux<__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*>(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, __gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > const*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*, __false_type) ()
+   from /home/andrinople/lehy/tmp/PL/source/lib/libpl.so

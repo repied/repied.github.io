@@ -1,0 +1,3 @@
+Equipe d'Olivier Sigot à l'AnimatLab (LIP6): Codamat.
+
+papier SAB, gars qui a un bot Quake à base de réseau de neurones, mapping noeud graphe + perception, appris => action

@@ -1,0 +1,60 @@
+= Ploting Conditional Probability Curves in Gnuplot =
+
+
+== Testé par Julien Diard sur Version 3.8k patchlevel 3
+
+== Testé par Carla Koike sur Version 4.0 patchlevel 0
+
+
+ #######################
+ ###
+ # definition of the gaussian P(Y | X)
+ ###
+ # variables
+ set xrange [0:4.5]
+ set yrange [-3:3]
+ # parametric form : Normal PDF
+ normal(x,y,mu,sigma)=1/sqrt(2*pi*sigma)*exp(-0.5*((x-mu)/sigma)**2)
+ # parameter values
+ mu0 = 0
+ sigma0 = 1.0
+ mu1 = 2
+ sigma1 = 0.5
+ mu2 = -1
+ sigma2 = 0.5
+ mu3 = 0.4
+ sigma3 = 0.8
+ mu4 = 0
+ sigma4 = 0.4
+ ###
+ # parameters for customizing the appearance of the plot
+ ###
+ # lower "boundary" of the plots
+ zmin = -1
+ # labels on the x variable go from 0 to 4 by steps of 1
+ set xtics 0,1,4
+ # more samples = "finer" curve = more processing time
+ nb_samples = 30
+ set title "My joli title"
+ set xlabel "X"
+ set ylabel "Y"
+ set zlabel "P(Y | X)"
+
+ unset label
+ unset arrow
+
+ set parametric
+ set hidden3d
+ set isosamples 2,nb_samples
+
+ ###
+ # actual plotting command
+ ###
+ splot [u=0:1][v=-3:3] \
+    0, v, (u<0.5) ? zmin : normal(v,0,mu0,sigma0) notitle, \
+    1, v, (u<0.5) ? zmin : normal(v,1,mu1,sigma1) notitle, \
+    2, v, (u<0.5) ? zmin : normal(v,2,mu2,sigma2) notitle, \
+    3, v, (u<0.5) ? zmin : normal(v,3,mu3,sigma3) notitle, \
+    4, v, (u<0.5) ? zmin : normal(v,4,mu4,sigma4) notitle
+
+ #pause -1 "Hit return to continue"

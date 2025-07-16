@@ -1,0 +1,124 @@
+Cette page sert a collecter les lignes de shell auxquelles on a consacre trop de temps pour les voir disparaitre dans l'oubli. Utilite non garantie (j'essaye de mettre les plus intéressants vers le haut). N'hésitez pas à en ajouter.
+
+* savoir quel programme utilise un fichier :
+  # qui monopolise le son de ma machine ?
+  fuser -v /dev/dsp
+  # qui m'empeche de demonter mon cdrom ('device busy') ?
+  fuser -vm /cdrom
+  # note: 'lsof' est un autre programme qui fait ce genre de choses, et plus
+  # (en un peu plus compliqué)
+
+* monter une image iso comme un systeme de fichiers ordinaire :
+  mount -o loop -t iso9660 filename.iso /mnt/iso
+
+* encoder en Ogg tous les .wav du repertoire :
+  for i in *.wav; do oggenc $i -a Mum -l 'Yesterday was dramatic, today is OK' -t "$(perl -le '$_=shift;s/^\d+_//;s/_/ /g;print ucfirst $_' ${i:r})"; done
+
+* faire des png pour illustrer les polices LaTeX installees sur le system (utilise [eqe http://rlehy.free.fr]) :
+ print -l /usr/share/texmf/fonts/*/*/* | sed 's#.*/##' | sort | uniq | perl -nle '`echo "bouh en $_"| eqedit -o $_.png`'
+
+* Ajouter #include <cassert> dans tous les fichiers qui utilisent assert (utile pour compiler avec gcc-3.3):
+  grep -l assert *.cxx | sort | uniq | xargs perl -pi.bak -e 's,\*/,*/\n#include <cassert>\n,'
+
+* changer le groupe de tous les fichiers/répertoires qui ont un groupe donné :
+  su
+  find -group sharp -exec chgrp emotion \{\} \;
+
+* déplacer un très grand nombre de fichiers (trop grand pour utiliser [=mv * $TARG]) :
+  find . -print0 | xargs -0 mv --target-dir=$TARG
+
+* faire une copie locale à un niveau de profondeur d'une page veb :
+  wget -nd -E -k -r -l1 --no-parent http://www.southpark.dsl.pipex.com/scripts/index.shtml
+
+* trier mes notes de DM (ficher CSV avec ';' comme séparateur) par note :
+  perl -MData::Dumper -F';' -wlane 'push @{$x{$F[2]}}, "$F[0];$F[1]"; END{for my $k (reverse sort {$a <=> $b} keys %x) {print join "\n", map {"$_;$k"} @{$x{$k}}}}' notes_dm_triees.txt > notes_dm_triees_par_note.txt
+
+* convertir une image png en .ico (format d'icône windows), pour faire une miniature (qui doit être 16x16) à mettre en "shortcut icon" d'une page
+  pngtopnm laplace_miniature.png | ppmquant 256 | ppmtowinicon -output favicon.ico
+
+* afficher avec gnuplot les distributions générées par mes moutons, triées par distance décroissante :
+  for i in `ls distribution_n1*~*.data | perl -pe 'print /(\d+)$/, " "' | sort -rn | awk '{print $2}'`; 
+  do echo $i; gnuplot $i; done
+
+* générer un gros graphe des dépendances à partir d'un paquet (par exemple, voir tous les trucs dont dépend perl) :
+  apt-cache dotty perl | dot -Tps > perl.ps
+
+* couper un gros postscript en plusieurs pages (avec [epssplit http://home.clara.net/nox/software/epssplit/], pas de paquet Debian à ma connaissance) :
+  ./epssplit -x 10 -ps -o kde_multiple.ps -p A4 -O landscape ~/src/sh/dependency_graph/kde.ps
+
+* faire une boucle for :
+  for i in distribution_n2__s0_a-*~*.data; do echo $i; gnuplot $i; done
+
+* remplacer les lignes CC = gcc par CC = gcc-3.2 dans les Makefiles, récursivement
+  perl -pi.bak -e 's/^(\s*CC\s*=\s*g(cc|\+\+)\s+)/#$1CC = g$2-3.2\n/g' **/Makefile
+
+* détecter les doublons dans mes ramones
+  ls * | perl -lne '$x=$_;s/ *-? *(The)? *Ramones( - )?//g;s/^\(\d\d\) //g;s/[ _]*\.mp3$//g;s/ +//g;$_=lc$_;push@{$h{$_}},$x;}for(keys%h){print $h{$_}->[1]if@{$h{$_}}>1' > delete
+
+* les effacer
+  mv delete ramones_mania/
+  cd ramones_mania
+  cat delete | perl -pe 's/^(.+)$/"$1"/' | xargs rm
+
+* renommage monty python
+  rename -v 's/monty.*python(.*flying.*circus)?//i' *
+  rename -v 's/-.*episode[ _-]*//i' ./*
+  rename -v 's/[ _-]+/_/g' ./*
+
+* mettre le champ numéro sur une largeur fixe, left-padded with zeros
+  rename 's/^(\d+)/sprintf "%03d",$1/e' *.avi
+
+* regarder si j'ai des messages sur pop.free.fr
+  perl -MNet::POP3 -lwe '$p=Net::POP3->new("pop.free.fr");$p->apop("rlehy","motdepasse");@x=$p->popstat; print $x[0]';
+
+* pseudo-ls trié par taille
+  perl -le 'print "$_->[0] $_->[1]" for sort {$a->[0] <=> $b->[0]} map {[-s,$_]} <*>'
+
+* version lisible des symboles C++/Java
+  c++filt __cl__6plDataie                                                                               
+  => plData::operator()(int,...)
+
+* remplacer PsController::... par PsWarning::... dans les sources openmask
+  perl -pi.bak -e 's/PsController::(warningLevel|SomeWarnings)/PsWarning::$1/g' */**/*.cxx
+
+* erase burnt files
+  rename 's/\./_burnt./' <101-104>*
+  perl -le '`echo > $_` for <*burnt*>'
+
+* display open files in current directory, sorted by size
+  lsof +D . | grep './' | perl -nale 'push @E, $F[-1]; END{print join "\n", map {"$_->[1] $_->[0]"} sort {$a->[1] <=> $b->[1]} map {[$_,-s $_]} @E}'
+
+* same thing, sorted by real size (not apparent), without the sizes displayed, biggest files first
+  lsof +D . | grep './' | perl -nale 'push @E, $F[-1]; END{print join "\n", map {"$_->[0]"} sort {$b->[1] <=> $a->[1]} map {[$_,`du $_ | cut -f 1`]} @E}'
+
+* useless rotating bar
+  perl -e '++$|; @a=("/","|","\\","-");print("\b", $a[$i++ % ($#a+1)]), sleep 1 while 1'
+  # golfed a bit:
+  perl -e 'print"\b",qw#/ | \ -#[$i++%4]while++$|+select$o,$o,$o,0.1'
+  # moving banner
+  perl -e 'print"\r", map{${\qw#/ | \ -#[$i++%4]}}(1..119)while++$|+select$o,$o,$o,0.05'
+
+* imprimer un calendrier 2004 pleine page sur l'imprimante par défaut (testé avec zsh -- je ne sais pas si ça marche avec d'autres shells, la notation =())
+  a2ps --columns=1 --rows=1 =(ncal -w 2004)
+
+* dire à Olivier combien d'espace certains comptes occupent (à partir des données collectées par space_report):
+ echo '                                                                                                                       
+  bellot
+  chang
+  aulignac
+  desaintj
+  rugarcia
+  kay
+  ylaugier
+  lorieux
+  mendozas
+  murgue
+  pek
+  pisa
+  rebsamen
+  rrodrigu
+  verlinde' | perl -ne 'chomp;next unless $_; ($s)= `tail -n 1 $_`=~/\s+(\d+)\s+/; $s=$s/(2**20);printf "%10s: %d Mo\n", $_, $s'
+* version qui dit ceux qui font plus de 1500 Mo:
+ ls | perl -ne 'chomp;next unless $_; ($s)=`tail -n 1 $_`=~/\s+(\d+)\s+/;$s=$s/(2**20);$s{$s}=$_;END{printf "%10s: %d Mo\n", $s{$_},$_ for sort {$b <=> $a} grep {$_>1500} keys %s}'
+* sans commentaire:
+ perl -MData::Dumper -e '++$|;$x=[[qw/U u 1/,""],[qw/N n/,""],[qw/V v/,""],[qw/O o 0/,""],[qw/$ % # pw p/,"pW","Pw",""],[qw/P p/,""],[qw/I i/,""],[qw/0 o 0/,""]]; $c=0; @p=(0)x@$x; while(1){print "\r", (" "x80), "\r$c"; $i=0;$w=join"",map{$x->[$i++]->[$_]}@p; print("$w\n"),last if "57MLvh3EpyovE" eq crypt $w,"57"; $i=0;$p[$i++]=0 while($p[$i]+1>=@{$x->[$i]} and $i<@$x);last if $i>=@$x;++$p[$i]; ++$c}'

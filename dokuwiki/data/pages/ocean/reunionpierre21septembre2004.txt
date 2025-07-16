@@ -1,0 +1,23 @@
+CR réunion 21/09/2004
+Pierre, Ronan
+
+Des expérimentations avec EM ont été engagées, en vue d'apprendre le séquencement de tâches.
+
+Il s'agit pour l'instant de séquencement avec décision, sans filtrage.
+* Expectation: Draw/Best(P(T | T-1 Vrot Dir Prox p_n))
+* Maximization (maximum likelihood sur les paramètres): Best(P(p_n+1 | T T-1 Vrot Dir Prox))
+
+L'expérience porte sur un modèle simple. Une cible mobile est suivie par un robot à trois tâches: suivre, fuire, faire n'importe quoi (comportement bayésien programmé à la main). Un observateur apprend le comportement du robot.
+On constate en particulier:
+* une instabilité (non convergence), pour la distance euclidienne dans l'espace des paramètres
+* des tables apprises différentes de celles spécifiées à la main
+* des taux de reconnaissance plus ou moins bons pour les différentes tâches, particulièrement mauvais pour la tâche NimporteQuoi
+
+Plan d'attaque:
+* remplacer le comportement NimporteQuoi par une promenade Tangente, qui est plus facile à détecter
+* faire des statistiques du comportement du robot dans un environnement donné, pour avoir un point de comparaison avec les tables apprises (les tables spécifiées ne sont pas suffisantes)
+* évaluer la convergence mieux: quels paramètres sont instables, dans quelles tables, comment varient-ils (basculements ?)? essayer de donner une représentation graphique
+* mettre en évidence que ce qu'on apprend dépend:
+** du comportement du robot
+** de l'environnement dans lequel ce comportement est exécuté
+Pour cela, faire varier l'environnement (particulièrement: cas limites): variation des tailles des cercles qui déterminent le suivi/fuite, éventuellement vitesse de la cible. Faire une étude systématique et planifiée à l'avance. Une idée sous-jacente est que l'environnement met en évidence particulièrement certaines situations sensori-motrices, et en masque d'autres: certaine paramètres reposent donc sur peu d'observations, et il est intéressant de quantifier l'incertitude qu'on a sur eux, ou plus simplement le nombre d'observations qui les conditionnent.

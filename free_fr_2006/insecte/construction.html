@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+  <TITLE>Insecte robot : Construction</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#000000" text="#999999" link="#FF8000" alink="#3549FF" vlink="#FF0080">
+
+
+<TABLE><TR><TD></TD></TR></TABLE>
+<CENTER><h1>Construction</h1><P></CENTER>
+
+<h2>Structure</h2>
+Nous voulions réaliser un robot totalement autonome (énergie et commande) se déplaçant sur 6 pattes.<BR>
+Il devait pouvoir marcher en ligne droite mais être suffisament flexible pour, en changeant de programme
+, être capable de tourmer, monter, éviter des obstacles ...<BR>
+Pour celà les 6 pattes devaient être indépendantes.<P>
+
+<h2>Pattes</h2>
+<CENTER><IMG SRC="../images/patte.jpg" WIDTH=186 HEIGHT=300 ALT="photo patte" BORDER=0><p></CENTER>
+Deux systèmes de patte étaient possibles : soit une patte en une seule partie, commandée par un 
+seul servomoteur, et qui ne se soulève pas, soit une patte en parallélogramme.<BR>
+La deuxième possibilité nous parut meilleure car elle avait l'avantage d'avoir deux degrés de 
+liberté permettant des mouvements plus complexes.<P>
+
+
+<h2>Partie opérative</h2>
+<B>Alimentation en énergie :</B><BR>
+Batteries rechargeables de 7,5 volts embarquées.<BR>
+<B>Actionneurs :</B><BR>
+Servomoteurs : asservis en position, compacts et faciles à commander 
+par un signal rectangulaire à rapport cyclique variable.
+
+<h2>Partie commande</h2>
+<CENTER><IMG SRC="../images/dehaut.jpg" WIDTH=300 HEIGHT=225 ALT="photo" BORDER=0><p></CENTER>
+On choisit des microcontrôlleurs (puce programmable) : 1 gros central qui coordonne 6 autres plus petits.(Un par patte)<BR>
+Les petits se chargent de générer les signaux de commande requis par les servomoteurs.
+
+<h2>Programmation</h2>
+<CENTER><IMG SRC="../images/capture.jpg" WIDTH=300 HEIGHT=205 ALT="capture d'ecran du logiciel" BORDER=0><p></CENTER>
+A la base un microcontrôleur se programme en assembleur par l'intermédiaire d'un PC. <BR>
+Mais ce langage très proche des instructions de la machine est difficile à utiliser même pour 
+faire des programmes aussi simples que les nôtres.<BR>
+C'est pourquoi nous avons utilisé un logiciel permettant de traduire 
+un schéma électronique comportant des oscillateurs, timers et autres portes logiques.<BR>
+Ce logiciel spécifique aux ST6XX s'appelle ST6-Realizer et tourne sous Windows. <P>
+
+<h2>Evolutions</h2>
+<CENTER><IMG SRC="../images/cartemicro.jpg" WIDTH=300 HEIGHT=225 ALT="Carte d'un microcontrolleur" BORDER=0><p></CENTER>
+Notre insecte doit évoluer et être amélioré par d'autres groupes dans les années à venir car i
+l est encore extrèmement bête et maladroit.<BR>
+
+Les microcontrôleurs que nous utilisons ont encore de grandes capacités.
+Notre insecte pourrait peut-être franchir des obstacles, les contourner ou les enjamber.<p>
+
+Cela demande un mode de détection (capteurs) et un système d'asservissement.
+Il en est de même pour la coordination des pattes sur un sol en relief.<p>
+
+Pour franchir des obstacles ou simplement le faire bouger de façon 
+plus rapide et plus élégante, on pourrait envisager de changer le programme en s'inspirant de 
+la démarche d'insectes.<p>
+
+On pourrait peut-être chercher de nouveaux microcontrôleurs avec des sorties P.W.M. 
+(Pulse Width Modulation), adaptées pour délivrer des signaux carrés dissymétriques plus stables.<p>
+
+De toute façons il faudra refaire un strucure de pattes plus solide et une protection 
+des parties électroniques du robot.<p>
+
+</BODY>
+</HTML>

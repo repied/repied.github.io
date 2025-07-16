@@ -1,0 +1,48 @@
+(this is a mess -- somebody please clean this page)
+
+== installation ==
+TheIdiotsGuideToProBT décrit la procédure pour récupérer ProBT sur le CVS et le compiler. ProBTBinaries regroupes des binaires utilisables directement (Mac OS X only right now). UsingProBTOnMacOSX describes compilation and use on Mac OS X.
+
+== documentation ==
+
+=== mailing lists ===
+
+* for developers: probt@inrialpes ([subscribe http://listes-serv.inrialpes.fr/wws/subrequest/probt], [archive (restricted to members) http://listes-serv.inrialpes.fr/wws/arc/probt])
+* for users: probt-users@inrialpes ([subscribe http://listes-serv.inrialpes.fr/wws/subrequest/probt-users], [archive http://listes-serv.inrialpes.fr/wws/arc/probt-users])
+
+[Probayes http://www.probayes.com].
+
+=== API documentation ===
+
+* [ProBT public API (pl) Doxygen documentation http://ocean/doc_probt/index.html]
+* [ProBT internal API (kpl) Doxygen documentation http://ocean/doc_kpl/index.html]
+
+=== Tutorials ===
+
+* Le livre de recettes de ProBT/Python: PyPLCookbook. Pour les exemples d'utilisation des bindings Python de ProBT.
+* UsingplLearn describes the learning facilities of ProBT.
+
+== Development ressources ==
+
+* [Code coverage information http://ocean/probt/python/cover/coverage.html], for Ronan's ProBT test suite
+
+== problèmes ==
+Les questions, remarques, suggestions, requêtes, longues plaintes déchirantes, vont dans DiscussionSpecificationsAPIProBt.
+Les delires futuristes vont dans ProBTPlusLoin.
+
+MissingMethods contient les méthodes qui manquent.
+
+NextStepsForProBT est la transcription du document LaTeX de KamelMekhnacha, avec en gros les mêmes objectifs que DiscussionSpecificationsAPIProBt, en plus clair.
+
+== solutions ==
+Les trucs d'utilisation, réponses aux questions soulevées dans DiscussionSpecificationsAPIProBt, et solutions sans problème vont dans les pages suivantes.
+* WhatCompilerToUseWithProBT: compilateurs testés avec ProBT (ceux qui marchent, ceux qui ne marchent pas)
+* BuildingDoxygenForProBT: générer la documentation doxygen à partir des sources CVS de ProBT
+* TestingBayesianPrograms: comment je teste mes programmes bayésiens (RonanLeHy).
+* FillingInKernelTables: explications de Juan sur les moyens de remplir une plKernelTable sans passer par une série de push avec des plProbTable.
+* GetplVariablesConjunction : récupérer les variables (toutes, cherchées, connues) utilisées dans un plComputableObject
+* CommentCréerUnelistedeKernel : la bonne méthode pour créer une liste de plComputableObject (après explications de Juan)
+* CommentPusher1plCndKernel : quand on a un P(A|B) pour chaque valeur c de C et qu'on veut construire un P(A|BC) en pushant le P(A|B) qui va bien pour chaque c.
+* OptimisingAProBTProgram: techniques pour profiler et optimiser un programme bayésien écrit avec ProBT
+* TestingProBT
+* BayesianProgramsDebuggingStrategies : ideas for debugging bugs in your bayesian programs.

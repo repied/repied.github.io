@@ -1,0 +1,18 @@
+* Site de base: http://www.openmask.org
+
+* Documentation sur ocean : 
+** [kernel httpr://../doc_openmask/kernel/index.html]
+** [3DVis httpr://../doc_openmask/3DVis/index.html]
+** [3DVisInputHandlers httpr://../doc_openmask/3DVisInputHandlers/index.html]
+** [3DVisPartners httpr://../doc_openmask/3DVisPartners/index.html]
+** [3DVisTrackers httpr://../doc_openmask/3DVisTrackers/index.html]
+** [3DVisUtilities httpr://../doc_openmask/3DVisUtilities/index.html]
+** [interactionOmAdaptors httpr://../doc_openmask/interactionOmAdaptors/index.html]
+** [interactionOmInteractiveObject httpr://../doc_openmask/interactionOmInteractiveObject/index.html]
+** [interactionOmInteractors httpr://../doc_openmask/interactionOmInteractors/index.html]
+** [interactionOmModules httpr://../doc_openmask/interactionOmModules/index.html]
+** [interactive3DVis httpr://../doc_openmask/interactive3DVis/index.html]
+** [interactive3DVisUtilities httpr://../doc_openmask/interactive3DVisUtilities/index.html]
+** [userTypes httpr://../doc_openmask/userTypes/index.html]
+
+* OpenMASKBugs: questions I have about how OpenMASK works

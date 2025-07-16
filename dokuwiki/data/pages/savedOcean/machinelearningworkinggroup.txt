@@ -1,0 +1,108 @@
+= Machine Learning Working group =
+
+== Groupe de travail GRAVIR sur l'apprentissage automatique ==
+
+-----------
+Cet espace WIKI est éditable par tous. Il contient cette page principale, une page par session avec documents telechargeables, une page de liens sur le thème de l'apprentissage, une page de dicussion, une page de modele pour créer de nouvelles pages de session, mais tout le monde peut ajouter des pages.
+
+Ces pages sont:
+* MachineLearningWorkingGroup (Cette page)
+* *mailing liste*, inscription: http://imap-serv.inrialpes.fr/wws/info/ml-wg
+
+Pages de sessions (avec pdf des slides telechargeables):
+* ClusteringMLWGSessioUn
+* ApprentissageBayMLWGSessionDeux
+* KalmanMLWGSessionTrois
+* AssociativeLearningMLWGSessionQuatre
+* GrowingNeuralGazMLWGSessionCinq
+* SvmMLWG (session 6)
+
+Divers
+* LiensMLWG
+* DiscussionMLWG
+* ModelePageSessionMLWG
+* CommentAjouterUnePage
+
+--------
+== Programme ==
+
+=== Anciennes présentations ===
+
+* mardi 3 mai 2005 *Clustering* par Olivier, ClusteringMLWGSessioUn.
+* mercredi 18 mai *Apprentissage bayésien* par Pierre, voir ApprentissageBayMLWGSessionDeux
+* mercredi 25 mai *Filtre de Kalman* par Christopher, voir KalmanMLWGSessionTrois
+* mercredi 1er juin *Memoire associative*, par Humberto Sossa, voir AssociativeLearningMLWGSessionQuatre
+* mercredi 8 juin *Les gaz de neurones grossissant*, par Dizan Vasquez, voir GrowingNeuralGazMLWGSessionCinq
+* mercredi 15 juin *SVM* par Eric Nowak, voir SvmMLWG
+
+=== Présentation à venir ===
+
+* Expectation Maximisation Pau (?)
+* Les algorithmes genetiques Pierre (?)
+* Does Machine learning really works ? Pierre (?)
+
+--------
+== Détails, recherche d'intervenants ==
+Quelques thésards extrèmement motivés pour faire apprendre des machines (à leur place ?) se lancent dans l'organisation hebdomadaire d'un "séminaire" informel sur le thème ouvert du "machine learning".
+
+But pragmatique: Aider les participants dans leur travail de recherche, en les informant sur les techniques "état de l'art", sur les références indispensables, et en leur permettant de prendre un peu de recul, les aider à choisir une technique pour leur thèse, etc...
+
+Nous sommes 3 doctorants prèts à lancer ces réunions, mais si vous êtes intressés pour assister, ou mieux, pour intervenir, vous êtes le très bien venu. D'autant plus qu'on ne connait quasi rien aux sujets ci dessous...
+
+Si vous etes interessé pour faire un petite presentation, contact : pierre.dangauthier@imag.fr
+== En pratique ==
+Les reunion ont d'habitude lieu en salle C207 les mercredi a 16h l'INRIA de Montbonnot, sauf avis contraire sur la mailing liste. Consultez le WIKI .
+
+== Moyens ==
+* Mailing liste: ml-wg@inrialpes.fr
+* Cette liste nous permettra d'annoncer les nouvelles sessions, etc...
+* Inscrivez vous sur http://imap-serv.inrialpes.fr/wws/info/ml-wg
+
+== Principes ==
+
+* Ouvert à tout le monde, spécialement aux thésards, dea, stagiaires de tous poils
+* Réunion informelle
+* Tous les mardi à 16 heures
+* La salle dépendra du (probalement faible) nombre de participants
+* Présentation de 20 min d'un "intervenant"
+* N'importe qui peut être intervenant: considerez ce mail comme un APPEL A PARTICIPATION !
+* Discussion, question : pas plus de 15-20 minutes
+* Langue: francais, sauf si anglophones récalcitrants
+* Cà doit être rapide, et prendre peu de temps aux participants et à l'intervenant
+* L'intervenant est soit un "spécialiste", soit un jeune souhaitant se former sur le sujet
+* Une intervention typique pourra se composer de:
+** présentation de la technique
+** domaine d'application
+** References classiques,
+** explication intuitive
+** eventuellement, on entre dans les details algorithmiques
+** un exemple simple
+** caracterisation de la methode dans le cadre general de l'apprentissage
+** discussion
+
+== Thèmatiques ==
+Liste (ouverte) de thèmes envisagés
+
+* apprentissage en général
+* apprenstissage bayésien (prior/Likelihood, réseaux bayesiens)
+* HMM: Hiden Markov Models
+* EM: Expectation/Maximisation
+* Comment bien discrétiser
+* KALMAN filtering, Extended KF
+* MRF: Markov Random Fields
+* Particle Filtering
+* MDP, POMDP: (Partially Observable) Markov Decision Process
+* Neural nets
+* SVM: Support Vecto Machine - Vapnik learning theory
+* GA: Genitic algorithms
+* Decission trees (ID3)
+* Boosting
+* Relevance Vector Machines
+* MCMC: Markov Chain Monte Calo Methods
+* RL: Reinforcement learning
+* Clustering
+* Knowledge base
+* Automatic generation of a Phd thesis
+* Bayesian Neural Nets, Gaussian Process
+* Occam Razor, et autres philosophies
+* .... 

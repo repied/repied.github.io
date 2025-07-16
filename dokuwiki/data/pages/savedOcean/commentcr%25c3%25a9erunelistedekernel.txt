@@ -1,0 +1,50 @@
+Vous voulez créer une liste de plKernel (plus généralement de plComputableObject) et vous allez allouer de la mémoire pour chaque Kernel.
+Voici la bonne manière de faire :
+ plComputableObjectList C;
+
+ plComputableObjectList function()
+ {
+    plIntegerType id_type(0,38);
+    plSymbol ID("id", id_type);
+    plIntegerType dictionary_type(0,55555);
+
+    string mot("mot_");
+    stringstream fnum;
+    string mot_numerote;
+    string num;
+
+    vector<plSymbol*> symbs;
+
+    tot_models = 150;
+
+    plKernelTable Pdictionary_id;
+
+    plKernelTable kta(Pdictionary_id);
+
+    plComputableObjectList ret_C;
+  
+    for(no_model=0; no_model<tot_models; no_model++)
+     {
+       fnum.clear();
+       num.erase();
+       fnum << no_model+1;
+       fnum >> num;
+       mot_numerote = mot + num;      
+       symbs[no_model] = new     plSymbol(mot_numerote.c_str(),dictionary_type);	
+      kta.rename( *symbs[no_model] ^ ID );	
+      ret_C *=  kta;
+     }
+    return ret_C;
+ }
+
+ C = function();
+
+en effet le plKernelTable va être géré au niveau kpl. Et comme kpl sait que l'objet C est encore en cours d'utilisation, kpl ne va pas détruire les informations concernant le plKernelTable utilisées par C (même si le plKernel est lui détruit).
+
+On peut donc déclarer le plKernelTable localement et confier sa déstruction au compilo.
+
+Vous pouvez presque oublier tous les new et les delete : pl gère une bonne partie de la mémoire.
+
+(Mh, en fait c'est un produit de distributions que tu construis, c'est ça? -- RonanLeHy)
+(Et pourquoi ne pas sortir la définition de 'kta' de la boucle, est-ce que ça ne marcherait pas, puisque tu fais un rename ?-- RonanLeHy)
+Si, si : c'est beaucoup mieux !!

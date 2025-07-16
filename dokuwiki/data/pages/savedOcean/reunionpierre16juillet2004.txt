@@ -1,0 +1,44 @@
+Réunion du vendredi 16 Juillet 2004. Pierre, Ronan.
+
+A followup on LearningSelectionModels, to learn models described in SequencingAndMixing.
+
+Notations:
+* nombre de tâches, nombre de cas pour les variables: Card(T) = n
+* nombre de variables dans Delta: m
+* nombre de valeurs possibles pour le codage d'une proba dans une table: d (v code pour proba = k x 2^{-v})
+
+Il y a 3 méthodes en vue pour faire l'apprentissage des paramètres:
+* sans filtrage sur les paramètres :
+** décomposition : 
+  P(t^l t^{l-1} delta^{0:l-1} | p pi) =
+      P(t^{l-1} delta^{0:l-1} | p pi)
+    x P(t^l delta^l | t^{l-1} p pi)
+** coût mémoire: m x d x n^4 pour stocker P(t^l t^{l-1} (delta^{0:l-1}) | p pi)
+** côut calcul: m x d x n^5 maj table, n^2 évaluation d'une politique
+* avec filtrage sur la politique, en sommant sur p^{l-1} :
+** décomposition :
+  P(p^l | delta^{0:l}) = 
+      Z x Sigma_{t^l} P(delta^l | t^l p^l) 
+                      Sigma_{t^{l-1}} P(p^l | p^{l-1})
+                                      P(t^l | t^{l-1} p^l)
+                                      P(p^{l-1} t^{l-1} | delta^{0:l-1})
+** coût mémoire : m x d x n^3 pour stocker P(p^{l-1} t^{l-1} | (delta^{0:l-1}))                                                          
+** coût calcul : m x d x n^3 x m d x n^3 maj table, n évaluation politique
+* avec filtrage sur la politique, en connaissant p^{0:l-1} :
+** décomposition :
+  P(p^l t^l | p^{0:l-1} delta^{0:l}) = P(delta^l | p^l t^l) P(p^l t^l | p^{0:l-1} delta^{0:l-1}) (estimation)
+  P(p^l t^l | p^{0:l-1} delta^{0:l-1}) = 
+    Z x Sigma_{t^{l-1}, delta^l} P(p^l | p^{l-1})
+                                 P(t^l | t^{l-1} p^l)
+                                 P(delta^l | p^l t^l)
+                                 P(p^{l-1} t^{l-1} | p^{0:l-2} delta^{0:l-2}) (prédiction)
+** coût mémoire : m x d x n^3 pour stocker P(p^{l-1} t^{l-1} | (p^{0:l-2} delta^{0:l-2})) (prédiction/estimation)
+** coût calcul : m x d x n^3 x n maj table, n évaluation politique
+** note : on peut discuter autour de P(p^l | p^{l-1} t^{i-1}) = P(p^l | p^{l-1}) ou pas, comment le spécifier, à quel prix
+
+= Ensuite =
+La troisième option semble la bonne.
+* faire apparaître la reconnaissance de comportement dans les calculs (bien pour les explications)
+* voir le rapport de tout ça avec EM
+* voir le rapport de tout ça avec ce qu'a fait Julien
+* coder un exemple P(Vrot | Dir Prox)

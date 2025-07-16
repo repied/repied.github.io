@@ -1,0 +1,57 @@
+J'utilise ces logiciels, je vous les conseille. RonanLeHy
+
+=== Scons ===
+Scons est un substitut pour Make et les Autotools. C'est ce que j'utilise depuis un moment, et ça me donne toute satisfaction (RonanLeHy). Voir UsingScons pour plus de détails et un exemple, et MakeReplacements pour une liste de programmes dans le même genre.
+
+=== TeXmacs ===
+httpr://images/andrinople/lehy/media/images/apps/texmacs-banner-white.png
+
+[TeXmacs http://www.texmacs.org] est un éditeur de documents WYSIWYG. Une interface graphique avec des boutons, une interface clavier à la emacs (de manière poussée), un rendu à la LaTeX, en temps réel. Un bonheur à utiliser si taper des backslashes et des accolades vous fatigue. Le format interne n'est pas du LaTeX, mais il importe et exporte du LaTeX, et du Postscript.
+  apt-get install texmacs
+Capture d'écran avec une énaurme faute d'orthographe en plein milieu :
+httpr://images/andrinople/lehy/media/images/apps/texmacs.png
+
+=== dot/Graphviz ===
+[Graphviz http://www.graphviz.org/] est un logiciel de dessin de graphes (des ronds et des flèches). Le meilleur, y'a pas mieux. Génère de jolis graphes antialiasés bien mis en page, avec des couleurs et des formes variées, à partir d'un bête fichier texte qui décrit la structure du graphe. Pour un exemple, voir sur le site ou [l'Arbre http://www.inrialpes.fr/sharp/people/lehy/arb.png].
+  apt-get install graphviz
+L'exécutable intéressant s'appelle 'dot' (pas 'graphviz').
+
+=== Unison ===
+[Unison http://www.cis.upenn.edu/~bcpierce/unison/] est un programme qui peut synchroniser deux répertoires (ce qui permet de faire des changements dans l'un ou l'autre des répertoires indifféremment, et de laisser unison resynchroniser les deux copies, en propageant les changements dans le bon sens). Marche par ssh, entre autres. Minimise la quantité d'information transférée (avec un algo du type rsync). Des garanties fortes de ne jamais corrompre les données.
+  apt-get install unison unison-gtk
+Je l'utilise pour synchroniser régulièrement (et automatiquement) mon profil firefox entre chez moi et le bureau: mes bookmarks, et tous les réglages se propagent dans les deux sens sans problème.
+
+=== Boost ===
+[Boost http://www.boost.org] est un ensemble de bibliothèques C++ pour tout un tas de choses de base. C'est développé sérieusement, et on peut présumer que le code est de bonne qualité. J'utilise personnellement les tuples, et les vecteurs à plusieurs dimensions, mais il y a vraiment beaucoup d'autres choses dedans. Les différentes parties sont dans plusieurs paquets Debian :
+ libboost-date-time-dev - Set of date-time libraries based on generic programming concepts
+ libboost-dev - Boost.org libraries development files
+ libboost-graph-dev - Generic graph components and algorithms in C++
+ libboost-python-dev - The Boost Python Library development files
+ libboost-regex-dev - Regular expression library for C++
+ libboost-signals-dev - Managed signals and slots library for C++
+ libboost-test-dev - Components for writing and executing test suites
+ libboost-thread-dev - Portable C++ multi-threading
+
+=== Eqe ===
+Mon éditeur d'équations en LaTeX sous Linux. Voir UsingEqe.
+
+=== TkCVS ===
+[TkCVS http://www.twobarleycorns.net/tkcvs.html] est une interface graphique pour gérer des sources sous CVS. Facile à utiliser, avec des boutons, et un éditeur sympathique pour visualiser les diffs entres différentes versions d'un fichier. Cet éditeur peut d'ailleurs s'utiliser tout seul, il s'appelle TkDiff et a un paquet Debian nommé [=tkdiff].
+  apt-get install tkcvs
+httpr://images/andrinople/lehy/media/images/apps/screenshot_tkcvs.png
+
+
+=== checkinstall (courtesy of Cedric Pradalier) ===
+ apt-get checkinstall
+et ensuite, en installant un programme a partir d'un tarball ou du CVS:
+ ./configure
+ make
+ checkinstall make install
+et la, pouf, checkinstall intercepte les installations de fichiers, et cree un paquet Debian (ou RPM, ou paquet Slackware, mais Debian par defaut sur ma Debian), qu'on peut installer ensuite, et puis desinstaller quand on en a marre.
+
+=== Epydoc ===
+ apt-get install python-epydoc
+[Epydoc http://epydoc.sf.net] fait pour Python ce que [Doxygen http://www.doxygen.org] fait pour C++ (générer des pages HTML de documentation d'une API). Sauf les jolis graphiques avec graphviz, il semble, dommage.
+Utilisation simple:
+ epydoc MonModule.py
+Et pouf, les docs sont générées dans [html/].

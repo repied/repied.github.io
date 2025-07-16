@@ -1,0 +1,8 @@
+*Cette page est dépassée, ces graphiques ne sont plus regénérés depuis la migration du /home hors d'andrinople.*
+
+Ce graphique d'occupation de l'espace disque de l'équipe est mis à jour automatiquement tous les matins (avec un cron job qui tourne sur ocean).
+
+Le graphique non cumulé montre les courbes qui sont passées au moins une fois au-dessus de 2 Go dans les derniers 3 mois -- mais ces courbes sont tracées depuis que le script tourne. Le graphique cumulé montre toutes les courbes, sur les derniers 3 mois.
+
+http://ocean/flat_cybermove.png
+http://ocean/cumulated_cybermove.png

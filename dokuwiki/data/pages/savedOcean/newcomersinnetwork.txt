@@ -1,0 +1,50 @@
+This is about plugging a laptop on the local network, and just giving it an IP and configuring the DNS. For the full monty of IP + DNS + NIS + NFS, go to ManualNetworkConfiguration.
+
+Bad news: the dhcp server is down these times, so you have to pick up a static address.
+So first ask a team member to know which address is available or which color because it is the same thing in our team (each static address is reached by a french color name: beige, rouge, black (yes it is not french!), pamplemousse, opalin, etc ... ).
+
+Do a ping on the address on a connected computer (the computer of your neighbour if you are lucky).
+ Then if it does not ping, then the address is available ---> GOOD [1].
+
+Choose a free slot on these page (sorry it is in french)
+ http://acajou.inrialpes.fr/cgi-bin/prise
+
+Then use your personnal tool to setup the networks parameters you need information on this page:
+ http://irami.inrialpes.fr/reseau/se_connecter/filaire
+
+For examples my informations:
+in /etc/resolv.conf domainname, and two dns
+ search inrialpes.fr
+ nameserver 194.199.18.65
+ nameserver 194.199.18.70
+
+in /etc/network/interfaces
+ # /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)
+
+ # The loopback interface
+ auto lo
+ iface lo inet loopback
+
+ # The first network card - this entry was created during the Debian installation
+ # (network, broadcast and gateway are optional)
+ auto eth0
+ iface eth0 inet static
+    address 194.199.21.202
+    netmask 255.255.255.0
+    network 194.199.21.0
+    broadcast 194.199.21.255
+    gateway 194.199.21.90
+
+in /etc/hosts is the local adress with the computer name
+ 127.0.0.1	localhost
+ 194.199.21.202	pamplemousse.inrialpes.fr	pamplemousse
+
+ # The following lines are desirable for IPv6 capable hosts
+ # (added automatically by netbase upgrade)
+
+ ::1     ip6-localhost ip6-loopback
+ fe00::0 ip6-localnet
+ ff00::0 ip6-mcastprefix
+ ff02::1 ip6-allnodes
+ ff02::2 ip6-allrouters
+ ff02::3 ip6-allhosts

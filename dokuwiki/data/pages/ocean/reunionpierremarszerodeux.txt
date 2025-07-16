@@ -1,0 +1,49 @@
+reunion du 12/03/2002 - Ronan Le Hy
+---------------------
+
+La reunion a consiste a  fixer les objectifs experimentaux du dea. Les
+comportements  a developper  ont  ete ebauches,  du  plus haut  niveau
+jusqu'a l'API Gamebots.
+
+Les comportements de haut niveau recenses sont:
+- attaquer une cible
+- fuire une cible
+- choisir (chercher) une cible
+- explorer la carte
+- chercher des munitions/une arme/de la vie/une armure.
+
+Les comportements elementaires de niveau inferieur, bases sur les
+appels a l'API Gamebots, sont en premiere approche:
+- rebondir (suite a une collision)
+- aller a un endroit accessible directement
+- aller a un endroit non accessible directement
+- aller de maniere erratique
+- regarder autour
+- regarder vers un bruit
+- aller vers un bruit
+- regarder dans une direction
+- eviter un projectile
+- tirer sur une cible
+- changer d'arme
+- ramasser un objet
+- fuire localement
+- se deplacer en faisant face a une cible (strafe)
+
+La liste  des ces comportements  elementaires est provisoire,  et doit
+etre reconstruite  a partir de  la specification des  comportements de
+haut  niveau.   Il a  ete  suggere  que  les comportements  pourraient
+s'organiser en trois couches  (de l'API Gamebots jusqu'au comportement
+global, synthese des actions de haut niveau).
+
+L'implantation des comportements de base se fera a partir des appels a
+l'API Gamebots, de maniere classique. Les comportements de haut niveau
+les  combinerons   soit  de  maniere  probabiliste   soit  de  maniere
+classique.  La synthese  (sequencement, melange)  des actions  de haut
+niveau se fera selon une methode bayesienne.
+
+Un  des  objectifs  est  d'apprendre  cette synthese,  a  partir  d'un
+pilotage du bot par comportements, et eventuellement par renforcement.
+
+La  question de  l'eventuelle  concurrence des  comportements de  haut
+niveau a  ete soulevee; par  exemple, la gestion  du tir et  celle des
+deplacements pourraient se faire en parallele.

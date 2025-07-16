@@ -1,0 +1,40 @@
+This is a list of the make-like tools I have encountered while searching for a sensible replacement for GNU/Make.
+
+=== Jam ===
+I used to use [Jam http://freetype.sourceforge.net/jam/] mostly, before I discovered [SCons http://www.scons.org/]. Includes automatic dependency calculations, makes simple things simple, which is invaluable. Can't understand the documentation when I want to do more complicated things, though. I used the more advanced version used in the FreeType project. There's a bit more detail about Jam in VariousPrograms.
+  apt-get install ftjam
+
+=== Mk ===
+[Mk http://www.cminusminus.org/code.html] is a direct Make replacement, taken from what Plan 9 uses. Doesn't seem to be so revolutionary to me (no automatic dependency calculation). No Debian package.
+
+=== Cons and sCons ===
+[Cons http://dsmit.com/cons/] looks nice (a more advanced and appealing version seems to be [SCons http://www.scons.org/]). Makefiles in Cons are actually Perl scripts, which I don't think is such a great idea at first. But SCons uses Python, which is probably a win. They say Doom 3 uses SCons. There's a cookbook [here http://www.scons.org/doc/HTML/scons-man.html], that looks ok. This is probably worth investing time in. I'm using it these days instead of Jam, and so far I'm very happy. There is more detail about this wonderful program in UsingScons.
+  apt-get install scons
+
+=== Makeplus ===
+Don't know about this one. An enhanced Make, seems. "[Make+ http://www.annexia.org/freeware/makeplus/] is a set of scripts which enhance GNU make. The scripts replace the functionality of autoconf, automake, rpm, dpkg and more, allowing you to build, install, make RPMs, make Debian packages and more, all from a single maintainable 'Makefile+' script." No Debian package I can find.
+
+=== Makeplusplus ===
+[Make++ http://makepp.sourceforge.net/] seems to be an evolution of Make, with compilation of C++ programs specially in mind. Can't find a Debian package. Too Make-like for me.
+
+=== Ant ===
+[Apache Ant http://ant.apache.org/] uses XML files for its makefiles. It's written in Java. 'nough said, not for me. There's also [PyANT http://pyant.sourceforge.net], which is a reimplementation of Ant in Python (and does not seem to be packaged for Debian).
+  apt-get install ant
+
+=== Cook ===
+[Cook http://www.canb.auug.org.au/~millerp/cook/cook.html] is yet another Make replacement, which reminds me of Jam. Doesn't seem to have a very large userbase to me. Don't know how good it is.
+  apt-get install cook
+
+=== Sire (formerly Jake) ===
+No idea about [Sire http://www.errol.org.uk/open_src/] (except that the website is ugly). No Debian package.
+
+=== Bras ===
+[Bras http://bras.berlios.de/] has got makefiles in Tcl. Yuck. Doesn't seem to have modern features I'm looking for. No Debian package. A "hello, world!" example:
+   set SRC [glob *.c] 
+   Make hello {[older hello $SRC]} {
+     cc -o hello $SRC
+   }
+
+=== OcamlMakefile ===
+[OcamlMakefile http://www.ai.univie.ac.at/~markus/home/ocaml_sources.html#OCamlMakefile] is a tool that uses Make to compile ocaml programs. Works well, rather simple to use. Simplifies many things, such as creating custom toplevels, compiling to bytecode or to native executables, creating libraries...
+  apt-get install ocaml-tools

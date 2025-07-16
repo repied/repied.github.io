@@ -1,0 +1,122 @@
+= installing Gnuplot =
+The CVS version of Gnuplot sports interesting features not found in the packaged binaries (such as pm3d, which allows examining the 3d graphs with the mouse and keyboard). *This won't be true for long though, as* [Gnuplot 4.0 has been released http://www.gnuplot.info/](16/04/2004)*, so watch for Debian/RPM packages.* To install from CVS:
+* fetch the sources:
+ cvs -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gnuplot login
+ # press Enter (leave password empty)
+ cvs -z3 -d:pserver:anonymous@cvs.sourceforge.net:/cvsroot/gnuplot co gnuplot
+ ./prepare
+* make sure that you have the development libraries for things you want supported, for instance libpng-dev if you want the indispensable png terminal:
+ apt-get install libpng-dev
+If you want to know what development packages to install, have a look at
+ ./configure --help
+* compile:
+ ./configure
+ make
+* install:
+ su
+ # give root password
+ checkinstall make install
+ # give a description when asked, such as 'Gnuplot from CVS, 08/04/2004'
+ # also possibly change the version to something useful, such as '3.8k-1'  
+ #   (depending on the actual version you're installing, of course)
+ dpkg -i gnuplot*.deb
+(See VariousPrograms if you don't know what checkinstall does.)
+
+= examples =
+[There http://ayapin.film.s.dendai.ac.jp/~matuda/Gnuplot/pm3d.html] is a nice gallery of pm3d examples: 3d graphs in color, with various shiny options.
+
+= plotting a z=f(x,y) surface =
+== When you have the surface equation
+See PlotingConditionals for some nice 3D curves.
+== When you just have a series of points
+==== data file
+This file contains x,y,z triplets, separated by spaces. Rows (or columns, depending on how you see it) are separated by a blank line.
+ -90 37.8 100
+ -86.4 37.8 100
+ -82.8 37.8 100
+ -79.2 37.8 100
+ -75.6 37.8 100
+ -72 37.8 100
+ -68.4 37.8 100
+ -64.8 37.8 100
+ -61.2 37.8 100
+ -57.6 37.8 100
+ -54 37.8 100
+ -50.4 37.8 100
+ -46.8 37.8 100
+ -43.2 37.8 100
+ -39.6 37.8 100
+ -36 37.8 100
+ -32.4 37.8 100
+
+ -90 41.4 100
+ -86.4 41.4 100
+ -82.8 41.4 100
+ -79.2 41.4 100
+ -75.6 41.4 100
+ -72 41.4 100
+ -68.4 41.4 100
+ -64.8 41.4 100
+ -61.2 41.4 100
+ -57.6 41.4 100
+ -54 41.4 100
+ -50.4 41.4 100
+ -46.8 41.4 100
+ -43.2 41.4 100
+ -39.6 41.4 100
+ -36 41.4 100
+ -32.4 41.4 100
+
+ -90 45 100
+ -86.4 45 100
+ -82.8 45 100
+ -79.2 45 100
+ -75.6 45 100
+ -72 45 100
+ -68.4 45 100
+ -64.8 45 100
+ -61.2 45 100
+ -57.6 45 100
+ -54 45 100
+ -50.4 45 100
+ -46.8 45 100
+ -43.2 45 100
+ -39.6 45 100
+ -36 45 100
+ -32.4 45 100
+
+ ...
+==== gnuplot file
+Use 
+ % gnuplot v_max.gnuplot
+with v_max.gnuplot the following file:
+ set style data lines
+
+ set xlabel "Phi"
+ set ylabel "Alpha"
+ set zlabel "V_max(Phi, Alpha, D=8.)"
+
+ set contour
+ set isosample 100,100
+ set hidden3d
+
+ splot 'phi_alpha_v_max.data'
+
+= multiple plots from stdin
+I want to plot several sets of points, in polar coordinates. Each series of points must have a different size, and I want the points round.
+
+Inside the interactive gnuplot toplevel :
+ set polar
+ set grid polar
+ 
+ plot '-' ps 5 pt 19, '-' ps 10 pt 19
+ input data ('e' ends) > 0 10
+ input data ('e' ends) > 1 20
+ input data ('e' ends) > 2 30
+ input data ('e' ends) > e
+ input data ('e' ends) > 0.5 15
+ input data ('e' ends) > 1.5 25
+ input data ('e' ends) > 2.5 35
+ input data ('e' ends) > e
+
+[=ps] is the point size, [=pt] is the point style (use 'test' in gnuplot to see available styles for the terminal you're using) (19 is round). [='-'] specifies the standard input.

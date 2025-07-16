@@ -1,0 +1,17 @@
+Sur ocean, noyau 2.4.20 (compilé main à partir des sources Debian).
+
+J'ai la ligne suivante dans mon /etc/fstab:
+ /dev/sda1       /flashdisk      vfat    sync,user,noauto        0       0
+Cette ligne permet de monter les bidules Flash sur l'USB. Cela inclut les clés USB et la caméra Sony.
+
+Dans mon shell, m'assurer que usb-storage est bien chargé:
+ su
+ modprobe usb-storage
+ # brancher la caméra sur l'USB
+
+Revenir à utilisateur normal, et faire:
+ mount /flashdisk
+ cd /flashdisk
+Là, se balader sur le disque, mes photos semblent être à [=/flashdisk/dcim/100msdcf/]. Plus qu'à les copier sur mon compte. Démonter la caméra ([=cd; umount /flashdisk]) *avant* de la débrancher!.
+
+Trop facile!

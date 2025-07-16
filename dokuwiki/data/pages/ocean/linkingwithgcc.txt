@@ -1,0 +1,9 @@
+A few notes about linking objects with gcc, or g++.
+* if library liba.so uses library libb.so, use
+  -la -lb
+  (in that order)
+* if linking with some static (.a) libraries, you may need to specify you objects (.o) which use these libraries BEFORE the -l flags on the command line
+* to create a shared library, use:
+  gcc -fPIC -c source1.c source2.c
+  gcc -shared -Wl,-soname,libTruc.so -o libTruc.so source1.o source2.o
+* with qt and qmake : the linked library is libqt.so but you have only libqt.so.xx in your /usr/share/qt3/lib. Do a simple link from libqt.so to your libqt.so.xx

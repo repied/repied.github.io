@@ -1,0 +1,62 @@
+This describes a more or less generic formulation of bayesian action selection models as we use them, in the hope to learn them, as described in LearningSelectionModels. An attempt at presenting a synthetic overview of common BRP modelling techniques is made.
+
+== BRP model ==
+=== variables ===
+* variables concerning current use time:
+** T: task at current use time, example domain: {Attack, Retreat, SearchWeapon, GatherFlock}
+** T^{-1}: task one timestep before current use time
+** M: motor variable, possibly a conjunction of elementary motors, eg V_rot (x) V_trans
+** S: sensory variable, possibly a conjunction of elementary sensors, eg Dir (x) Prox
+* variables concerning data collected at learning time l:
+** T^l, T^{l-1}, M^l, S^l
+* preliminary knowledge:
+** delta^l = {m^0 s^0 ... m^l s^l}: experimental data collected between time 0 and time l
+** pi^l: parameters of the selection model, as learnt using experimental data delta^l
+** pi: general preliminary knowledge (variables, structure of the model, initial parametric forms...)
+
+=== decomposition(s) ===
+The general model can be written:
+P(T T^{-1} M S) = P(T T^{-1} S) (1) x P(M | T S) (2)
+
+The first term >1 is the task selection model: its main purpose is to allow to pick a task given sensory inputs. 
+
+The second term >2 is the task model. Given a task, and a possible sensory context, it can yield applicable motor outputs.
+
+=== parametric forms ===
+==== task selection model
+Its most basic form eludes T^{-1}, which yields a purely reactive task selection mechanism:
+P(T T^{-1} S) => P(T S)
+
+The introduction of T^{-1} brings the possibility of filtering, that is propagating the distribution over T from timestep to timestep (instead of using a constant prior for P(T^{-1})). A scheme that can make use of this is:
+P(T T^{-1} S) = P(T^{-1}) P(T | T^{-1}) (3) P(S | T) (4). This is called inverse programming: >3 is a transition table specifying the probability of switching from one task to another, while >4 is a term giving the distribution of sensor values given the current task (hence the name /inverse/).
+
+A variant of this task selection model is used to control video game characters in TeachingBehavioursToVideoGameCharacters (it is however used without filtering, but using intermediate decisions on the task, see below).
+==== task model
+The task term P(M | T S) can be decomposed in many ways, depending on the problem. One useful simplification is to consider that knowing the task, the motors do not depend on the sensors (ie, for the purpose of deciding motor commands, the knowledge of the task encompasses all information given by the sensors):
+P(M | T S) = P(M | T).
+
+=== using the model
+==== sequencing tasks (aka switching)
+Sequencing tasks is characterized by two succcessive steps:
+
+0 taking a decision on the task, knowing the sensors: Draw(P(T | T^{-1} S)) = t
+0 taking a decision on motor outputs based on the chosen task: Draw(P(M | [T=t] S))
+
+The drawn task (t) will be used for the value of T^{-1} at the next timestep.
+
+One should note that this use of the global model does not propagate uncertainty on T over time. Therefore, it cannot be considered as a filter. This is not necessarily a problem, and has the advantage of being able to give a clearcut explanation of what task the robot is doing at any time.
+
+==== mixing tasks (aka weighing)
+Mixing tasks is accomplished by asking the straightforward question to the model:
+P(M | S) (ie, what motor outputs to apply, knowing the sensors). This actually sums (ie, takes into account all possible values, with their associated probabilities) on T and T^{-1}.
+
+However, this way to use the model requires to know P(T^{-1}). This can be determined by asking the question P(T | S) to the model, and using it for P(T^{-1}) at the next timestep. This is the process of filtering: it is possible to show that it is actually equivalent to taking into account T^0, T^1... T^k (with k the current timestep) instead of just T^{k-1} and T^{k}. 
+
+== Variations ==
+* filtering, Markov hypothesis (the state (here, T or T (x) S) of the process at time t depends only on state at time t-1), purely reactive behaviour
+* inverse programming, motor fusion, sensor fusion
+
+fusion:
+* a state variable V, and an array of sensors or motors S_0, S_1, S_22
+* P(V S_0 S_1 S_2) = P(V) P(S_0 | V) P(S_1 | V) P(S_2 | V) (sensor fusion)
+* cas particulier: fusion avec diagnostic: P(V S_0 M_0 S_1 M_1 S_2 M_2), où mes M_i sont les variables de diagnostic

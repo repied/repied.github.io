@@ -1,0 +1,24 @@
+= inclure les polices dans un PDF, par le Docteur Diard =
+
+Il est pas impossible que certaines personnes dans l'equipe aient des
+papiers ICRA05 acceptes. =) Dans ce cas, pour la camera ready version, ICRA
+demande que les fonts de base soient incluses dans le pdf, pour que tout le
+monde ait un joli rendu a l'ecran...
+
+Kesako comment qu'on fait ? Deja, on peut suivre la procedure qu'ils
+indiquent pour verifier si le pdf qu'on a inclut ou non ces fontes la.
+
+Par defaut, les 14 fontes de base ne sont pas incluses dans les .pdf
+produits, ce qui permet de gagner de la place dans le fichier final.
+
+Si elles n'y sont pas, il y a un parametre a changer dans un fichier de
+config latex. Chez moi (mac os X, pdftex) j'ai fait de cette maniere :
+
+sudo updmap --setoption pdftexDownloadBase14 true
+
+Pour le desactiver ensuite :
+sudo updmap --setoption pdftexDownloadBase14 false
+
+On peut aussi aller tout simplement modifier a la main le fichier updmap.cfg
+(qui se trouve la: /usr/local/teTeX/share/texmf.local/web2c/updmap.cfg
+Attention, la path est certainement different sur votre linux redhat cpc64).

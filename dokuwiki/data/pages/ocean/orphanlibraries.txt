@@ -1,0 +1,28 @@
+Pour les utilisateurs de Debian, quand on installe des libs pour
+tester, cela entraine souvent des installs supplementaires pour tenir
+compte des dependances. Finalement, on se retrouve avec plein de libs
+qui ne serve a rien mais qui restent la. 
+
+Pour retrouver les packages dont personnes ne depend, il y a deborphan,
+et c'est aussi un package:
+  apt-get install deborphan
+
+Pour la ligne de commande :
+  deborphan --help
+
+Utilisation basique ;
+  deborphan
+  apt-get remove `deborphan`
+
+Pour laisser deborphan inspecter tout le système et pas seulement les bibliothèques :
+  deborphan -Pza | egrep 'optional|extra' | sort -n
+
+Pour un frontend console (inclus dans le package deborphan) :
+  orphaner
+
+(Cedric, 08/12/2003)
+
+Deuxieme facon, moins fine mais souvent plus efficace de faire de la place:
+  apt-get install debian-goodies
+  dpigs -n 20
+montre les 20 paquets installes qui prennent le plus de place. Il n'y a plus qu'a faire quelques [=apt-get remove] bien places, et on respire tout de suite mieux.

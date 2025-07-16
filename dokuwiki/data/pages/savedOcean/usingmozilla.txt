@@ -1,0 +1,21 @@
+Mozilla [keyboard shortcuts http://www.mozilla.org/docs/end-user/moz_shortcuts.html].
+
+=== Using the LDAP address book in Mozilla Mail ===
+This allows to have address/name completion on all INRIA members, nationwide, when you compose a mail (you can also do searches).
+* Edit -> Preferences... -> Mail and Newsgroups -> Addressing 
+* activate 'Directory Server', click Edit Directories...
+* click Add, and fill in the General tab:
+  name: annuaire inria
+  hostname: annuaire.inria.fr
+  base DN: dc=rocq-annu;dc=inria;dc=fr
+  port number: 9009
+  bind DN: <leave empty>
+  use secure connection (SSL): <leave unchecked>
+* click OK
+
+To see if it works,
+* Window -> Address Book
+* click on 'annuaire inria' in the left pane
+* Tools -> Search Addresses...
+* Type in 'le' in the search field, click Search
+(Mozilla might ask your password at this point.) You should see a flurry of names appearing in the results. 

@@ -1,0 +1,33 @@
+====== Page d'acceuil des anciens dijonnais....[wiki] ======
+Salut les gens !!
+
+Voici un site pour mettre nos coordonnees.
+
+Ici, c'est le wiki, c'est à dire qu'on peut tous y mettre nos informations. Chaque page est modifiable par tout le monde en cliquant sur le bouton "Editer cette page" en haut à gauche. 
+
+Pour plus d'information concernant le fonctionnement du wiki, voir la page [[wiki:aideWiki]].
+
+===== But du wiki =====
+
+Que tout le monde mette ses coordonnées a jour, chacun se crée une page perso, facile:
+Pour créer sa page:
+
+  - Click sur boutons “[Editer cette page]" en haut a gauche de ce cadre
+  - Créer un lien vers une page a son nom, simplement en mettant le nom de la page entre double crochets (ca crée un lien rouge)
+  - Faire "Sauver"
+  - cliquer sur le lien rouge, ca va creer la page, y a plus qu mettre les infos dedans
+Exemple de code pour creer une page
+  [[pierreDang]]
+
+
+Pour plus d info voir la page [[wiki:aidewiki]].
+
+====== Les pages des gens ======
+Voici les mails echangés en avril 2006: [[mailsavril]] !
+
+C'est ici qu il faut mettre le lien vers sa page
+  - [[pierreDang]]
+  - a remplir
+  - a remplir
+  - a remplir
+  - a remplir ...

@@ -1,0 +1,138 @@
+== les regles de base ==
+DavidRaulo explique comment jouer avec la base CVS, de l'intérieur comme de l'extérieur de l'INRIA.
+
+ # la variable d'environnment $CVSROOT indique ou se trouve le depot de CVS (a
+ # mettre dans ~/.cshrc)
+
+ setenv CVSROOT :pserver:${USERNAME}@indigo.inrialpes.fr:/sharp/repository
+ # NOTE: cette commande est valable quelle que soit votre configuration locale 
+ # (Debian, Red Hat MI...)
+
+ ***************************************************************************
+ * REGLE D'OR : NE JAMAIS ALLER SOUS AUCUN PRETEXTE dans /sharp/repository *
+ * TOUT DOIT SE FAIRE A TRAVERS LA COMMANDE CVS                             *
+ * DE MEME NE JAMAIS MODIFIER LE CONTENU DES SOUS-REPERTOIRES "CVS"         *
+ ***************************************************************************
+
+ # une page web cgi est disponible pour "browser" les archives CVS
+
+ http://indigo/cgi-bin/cvsweb
+
+ ------------------------------------------------------------------------------
+
+ # recuperer le projet "nom_du_projet" depuis le depot (ça crée une copie locale
+ # du projet)
+
+ >> cvs login
+ puis taper votre mot de passe
+ 
+ >> cvs checkout nom_du_projet
+
+ # obtenir le statut de sa copie par rapport a la version courante du depot
+
+ >> cvs status | grep File | grep -v Up-to-date
+
+ # synchroniser son repertoire avec l'archive
+
+ >> cvs update -PAd
+
+ # ajout de fichier ou repertoire (penser a faire un commit apres)
+
+ >> cvs add [-m "commentaire"] mon_fichier
+
+ # effacer (on peut annuler par un add avant le commit)
+ # attention sans argument c'est tout le repertoire courant qui est effacé
+
+ >> cvs remove mon_fichier
+
+ # voir les differences sur un fichier depuis la derniere version sauvée
+
+ >> cvs diff mon_fichier
+
+ # historique des modifications
+
+ >> cvs log [mon_fichier]
+
+ # sauvegarder ses modifications
+ # si on ne met pas de nom de fichier, tous ceux du repertoire courant sont
+ # testes et stockes si besoin est. Par exemple, dans votre repertoire
+ # nom_du_projet :
+
+ >> cvs commit -m "mon commentaire" [mon_fichier]
+
+ # detruire sa copie locale
+ # on est prevenu si on a fait une modification non encore sauvegardee
+
+ >> cd .. ; cvs release -d nom_du_projet
+
+
+
+ ------------------------------------------------------------------------------ 
+ # Creer un nouveau projet
+
+ # pour creer un nouveau projet dans le depot, contenant tous les fichiers et
+ # sous-repertoires de votre repertoire courant :
+
+ >> cvs import -m "sources importees" nom_du_projet sharp start
+
+ ------------------------------------------------------------------------------
+
+
+== destruction totale d'un projet  ==
+Par PierreDangauthier.
+
+Et pour détruire définitivement un projet CVS dans le repository, la seule facon est de *ne pas* suivre la *regle d'or*. C'est dans le manuel CVS. 
+
+ Is there a way to completely remove a project from the repository?
+ 
+ It's discouraged, but there are valid reasons to want to do this - a bad import,
+ for example. `cd' into the  repository and `rm -rf <project name>'. Of course,
+ you should be absolutely sure you're done with the project before you delete it,
+ especially if you don't have a backup. 
+
+Donc pour moi qui ai créé le projet "!TestCvsAEffacer" sans le faire exprès:
+ cd /home/indigo/sharp/repository
+ rm -fr TestCvsAEffacer
+Mais avant j'ai quand meme fait une copie de sauvegarde de tout le repository, car faire du [=rm -fr] dans le dossier ou il y a tout le travail de l'equipe depuis 10 ans, ça fait un peu peur...
+
+== Des fois le checkout ne marche pas...  ==
+Par PierreDangauthier.
+
+Sur certains projets, on a pas le droit de faire un checkout. Le message d'erreur est
+ > cvs checkout sources.lebeltel
+ cvs checkout: Updating sources.lebeltel
+ cvs checkout: failed to create lock directory for `/home/indigo/sharp/repository/sources.lebeltel'
+ (/home/indigo/sharp/repository/sources.lebeltel/#cvs.lock): Permission denied
+ cvs checkout: failed to obtain dir lock in repository `/home/indigo/sharp/repository/sources.lebeltel'
+ cvs [checkout aborted]: read lock failed - giving up
+Je ne sais pas trop comment ca marche au niveau des droits dans cvs, mais la seule différence entre les projets "checkoutables" et ceux qui ne le sont pas est la présence de l'autorisation d'ecriture au groupe.
+Donc il faut que le propriétaire du projet fasse un /chmod/ directement dans le //home/indigo/sharp/repository/.
+Encore un mauvais coup pour le regle d'or...
+
+
+== Pour ajouter un repertoire entier dans un projet deja existant  ==
+Par PierreDangauthier.
+
+Par exemple je veux ajouter le sous repertoire THESE au projet sources.dangauthier. En local je suis
+ > pwd
+ /home/dangauth/CODE/sources.dangauthier/THESE
+ > cvs import -m "blabla" sources.dangauthier/THESE  sharp start
+
+Et voila.
+
+== Annuler un commit ==
+Voir [ici http://foto.hut.fi/research/TargetJr/latex2html/FAQ/node60.html] pour une explication. Pour faire court, si je veux défaire le dernier commit sur un fichier nommé [=filename.C], dont la version courante est 1.5, et celle de juste avant 1.4:
+ cvs update -j 1.5 -j 1.4 filename.C
+ cvs commit -m 'Undid previous commit' filename.C
+*ATTENTION*: bien spécifier le nom du fichier dans l'update et le commit, sinon, tout est cassé. Et les arguments à l'update sont d'abord la version courante, ensuite la version précédente.
+
+Pour connaître la version courante d'un fichier:
+  cvs status filename.C
+
+== Branches & Tags ==
+On peut voir [cet article http://www.psc.edu/~semke/cvs_branches.html].
+
+...mais peut-être que vous voulez uniquement faire un truc simple 
+passer de la revision  1.2.1 a tout simplement 2.0 voila ce qu'il faut faire:
+
+  cvs commit -r2.0

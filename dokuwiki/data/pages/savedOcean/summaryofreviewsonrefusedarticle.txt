@@ -1,0 +1,6 @@
+* rework the results
+* the introduction should clearly detail the research contributions in the paper
+* typos, blind references
+* lacks citations on probabilistic approaches in robotics
+* an objective evaluation of the model is missing
+* lacks a reference to bayesian nets

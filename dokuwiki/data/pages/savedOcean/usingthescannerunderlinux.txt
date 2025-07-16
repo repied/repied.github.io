@@ -1,0 +1,28 @@
+This describes the necessary steps for using the Epson USB scanner under Debian systems. For FC systems, the rights part might be different, I don't know.
+
+* install useful software:
+ # (as root)
+ apt-get install sane
+* give yourself the necessary rights to access the scanner device:
+ # (as root)
+ adduser lehy scanner # (if your login is lehy, of course)
+* log out and log back in (under X, this involves closing you Gnome/KDE/WindowMaker/... session and reopening a fresh one)
+* take the USB scanner from Olivier, plug it near your machine (power+USB)
+* check that everything works OK:
+ # this should show something like 'usb 2-2: new full speed USB device using address 4'
+ # if not then you have a kernel/modules problem
+ dmesg
+ 
+ # this should show: 'device `plustek:libusb:002:004' is a Epson Perfection 1260/Photo USB flatbed scanner' 
+ # (as a normal user, 'lehy' for instance)
+ scanimage -L
+* start capturing: many programs can do it, including the Gimp, quiteinsane, xsane... 
+
+In the Gimp, I do File->Acquire->XSane->Device dialog... Then:
+* put sheet into scanner
+* in the preview window, select 'DIN A4 port' from the drop-down list in the bottom, left hand side
+* 'Acquire Preview'
+* top of window, on the left, click the button 'Pick white point' (leftmost of its series), and click on a part of the image that should really be blank (but looks greyish because of shadows or traces)
+* click button just left of skull and bones, and select interesting part of picture
+* (in other, smaller window with main controls) select scan resolution (I use 120 for an A4 page of an ordinary Word document)
+* 'Scan' 

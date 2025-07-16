@@ -1,0 +1,49 @@
+This pages assumes you're using tcsh as a shell. It only documents the C++ API and building with Make. Building with Scons and a Python API are available, but you must ask (probt@inrialpes.fr) because it's a little bit more complicated. ProBT.
+
+=== fetching ProBT ===
+
+ setenv CVSROOT :pserver:${USERNAME}@indigo.inrialpes.fr:/sharp/repository
+ cd ~/tmp
+ cvs login # type your Unix password when asked
+ cvs checkout PL/source
+
+=== compiling ProBT ===
+
+ cd ~/tmp/PL/source
+ cd system/linux
+ make depend
+ make
+
+=== using ProBT ===
+ 
+Here's my program (which does nothing useful), called 'program.cpp' :
+ #include <pl.h>
+ 
+ int main()
+ {
+     plCndKernel ck;
+     plCndKernel ckc;
+     ck.compile();
+ 
+     return 0;
+ }
+
+Here's how I compile it :
+ setenv ProBTDIR ~/tmp/PL/source/
+ g++ -I${ProBTDIR}/pl/include -L${ProBTDIR}/lib -lpl program.cpp -o program
+
+That's it. There's much more to say, but that's not the place.
+
+=== More ===
+Les instructions ci dessus et avec la version CVS d avril 2005 font une librairie statique avec laquelle j ai (Pierre Dangauthier) eu de probleme d edition de liens. Alors j ai compile une librairie dynamique en changeant un peu le Makefile (PL/source/system/Make.mak) en ajoutant la cible "dlib", et en changeant la cible DEFAULT
+ 
+ # Defaullt (first) target constructs thes Static Link Library
+ DEFAULT: dlib
+
+ slib: $(SLIB_NAME)
+
+ dlib: $(DLIB_NAME)
+
+Apres il ne faut pas oublier de mettre a jour son LD_LIBRARY_PATH avec l endroit ou libpl.so est genere (PL/source/lib).
+
+Sinon, pour commencer, il y a le manuel dans PL/manual a compiler en latex, il ya aussi la Doxygene (voir le Makefile pour le generer), et surtout on conseille les multiples exemples dans PL/tutorial/src.

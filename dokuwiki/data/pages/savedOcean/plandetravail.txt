@@ -1,0 +1,15 @@
+Ce plan fait suite à la réunion avec Pierre et Odge du Jeudi 23 Octobre. Pas exhaustif pour l'instant. Pour un plan expérimental, voir PlanDeTravailExperimental.
+
+0 introduction
+00 le cadre jeux, mondes virtuels
+00 le cadre cognitif
+000 analogie à l'apprentissage par imitation
+000 Piaget : apprentissage par niveaux
+0 programmation de comportements élémentaires
+0 apprentissage de comportements élémentaires
+00 identifier les différents facteurs liés à la vitesse d'apprentissage, essayer de les maîtriser
+0 apprentissage de comportements élémentaires, en lien avec le choix d'un modèle
+00 deux perspectives possibles : quelles tâches peut apprendre un modèle ? quels modèles peuvent permettre d'apprendre une tâche ?
+00 un critère d'évaluation extérieur (~ signal de renforcement) pour évaluer l'efficacité du comportement appris
+00 des critères sur les distributions pour évaluer là où "il y a du signal" (sachant que dans certains cas un comportement aléatoire peut être plus efficace qu'un autre avec "plus de signal")
+0 apprentissage du séquencement PI des comportements du niveau précédent

@@ -1,0 +1,37 @@
+ceruse is a Dell Precision 370.
+ ceruse:/# lspci
+ 0000:00:00.0 Host bridge: Intel Corp. 925X Memory Controller Hub (rev 04)
+ 0000:00:01.0 PCI bridge: Intel Corp. 925X PCI Express Root Port (rev 04)
+ 0000:00:1c.0 PCI bridge: Intel Corp. 82801FB/FBM/FR/FW/FRW (ICH6 Family) PCI Express Port 1 (rev 03)
+ 0000:00:1c.1 PCI bridge: Intel Corp. 82801FB/FBM/FR/FW/FRW (ICH6 Family) PCI Express Port 2 (rev 03)
+ 0000:00:1d.0 USB Controller: Intel Corp. 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #1 (rev 03)
+ 0000:00:1d.1 USB Controller: Intel Corp. 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #2 (rev 03)
+ 0000:00:1d.2 USB Controller: Intel Corp. 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #3 (rev 03)
+ 0000:00:1d.3 USB Controller: Intel Corp. 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB UHCI #4 (rev 03)
+ 0000:00:1d.7 USB Controller: Intel Corp. 82801FB/FBM/FR/FW/FRW (ICH6 Family) USB2 EHCI Controller (rev 03)
+ 0000:00:1e.0 PCI bridge: Intel Corp. 82801 PCI Bridge (rev d3)
+ 0000:00:1e.2 Multimedia audio controller: Intel Corp. 82801FB/FBM/FR/FW/FRW (ICH6 Family) AC'97 Audio Controller (rev 03)
+ 0000:00:1f.0 ISA bridge: Intel Corp. 82801FB/FR (ICH6/ICH6R) LPC Interface Bridge (rev 03)
+ 0000:00:1f.2 IDE interface: Intel Corp. 82801FR/FRW (ICH6R/ICH6RW) SATA Controller (rev 03)
+ 0000:00:1f.3 SMBus: Intel Corp. 82801FB/FBM/FR/FW/FRW (ICH6 Family) SMBus Controller (rev 03)
+ 0000:01:00.0 VGA compatible controller: ATI Technologies Inc: Unknown device 5b64 (rev 80)
+ 0000:01:00.1 Display controller: ATI Technologies Inc: Unknown device 5b74 (rev 80)
+ 0000:02:00.0 Ethernet controller: Broadcom Corporation NetXtreme BCM5751 Gigabit Ethernet PCI Express (rev 01)
+
+* install a kernel >= 2.6.11 (2.6.8 won't allow the sound to work although it supports the network card)
+ aptitude install kernel-image-2.6.11-1-686
+* install the non free modules to have the network card work under 2.6.11:
+** get them from http://www.acm.cs.rpi.edu/~dilinger/kernel-source-nonfree-2.6.11/ :
+ http://www.acm.cs.rpi.edu/~dilinger/kernel-source-nonfree-2.6.11/kernel-nonfree-modules-2.6.11-1-686_2.6.11-1_i386.deb
+** install them:
+ dpkg -i kernel-nonfree-modules-2.6.11-1-686_2.6.11-1_i386.deb
+* load the module for the network card:
+ modprobe tg3
+* and add it to /etc/modules so it gets loaded at the next reboot:
+ tg3
+
+* once you've done that, you can reboot, or just restart the network:
+ /etc/init.d/networking restart
+ /etc/init.d/nis restart
+ /etc/init.d/nfs-common restart
+ /etc/init.d/nfs-kernel-server restart

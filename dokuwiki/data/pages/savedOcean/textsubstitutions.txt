@@ -1,0 +1,149 @@
+= fichier de test =
+Un fichier de 600 000 lignes, généré au hasard, avec pas mal de virgules.
+ du -h virgules.orig                                                                                                   
+ 29M     virgules.orig
+
+ wc -l virgules.orig                                                                                                     
+ 600000 virgules.orig
+
+ wc -m virgules.orig                                                                                                     
+ 30299531 virgules.orig
+
+ wc -L virgules.orig                                                                                                     
+ 79 virgules.orig
+
+ head virgules.orig                                                                                                      
+ j0{,?u,,U<B,c](UzR?}lN/I3Os%,%(,W+z*QqPD,{N,X>}P"cJ
+ ,3#o},li`<J`!6NQ-j,JT$*0EI,p_@tL,,br,IP]adx$En)]iNw-1,ZfJg,>7tk`5nmp1
+ Oq/1,q-S!,Da|d/P|m,53,[r,'B,!V#I]AAUfR
+ 6-08?CzyaNL7kzN(zUOyU)>gSA,[,aY>+G4r
+ F49/w1&RTWWAa5uh|@J)U)
+ Pn*UPr*P8)QE.vNqY!;EI*,#CNSfqQbG-IkR/~
+ D,G1/IY2]\^,$`wKI;nlbd\`}i5UYG{q9,!HcIh@k/*j.`j#,:HL8W.Z}R,qQ?,5j8kO9
+ 0-nP5=R.o,!,%YZ-v/4JW2@}aF_|W9<DPo>mDw,GWu#5y,-<K>8@YN3c>mEA,,
+ UnM|uEEUey0lqa;1w,-*]E[YTJm,i\s.GYwOXm4TKz%z5s,yyHRL|c]2j1\d*N(F+#AkBwl
+ =;g+wP,p>TB_:Bm_{pi?Zs*u,,4B\Wh$xuOk`,p,,F_x;-ETv7@J,mXL
+
+= Perl 1 (s///) =
+En gros, 7 à 10 secondes pour faire la substitution dans le fichier (sur place).
+
+ time perl -pi -e 's/,/./g' virgules.txt                                                                                 
+ perl -pi -e 's/,/./g' virgules.txt  3.55s user 0.29s system 53% cpu 7.181 total
+
+ cp virgules.orig virgules.txt; time perl -pi -e 's/,/./g' virgules.txt                                                  
+ cp: overwrite `virgules.txt'? y
+ perl -pi -e 's/,/./g' virgules.txt  3.65s user 0.29s system 26% cpu 14.959 total
+
+ cp virgules.orig virgules.txt; time perl -pi -e 's/,/./g' virgules.txt                                                  
+ cp: overwrite `virgules.txt'? y
+ perl -pi -e 's/,/./g' virgules.txt  3.58s user 0.30s system 52% cpu 7.342 total
+
+= Perl 2 (tr///) =
+5 secondes pour faire la substitution pour une version plus maline.
+ cp -f virgules.orig virgules.txt; time perl -pi -e 'tr/,/./' virgules.txt                                               
+ cp: overwrite `virgules.txt'? y
+ perl -pi -e 'tr/,/./' virgules.txt  1.60s user 0.29s system 37% cpu 5.014 total
+
+ cp -f virgules.orig virgules.txt; time perl -pi -e 'tr/,/./' virgules.txt                                               
+ cp: overwrite `virgules.txt'? y
+ perl -pi -e 'tr/,/./' virgules.txt  1.59s user 0.28s system 37% cpu 4.988 total
+
+ cp -f virgules.orig virgules.txt; time perl -pi -e 'tr/,/./' virgules.txt                                               
+ cp: overwrite `virgules.txt'? y
+ perl -pi -e 'tr/,/./' virgules.txt  1.53s user 0.26s system 34% cpu 5.118 total
+
+= sed =
+11 secondes pour la substitution (une partie de temps est possiblement perdue dans le pipe, par rapport à Perl).
+ cp -f virgules.orig virgules.txt; time sed -e 's/,/./g' virgules.txt >! virg.sed                                      
+ cp: overwrite `virgules.txt'? y
+ sed -e 's/,/./g' virgules.txt >| virg.sed  4.80s user 0.80s system 47% cpu 11.802 total
+
+ cp -f virgules.orig virgules.txt; time sed -e 's/,/./g' virgules.txt >! virg.sed                                        
+ cp: overwrite `virgules.txt'? y
+ sed -e 's/,/./g' virgules.txt >| virg.sed  4.66s user 0.77s system 46% cpu 11.679 total
+
+ cp -f virgules.orig virgules.txt; time sed -e 's/,/./g' virgules.txt >! virg.sed                                        
+ cp: overwrite `virgules.txt'? y
+ sed -e 's/,/./g' virgules.txt >| virg.sed  4.85s user 0.75s system 47% cpu 11.706 total
+
+Note: on pourrait faire la même optimisation que pour Perl, en remplaçant [=s///] par [=y///].
+
+= XEmacs =
+XEmacs : le pouvoir de faire en une demi-heure ce que d'autres font en 5 secondes. Au moins c'est du Lisp.
+== elisp files ==
+Les fichiers utilisés pour commander XEmacs et GNU Emacs. La version virgules.el est normalement équivalente à ce qu'on fait en interactif.
+ cat load_quit.el                                                                                                       
+ (find-file "/home/andrinople/lehy/tmp/virgules.txt")
+ (save-buffers-kill-emacs t)
+
+ cat virgules.el                                                                                                         
+ (find-file "/home/andrinople/lehy/tmp/virgules.txt")
+ (replace-string "," ".")
+ (save-buffers-kill-emacs t)
+
+ cat virgules_opt.el                                                                                                     
+ (find-file "/home/andrinople/lehy/tmp/virgules.txt")
+ (while (search-forward "," nil t)
+     (replace-match "." nil t))
+ (save-buffers-kill-emacs t)
+
+== load, save, quit ==
+Pour voir le coût associé à juste lancer XEmacs, charger le fichier, le sauver et quitter.
+ time xemacs -vanilla -nw -l load_quit.el                                                                                
+ xemacs -vanilla -nw -l load_quit.el  2.50s user 0.41s system 67% cpu 4.292 total
+
+ time xemacs -vanilla -nw -l load_quit.el                                                                                
+ xemacs -vanilla -nw -l load_quit.el  2.48s user 0.43s system 68% cpu 4.246 total
+
+ time xemacs -vanilla -nw -l load_quit.el                                                                                
+ xemacs -vanilla -nw -l load_quit.el  2.48s user 0.42s system 68% cpu 4.256 total
+== load, replace, save, quit ==
+ cp virgules.orig virgules.txt; time xemacs -vanilla -nw -l virgules.el                                                
+ cp: overwrite `virgules.txt'? y
+ xemacs -vanilla -nw -l virgules.el  1701.77s user 4.90s system 88% cpu 31:58.23 total
+== load, optimised (non interactive) replace, save, quit ==
+Wahou ! 8 minutes ? Mais c'est Carl Lewis !
+ cp virgules.orig virgules.txt; time xemacs -vanilla -nw -l virgules_opt.el                                              
+ cp: overwrite `virgules.txt'? y
+ xemacs -vanilla -nw -l virgules_opt.el  341.20s user 3.01s system 72% cpu 7:55.02 total
+
+= GNU Emacs =
+GNU Emacs devrait probablement être renommé 'GNU Foutage de Gueule'.
+== load, save, quit ==
+ cp virgules.orig virgules.txt; time emacs -q -nw -l virgules_opt
+ cp: overwrite `virgules.txt'? y
+ emacs -q -nw -l load_quit.el  1.24s user 0.27s system 38% cpu 3.952 total
+
+ cp virgules.orig virgules.txt; time emacs -q -nw -l load_quit.el                                                        
+ cp: overwrite `virgules.txt'? y
+ emacs -q -nw -l load_quit.el  1.26s user 0.26s system 78% cpu 1.944 total
+
+ cp virgules.orig virgules.txt; time emacs -q -nw -l load_quit.el                                                        
+ cp: overwrite `virgules.txt'? y
+ emacs -q -nw -l load_quit.el  1.24s user 0.24s system 78% cpu 1.877 total
+
+== load, replace, save, quit ==
+Je ne suis pas disposé à laisser tourner Emacs plus d'une heure sur le problème.
+ cp virgules.orig virgules.txt; time emacs -q -nw -l virgules.el                                                         
+ cp: overwrite `virgules.txt'? y
+ zsh: killed     emacs -q -nw -l virgules.el
+ emacs -q -nw -l virgules.el  852.26s user 108.53s system 26% cpu 1:00:34.61 total
+
+== load, optimised (non interactive) replace, save, quit ==
+Même motif, même punition.
+ cp virgules.orig virgules.txt; time emacs -q -nw -l virgules_opt.el
+ zsh: killed     emacs -q -nw -l virgules_opt.el
+ emacs -q -nw -l virgules_opt.el  1342.41s user 190.65s system 36% cpu 1:09:39.32 total
+                                                                                                                                    
+= vim =
+4 minutes et demie, c'est pas mal, mais on a encore le temps d'aller se faire un café, et on peut même pas lire son mail (dans vim je veux dire), alors...
+ cp virgules.orig virgules.txt; time vim virgules.txt -c ':1,$s/,/./g' -c ':wq'                                          
+ cp: overwrite `virgules.txt'? y
+ vim virgules.txt -c ':1,$s/,/./g' -c ':wq'  220.64s user 2.42s system 85% cpu 4:21.22 total
+
+ cp virgules.orig virgules.txt; time vim virgules.txt -c ':1,$s/,/./g' -c ':wq'                                          
+ cp: overwrite `virgules.txt'? y
+ vim virgules.txt -c ':1,$s/,/./g' -c ':wq'  221.63s user 2.45s system 77% cpu 4:49.31 total
+
+= Conclusion =
+Peut-être que FrameMaker ferait mieux que Perl, lui...

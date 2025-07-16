@@ -1,0 +1,54 @@
+This is about a bayesian formulation of the learning of the action selection models described in SequencingAndMixing (notation is described there).
+
+P(T T^{-1} M S delta^l pi^l pi) = 
+P(pi) 
+P(pi^l | pi) 
+P(T T^{-1} M S | pi^l pi) 
+P(delta^l | pi^l pi)
+
+where 
+P(delta^l | pi^l pi) = 
+Pi_{i} P(m^i s^i | m^{i-1} s^{i-1} pi^l pi) (0)
+
+>0 is a question to the joint distribution:
+P(M^t S^t M^{t-1} S^{t-1} T T^{-1} T^{-2} pi^l pi) =
+P(pi)                                      (1) 
+P(pi^l | pi)                               (2)
+P(M^{t-1} S^{t-1} T^{-1} T^{-2} | pi^l pi) (3)
+P(M^t S^t T | T^{-1} pi^l pi)              (4)
+
+* >1 is a uniform
+* >2 is a uniform
+* >3 is a question to the selection/action model
+* >4 is also a question to the selection/action model, but with time shifted
+
+The learning question can be formulated in several ways.
+* (a) what is my selection/action model, given experimental data delta^l ?
+P(M S T T^{-1} | delta^l pi)
+* (b) what is the most probable value of the model parameters given experimental data delta^l ? ie Best(P(pi^l | delta^l pi))
+
+Question (b) can be solved as:
+
+P(pi^l | delta^l pi) = P(delta^l | pi^l pi) P(pi^l | pi) / P(delta^l | pi)
+
+where
+P(delta^l | pi^l pi) = P(m^0 s^0 | pi^l pi) Pi_{i=1..l} P(m^i s^i | m^{i-1} s^{i-1} pi^l pi) = P(m^0 s^0 | pi^l pi) Pi_{i=1..l} Sigma_{T^{t-1}} ( P(m^{i-1} s^{i-1} T^{t-1} | pi^l pi) P(m^i s^i | T^{t-1} pi^l pi) )
+
+this decomposition takes the Markov hypothesis into account: the state (here, M (x) S) at time t only depends on state at time t-1
+
+*Problem:* size of space. Moreover, the size of delta^l gets bigger as more data is collected. pi^l can be composed of gaussian parameters (sigma, mu)... or histogram parameters (n-1 parameters for a table on a variable of size n, because of normalization).
+
+Idea: knowing the data delta^l (ie, delta^{l-1} plus data just collected, {m^l, s^l}), we want to evaluate the probability of each set of parameters pi^l.
+
+If we note
+* a_{0}(p) = P(m^0 s^0 | p pi)
+* a_{n}(p) = a_{n-1}(p) x Sigma_{T^{t-1}} P(m^{n-1} s^{n-1} T^{t-1} | pi^l pi) P(m^n s^n | T^{t-1} pi^l pi)
+
+Then we have
+* P(delta^l | pi^l pi) = (1/Z) x a_{l}( pi^l )
+* a recursive formula to compute the thing.
+
+Another way to see it:
+* b_0(p) = P(m^0 s^0 | p pi)
+* b_n(p) = b_{n-1}(p) x P(m^n s^n | m^{n-1} s^{n-1} p pi)
+* P(delta^l | pi^l pi) = b_l( pi^l )

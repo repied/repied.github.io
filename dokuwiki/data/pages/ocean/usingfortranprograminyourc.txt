@@ -1,0 +1,38 @@
+On se situe du côté du programmeur C ou C++ voulant utiliser du fortran, qui éventuellement (la salle bête) pourrait utiliser votre code C via des pointeurs de fonctions.
+
+
+D'abord ceux qui vous aideront sous linux : f2c.h et libf2c.
+Première bonne nouvelle : gcc sait compiler du fortran. Il appelle un utilitaire qui s'appelle f2c (man f2c) qui convertit le programme fortran en programme C, et j'ai bien dit C et pas C++ dans la mesure ou le programme objet qui en résulte doit être considéré comme ayant été compilé par un compilateur C.
+Puis pour que tout cela fonctionne il faut linker avec la libf2c puis la librairie mathématique dans cet ordre :
+ -lf2c -lm
+
+Le premier truc à faire est de comprendre la conversion entre données C et fortran pour cela le web est bien fait :
+http://www.ictp.trieste.it/~manuals/programming/sun/c-plusplus/c++_ug/FORTRAN_Interface.doc.html
+http://www.aei.mpg.de/~jthorn/c2f.html
+
+Le deuxième truc est de savoir que pour fortran : tout est pointeur dans les arguements d'une fonction. En fait fortran fait la différence entre procédure (subroutine) et fonction. Dans les fonctions écrites en C qui seront partagées tous les arguments doivent être des pointeurs.
+
+Le troisième truc est de suffixer toutes les fonctions écrites en C partagées entre C et fortran par un "_".
+
+* Programmes en C
+rien de spécial attention si vous faites des lib au moment de la compile de l'executable, votre lib dépend de la libf2c du coup pour linker :
+ -lvotre_lib -lf2c -lm
+dans cet ordre
+
+* Programmes en C++
+les programmes fortran sont considérer comme des programmes C, dans leur déclaration dans vos en-tête pour vos applis c++ il faut les préfixer de :
+
+ extern "C" 
+
+du coup un exemple de fonction fortran qui sera appelée par un programme C++, et donc déclarée dans un en-tête depend.h :
+
+ extern "C" void ctcabe_(
+  int *n,/*- la dimension du probleme : la taille de lambda -*/
+  float *y,/*- tableau de coordonnees dans la base B1 -*/
+  float *x,/*- tableau de coordonnees dans la base B-*/
+  int *izs,/*- adresse d'un entier a l'usage de l'utilisateur -*/
+  float *rzs,/*- adresse d'un float a l'usage de l'utilisateur -*/
+  double *dzs /*- adresse d'un double a l'usage de l'utilisateur -*/
+ );
+
+Pour le linkage de vos lib mixtes : même remarque que pour les programmes C

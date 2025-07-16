@@ -1,0 +1,52 @@
+Je veux déboguer mon programme avec gdb, dans emacs. Mon programme s'appelle 'visualise', et il prend un argument, qui est 'alpages.OpenMASK3'; pour le lancer normalement, je fais:
+ ./visualise alpages.OpenMASK3
+
+Je le compile avec les flags suivants:
+ -g -gdwarf-2 -g3
+Dwarf-2 est le format d'infos de débogage, il semble que ça soit ce que gdb aime le mieux ces temps-ci. -g3 dit qu'il faut inclure les infos de débogage sur les macros.
+
+Dans emacs:
+ M-x gdb
+Puis:
+ Run gdb (like this): gdb visualise
+
+Ensuite c'est l'invite gdb:
+ Current directory is /home/andrinople/lehy/src/devel/moutons/moutons/
+ GNU gdb 5.3-debian
+ Copyright 2002 Free Software Foundation, Inc.
+ GDB is free software, covered by the GNU General Public License, and you are
+ welcome to change it and/or distribute copies of it under certain conditions.
+ Type "show copying" to see the conditions.
+ There is absolutely no warranty for GDB.  Type "show warranty" for details.
+ This GDB was configured as "i386-linux"...
+ (gdb) run alpages.OpenMASK3
+
+Quand mon programme plante, j'affiche la pile des appels:
+ (gdb) bt
+
+Pour naviguer dans la pile:
+ C-< pour remonter, ou la commande gdb 'up'
+ C-> pour descendre, ou la commande gdb 'down'
+
+Il y a un menu 'gud' avec les commandes les plus utiles, et les raccourcis, si on les oublie.
+
+Pour afficher une variable:
+ (gdb) print conjunction
+ $1 = {<plVariablesConjunction> = {<plOpenplObj> = {_vptr.plOpenplObj = 0x4188c500}, kernel_variable = 0x0, Dsize = 6, 
+    variable_list = {<_List_base<kplVariable*,std::allocator<kplVariable*> >> = {<_List_alloc_base<kplVariable*,std::allocator<kplVariable*>,true>> = {_M_node = 0x82f78c8}, <No data fields>}, <No data fields>}}, <No data fields>}
+
+On peut appeler des fonctions et des méthodes, aussi:
+ (gdb) print conjunction.name()
+ $2 = {static npos = 4294967295, _M_dataplus = {<allocator<char>> = {<No data fields>}, _M_p = 0x82fdaec "NIL"}, 
+  static _S_empty_rep_storage = {0, 0, 216, 0}}
+
+CedricPradalier a trouvé une façon d'appeler operator<< pour imprimer un objet. Il suffit de le wrapper dans une petite fonction C, qu'on insère dans son programme. Par exemple, pour imprimer n'importe quel objet PL (sauf plData, qui peut être fait sur le même modèle):
+ using namespace std;
+ void ppl(void * o)
+ {
+     // On change de type
+     plOpenplObj * O = (plOpenplObj*)o;
+     (operator<<(cout,*O)) << endl;
+ }
+
+Pas de moyen connu d'accéder directement à cout, cerr, et autres membres de std:: à partir de gdb (ou alors gdb ne connaît pas leur type).

@@ -1,0 +1,10 @@
+Cette page est faite pour jouer avec. Il n'y a rien de precieux ici, elle est faite pour s'entrainer. Les regles de formattage sont detaillees dans KwikiFormattingRules.
+
+plVariablesConjunction
+
+kplVariable
+
+$P(v_{rot} | Dir Prox)$
+{latex: $P(v_{rot} | Dir Prox)$}
+
+Un truc avec des crochets: [=[66]]. [=[un long bout de texte entre crochets]]

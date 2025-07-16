@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>Dangauthier : Machine Learning Working Group</title>
+</head>
+
+<body>
+
+<h1>Machine Learning Working Group Slides</h1>
+
+<p>This page displays slides from the INRIA GRAVIR ML sessions</p>
+
+<ul>
+
+<li> <a href= Clustering2.pdf > Clustering2.pdf </a> </li>
+<li> <a href= MLWG2_BayesianLearning_dangauthier.pdf > MLWG2_BayesianLearning_dangauthier.pdf </a> </li>
+<li> <a href=  kalman.pdf >  kalman.pdf </a> </li>
+<li> <a href=  MLWG_4_Associative_mem.pdf >  MLWG_4_Associative_mem.pdf </a> </li>
+<li> <a href= Competitive_Learning.pdf > Competitive_Learning.pdf </a> </li>
+<li> <a href= svm.pdf > svm.pdf </a> </li>
+ 
+
+ 
+
+</ul>
+</body>
+</html>

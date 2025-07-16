@@ -1,0 +1,52 @@
+== video ==
+=== music shares in e-Motion ===
+Various machines export music on the network (in mp3 & ogg vorbis). From ceruse (and other similarly configured machines), you can access it like this (in a terminal):
+  cd /local/mp3
+and then
+  cd ocean
+or
+  cd malachite
+etc.
+
+The directory with music will be automatically mounted as you cd into it.
+
+Available mounts as of 15/11/2005 are:
+ malachite, ocean, ocean2, nacarat, ceruse, turquoise, black  
+(this list is configured in /etc/auto.mp3)
+
+You may play music using amarok, beep-media-player, juk, xmms, mplayer...
+
+=== Lecteurs de vidéos sous Linux ===
+==== MPlayer ====
+[MPlayer http://www.mplayerhq.hu] est sur une pente descendante (liée à des problèmes humains). Ca reste le lecteur le plus complet -- il lit quasiment tout. Il est aussi très rapide (pas de problème pour lire des DivX sur un PII 350). Je n'ai jamais trouvé la GUI très utile. Vient avec un encodeur (mencoder) très puissant. Paquet Debian officiel à venir bientôt (non-officiel chez [Marillat http://marillat.free.fr/]), mais je préfère me le recompiler à la main, avec les bonnes options.
+==== Xine ====
+[xine http://xine.sourceforge.net] marche de mieux en mieux, et a une interface vraiment bien faite. Sur certains films, il semble marcher mieux que mplayer (sur d'autres, il ne marche pas du tout).
+  apt-get install xine-ui
+==== VLC ====
+[VLC http://www.videolan.org/] est une étoile montante. Interface sympathique et légère. Capable de faire du streaming très facilement. Semble marcher bien. Activement développé.
+  apt-get install vlc
+From the VLC FAQ:
+To take normal screen capture of the video displayed by VLC, under XFree, add the -V x11 option to the command line.
+=== faire un film à partir d'une série d'images ===
+J'ai un script sur mon compte qui fait ça: [make_movie httpr://images/andrinople/lehy/bin/make_movie]. Il se trouve à [=/home/andrinople/lehy/bin/make_movie]. Il a besoin de mplayer et ImageMagick (tous les deux installés sur ocean, mplayer est dans /scratch/bin). -- RonanLeHy
+=== encoder un film entrelace ===
+Voir EncodingAndDeinterlacing.
+== audio ==
+=== enregistrer une émission diffusée en streaming ===
+  # apt-get install vsound
+  vsound -d -t /usr/lib/RealPlayer8/realplay dimanche_7-8.ram
+* le -d dirige le son vers les hauts-parleurs en plus d'un fichier sur le disque
+* le -t permet l'enregistrement d'un flux (stream) reçu en temps réel
+* tout ce qui est après, c'est l'application qui lit le stream, et ses arguments (ici RealPlayer)
+* le résultat se trouve dans vsound.wav quand l'application se termine : il contient tout le son que l'application a envoyé vers les hauts-parleurs
+=== éditer un fichier son pour en couper des bouts ===
+  # apt-get install kwave
+  kwave vsound.wav
+(j'ai eu des problèmes avec audacity, segfaults et refus de jouer sur /dev/dsp)
+=== convertir un .wav en .mp3 ===
+  # installer lame -- pas de paquet debian officiel, chercher sur le web
+  lame vsound.wav
+=== bibliothèques ===
+[FMod http://www.fmod.org] est une bibliothèque pour lire du son et de la musique. Elle supporte plein de formats, semble bien [documentée http://www.fmod.org/docs/] (il y a aussi pas mal d'exemples dans la distribution), portable, et sait faire pas mal de choses, comme du son 3d. Simple a utiliser. Elle n'est pas libre, mais gratuite pour usage non commercial, et les sources sont distribuées. Installation: pas de paquet Debian ni de RPM, juste un tarball, mais c'est suffisant.
+== image ==
+Voir UsingImageMagick.

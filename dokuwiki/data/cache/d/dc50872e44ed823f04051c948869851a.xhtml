@@ -1,0 +1,37 @@
+
+<a name="pusher_des_trucs"></a><h4>PUSHER DES TRUCS ...</h4>
+<div class="level4">
+
+<p>
+*La description du problème : 
+</p>
+
+<p>
+On a un plKernelTable &ldquo;kt&rdquo; : P(A|BC) et on a un plKernelTable &ldquo;kt_restreint&rdquo; : P(A|B) pour une valeur donnée de C : [C=c]. Ce serait bien de pouvoir faire : kt.push( kt_restreint, c )
+</p>
+
+<p>
+*La soluce :
+</p>
+
+<p>
+Construire P(AB) = P(B)P(A|B) en prenant P(B) uniforme et P(A|B) = &ldquo;kt_restreint&rdquo; : 
+</p>
+
+<p>
+puis on construit : P(AB|C) (là il n&rsquo;y a plus de problèmes).
+</p>
+
+<p>
+ On construit ensuite P(ABC) = P(C)P(AB|C) en prenant P(C) uniforme puis on  pose la question P(A|BC) à ce modèle.
+</p>
+
+<p>
+ NoôOÔÔoooooooooon je déconne ça c&rsquo;est la technique avant the Juan touch&rsquo; il suffit en créant la plKernelTable de faire : KernelTable kt(A,BC,C) le C indique que cette variable servira d&rsquo;index. Magique non ?
+</p>
+
+<p>
+On peut même faire des trucs plus sioux : en pushant des P(A) pour un certain c et il remplira la plKernelTable de la même façon pour tous les b.
+</p>
+
+</div>

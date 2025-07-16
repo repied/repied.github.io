@@ -1,0 +1,1853 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head profile="http://gmpg.org/xfn/11">
+
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Yet Another Machine Learning Blog » KL divergence [Pierre Dangauthier]</title>
+
+	
+	
+	<meta name="generator" content="WordPress 2.0.2"><!-- leave this for stats please --> 
+
+	<style type="text/css" media="screen">
+		@import url(http://emotion.inrialpes.fr/~dangauthier/blog/wp-content/themes/pool/style.css);
+	</style>
+
+	<link rel="Shortcut Icon" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/wp-content/themes/pool/images/favicon.ico" type="image/x-icon">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/feed/">
+	<link rel="alternate" type="text/xml" title="RSS .92" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/feed/rss/">
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/feed/atom/">
+	
+	<link rel="pingback" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/xmlrpc.php">
+    	<link rel="archives" title="December 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/12/">
+	<link rel="archives" title="September 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/09/">
+	<link rel="archives" title="August 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/">
+	<link rel="archives" title="July 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/07/">
+	<link rel="archives" title="June 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/06/">
+	<link rel="archives" title="May 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/05/">
+	<link rel="archives" title="April 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/04/">
+	<link rel="archives" title="March 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/03/">
+	<link rel="archives" title="February 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/02/">
+	<link rel="archives" title="January 2007" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/01/">
+	<link rel="archives" title="December 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/12/">
+	<link rel="archives" title="November 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/11/">
+	<link rel="archives" title="September 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/09/">
+	<link rel="archives" title="August 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/08/">
+	<link rel="archives" title="June 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/06/">
+	<link rel="archives" title="May 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/05/">
+	<link rel="archives" title="April 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/04/">
+	<link rel="archives" title="March 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/03/">
+	<link rel="archives" title="February 2006" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/02/">
+	<link rel="archives" title="December 2005" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2005/12/">
+		<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://emotion.inrialpes.fr/%7Edangauthier/blog/xmlrpc.php?rsd">
+<link rel="stylesheet" href="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20KL%20divergence%20%5BPierre%20Dangauthier%5D_fichiers/syntax_hilite_css.css" type="text/css" media="all">
+	<script language="javascript" type="text/javascript" src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20KL%20divergence%20%5BPierre%20Dangauthier%5D_fichiers/syntax_hilite_js.js"></script>
+	<script language="javascript" type="text/javascript">
+	var arrCode = new Array();
+	</script></head><body>
+<div id="content">
+	
+	<div id="header" onclick="location.href='http://emotion.inrialpes.fr/~dangauthier/blog';" style="cursor: pointer;">
+		<h1><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog">Yet Another Machine Learning Blog</a></h1>
+	</div>
+
+	<div id="pages">
+			<div class="alignleft">
+				<ul>
+				<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog">Blog</a></li>
+								</ul>
+			</div>
+		
+			<div id="search">
+				<form id="searchform" method="get" action="/~dangauthier/blog/index.php">
+					<input name="s" id="s" size="20" value="search in blog..." type="text">
+				</form>
+			</div>
+	</div>
+	
+<!-- end header -->			
+	<div id="bloque">
+		
+		<div id="noticias">
+		
+		 
+		
+			<div class="entrada">
+				<h2 id="post-41"><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/05/19/kl-divergence/" rel="bookmark" title="Permanent Link to KL divergence">KL divergence</a></h2>
+				<small>May 19, 2007 on 6:12 pm | In <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/misc/" title="View all posts in Misc" rel="category tag">Misc</a> | </small>
+						
+		<p>The <a target="_blank" title="kl" href="http://eom.springer.de/K/k110180.htm">Kullback and Leibler divergence</a>
+is a common measure of the &#8220;distance&#8221; between two probability
+distributions. It&#8217;s central in probabilty based machine learning
+algorithm.</p>
+<p>For instance, when trying to approximate an intractable distribution
+p(x), we can try minimize KL(p,q) (or KL(q,p)) with q belonging to a
+particular class of distributions (ex: exponential family).</p>
+<p>(KL is used in variational methods and approximate inference message passing algorithms.)</p>
+<p>Another scenario is when we are considering that a &#8220;true&#8221;
+distribution p generated some data, and we infer q from our prior and
+data without knowing p. In this case KL(p,q) measure how close we are
+from the true p. This can help to derive some learning bounds and
+estimator proprieties.</p>
+<p>But <strong>why </strong>using this divergence (which isn&#8217;t a real distance)? Why not a more classical L^2 distance ? Or Chi-square ?</p>
+<p>There are several leads:</p>
+<ul>
+<li><strong>Information geometry: </strong>KL is a special case of <a title="information geometry" target="_blank" href="http://citeseer.ist.psu.edu/zhu95information.html">delta-divergences</a> (comming from delta-connection) These divergences have the great advantage to be invariant by reparametrisation.<strong><br>
+</strong></li>
+<li><strong>Information theory: </strong>KL can be seen as the amount
+of information (in bits) missing to q in order to specify p.
+(conditional entropy). It is the average &#8220;surprise&#8221; of a incoming
+message drawn from q when you expect it arrived form p.</li>
+<li><strong>Bayesian theory: </strong>KL minimisation can be &#8220;derived&#8221; from log-likelihood maximisation.</li>
+</ul>
+<p>Invariance seems to be the more general requirement. Closeness
+beetween distribution should not depend on parametrisation and base
+measure.</p>
+<p>Moreover the delta divergence point of vue gives us a better
+understanding of different appromate inference algorithm. Belief
+propagation, expectation propagation, variational bayes, mean field,
+tree reweighted belief propagation, power expectation propagation,
+generalised belief propagation are unified with delta-divergences. <a title="minka paper" target="_blank" href="http://research.microsoft.com/%7Eminka/papers/message-passing/">(this paper)</a>.</p>
+<p>The information theory justification seems weaker to me because it
+takes place in a theory of communication, requiring an emmitter, a
+channel and a receiver. However it&#8217;s intuitive and expressing divegence
+in bits shows the parametrisation independence.<br>
+Finally I&#8217;m still not sure of my derivation from Log Likelihood minimisation, especially in the continous case.
+</p>
+<p><!--1b61f79f95770ff65a3f07301ea56256-->
+</p>
+<p><!--a589b305dec06f006db78201bd319854-->
+</p>
+<p><!--b1d26819830df390c10e55075c42e81c-->
+</p>
+<p><!--937eaa1e3213c7aa0ad4ece8df30cb44-->
+</p>
+ <!-- Changed by pierre, andded nb of character to keep-->
+							
+				<div class="feedback"></div>
+
+			<!--
+			<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+	    xmlns:dc="http://purl.org/dc/elements/1.1/"
+	    xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+		<rdf:Description rdf:about="http://emotion.inrialpes.fr/~dangauthier/blog/2007/05/19/kl-divergence/"
+    dc:identifier="http://emotion.inrialpes.fr/~dangauthier/blog/2007/05/19/kl-divergence/"
+    dc:title="KL divergence"
+    trackback:ping="http://emotion.inrialpes.fr/~dangauthier/blog/2007/05/19/kl-divergence/trackback/" />
+</rdf:RDF>			-->
+
+			</div>
+				
+		
+
+<h2 id="comments">152 Comments 
+	<a href="#postcomment" title="Leave a comment">»</a>
+</h2>
+
+
+<p>
+<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/05/19/kl-divergence/feed/"><abbr title="Really Simple Syndication">RSS</abbr> feed for comments on this post.</a> 
+
+<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/05/19/kl-divergence/trackback/" rel="trackback">TrackBack <abbr title="Uniform Resource Identifier">URI</abbr></a>
+</p>
+
+<ol id="commentlist">
+
+
+
+	<li id="comment-36213" class="class_comment1">
+	<p>It looks like it seems to be a good measure of surprise in the human visual cortex (see Laurent Itti&#8217;s work at USC)<br>
+<a href="http://nuit-blanche.blogspot.com/2005/12/quantifying-wows-and-autism-how-many.html" rel="nofollow">http://nuit-blanche.blogspot.com/2005/12/quantifying-wows-and-autism-how-many.html</a></p>
+<p>Igor.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://nuit-blanche.blogspot.com/" rel="external nofollow">Igor Carron</a> &#8212; May 19, 2007 <a href="#comment-36213">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-36229" class="class_comment2">
+	<p>As much as I like the KL divergence to measure distance between distributions, it has some disadvantages:</p>
+<p>1. It is not symmetric<br>
+2. It cannot handle cases where the probability of one event is 0 in one distribution and non-zero in the other. </p>
+<p>For these reasons, the Jensen-Shannon divergence (that builds on KL divergence) seems to be a better metric to use.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://behind-the-enemy-lines.blogspot.com/" rel="external nofollow">Panos Ipeirotis</a> &#8212; May 19, 2007 <a href="#comment-36229">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-36873" class="class_comment1">
+	<p>Panos : About the symetry desiderata. Why/when do you need it ?</p>
+<p>In my applications, I&#8217;ve always had a non-symetry between p and q,
+from a semantic point of vue. For instance p is the true one, and q an
+approximation. Since they don&#8217;t play the same role, I don&#8217;t need a
+symetric divergence.</p>
+<p>But I guess that in some contexts, it could be useful to have the symetry, or better, the metric propreties.</p>
+<p>BTW, alpha-divergences (or delta-div) with alpha=0.5 and alpha=2 are
+true distances (Hellinger=Jensen-Shannon and Chi-squarred). (cf link in
+the post)
+</p>
+	<p class="alignright"><small>Comment by <a href="http://emotion.inrialpes.fr/%7Edangauthier/" rel="external nofollow">Pierre</a> &#8212; May 25, 2007 <a href="#comment-36873">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-41124" class="class_comment2">
+	<p>The
+KL divergence can be derived as the maximum entropy in a distribution
+and this relationship does have it&#8217;s uses with solving some types of
+problems (Wake-sleep learning). Although, Shannon&#8217;s coding theorem
+(information transmission; -log n) would seem to be more relevant to ML
+applications.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://codebudo.com/" rel="external nofollow">smw</a> &#8212; July 3, 2007 <a href="#comment-41124">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-41126" class="class_comment1">
+	<p>One
+other way to look at relationships between KL and entropy : maximizing
+the entropy of a distribution is equivalent to minimizing its KL with
+the uniform distribution.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://emotion.inrialpes.fr/%7Edangauthier/" rel="external nofollow">Pierre</a> &#8212; July 3, 2007 <a href="#comment-41126">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-41154" class="class_comment2">
+	<p>Another
+justification of KL-divergence is that it&#8217;s an approximation of the
+natural (Fisher) metric on the space of distributions. That metric is
+natural because it makes the distance between distributions
+proportional to how hard it is to tell them apart based on a finite
+sample, and the measure of model complexity based on that metric seems
+to outperform other methods of model complexity <a href="http://omega.albany.edu:8008/bitnets/" rel="nofollow">http://omega.albany.edu:8008/bitnets/</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://yaroslavvb.blogspot.com/" rel="external nofollow">Yaroslav Bulatov</a> &#8212; July 4, 2007 <a href="#comment-41154">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-65710" class="class_comment1">
+	<p>Natural
+herbal health care medicines, Articles, informations and daily updated
+health concerns issues and their solutions for better health and better
+life. <a href="http://www.naturalherbalz.com/" rel="nofollow">www.naturalherbalz.com</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.naturalherbalz.com/" rel="external nofollow">penis enlargement</a> &#8212; February 24, 2008 <a href="#comment-65710">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-66241" class="class_comment2">
+	<p>Penis
+enlargement products reviews that works best to gain 2-3 inches to your
+penis size naturally and produces hard rock erections in demand. <a href="http://www.penissizeenlargement.net/" rel="nofollow">www.penissizeenlargement.net</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.penissizeenlargement.net/" rel="external nofollow">Penis enlargement</a> &#8212; February 28, 2008 <a href="#comment-66241">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-70752" class="class_comment1">
+	<p>Penis
+enlargement products, American Most Trustworthy Natural herbal productz
+store for penis enlargement,Which increase your size 4-6 inches, Double
+the size Double the fun.(Yes No Pain ALL Gain) And more productslike
+weight loss, male enhancement, skin care, acne solutions, breast
+enlargement, hairLoss for men and women , multi Vitamin for men and
+women, optimum Diabetics, eazol Pain Relief , stretch mark prevention,
+revitol skin brightener, revitol hair removal cream, revitol anti-aging
+solution.<br>
+<a href="http://www.naturalherbalproductz.com/" rel="nofollow">http://www.naturalherbalproductz.com</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.naturalherbalproductz.com/" rel="external nofollow">penis enlargement medicine</a> &#8212; April 8, 2008 <a href="#comment-70752">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-71064" class="class_comment2">
+	<p>I
+am glad to post my views and points in this blog, but I must say that
+webmaster of this blog has done a very great job to make his blog more
+informative and more discussable but unfortunately everything is same
+here that more than 80% in this and other blogs post their comments for
+making spam!!!, so i will really all this spam links to google band
+tool, because webmaster makes blogs for making discuss and for sloving
+each other problems. thanks<br>
+<a href="http://www.naturalherbalproduct.com/" rel="nofollow">http://www.naturalherbalproduct.com</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.naturalherbalproduct.com/" rel="external nofollow">penis enlargement</a> &#8212; April 11, 2008 <a href="#comment-71064">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-71950" class="class_comment1">
+	<p>I
+am Very thank full the owner of this blog. Becouse of this blog is very
+imformative for me.. And I ask u some thiing You make more this type
+blog where we can get more knowledge.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.penisenlargementz.com/" rel="external nofollow">Prosolution</a> &#8212; April 19, 2008 <a href="#comment-71950">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72155" class="class_comment2">
+	<p><strong>Percocet picture&#8230;.</strong></p>
+<p>Order percocet online&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://zxpercocet.0x.ro/" rel="external nofollow">Buy percocet and greece.</a> &#8212; April 20, 2008 <a href="#comment-72155">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72203" class="class_comment1">
+	<p><strong>Free phentermine&#8230;.</strong></p>
+<p>Phentermine. Generic phentermine. Phentermine free shipping. Herbal phentermine&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://buyphentermineonlinenow.weebly.com/" rel="external nofollow">Phentermine blue.</a> &#8212; April 21, 2008 <a href="#comment-72203">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72295" class="class_comment2">
+	<p>buy cheap soma online
+</p>
+	<p class="alignright"><small>Comment by <a href="http://tsoma.informe.com/" rel="external nofollow">buy cheap soma online</a> &#8212; April 21, 2008 <a href="#comment-72295">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72362" class="class_comment1">
+	<p>buy soma you <a href="http://buysomaa.weebly.com/" rel="nofollow">you buy soma</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://buysomaa.weebly.com/" rel="external nofollow">some buy soma</a> &#8212; April 22, 2008 <a href="#comment-72362">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72405" class="class_comment2">
+	<p><strong>Generic viagra usa&#8230;.</strong></p>
+<p>Generic viagra mastercard. Generic viagra&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.xanga.com/GENERIC_VIAGRA_online" rel="external nofollow">Premium generic viagra.</a> &#8212; April 22, 2008 <a href="#comment-72405">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72413" class="class_comment1">
+	<p><strong>Amoxicillin&#8230;.</strong></p>
+<p>Amoxicillin. Colonoscopy preparation and amoxicillin. Prescription
+free amoxicillin. Amoxicillin itch. Taking amoxicillin while pregnant&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://qwamoxicillin.webng.com/" rel="external nofollow">Amoxicillin.</a> &#8212; April 22, 2008 <a href="#comment-72413">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72441" class="class_comment2">
+	<p><strong>480e8aa80b&#8230;</strong></p>
+<p>480e8aa80b&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.google.com/?480e8aa80b" rel="external nofollow">480e8aa80b</a> &#8212; April 23, 2008 <a href="#comment-72441">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72651" class="class_comment1">
+	<p><strong>Vicodin&#8230;.</strong></p>
+<p>What is vicodin. Vicodin. Vicodin detox. Mexican vicodin&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://groups.google.com/group/buy-vicodin-online/web/cheapest-vicodin-prices" rel="external nofollow">Easing symptoms of vicodin withdrawal.</a> &#8212; April 25, 2008 <a href="#comment-72651">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72849" class="class_comment2">
+	<p><strong>Diet pills&#8230;.</strong></p>
+<p>Bad diet pills. Diet pills online. Phentermine diet pills. Consequences of diet pills. Diet pills. Ma huang diet pills&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://my.mediapost.com/getslimwithphentermine" rel="external nofollow">Cheap diet pills.</a> &#8212; April 27, 2008 <a href="#comment-72849">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-72982" class="class_comment1">
+	<p><strong>Viagra&#8230;.</strong></p>
+<p>Viagra. Women and viagra. Free viagra. Re viagra cello&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://groups.google.ru/group/1buy-viagra-online1/web/viagra" rel="external nofollow">Viagra.</a> &#8212; April 28, 2008 <a href="#comment-72982">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73070" class="class_comment2">
+	<p><strong>Tramadol&#8230;.</strong></p>
+<p>Tramadol online. Tramadol. Cheapest tramadol. Tramadol 100mg&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://tramadol15.proboards102.com/" rel="external nofollow">What is the street value for tramadol.</a> &#8212; April 29, 2008 <a href="#comment-73070">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73071" class="class_comment1">
+	<p><strong>Connecticut ephedra lawyers&#8230;.</strong></p>
+<p>Products containing ephedra. Wyoming ephedra lawyer. Ephedra products. Where to find ephedra&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://groups.google.ru/group/best-prices-on-ephedra-overnight-delivery/web/groups-google-com-group-buy-phentermine-online-web-buy-phentermine-online-free-overnight-shipping" rel="external nofollow">Chronic ephedra abuse.</a> &#8212; April 29, 2008 <a href="#comment-73071">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73167" class="class_comment2">
+	<p><strong>Buy amoxicillin with no prescription&#8230;.</strong></p>
+<p>Amoxicillin. Amoxicillin and clavulanate potassium 875 mlg.
+Amoxicillin and pregnancy. Amoxicillin online. Amoxicillin online
+homepage&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://qwamoxicillin.infinitehosting.net/" rel="external nofollow">Amoxicillin.</a> &#8212; April 30, 2008 <a href="#comment-73167">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73343" class="class_comment1">
+	<p><strong>No deposit bonus in race bets&#8230;</strong></p>
+<p>No deposit bonus in race bets&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://willikhodr.forumup.name/?mforum=willikhodr" rel="external nofollow">No deposit bonus in race bets</a> &#8212; May 1, 2008 <a href="#comment-73343">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73369" class="class_comment2">
+	<p><strong>Free money casino&#8230;</strong></p>
+<p>Free money casino&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://gabrithomp7.forumup.it/?mforum=gabrithomp7" rel="external nofollow">Free money casino</a> &#8212; May 2, 2008 <a href="#comment-73369">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73378" class="class_comment1">
+	<p><strong>Bingo with 1 deposit to play&#8230;</strong></p>
+<p>Bingo with 1 deposit to play&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://anthophill2.forumup.ch/?mforum=anthophill2" rel="external nofollow">Bingo with 1 deposit to play</a> &#8212; May 2, 2008 <a href="#comment-73378">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73383" class="class_comment2">
+	<p><strong>Free slots games&#8230;</strong></p>
+<p>Free slots games&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.phpbb-host.org/?mforum=lorifinde7" rel="external nofollow">Free slots games</a> &#8212; May 2, 2008 <a href="#comment-73383">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73405" class="class_comment1">
+	<p><strong>No deposit 20 bonus&#8230;</strong></p>
+<p>No deposit 20 bonus&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://timothurli9.forumparfait.com/" rel="external nofollow">No deposit 20 bonus</a> &#8212; May 2, 2008 <a href="#comment-73405">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73415" class="class_comment2">
+	<p><strong>No deposit required starting out poker players&#8230;</strong></p>
+<p>No deposit required starting out poker players&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://andrebende9.forumup.cn/?mforum=andrebende9" rel="external nofollow">No deposit required starting out poker players</a> &#8212; May 2, 2008 <a href="#comment-73415">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73422" class="class_comment1">
+	<p>quite enjoyed your work .
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.megagrattiskasino.com/gambling.html" rel="external nofollow">online poker rums</a> &#8212; May 2, 2008 <a href="#comment-73422">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73426" class="class_comment2">
+	<p><strong>No deposit codes&#8230;</strong></p>
+<p>No deposit codes&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://johnjacks5.forumup.cn/?mforum=johnjacks5" rel="external nofollow">No deposit codes</a> &#8212; May 2, 2008 <a href="#comment-73426">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73454" class="class_comment1">
+	<p><strong>No prescription xanax&#8230;.</strong></p>
+<p>Xanax. Xanax class action. Buying xanax with mastercard. Xanax
+without a prescription. Xanax during pregnancy. Titel auteur datum
+xanax medication bmnwbbuk&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://groups.msn.com/-xanax" rel="external nofollow">Xanax.</a> &#8212; May 3, 2008 <a href="#comment-73454">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73460" class="class_comment2">
+	<p><strong>Free blackjack money&#8230;</strong></p>
+<p>Free blackjack money&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://grossarno.forumup.jobs/?mforum=grossarno" rel="external nofollow">Free blackjack money</a> &#8212; May 3, 2008 <a href="#comment-73460">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73476" class="class_comment1">
+	<p><strong>100% free slots&#8230;</strong></p>
+<p>100% free slots&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://georggloor2.forumup.eu/?mforum=georggloor2" rel="external nofollow">100% free slots</a> &#8212; May 3, 2008 <a href="#comment-73476">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73482" class="class_comment2">
+	<p><strong>Jackpot capitol free chip codes&#8230;</strong></p>
+<p>Jackpot capitol free chip codes&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://ghoshron6.forumup.ch/?mforum=ghoshron6" rel="external nofollow">Jackpot capitol free chip codes</a> &#8212; May 3, 2008 <a href="#comment-73482">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73496" class="class_comment1">
+	<p><strong>New online casino with no deposit&#8230;</strong></p>
+<p>New online casino with no deposit&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://powertal2.ipbfree.com/" rel="external nofollow">New online casino with no deposit</a> &#8212; May 3, 2008 <a href="#comment-73496">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73512" class="class_comment2">
+	<p><strong>2008 bingo casino bonus&#8230;</strong></p>
+<p>2008 bingo casino bonus&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://golazsamue62.justwebsearch.com/" rel="external nofollow">2008 bingo casino bonus</a> &#8212; May 3, 2008 <a href="#comment-73512">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73517" class="class_comment1">
+	<p><strong>No-deposit-instant-bonus everest&#8230;</strong></p>
+<p>No-deposit-instant-bonus everest&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://smithwilco.justwebsearch.com/" rel="external nofollow">No-deposit-instant-bonus everest</a> &#8212; May 3, 2008 <a href="#comment-73517">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73520" class="class_comment2">
+	<p><strong>Free money usa slots&#8230;</strong></p>
+<p>Free money usa slots&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://duggijohn.justwebsearch.com/" rel="external nofollow">Free money usa slots</a> &#8212; May 3, 2008 <a href="#comment-73520">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73525" class="class_comment1">
+	<p><strong>Computer games super party game casino&#8230;</strong></p>
+<p>Computer games super party game casino&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://dugginsyin57.justwebsearch.com/" rel="external nofollow">Computer games super party game casino</a> &#8212; May 4, 2008 <a href="#comment-73525">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73542" class="class_comment2">
+	<p><strong>Free bonus for bet no deposit forum&#8230;</strong></p>
+<p>Free bonus for bet no deposit forum&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://mingelena7.forumup.cn/?mforum=mingelena7" rel="external nofollow">Free bonus for bet no deposit forum</a> &#8212; May 4, 2008 <a href="#comment-73542">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73551" class="class_comment1">
+	<p><strong>Instant casino cash no download&#8230;</strong></p>
+<p>Instant casino cash no download&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://flickkeith.forumup.org/?mforum=flickkeith" rel="external nofollow">Instant casino cash no download</a> &#8212; May 4, 2008 <a href="#comment-73551">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73561" class="class_comment2">
+	<p><strong>10 dollar poker deposit&#8230;</strong></p>
+<p>10 dollar poker deposit&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://xianabianc8.forumup.name/?mforum=xianabianc8" rel="external nofollow">10 dollar poker deposit</a> &#8212; May 4, 2008 <a href="#comment-73561">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73563" class="class_comment1">
+	<p><strong>Isabell&#8230;</strong></p>
+<p>Six Apart started a working group in February 2006 to improve the
+Trackback protocol with the goal to eventually have it approved as&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://uk.geocities.com/jog2fid" rel="external nofollow">Isabell</a> &#8212; May 4, 2008 <a href="#comment-73563">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73577" class="class_comment2">
+	<p><strong>Casino games no download no sign in&#8230;</strong></p>
+<p>Casino games no download no sign in&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://xiaohcooke.forumup.us/?mforum=xiaohcooke" rel="external nofollow">Casino games no download no sign in</a> &#8212; May 4, 2008 <a href="#comment-73577">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73588" class="class_comment1">
+	<p><strong>Online usa slot machine gambling&#8230;</strong></p>
+<p>Online usa slot machine gambling&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://levyedwin6.forumup.ro/?mforum=levyedwin6" rel="external nofollow">Online usa slot machine gambling</a> &#8212; May 4, 2008 <a href="#comment-73588">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73610" class="class_comment2">
+	<p>I don&#8217;t generally feel anything until noon; then it&#8217;s time for my nap.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://groups.msn.com/AirlineTicket" rel="external nofollow">Airline Ticket</a> &#8212; May 4, 2008 <a href="#comment-73610">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73611" class="class_comment1">
+	<p>Art is either plagiarism or revolution.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://groups.msn.com/CheapCarInsurance" rel="external nofollow">Cheap Car Insurance</a> &#8212; May 4, 2008 <a href="#comment-73611">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73612" class="class_comment2">
+	<p>Writing
+gives you the illusion of control, and then you realize it&#8217;s just an
+illusion, that people are going to bring their own stuff into it.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://groups.msn.com/Valium1" rel="external nofollow">valium</a> &#8212; May 4, 2008 <a href="#comment-73612">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73613" class="class_comment1">
+	<p>Life engenders life. Energy creates energy. It is by spending oneself that one becomes rich.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://groups.msn.com/buy-viagra" rel="external nofollow">Buy Viagra</a> &#8212; May 4, 2008 <a href="#comment-73613">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73614" class="class_comment2">
+	<p>The
+radical of one century is the conservative of the next. The radical
+invents the views. When he has worn them out the conservative adopts
+them.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://groups.msn.com/buy-phentermine" rel="external nofollow">Buy phentermine</a> &#8212; May 4, 2008 <a href="#comment-73614">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73661" class="class_comment1">
+	<p><strong>Gay Sex Gay Sex Videos Black Gay Men&#8230;</strong></p>
+<p>I can not agree with you in 100% regarding some thoughts, but you got good point of view&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.reviewsweb.net/" rel="external nofollow">Gay Sex Gay Sex Videos Black Gay Men</a> &#8212; May 4, 2008 <a href="#comment-73661">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73679" class="class_comment2">
+	<p><strong>Tramadol&#8230;.</strong></p>
+<p>Cheap tramadol. Tramadol side effects. Tramadol&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://rtramadol.informe.com/" rel="external nofollow">Tramadol cheap no rx.</a> &#8212; May 5, 2008 <a href="#comment-73679">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73702" class="class_comment1">
+	<p><strong>Casino no purchase coupon&#8230;</strong></p>
+<p>Casino no purchase coupon&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://johanwilli1.forumup.com/?mforum=johanwilli1" rel="external nofollow">Casino no purchase coupon</a> &#8212; May 5, 2008 <a href="#comment-73702">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73741" class="class_comment2">
+	<p><strong>2008 free casino money no deposit us players&#8230;</strong></p>
+<p>2008 free casino money no deposit us players&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://bonitdeuri.forumup.se/?mforum=bonitdeuri" rel="external nofollow">2008 free casino money no deposit us players</a> &#8212; May 5, 2008 <a href="#comment-73741">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73743" class="class_comment1">
+	<p><strong>Online casino no deposit codes for usa players&#8230;</strong></p>
+<p>Online casino no deposit codes for usa players&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://shekakelly.forumup.ch/?mforum=shekakelly" rel="external nofollow">Online casino no deposit codes for usa players</a> &#8212; May 5, 2008 <a href="#comment-73743">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73755" class="class_comment2">
+	<p><strong>Shark casino bonus codes&#8230;</strong></p>
+<p>Shark casino bonus codes&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://meganmrowi.forumup.us/?mforum=meganmrowi" rel="external nofollow">Shark casino bonus codes</a> &#8212; May 5, 2008 <a href="#comment-73755">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73758" class="class_comment1">
+	<p><strong>Free slot-machine online games no online registration&#8230;</strong></p>
+<p>Free slot-machine online games no online registration&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://foxsyukuro.forumup.us/?mforum=foxsyukuro" rel="external nofollow">Free slot-machine online games no online registration</a> &#8212; May 5, 2008 <a href="#comment-73758">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73760" class="class_comment2">
+	<p>This
+is very informative blog and very useful for the visitors. And I must
+say this to blog owner that he has done a good job. All people were
+looking for such type of information that webmaster of this blog
+provide to all of us. And I must say this to blog owner u make more
+this type blogs and we get more information about this. I read the Blog
+completely I bookmarked the site. Plan on coming back later to spend a
+little time there. I am very thank full to owner of this blog.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.penisgrowth.we.bs/" rel="external nofollow">Penis Enlargement</a> &#8212; May 5, 2008 <a href="#comment-73760">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73761" class="class_comment1">
+	<p>Penis enlargement. Increase your penis size naturally by 3 to 4 inches.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.penisgrowth.we.bs/" rel="external nofollow">Penis Enlargement</a> &#8212; May 5, 2008 <a href="#comment-73761">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73765" class="class_comment2">
+	<p><strong>Onlin casinos free&#8230;</strong></p>
+<p>Onlin casinos free&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.makephpbb.com/roberbende/" rel="external nofollow">Onlin casinos free</a> &#8212; May 5, 2008 <a href="#comment-73765">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73779" class="class_comment1">
+	<p><strong>Best forum for free money betting poker&#8230;</strong></p>
+<p>Best forum for free money betting poker&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://balajiron.forumup.eu/?mforum=balajiron" rel="external nofollow">Best forum for free money betting poker</a> &#8212; May 5, 2008 <a href="#comment-73779">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73795" class="class_comment2">
+	<p><strong>Casino free codes&#8230;</strong></p>
+<p>Casino free codes&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://brucedeuri.prophpbb.com/topic1.html" rel="external nofollow">Casino free codes</a> &#8212; May 5, 2008 <a href="#comment-73795">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73803" class="class_comment1">
+	<p><strong>Slots of vegas bonus coupon&#8230;</strong></p>
+<p>Slots of vegas bonus coupon&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://brucewethe.forumup.pl/?mforum=brucewethe" rel="external nofollow">Slots of vegas bonus coupon</a> &#8212; May 6, 2008 <a href="#comment-73803">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73887" class="class_comment2">
+	<p><strong>Viagra&#8230;.</strong></p>
+<p>Viagra dosage. Viagra prescription price. Taking viagra with cialis. Re viagra cello. Herbal viagra&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://health.groups.yahoo.com/group/BuyviagraOnlineHERE/" rel="external nofollow">Order viagra.</a> &#8212; May 6, 2008 <a href="#comment-73887">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73914" class="class_comment1">
+	<p><strong>2008 free cash on casinos&#8230;</strong></p>
+<p>2008 free cash on casinos&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://matthnikon8.forumup.info/?mforum=matthnikon8" rel="external nofollow">2008 free cash on casinos</a> &#8212; May 6, 2008 <a href="#comment-73914">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-73980" class="class_comment2">
+	<p><strong>Roulette free bonus no deposit&#8230;</strong></p>
+<p>Roulette free bonus no deposit&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://nevenpower4.forumup.tv/?mforum=nevenpower4" rel="external nofollow">Roulette free bonus no deposit</a> &#8212; May 6, 2008 <a href="#comment-73980">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74056" class="class_comment1">
+	<p><strong>Free money no deposit no purchase casino&#8230;</strong></p>
+<p>Free money no deposit no purchase casino&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://johndurac.forumup.tv/?mforum=johndurac" rel="external nofollow">Free money no deposit no purchase casino</a> &#8212; May 7, 2008 <a href="#comment-74056">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74088" class="class_comment2">
+	<p><strong>All no deposit poker money&#8230;</strong></p>
+<p>All no deposit poker money&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://agathhalle.forumup.ir/?mforum=agathhalle" rel="external nofollow">All no deposit poker money</a> &#8212; May 7, 2008 <a href="#comment-74088">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74089" class="class_comment1">
+	<p>day are Mexican independence <a href="http://mexican-independence-day.barerube.cn/" rel="nofollow">day cookies Mexican independence</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://mexican-independence-day.barerube.cn/" rel="external nofollow">cookies Mexican day independence</a> &#8212; May 7, 2008 <a href="#comment-74089">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74100" class="class_comment2">
+	<p><strong>10 $ bonus poker&#8230;</strong></p>
+<p>10 $ bonus poker&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://stefavaran.forumup.de/?mforum=stefavaran" rel="external nofollow">10 $ bonus poker</a> &#8212; May 7, 2008 <a href="#comment-74100">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74104" class="class_comment1">
+	<p><strong>Phentermine&#8230;.</strong></p>
+<p>Cheap phentermine. Buy phentermine cod. Phentermine. Phentermine pill. Phentermine ingredient. Compare phentermine price&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.theforumhub.com/forums/?mforum=medicine" rel="external nofollow">Phentermine.</a> &#8212; May 7, 2008 <a href="#comment-74104">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74108" class="class_comment2">
+	<p><strong>No purchase deposit playthrough&#8230;</strong></p>
+<p>No purchase deposit playthrough&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://bayloflick.forumup.mobi/?mforum=bayloflick" rel="external nofollow">No purchase deposit playthrough</a> &#8212; May 7, 2008 <a href="#comment-74108">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74113" class="class_comment1">
+	<p><strong>No deposit one hour free play&#8230;</strong></p>
+<p>No deposit one hour free play&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://agnielin.forumup.jobs/?mforum=agnielin" rel="external nofollow">No deposit one hour free play</a> &#8212; May 7, 2008 <a href="#comment-74113">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74129" class="class_comment2">
+	<p><strong>Online slots jackpot party&#8230;</strong></p>
+<p>Online slots jackpot party&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://andrehuang.forumup.mobi/?mforum=andrehuang" rel="external nofollow">Online slots jackpot party</a> &#8212; May 7, 2008 <a href="#comment-74129">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74134" class="class_comment1">
+	<p><strong>No deposit bonus codes casinos&#8230;</strong></p>
+<p>No deposit bonus codes casinos&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://laurahorow.forumup.net/?mforum=laurahorow" rel="external nofollow">No deposit bonus codes casinos</a> &#8212; May 7, 2008 <a href="#comment-74134">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74155" class="class_comment2">
+	<p><strong>New bonus code no deposit&#8230;</strong></p>
+<p>New bonus code no deposit&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://vaughbasu.forumup.ca/?mforum=vaughbasu" rel="external nofollow">New bonus code no deposit</a> &#8212; May 8, 2008 <a href="#comment-74155">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74189" class="class_comment1">
+	<p><strong>Phentermine&#8230;.</strong></p>
+<p>Phentermine no prescription. Order phentermine online. Phentermine
+online. Phentermine cash on delivery. Phentermine without prescription.
+Phentermine. Phentermine 37 5mg&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://groups.google.com/group/Phentermine/web/buy-phentermine" rel="external nofollow">Phentermine.</a> &#8212; May 8, 2008 <a href="#comment-74189">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74196" class="class_comment2">
+	<p><strong>Play jackpot party casino game for free online&#8230;</strong></p>
+<p>Play jackpot party casino game for free online&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.phpbb-host.org/?mforum=andremoxim4" rel="external nofollow">Play jackpot party casino game for free online</a> &#8212; May 8, 2008 <a href="#comment-74196">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74201" class="class_comment1">
+	<p><strong>Rtg no deposit bonus codes&#8230;</strong></p>
+<p>Rtg no deposit bonus codes&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://laukeith.forumup.tv/?mforum=laukeith" rel="external nofollow">Rtg no deposit bonus codes</a> &#8212; May 8, 2008 <a href="#comment-74201">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74212" class="class_comment2">
+	<p><strong>Williams slot machines online play&#8230;</strong></p>
+<p>Williams slot machines online play&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://grabaforum.com/laurabende/" rel="external nofollow">Williams slot machines online play</a> &#8212; May 8, 2008 <a href="#comment-74212">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74215" class="class_comment1">
+	<p><strong>Free online slots bonus us players&#8230;</strong></p>
+<p>Free online slots bonus us players&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://westrobbie.netfreehost.com/" rel="external nofollow">Free online slots bonus us players</a> &#8212; May 8, 2008 <a href="#comment-74215">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74221" class="class_comment2">
+	<p><strong>Bingo no sign up&#8230;</strong></p>
+<p>Bingo no sign up&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://mariataylo.forumup.it/?mforum=mariataylo" rel="external nofollow">Bingo no sign up</a> &#8212; May 8, 2008 <a href="#comment-74221">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74232" class="class_comment1">
+	<p><strong>Real time gaming free cash 2008&#8230;</strong></p>
+<p>Real time gaming free cash 2008&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://paulfreid.forumup.org/?mforum=paulfreid" rel="external nofollow">Real time gaming free cash 2008</a> &#8212; May 8, 2008 <a href="#comment-74232">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74236" class="class_comment2">
+	<p><strong>No deposit cash chip codes&#8230;</strong></p>
+<p>No deposit cash chip codes&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://garetknuts7.forumup.com.au/?mforum=garetknuts7" rel="external nofollow">No deposit cash chip codes</a> &#8212; May 8, 2008 <a href="#comment-74236">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74309" class="class_comment1">
+	<p><strong>Get free chips for partypoker&#8230;</strong></p>
+<p>Get free chips for partypoker&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://cookejohn6.123forum.nl/" rel="external nofollow">Get free chips for partypoker</a> &#8212; May 9, 2008 <a href="#comment-74309">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74319" class="class_comment2">
+	<p><strong>Free game play online&#8230;</strong></p>
+<p>Free game play online&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://cynthwethe5.forumup.tv/?mforum=cynthwethe5" rel="external nofollow">Free game play online</a> &#8212; May 9, 2008 <a href="#comment-74319">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74329" class="class_comment1">
+	<p><strong>Instant no deposit casino bonus&#8230;</strong></p>
+<p>Instant no deposit casino bonus&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://anthovahle.forumup.lv/?mforum=anthovahle" rel="external nofollow">Instant no deposit casino bonus</a> &#8212; May 9, 2008 <a href="#comment-74329">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74340" class="class_comment2">
+	<p><strong>Free no deposit casino codes&#8230;</strong></p>
+<p>Free no deposit casino codes&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://richachen9.forumup.net/?mforum=richachen9" rel="external nofollow">Free no deposit casino codes</a> &#8212; May 9, 2008 <a href="#comment-74340">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74352" class="class_comment1">
+	<p><strong>Onlinecasinosfreeplay&#8230;</strong></p>
+<p>Onlinecasinosfreeplay&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.ez-forum.net/forum/?mforum=flicksteve" rel="external nofollow">Onlinecasinosfreeplay</a> &#8212; May 9, 2008 <a href="#comment-74352">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74402" class="class_comment2">
+	<p><strong>New cool cat no deposit bonus codes forums&#8230;</strong></p>
+<p>New cool cat no deposit bonus codes forums&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.ez-forum.net/forum/?mforum=caitlzhang" rel="external nofollow">New cool cat no deposit bonus codes forums</a> &#8212; May 10, 2008 <a href="#comment-74402">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74408" class="class_comment1">
+	<p><strong>Super cash game&#8230;</strong></p>
+<p>Super cash game&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://elizasirut.forumup.name/?mforum=elizasirut" rel="external nofollow">Super cash game</a> &#8212; May 10, 2008 <a href="#comment-74408">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74416" class="class_comment2">
+	<p><strong>Games no internet required&#8230;</strong></p>
+<p>Games no internet required&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://libeverly1.forumup.jobs/?mforum=libeverly1" rel="external nofollow">Games no internet required</a> &#8212; May 10, 2008 <a href="#comment-74416">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74417" class="class_comment1">
+	<p><strong>Casino no-deposit money&#8230;</strong></p>
+<p>Casino no-deposit money&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.getphpbb.com/phpbb/yuanypeter.html" rel="external nofollow">Casino no-deposit money</a> &#8212; May 10, 2008 <a href="#comment-74417">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74430" class="class_comment2">
+	<p><strong>2008 no deposit bonus coupon online casino&#8230;</strong></p>
+<p>2008 no deposit bonus coupon online casino&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://wilsonjohn1.forumup.gr/?mforum=wilsonjohn1" rel="external nofollow">2008 no deposit bonus coupon online casino</a> &#8212; May 10, 2008 <a href="#comment-74430">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74440" class="class_comment1">
+	<p><strong>No deposit casino cashable&#8230;</strong></p>
+<p>No deposit casino cashable&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://luosteve.offtopic.cc/" rel="external nofollow">No deposit casino cashable</a> &#8212; May 10, 2008 <a href="#comment-74440">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74445" class="class_comment2">
+	<p><strong>Riverbelle casino codes&#8230;</strong></p>
+<p>Riverbelle casino codes&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://williwethe7.forumup.ca/?mforum=williwethe7" rel="external nofollow">Riverbelle casino codes</a> &#8212; May 10, 2008 <a href="#comment-74445">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74446" class="class_comment1">
+	<p>Generic Cialis is used to treat male impotence also referred to as erectile dysfunction (ED).<br>
+Generic Cialis has the same active ingredient as brand name Cialis, and is equivalent in effect,<br>
+strength, and dosage. This bestselling pill offers the longest performance period on the market.<br>
+When taken 15 minutes before intercourse it can last up to 36 hours. The success rate of oral ED drugs<br>
+is very high, above 90%; however different people require different dosages to attain optimum results.<br>
+only available at <a href="http://www.penisenlargementv.com/" rel="nofollow">http://www.penisenlargementv.com/</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.penisenlargementv.com/" rel="external nofollow">Penis enlargement</a> &#8212; May 10, 2008 <a href="#comment-74446">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74479" class="class_comment2">
+	<p><strong>Casino coupons online&#8230;</strong></p>
+<p>Casino coupons online&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://shekamiyak.forumup.gr/?mforum=shekamiyak" rel="external nofollow">Casino coupons online</a> &#8212; May 11, 2008 <a href="#comment-74479">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74484" class="class_comment1">
+	<p><strong>Poker no minimum deposit&#8230;</strong></p>
+<p>Poker no minimum deposit&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://roberhurli8.forumparfait.com/" rel="external nofollow">Poker no minimum deposit</a> &#8212; May 11, 2008 <a href="#comment-74484">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74488" class="class_comment2">
+	<p><strong>No deposit casino promotions&#8230;</strong></p>
+<p>No deposit casino promotions&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://michazhao.forumup.info/?mforum=michazhao" rel="external nofollow">No deposit casino promotions</a> &#8212; May 11, 2008 <a href="#comment-74488">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74495" class="class_comment1">
+	<p><strong>Free sign up bingo&#8230;</strong></p>
+<p>Free sign up bingo&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://bonitvecch.forumup.jobs/?mforum=bonitvecch" rel="external nofollow">Free sign up bingo</a> &#8212; May 11, 2008 <a href="#comment-74495">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74504" class="class_comment2">
+	<p><strong>Free poker money forum&#8230;</strong></p>
+<p>Free poker money forum&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.makephpbb.com/arlenwojci/" rel="external nofollow">Free poker money forum</a> &#8212; May 11, 2008 <a href="#comment-74504">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74518" class="class_comment1">
+	<p>Nice site and fine content
+</p>
+	<p class="alignright"><small>Comment by tip &#8212; May 11, 2008 <a href="#comment-74518">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74557" class="class_comment2">
+	<p><strong>Las vegas slots machines free online&#8230;</strong></p>
+<p>Las vegas slots machines free online&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://beatrbasu1.forumup.it/?mforum=beatrbasu1" rel="external nofollow">Las vegas slots machines free online</a> &#8212; May 12, 2008 <a href="#comment-74557">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74623" class="class_comment1">
+	<p><strong>Carisoprodol&#8230;.</strong></p>
+<p>Carisoprodol mg. Carisoprodol&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://carisoprodol.versusblog.com/" rel="external nofollow">Carisoprodol.</a> &#8212; May 12, 2008 <a href="#comment-74623">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74630" class="class_comment2">
+	<p><strong>Instant no deposit bonus casinos&#8230;</strong></p>
+<p>Instant no deposit bonus casinos&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://arlenwitte.forumup.es/?mforum=arlenwitte" rel="external nofollow">Instant no deposit bonus casinos</a> &#8212; May 12, 2008 <a href="#comment-74630">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74642" class="class_comment1">
+	<p><strong>Free us money casinos&#8230;</strong></p>
+<p>Free us money casinos&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://kirstmalys.forumup.eu/?mforum=kirstmalys" rel="external nofollow">Free us money casinos</a> &#8212; May 12, 2008 <a href="#comment-74642">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74676" class="class_comment2">
+	<p><strong>Best no-deposit bingo slots&#8230;</strong></p>
+<p>Best no-deposit bingo slots&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://michalanza.forumup.ca/?mforum=michalanza" rel="external nofollow">Best no-deposit bingo slots</a> &#8212; May 12, 2008 <a href="#comment-74676">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74708" class="class_comment1">
+	<p><strong>Codeine&#8230;.</strong></p>
+<p>Codeine&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://yucodeine.mybestfreehost.com/" rel="external nofollow">Codeine.</a> &#8212; May 12, 2008 <a href="#comment-74708">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74710" class="class_comment2">
+	<p><strong>No deposite bingo bonus&#8230;</strong></p>
+<p>No deposite bingo bonus&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.makephpbb.com/kerrbryan/" rel="external nofollow">No deposite bingo bonus</a> &#8212; May 12, 2008 <a href="#comment-74710">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74734" class="class_comment1">
+	<p><strong>No deposit bonus casinoa&#8230;</strong></p>
+<p>No deposit bonus casinoa&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://jeffsamue1.forumup.it/?mforum=jeffsamue1" rel="external nofollow">No deposit bonus casinoa</a> &#8212; May 12, 2008 <a href="#comment-74734">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74743" class="class_comment2">
+	<p><strong>Rtg casinos nodeposit&#8230;</strong></p>
+<p>Rtg casinos nodeposit&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://venkahenne.forumup.lv/?mforum=venkahenne" rel="external nofollow">Rtg casinos nodeposit</a> &#8212; May 12, 2008 <a href="#comment-74743">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74757" class="class_comment1">
+	<p><strong>ab exercise machine&#8230;</strong></p>
+<p>thanks so much. Good writing&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://abdominal-belt.com/How-to-get-a-six-pack" rel="external nofollow">ab exercise machine</a> &#8212; May 13, 2008 <a href="#comment-74757">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74774" class="class_comment2">
+	<p><strong>Vidio slot&#8230;</strong></p>
+<p>Vidio slot&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://liupablo7.forumup.ca/?mforum=liupablo7" rel="external nofollow">Vidio slot</a> &#8212; May 13, 2008 <a href="#comment-74774">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74797" class="class_comment1">
+	<p><strong>Xanax&#8230;.</strong></p>
+<p>Xanax&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.youtube.com/buyxanaxonline" rel="external nofollow">Xanax.</a> &#8212; May 13, 2008 <a href="#comment-74797">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74813" class="class_comment2">
+	<p><strong>Casino no deposit download bonus&#8230;</strong></p>
+<p>Casino no deposit download bonus&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://amymikal.forumup.com.au/?mforum=amymikal" rel="external nofollow">Casino no deposit download bonus</a> &#8212; May 13, 2008 <a href="#comment-74813">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74859" class="class_comment1">
+	<p>Four things you should know before you start!</p>
+<p>1. Penis enlargement is possible!<br>No matter what you think, you
+CAN get extra inches to your penis without surgery. This fact is proven
+and backed up with clinical studies and by the experiences of thousands
+of males around the globe who managed to gain up to 5.5 inches in
+length! Not enough? Well they could gain even more, but their wives
+started to complain!!!</p>
+<p>It is not only they gained in penis length. They managed to gain in
+girth as well. That is very important factor for women&#8217;s sexual
+pleasure, especially for women who had natural labor.</p>
+<p>2. Which penis enlargement methods are the best?<br>
+Let me answer you with the question: What could be more natural than
+natural methods? Luckily, natural penis methods WORK when it comes to
+penis enlargement.</p>
+<p>3. Where do I find the information on natural penis enlargement?<br>
+Internet is obvious choice. You&#8217;ll get tons of information and
+different techniques on how to enlarge your penis. But if you try to
+Google for it and you&#8217;ll face a problem - millions of websites will
+appear.</p>
+<p>4. OK, but how do I know which methods actually work?<br>
+All proven penis enlargement methods are based exclusively on medical
+facts such as penis anatomy and physiology, clinical studies and
+patented products.<br>
+Advice: if you are not of medical education background, you might get
+easily caught by &#8220;penis enlargement&#8221; SCAMS. Try to look for the
+companies with good reputation, 24/7customer support and &#8220;money back
+guarantee&#8221; policy.<br>
+<a href="http://sizegeneticsblogy.blogspot.com/" rel="nofollow">http://sizegeneticsblogy.blogspot.com/</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://sizegeneticsblogy.blogspot.com/" rel="external nofollow">Penis enlargement</a> &#8212; May 13, 2008 <a href="#comment-74859">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74875" class="class_comment2">
+	<p><strong>Play free online slots&#8230;</strong></p>
+<p>Play free online slots&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://jamesphill.forumup.vn/?mforum=jamesphill" rel="external nofollow">Play free online slots</a> &#8212; May 13, 2008 <a href="#comment-74875">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74978" class="class_comment1">
+	<p><strong>Nodeposit bingo&#8230;</strong></p>
+<p>Nodeposit bingo&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://meganslate3.forumparfait.com/" rel="external nofollow">Nodeposit bingo</a> &#8212; May 14, 2008 <a href="#comment-74978">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-74987" class="class_comment2">
+	<p><strong>Code pour casino coolcat&#8230;</strong></p>
+<p>Code pour casino coolcat&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.mfipb.com/?mforum=seounmello6" rel="external nofollow">Code pour casino coolcat</a> &#8212; May 14, 2008 <a href="#comment-74987">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75004" class="class_comment1">
+	<p><strong>Free no deposit bonus bingo&#8230;</strong></p>
+<p>Free no deposit bonus bingo&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.itisforum.com/bryanyeage/?mforum=bryanyeage" rel="external nofollow">Free no deposit bonus bingo</a> &#8212; May 14, 2008 <a href="#comment-75004">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75017" class="class_comment2">
+	<p>A
+very very nice site with helpful informations! So keep up the good work
+- I already added the site to my personal favourites. All the best!
+</p>
+	<p class="alignright"><small>Comment by home insurance rates in dauphin island &#8212; May 14, 2008 <a href="#comment-75017">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75024" class="class_comment1">
+	<p><strong>Poker 20 minimum deposit&#8230;</strong></p>
+<p>Poker 20 minimum deposit&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://robermarsh.forumup.eu/?mforum=robermarsh" rel="external nofollow">Poker 20 minimum deposit</a> &#8212; May 14, 2008 <a href="#comment-75024">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75096" class="class_comment2">
+	<p><strong>Play for prizes united states free slots no deposit required&#8230;</strong></p>
+<p>Play for prizes united states free slots no deposit required&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://yitoggw.forumup.vn/?mforum=yitoggw" rel="external nofollow">Play for prizes united states free slots no deposit required</a> &#8212; May 15, 2008 <a href="#comment-75096">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75153" class="class_comment1">
+	<p>Men
+who need penis enlargement solutions like penis enlargement pills penis
+enlargement oil and women needing breast enlargement pills can get an
+easy guide from skincarefairy.com which is an energetic and
+accomplished herbal company that focuses on developing the best natural
+products worldwide. This website gives you the best health products for
+men and women herbal products from top rated Health &amp; Beauty
+Supplies stores. Check out our website&#8217;s discount prices and shop
+online.<br>
+<a href="http://www.skincarefairy.com/" rel="nofollow">http://www.skincarefairy.com</a>
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.skincarefairy.com/" rel="external nofollow">Men Penis Enlargement and Women Breast Enlargement Solutions</a> &#8212; May 15, 2008 <a href="#comment-75153">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75227" class="class_comment2">
+	<p><strong>Rtg no deposit casino&#8230;</strong></p>
+<p>Rtg no deposit casino&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.mfipb.com/?mforum=richahemle1" rel="external nofollow">Rtg no deposit casino</a> &#8212; May 15, 2008 <a href="#comment-75227">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75251" class="class_comment1">
+	<p><strong>Cirrus casino code forum&#8230;</strong></p>
+<p>Cirrus casino code forum&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.yabbers.com/phpbb/hurlinsara.html" rel="external nofollow">Cirrus casino code forum</a> &#8212; May 15, 2008 <a href="#comment-75251">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75364" class="class_comment2">
+	<p><strong>Play free jackpot party slot game&#8230;</strong></p>
+<p>Play free jackpot party slot game&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://forumn.de/forums/index.php?mforum=michaslate" rel="external nofollow">Play free jackpot party slot game</a> &#8212; May 16, 2008 <a href="#comment-75364">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75461" class="class_comment1">
+	<p><strong>No deposit casino bonus-2008&#8230;</strong></p>
+<p>No deposit casino bonus-2008&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.ez-forum.net/forum/?mforum=nadejbeesl5" rel="external nofollow">No deposit casino bonus-2008</a> &#8212; May 17, 2008 <a href="#comment-75461">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75491" class="class_comment2">
+	<p><strong>Viagra&#8230;.</strong></p>
+<p>Viagra&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://groups.google.ru/group/buy-viagra-online-here/web/online-pharmacy" rel="external nofollow">Viagra.</a> &#8212; May 17, 2008 <a href="#comment-75491">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75496" class="class_comment1">
+	<p><strong>No deposit casino chips&#8230;</strong></p>
+<p>No deposit casino chips&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://jianhamma4.creezvotreforum.com/" rel="external nofollow">No deposit casino chips</a> &#8212; May 17, 2008 <a href="#comment-75496">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75638" class="class_comment2">
+	<p><strong>Free no deposit codes cirrus casino&#8230;</strong></p>
+<p>Free no deposit codes cirrus casino&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.miumu.com/phpbb/leegabriel1.html" rel="external nofollow">Free no deposit codes cirrus casino</a> &#8212; May 18, 2008 <a href="#comment-75638">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75642" class="class_comment1">
+	<p><strong>Free money neteller&#8230;</strong></p>
+<p>Free money neteller&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.phpbber.com/phpbb/roberphill.html" rel="external nofollow">Free money neteller</a> &#8212; May 18, 2008 <a href="#comment-75642">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75649" class="class_comment2">
+	<p><strong>I4poker bonus code free money&#8230;</strong></p>
+<p>I4poker bonus code free money&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.ez-forum.net/forum/?mforum=stefagriff" rel="external nofollow">I4poker bonus code free money</a> &#8212; May 18, 2008 <a href="#comment-75649">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75759" class="class_comment1">
+	<p><strong>Jackpot party slot machine&#8230;</strong></p>
+<p>Jackpot party slot machine&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://silvischwa1.creezvotreforum.com/" rel="external nofollow">Jackpot party slot machine</a> &#8212; May 19, 2008 <a href="#comment-75759">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75781" class="class_comment2">
+	<p><strong>Best price for tramadol&#8230;.</strong></p>
+<p>Tramadol hydrochloride. Tramadol hcl liquid. Tramadol ultram medicine. Tramadol hcl. Tramadol&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://very-cheap-tramadol.blogspot.com/" rel="external nofollow">Tramadol.</a> &#8212; May 19, 2008 <a href="#comment-75781">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75818" class="class_comment1">
+	<p><strong>Instant no deposit casino codes list&#8230;</strong></p>
+<p>Instant no deposit casino codes list&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://marshvaler.5.forumer.com/" rel="external nofollow">Instant no deposit casino codes list</a> &#8212; May 19, 2008 <a href="#comment-75818">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75832" class="class_comment2">
+	<p>While
+we have the gift of life, it seems to me that only tragedy is to allow
+part of us to die - whether it is our spirit, our creativity, or our
+glorious uniqueness.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.clipclip.org/buy-xanax" rel="external nofollow">NewYork</a> &#8212; May 19, 2008 <a href="#comment-75832">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75846" class="class_comment1">
+	<p><strong>No deposit required casino coupons&#8230;</strong></p>
+<p>No deposit required casino coupons&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://xianaginou.forumcab.com/" rel="external nofollow">No deposit required casino coupons</a> &#8212; May 19, 2008 <a href="#comment-75846">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75884" class="class_comment2">
+	<p>Uno spazio per dire la vostra sull&#8217;operato del governo e dell&#8217;opposizione.<br>I&#8217;ve
+just been staying at home doing nothing, but pfft. Today was a total
+loss, but oh well. I&#8217;ve pretty much been doing nothing worth mentioning.<br>
+My mind is like a fog. Oh well. My life&#8217;s been really dull today. Eh.
+Today was a total loss. I&#8217;ve more or less been doing nothing , but I
+guess it doesn&#8217;t bother me.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://tour.milfcruiser.com/track/MTA4Nzg6Njo3/" rel="external nofollow">milfcruiser</a> &#8212; May 20, 2008 <a href="#comment-75884">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75930" class="class_comment1">
+	<p><strong>Us online no deposit&#8230;</strong></p>
+<p>Us online no deposit&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://ezerbrian1.pbbgc.net/" rel="external nofollow">Us online no deposit</a> &#8212; May 20, 2008 <a href="#comment-75930">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75957" class="class_comment2">
+	<p><strong>Fioricet&#8230;.</strong></p>
+<p>Fioricet&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.glee.com/BuyFioricetOnline/" rel="external nofollow">Fioricet.</a> &#8212; May 20, 2008 <a href="#comment-75957">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75963" class="class_comment1">
+	<p><strong>Free money no deposit bonus casino&#8230;</strong></p>
+<p>Free money no deposit bonus casino&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.ez-forum.net/forum/?mforum=jenniliang" rel="external nofollow">Free money no deposit bonus casino</a> &#8212; May 20, 2008 <a href="#comment-75963">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-75996" class="class_comment2">
+	<p>I haven&#8217;t gotten anything done. Whatever. I just don&#8217;t have anything to say.<br>I
+haven&#8217;t been up to much recently, but whatever. I just don&#8217;t have much
+to say lately. Basically nothing happening to speak of. So it goes. My
+mind is like a complete blank. Such is life.<br>
+Today was a loss. I just don&#8217;t have anything to say. Not that it matters.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://ww2.superglam.com/track/MTUwNDI1ODU6MTA6MTE/" rel="external nofollow">superglam girl</a> &#8212; May 20, 2008 <a href="#comment-75996">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-76022" class="class_comment1">
+	<p>A good man would prefer to be defeated than to defeat injustice by evil means.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://www.clipclip.org/clips/detail/155800/buy-xanax-without-prescription" rel="external nofollow">Chicago</a> &#8212; May 20, 2008 <a href="#comment-76022">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-76067" class="class_comment2">
+	<p><strong>Somas with carisoprodol doese t containt codine&#8230;.</strong></p>
+<p>School of mathematics and statistics somas. Somas soil bed.
+Prescription somas at pricing of 9.99. Somas do they have codine in
+them&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://somas.blogmy.name/" rel="external nofollow">Somas.</a> &#8212; May 20, 2008 <a href="#comment-76067">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-76087" class="class_comment1">
+	<p><strong>Tramadol&#8230;.</strong></p>
+<p>Tramadol. Tramadol cheap no rx&#8230;.
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://groups.google.com/group/independent-pharmaceutical-association-buy-tramadol-online/web/tramadol" rel="external nofollow">Tramadol hydrochloride.</a> &#8212; May 20, 2008 <a href="#comment-76087">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-76095" class="class_comment2">
+	<p><strong>Free sign up bonus casino no deposit rgt&#8230;</strong></p>
+<p>Free sign up bonus casino no deposit rgt&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.mfipb.com/?mforum=anthowethe2" rel="external nofollow">Free sign up bonus casino no deposit rgt</a> &#8212; May 20, 2008 <a href="#comment-76095">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-76135" class="class_comment1">
+	<p>Not much on my mind recently. Basically nothing seems important. So it goes. Today was a complete loss.
+</p>
+	<p class="alignright"><small>Comment by <a href="http://secure.mr18incher.com/track/MTAwMDc6OTozOA/" rel="external nofollow">inch cock movies</a> &#8212; May 20, 2008 <a href="#comment-76135">#</a></small></p>
+	</li>
+
+
+
+	<li id="comment-76153" class="class_comment2">
+	<p><strong>Slots free casino sign on bonus&#8230;</strong></p>
+<p>Slots free casino sign on bonus&#8230;
+</p>
+	<p class="alignright"><small>Trackback by <a href="http://www.makephpbb.com/jamesvalli/" rel="external nofollow">Slots free casino sign on bonus</a> &#8212; May 20, 2008 <a href="#comment-76153">#</a></small></p>
+	</li>
+
+
+</ol>
+
+
+<h2 id="postcomment">Leave a comment</h2>
+
+
+<form action="http://emotion.inrialpes.fr/~dangauthier/blog/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input name="author" id="author" value="" size="22" tabindex="1" type="text">
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input name="email" id="email" value="" size="22" tabindex="2" type="text">
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input name="url" id="url" value="" size="22" tabindex="3" type="text">
+<label for="url"><small>Website</small></label></p>
+
+
+<p><textarea name="comment" id="comment" cols="50" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" id="submit" tabindex="5" value="Submit Comment" type="submit"></p>
+<p><small><strong>XHTML:</strong> &lt;a href="" title=""&gt; &lt;abbr
+title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote
+cite=""&gt; &lt;code&gt; &lt;em&gt; &lt;i&gt; &lt;strike&gt;
+&lt;strong&gt; </small>
+<input name="comment_post_ID" value="41" type="hidden">
+</p>
+
+</form>
+
+
+			
+		
+				</div>
+
+<!-- begin footer -->
+
+
+<!-- begin sidebar -->
+		<div id="sidebar">
+		
+		
+
+		<table id="wp-calendar">
+	<caption>May 2007</caption>
+	<thead>
+	<tr>
+		<th abbr="Monday" scope="col" title="Monday">M</th>
+		<th abbr="Tuesday" scope="col" title="Tuesday">T</th>
+		<th abbr="Wednesday" scope="col" title="Wednesday">W</th>
+		<th abbr="Thursday" scope="col" title="Thursday">T</th>
+		<th abbr="Friday" scope="col" title="Friday">F</th>
+		<th abbr="Saturday" scope="col" title="Saturday">S</th>
+		<th abbr="Sunday" scope="col" title="Sunday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td abbr="April" colspan="3" id="prev"><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/04/" title="View posts for April 2007">« Apr</a></td>
+		<td class="pad">&nbsp;</td>
+		<td abbr="June" colspan="3" id="next"><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/06/" title="View posts for June 2007">Jun »</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="1" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td>
+	</tr>
+	<tr>
+		<td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td>
+	</tr>
+	<tr>
+		<td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/05/19/" title="KL divergence">19</a></td><td>20</td>
+	</tr>
+	<tr>
+		<td>21</td><td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+	</tr>
+	<tr>
+		<td>28</td><td>29</td><td><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/05/30/" title="Research positions in Belgium">30</a></td><td>31</td>
+		<td class="pad" colspan="3">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table>		<br>
+		
+			
+				
+							<h3>Recent Comments</h3>
+				<ul>
+					<li> - <a href="http://www.clipclip.org/clips/detail/155792/generic-xanax" title="Houston">Houston</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/09/05/mlss-2007-videos-and-category-theory/#comment-76183" title="MLSS 2007 Videos and Category theory">MLSS 2007 Videos and Category theory</a>: Listen. Do not have an opinion while you...</li>
+	<li> - <a href="http://www.clipclip.org/clips/detail/155792/generic-xanax" title="Houston">Houston</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/23/energy-based-content-aware-image-resizing/#comment-76182" title="Energy based Content-Aware Image resizing">Energy based Content-Aware Image resizing</a>: Listen. Do not have an opinion while you...</li>
+	<li> - <a href="http://www.clipclip.org/clips/detail/155792/generic-xanax" title="Houston">Houston</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/03/16/machine-learning-videos/#comment-76181" title="Machine learning videos">Machine learning videos</a>: Listen. Do not have an opinion while you listen because...</li>
+	<li> - <a href="http://www.esnips.com/user/valium" title="valium online">valium online</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/03/09/ranking-conferences/#comment-76175" title="Ranking conferences">Ranking conferences</a>: Hi! valium online</li>
+	<li> - <a href="http://phpbbi.com/?mforum=sheldondarfing" title="huge">huge</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/09/05/machine-learning-list-volume-18-number-6/#comment-76170" title="Machine Learning List: Volume 18, Number 6">Machine Learning List: Volume 18, Number 6</a>: Fist /gen act/ - fisting. Kelli closed her...</li>
+	<li> - <a href="http://www.zimbra.com/forums/members/replica-handbags.html" title="Fernando">Fernando</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2005/12/15/todo/#comment-76169" title="Introduction - todo list">Introduction - todo list</a>: http://www.zimbra.com/forums/m...</li>
+	<li> - <a href="http://www.yourhealthforum.com/forum/forum_posts.asp?TID=9052" title="keftabs">keftabs</a> on <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/06/07/on-line-machine-learning-journals/#comment-76166" title="On-line machine learning journals">On-line machine learning journals</a>: zwxj vrfwu keftabs</li>
+				</ul>
+				
+			 
+			
+			<div id="blogroll">
+			<h3>Blogroll</h3>
+				<!-- Avant mes modifs
+				<ul>
+				<li>- <a href="http://www.dataminingblog.com/">dataminingblog</a></li>
+<li>- <a href="http://hunch.net/">Machine Learning (Theory)</a></li>
+<li>- <a href="http://ml.typepad.com/">Machine Learning Thoughts</a></li>
+<li>- <a href="http://yaroslavvb.blogspot.com/">Machine Learning, etc</a></li>
+<li>- <a href="http://golem.ph.utexas.edu/category/">n-category cafe</a></li>
+<li>- <a href="http://nuit-blanche.blogspot.com/">nuit-blanche</a></li>
+<li>- <a href="http://www.stat.columbia.edu/~cook/movabletype/mlm/">Statistical Modeling [...]</a></li>
+<li>- <a href="http://terrytao.wordpress.com/">What&#039;s new</a></li>
+				</ul>
+				-->
+				<ul><a href="http://www.dataminingblog.com/">dataminingblog</a><br>
+<a href="http://hunch.net/">Machine Learning (Theory)</a><br>
+<a href="http://ml.typepad.com/">Machine Learning Thoughts</a><br>
+<a href="http://yaroslavvb.blogspot.com/">Machine Learning, etc</a><br>
+<a href="http://golem.ph.utexas.edu/category/">n-category cafe</a><br>
+<a href="http://nuit-blanche.blogspot.com/">nuit-blanche</a><br>
+<a href="http://www.stat.columbia.edu/%7Ecook/movabletype/mlm/">Statistical Modeling [...]</a><br>
+<a href="http://terrytao.wordpress.com/">What's new</a><br>
+</ul>
+				
+			</div>			
+			
+			<div id="categories">			
+			<h3>Categories:</h3>
+				<ul>
+					<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/decision/" title="View all posts filed under Decision">Decision</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/decision/feed/" title="rss">rss</a>) (2)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/events/" title="View all posts filed under Events">Events</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/events/feed/" title="rss">rss</a>) (2)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/inference/" title="View all posts filed under Inference">Inference</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/inference/feed/" title="rss">rss</a>) (5)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/jobs/" title="View all posts filed under jobs">jobs</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/jobs/feed/" title="rss">rss</a>) (2)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/misc/" title="View all posts filed under Misc">Misc</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/misc/feed/" title="rss">rss</a>) (23)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/modeling/" title="View all posts filed under Modeling">Modeling</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/modeling/feed/" title="rss">rss</a>) (8)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/philosophy/" title="View all posts filed under philosophy">philosophy</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/philosophy/feed/" title="rss">rss</a>) (8)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/priors/" title="View all posts filed under Priors">Priors</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/priors/feed/" title="rss">rss</a>) (7)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/research-life/" title="View all posts filed under research life">research life</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/research-life/feed/" title="rss">rss</a>) (5)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/uncategorized/feed/" title="rss">rss</a>) (1)
+</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/work/" title="View all posts filed under Work">Work</a> (<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/category/work/feed/" title="rss">rss</a>) (3)
+</li>
+				</ul>
+			</div>
+			
+			<div id="archives">			
+			<h3>Archives:</h3>
+				<ul>
+					<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/12/" title="December 2007">December 2007</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/09/" title="September 2007">September 2007</a>&nbsp;(2)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/08/" title="August 2007">August 2007</a>&nbsp;(4)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/07/" title="July 2007">July 2007</a>&nbsp;(2)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/06/" title="June 2007">June 2007</a>&nbsp;(3)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/05/" title="May 2007">May 2007</a>&nbsp;(2)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/04/" title="April 2007">April 2007</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/03/" title="March 2007">March 2007</a>&nbsp;(2)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/02/" title="February 2007">February 2007</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2007/01/" title="January 2007">January 2007</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/12/" title="December 2006">December 2006</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/11/" title="November 2006">November 2006</a>&nbsp;(2)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/09/" title="September 2006">September 2006</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/08/" title="August 2006">August 2006</a>&nbsp;(1)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/06/" title="June 2006">June 2006</a>&nbsp;(3)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/05/" title="May 2006">May 2006</a>&nbsp;(4)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/04/" title="April 2006">April 2006</a>&nbsp;(8)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/03/" title="March 2006">March 2006</a>&nbsp;(6)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2006/02/" title="February 2006">February 2006</a>&nbsp;(8)</li>
+	<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/2005/12/" title="December 2005">December 2005</a>&nbsp;(1)</li>
+				</ul>
+			</div>
+
+			<div id="stats">
+			<h3>Statistics</h3>
+
+			<script type="text/javascript" src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20KL%20divergence%20%5BPierre%20Dangauthier%5D_fichiers/k3dh367va.js"></script><div id="technorati"><p id="te_l" class="te_l"><a href="http://www.technorati.com/search/http://emotion.inrialpes.fr/%7Edangauthier/blog?cc=k3dh367va" id="te_lh">» Blogs that link here</a></p><p id="te_lo" class="te_lo"><a href="http://www.technorati.com/?cc=k3dh367va"><img src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20KL%20divergence%20%5BPierre%20Dangauthier%5D_fichiers/tn-tiny.gif" alt="Powered by Technorati" border="0"></a></p></div>
+			
+			<a href="http://www.gvisit.com/map.php?sid=fb0ba0dcd32d4f730e91c305647d142c"> 20 last visitor locations</a>
+
+			<script language="JavaScript" src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20KL%20divergence%20%5BPierre%20Dangauthier%5D_fichiers/record.htm" type="text/javascript"></script>
+			
+			<!-- Google ananlytics -->
+			<script src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20KL%20divergence%20%5BPierre%20Dangauthier%5D_fichiers/urchin.js" type="text/javascript">
+			</script>
+			<script type="text/javascript">
+				_uacct = "UA-308694-1";
+				urchinTracker();
+			</script>
+			</div>
+			
+			<a href="http://whos.amung.us/show/wwc6jhi6"><img src="Yet%20Another%20Machine%20Learning%20Blog%20%C2%BB%20KL%20divergence%20%5BPierre%20Dangauthier%5D_fichiers/wwc6jhi6.png" alt="website counter" border="0" height="29" width="81"></a>
+			
+			<div id="meta">
+				<h3>Meta:</h3>
+				<ul>
+				<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/wp-register.php">Register</a></li>				<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/wp-login.php">Login</a></li>
+				<li><a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/feed/">rss feed</a></li>
+				
+				
+								</ul>
+			</div>
+		
+		</div>
+			
+<div class="both"></div>
+			
+</div>
+
+<!-- end sidebar -->
+
+<p id="credits">
+<a href="http://emotion.inrialpes.fr/%7Edangauthier">Pierre Dangauthier</a> <br>
+
+<a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/feed/">Entries</a> and <a href="http://emotion.inrialpes.fr/%7Edangauthier/blog/comments/feed/">comments</a> feeds. 
+Valid <a href="http://validator.w3.org/check/referer">XHTML</a> and <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS</a>. ^<a href="#">Top</a>^<br>
+
+<!-- 23 queries. 0.729 seconds. -->
+</p>
+
+</div>
+
+<!--  removed my ouam-->
+</body></html>

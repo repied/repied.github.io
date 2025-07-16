@@ -1,0 +1,8 @@
+Il s'agit de configurer le clavier pour la console (le truc pur texte qu'on a quand on fait CTRL-ALT-F1).
+
+L'outil standard Debian est [=install-keymap]. Les keymaps sont dans [=/usr/share/keymaps].
+  su
+  install-keymap azerty
+Et voilà. Normalement, même pas besoin de redémarrer.
+
+Pour configurer le clavier sous X, j'utilise le panneau de configuration de Gnome ([=gnome-control-center]) ou celui de KDE ([=kcontrol]). Il y a sûrement mieux, mais c'est facile et ça marche.

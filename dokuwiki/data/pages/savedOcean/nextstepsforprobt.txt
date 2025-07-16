@@ -1,0 +1,88 @@
+= Next steps for ProBT... =
+Auteur: KamelMekhnacha.
+
+== Objectifs de ce document ==
+Le but de ce document de travail est d'essayer d'établir un plan de
+travail pour les développements technologiques à venir. Le but étant,
+en premier temps, de développer des compétences sur des sujets sur
+lesquels on est loin d'être au point. Ensuite, décider des
+développements informatiques nécessaires et leurs ordres de priorité.
+J'invite donc chacun à choisir un sujet sur lequel il voudrait
+travailler.
+
+Dans ce qui suit, une proposition de quelques sujets. Je propose à
+chacun d'essayer de donner son avis sur ces sujet et les compléter
+éventuellement. Vous êtes également invités à rajouter les sujets que
+vous pensez importants.
+
+Le but, par la suite, est d'essayer de se répartir le travail pour
+élaborer, pour chaque sujet retenu, une étude bibliographique poussée
+permettant d'aboutir rapidement à une spécification détaillée de sa
+réalisation. On verra par la suite comment s'organiser pour cette
+réalisation.
+
+== L'apprentissage ==
+Développer des compétences et des outils pour l'apprentissage devient,
+à mon avis, assez urgent. Il est toujours difficile de demander aux
+gens de donner des distributions a priori.
+
+=== Implémenter le maxent ===
+
+=== Sortir les MRBT pour générer des ranges de variables ===
+
+=== Apprentissage des paramètres en présence de variables non observées ===
+Pour les variables observées, le problème est plus ou moins résolu
+avec l'ensemble (bien que très réduit pour l'instant) de classes
+d'apprentissage déjà implantées dans ProBT.  Par contre, pour
+l'apprentissage avec des variables non observées, le problème se pose
+toujours. Et ça devient, à mon avis, très urgent de l'aborder.
+
+
+==== Algorithme EM pour l'apprentissage des paramètres ====
+La réponse théorique au problème d'apprentissage des paramètres en
+présence de variables non observées est assez cernée. Il s'agit de
+l'algorithme (ou plutôt le concept) EM. Cependant, je pense qu'il va
+falloir regarder de plus près les réalisations effectives de cet
+algorithme en fonction de ce que l'on voudrait avoir. En l'occurrence
+:
+* Apprentissage de tables exclusivement ?
+* Apprentissage des gaussiennes ? ...
+
+=== Apprentissage de structure (décomposition) ===
+Pour l'apprentissage des structures, je pense que c'est utile de
+développer des compétences au moins théoriques sur le sujet. On verra
+par la suite pour les réalisations envisageables.
+
+== Inférence ==
+Pour la partie inférence, la situation est moins ``grave'' à mon avis.
+Ceci dit, je propose qu'on regarde ce qui suit.
+
+=== Généralisation de notre algorithme (Successive Restrictions Algorithm) pour le cas multi-cibles ===
+Je pense que la généralisation de notre algorithme est possible pour
+le cas où l'on s'interesse à plusieurs questions à la fois. Cela
+revient à construire un arbre d'évaluation global permettant de
+partager les parties (sous-arbres) cummunes des calculs pour les
+différentes questions.
+
+=== L'algorithme de l'Arbre de Jonction ===
+Pour l'inférence exact, je pense qu'on devrait implémenter
+l'algorithme de l'arbre de jonction dans ProBT. Je pense, en effet,
+que pour quelques classes de problèmes, ce type d'algorithme pourrait
+être très utile. C'est le cas, en particulier, dès que l'on
+s'intéresse au problème de mise à jour de toutes les distributions
+marginales sur chacune des variables sachant un sous-ensemble de
+variables connues.
+
+=== General Belief propagation ===
+
+== HMMs ==
+=== Algorithme de Baum-Welch (variante de EM )  pour l'apprentissage dans les HMMs ===
+=== Algorithme de Viterbi  pour l'inférence dans les HMMs ===
+
+== Théorie de la Décision ==
+=== Notion d'utilité ===
+=== 0utils de doute et de confiance en soi (cf. cédric) ===
+=== Diagrammes d'Influence ===
+
+== Outils et interfaces graphiques ==
+== Outils de sérialisation/désérialisation ==

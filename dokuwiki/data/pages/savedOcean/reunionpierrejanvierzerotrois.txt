@@ -1,0 +1,68 @@
+réunion du 7 janvier 2003
+-------------------------
+
+Pierre Bessière, Ronan Le Hy
+
+1. avancées depuis la dernière réunion
+
+1.1. plateformes
+
+J'ai évalué plusieurs plateformes. En résumé :
+- Java 3d : facile d'accès, problèmes de passage à l'échelle
+- Wild Magic : pas de doc
+- Performer : très puissant, difficile d'accès
+- Aladyn Light : ouvert et intéressant, mais peu de personnes
+travaillent avec
+
+Je commence à essayer OpenMASK (avec l'aide de contacts dans EVASION
+et SIAMES). J'ai des a priori positifs, qui restent à confirmer.
+
+Je n'oublie pas les différentes plateformes de jeu : les questions
+difficiles qu'elles posent sont:
+- qui les développe activement ? sur quoi ça repose ?
+- c'est souvent plein de trucs dont je n'ai pas besoin.
+
+1.2. éthogrammes
+
+J'ai fait le point sur les documents disponibles avec Carla.
+
+2. le sujet
+
+Considérer un animal virtuel (un rat de laboratoire, ou éventuellement
+un hérisson), muni de capteurs virtuels (en évitant la complexité du
+problème de la vision si possible), plongé dans un environnement de
+type laboratoire ou de type naturel.
+
+Sur cet animal, étudier l'apprentissage par renforcement et le
+conditionnement, ce qui implique de se pencher sur un aspect temporel
+de la perception (apprentissage de séquences de déplacements,
+association de motifs sonores, horloge interne...).
+
+On veut donc reproduire des phénomènes d'apprentissage par
+renforcement et de conditionnement instrumental dans des conditions
+expérimentales, mais aussi dans des conditions naturelles (avec
+plusieurs individus, voire un prédateur).
+
+3. la suite
+
+Les objectifs poursuivis à court terme sont:
+
+- finir l'article sur mon dea (la deadline est au 20 janvier) pour
+  icar.
+
+- exposé de 10 mn sur les manipulations envisagées à l'école BIBA.
+
+- un topo sur les expériences de laboratoire autour de
+l'apprentissage et du conditionnement, en particulier avec les rats
+(voir avec Francis).
+
+- une description des manipulations à faire avec notre animal (en
+liaison avec ce que va faire Carla avec Bibar).
+
+- une biblio sur l'apprentissage par renforcement (côté informatique).
+
+- une description des objectifs scientifiques de la thèse (sciences de
+  la vie? algorithmes d'apprentissage? algorithmes d'apprentissage et
+  le bayésien? complexité des choses apprises?).
+
+Ronan

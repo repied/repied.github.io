@@ -1,0 +1,21 @@
+dselect est un programme de gestion des paquets debian installés. C'est un bon choix quand apt-get touche ses limites. Dans le même genre, il y a aussi [synaptic http://www.nongnu.org/synaptic/] (interface gtk) ou [aptitude http://aptitude.sourceforge.net/] (interface curses).
+
+=== lancer dselect ===
+  dselect
+
+=== le menu de dselect ===
+Il y a 4 options qui servent :
+* Update pour mettre à jour la liste des paquets disponibles (exactement comme apt-get update)
+* Select pour sélectionner/déselectionner les paquets installés sur la machine
+* Install pour lancer l'installation/désinstallation des paquets sélectionnés/déselectionnés
+* Quit pour quitter
+
+Update, Install et Quit marchent tout seuls.
+
+=== sélectionner/déselectionner des paquets avec Select ===
+* choisir Select
+* appuyer sur Entrée pour passer l'écran d'aide (il n'est pas interdit de le lire)
+* pour l'aide, appuer sur '?', puis 'l' pour l'aide sur l'affichage (les *,=, et autres _), ou 'k' pour l'aide sur les touches disponibles
+* pour faire court: '+' installe, '-' désinstalle, '_' désinstalle en effaçant les fichiers de configuration (purge), '=' met un paquet 'on hold', c'est-à-dire qu'il ne sera plus jamais mis à jour (jusqu'à ce qu'on enlève le '=')
+* 'x' permet de quitter en annulant les ajouts/supressions, Entrée quitte en acceptant les changements
+* quand on sélectionne/déselectionne un paquet, dselect peut montrer une liste des paquets qu'il faudra installer/désinstaller en conséquence -- il suffit en général d'appuyer sur Entrée pour accepter ses suggestions

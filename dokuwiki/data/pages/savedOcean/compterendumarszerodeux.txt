@@ -1,0 +1,28 @@
+rapport 25/03/2002 - Ronan Le Hy
+------------------
+(cf compte-rendu reunion 12/03/2002 ReunionPierreMarsZeroDeux)
+
+Mon travail jusqu'ici a consiste  principalement a la mise en place de
+la  plateforme  d'experimentation :  Unreal  Tournament  + Gamebots  +
+squelette de bot (ecrit en Ocaml).
+
+J'ai  fait   la  conception  des  comportements   selon  une  approche
+descendante:  a   partir  des  elements  de   haut  niveau  (attaquer,
+fuire...), les  comportements de plus  bas niveau necessaires  ont ete
+specifies, de facon a s'appuyer  sur l'API Gamebots. Il m'apparait que
+la separation des comportements en trois niveaux n'est pas pertinente.
+
+L'application est separee en deux  parties: un analyseur qui ecoute le
+serveur UT et met a jour l'etat du bot, et un moteur qui travaille sur
+cet  etat et  envoie  des ordres  a  UT. La  synchronisation des  deux
+parties  (pour l'attente d'une  position, ou  du retour  d'une requete
+GETPATH par  exemple) est faite  au moyen d'un tuyau  de communication
+d'evenements. 
+
+Mon but immediat est de m'assurer que la communication avec UT se fait
+correctement, et que l'architecture est bien en place.
+
+Le   moteur  se  limite   donc  pour   l'instant  a   un  comportement
+d'exploration, et  de suivi. Le suivi  aura sans doute  tout interet a
+etre  implemente en  bayesien  ; j'essaie  pour  l'instant d'en  faire
+fonctionner une version simple classique.

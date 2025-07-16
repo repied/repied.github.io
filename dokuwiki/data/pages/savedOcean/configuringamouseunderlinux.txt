@@ -1,0 +1,61 @@
+== Configuration d'une souris sous Linux ==
+* Votre souris vous lache, votre serveur X plante a cause de ca. Et vous pleurez. C'est normal m'on z'ami. Lis la suite.
+
+=== Configurer GPM ===
+GPM est facultatif. Il permet d'utiliser la souris dans la console pur texte (celle qu'on obtient avec CTRL+ALT+F1 par exemple). Je n'utilise pas GPM, il me cause souvent plus d'ennuis que de bonheur. -- RonanLeHy
+
+* Pour une souris ps2 avec 3 boutons mais sans mollette : la mienne etait une compaq (les noires du labo)
+** Un tu verifie que tu as bien gpm d'installe, sinon apt-get install gpm 
+** puis tu edites //etc/gpm.conf/ voila le mien pour example :
+ device=/dev/psaux
+ responsiveness=
+ repeat_type=msc
+ type=ps2
+ append=""
+ sample_rate=
+
+pour info :
+
+/repeat_type=msc/ pour utiliser la souris à la fois dans le terminal et sous X
+
+/responsiveness=/: essayez la valeur 15 si la souris répond lentement
+
+/type=ps2/ : pour obtenir le type de votre souris :
+ gpm -t help
+
+** Relancer gpm avec 
+ /etc/init.d/gpm restart
+
+=== Configurer XFree86 ===
+
+A mon avis on utiliser une seule souris a la fois c'est deja assez complique donc si vous voulez en utiliser plusieurs demerdez-vous !
+
+* La configuration !XFree se trouve dans le fichier 
+ /etc/X11/XF86Config-4
+C'est donc ça qu'on édite.
+
+* Les sections "!InputDevice" décrivent des périphériques d'entrée. Il en faut une pour la souris à utiliser :
+
+       Section "InputDevice"
+            Identifier	"PS2 Mouse"
+            Driver		"mouse"
+            Option		"Device"	"/dev/psaux"
+            Option		"SendCoreEvents"	"true"
+            Option		"Protocol"	"PS/2"
+            Option		"ZAxisMapping"	"4 5"
+            Option		"Buttons"	"3"
+       EndSection
+
+L'option !ZAxisMapping correspond au support de la roulette. Inutile si votre souris n'en a pas. Le protocole 
+"!ImPS/2" est a choisir par rapport a "PS/2" tout court pour avoir la molette !
+
+Si la souris est une USB, il faut mettre /dev/input/mice à la place de /dev/psaux. Pour tester que ces devices marchent bien (que les drivers sont chargés), il suffit de faire
+  cat /dev/psaux # ou /dev/input/mice, selon
+et de bouger la souris. Normalement, il doit apparaître un gros tas de caractères variés. En cas de 'no such device', c'est que le driver (module noyau en général) n'est pas chargé.
+
+Ensuite, il faut dire à X d'utiliser ce périphérique comme souris par défaut. Remplacer la ligne !InputDevice (en général à la fin) dans la section "!ServerLayout" par:
+ InputDevice "PS2 Mouse" "CorePointer"
+Ce "PS2 Mouse" doit correspondre à l'option "Identifier" de la section !InputDevice qui décrit la souris.
+
+* Relancer le serveur X : CTRL-ALT-Backspace sous X, ou
+  /etc/init.d/wdm restart # si wdm est le gestionnaire de login utilisé

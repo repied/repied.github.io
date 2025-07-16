@@ -1,0 +1,23 @@
+= Réunion du 27/04/2004 =
+Pierre, Ronan.
+
+== où j'en suis ==
+* les comportements élémentaires moutons marchent, en particulier:
+** la fuite du chien est partie proscritive (loin), partie prescriptive (près, et ça donne un comportement plus prévisible quand le chien s'approche)
+* je suis en train d'implémenter un modèle apprenable pour le chien, pour faire le tour du troupeau, mes objectifs sont:
+** évaluer l'évolution de l'apprentissage (vitesse, réussite): observation des trajectoires, mesure de critères objectifs (distance à l'EC du troupeau), observation des distributions (entropie)
+** avoir un retour sur modèle vs comportement: puis-je conclure que je ne peux pas apprendre ce comportement avec ce modèle? les discrétisations de mes variables sont-elles bonnes? est-ce que j'apprends assez longtemps, trop longtemps? est-ce qu'il est intéressant de bidouiller le prior des Laplace?
+
+== à faire ==
+* rédiger une problématique détaillée (mais schématique) sur le sujet: maîtriser l'apprentissage piloté de modèles bayésiens:
+** quel est l'intérêt? (parce que de l'apprentissage, on en fait, et qu'il serait bon d'avoir des critères pratiques ou théoriques pour le mettre en oeuvre...)
+** quelles sont les question à se poser? (quelles variables influent sur la vitesse d'apprentissage? comment détecter que je n'arrive pas à apprendre? que j'y arrive? comment utiliser l'apprentissage pour avoir un retour critique sur le modèle (décomposition, formes paramétriques, variables, discrétisation)? combien de temps dois-je piloter le robot pour lui faire apprendre mon comportement?...)
+** comment répondre à ces questions? (quelles expériences?)
+** quelle est la portée des réponses que je peux apporter à ces questions? (comment les résultats sur mes expériences se généraliseront-ils?)
+* rédiger un plan de travail sur 8 mois là-dessus
+* continuer l'implémentation des modèles apprenables, en particulier:
+** ajouter une fenêtre de visualisation aérienne du troupeau, pour avoir une vue générale quand on pilote le chien
+
+== prochaines réunions ==
+* vendredi 7 Mai, 10h: présentation du plan de travail
+* mardi 18 mai, 10h, puis tous les quinze jours

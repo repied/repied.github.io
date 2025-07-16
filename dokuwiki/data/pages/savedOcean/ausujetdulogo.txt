@@ -1,0 +1,33 @@
+En attendant de pouvoir uploader des images directement sur le wiki, on peut afficher une image sur andrinople comme ca:
+  httpr://images/andrinople/lehy/media/images/bb_peur_flipped.png
+(en fait 
+  httpr://images/andrinople
+pointe sur /home/andrinople)
+
+=== tous les logos ===
+
+Bic et Bac (robots ou animaux ?), des [Mondes Engloutis http://perso.club-internet.fr/esteban3/frameset.html],
+
+httpr://images/andrinople/lehy/media/images/bb_peur.png httpr://images/andrinople/lehy/media/images/bb_peur_flipped.png
+
+Le Marquis (dont on retrouve la tête dans l'image de favori du wiki),
+
+httpr://images/logo_laplace.png  httpr://images/andrinople/lehy/media/images/logo_laplace_inverse.png
+
+Bucky Katt de [Get Fuzzy http://www.dilbert.com/comics/getfuzzy/index.html], dessiné par Darby Conley, httpr://images/bucky_logo_noground.png
+
+Toujours Bucky, httpr://images/reading_front.png
+
+Encore Bucky, httpr://images/andrinople/lehy/media/images/get_fuzzy/bucky_noel.png
+
+"Aaieee!", httpr://images/andrinople/lehy/media/images/get_fuzzy/running_screaming_edit.png
+
+Bucky fête Catsmas, httpr://images/andrinople/lehy/media/images/get_fuzzy/bucky_chapeau.png
+
+Satchel Pooch et Bucky, httpr://images/running_rapproches.png
+
+Romeo, httpr://images/romeo_colere.png
+
+Re-Romeo, httpr://images/andrinople/lehy/media/images/super_romeo.png
+
+Mr Natural (Robert Crumb),  httpr://images/mr_natural_trotinette.png

@@ -1,0 +1,13 @@
+Reported to work:
+* gcc-2.95
+* gcc-2.96 (although this version is generally full of bugs, you should avoid it)
+* gcc-3.2 (heavily tested)
+* gcc-3.3.3 (probably still lightly tested)
+
+Reported *not* to work:
+* gcc-3.3.1, gcc-3.3.2 (random segfaults)
+
+I (RonanLeHy) have just found an instance of a program crashing (very mysteriously) with gcc-3.2, which runs fine with gcc-3.3.3. YMMV.
+I (Francis) have also suffered a segmentation fault with gcc-2.96 which disappeared with gcc-3.2, /je dis ca, je dis rien/.
+
+Also, the ProBT makefile is b0rken. [=make clean] won't erase the doxygen doc, and sometimes after a [=cvsup], [=make depend; make pl.so] is not enough: it will compile without any problem, but give a crashing [=libpl.so].

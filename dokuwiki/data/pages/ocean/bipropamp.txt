@@ -1,0 +1,113 @@
+== Le début : ==
+
+Cette installe date du 15 janvier 2004.
+
+beaucoup d'infos viennent de :
+http://guide.andesi.org/html/book1.html
+
+Configuration matérielle de pamplemousse :
+* 2 AMD Athlon(TM) MP 1900+ cadencés à 1600.072 Mhz
+* 512 Mo Ram (j'ai ajouté une barrette de 256 en plus mais qui n'est pas reconnue pour l'instant)
+* carte réseau 3com 3c905C-TX-M (la manipe de David consistant à choisir le driver pour 3c59x (vortex support) fonctionne)
+* Nvidia Geforce 2
+
+Je suppose que vous avez déjà fait une installation de base : woody, noyau bf24 choisi au boot de l'installation, réseau installé, sources.list à jour (cf. la doc de David)
+
+/Mh. La doc de David, je ne sais pas si elle est sur le wiki. Si besoin, il faudrait la mettre dans une page, et faire un lien ici./ RonanLeHy
+
+
+On chope les sources d'un noyau 2.4.22, dans l'idée de se le recompiler :
+ apt-get install kernel-source-2.4.22
+
+(note: il y a aussi l'option ( testée sur pamplemousse : marche pas probablement à cause de Lilo ) d'installer une image debian toute prête -- ici ça serait 
+  apt-cache search kernel-image | grep smp
+  # voyons voir Athlon=k7, bipro=smp...
+  apt-get install kernel-image-2.4.22-1-k7-smp
+Et puis ça se passe ensuite comme dans InstallingAStockDebianKernel.
+)
+
+On va réaliser la majorité des opérations avec un autre utilisateur que root. Expl : sharp. Pour cela donner lui les droits du groupe src.
+ adduser sharp src
+
+On décompresse les sources :
+ cd /usr/src
+ tar xfvj kernel-sources-2.4.22.tar.bz2
+
+On ajoute un lien symbolique /linux/ qui pointe vers le répertoire de vos sources.
+ ln -s kernel-source-2.4.22 linux
+
+== Le choix des modules : ==
+=== nvidia : ===
+On a besoin des paquets nvidia-glx-src (miroir woody) et nvidia-kernel-src
+ apt-get install nvidia-glx-src nvidia-kernel-src
+ cd /usr/src
+ tar xfvz nvidia-kernel-src.tar.gz
+
+Pour 
+
+== Configuration du noyau ==
+On utilisera l'interface menuconfig (existent aussi: xconfig, gconfig...) :
+ cd /usr/src/linux
+ make menuconfig
+
+=== Multiprocesseur : ===
+On va commencer (pamplemousse oblige) par le problème "multiprocesseur" :
+
+ Configure the kernel and answer Y to CONFIG_SMP
+
+i.e. 
+
+Dans l'onglet /Processor type and features/ :
+
+L'onglet /Processor family/ (le premier de la liste) doit sélectionner /Athlon/Duron/K7/
+
+L'onglet /Symmetric multi-processing support/ doit être sélectionné ( il était sélectionné par défaut chez moi ). Dans la doc attenante on apprend qu'il est vivement conseillé de sélectionner :
+/enhanced real time clock support/
+et ne _pas_ sélectionner /Advenced Power Management/
+On nous conseille de lire également :
+ Documentation/smp.tex
+ Documentation/smp.txt
+ Documentation/i386/IO-APIC.txt
+ Documentation/nmi-watchdog.txt
+ SMP-HOWTO 
+http://www.tldp.org/docs.html#howto
+
+/enhanced real time clock support/ se trouve dans l'onglet /character devices/.
+
+=== Ram : ===
+Pour l'instant pamplemousse a 512Mo de Ram ce qui est vraiment peu. J'espère vraiment pouvoir avoir plus (Une pt'ite piè-pièce Msieux-dam). Mais pas jusqu'à 64Go. Du coup :
+
+ Configure the kernel and answer 4GB to CONFIG_NOHIGHMEM
+i.e.
+Dans l'onglet /Processor type and features/ :
+L'onglet /High Memory Support/ doit être sur 4GB.
+
+=== Carte réseau : ===
+Dans l'onglet /Network devices/ : carte /ethernet 10 100 MB/ 3com 3c59x
+
+== On sauvegarde le choix des modules : ==
+Le choix des modules est conservé dans le fichier /.config/ de //usr/src/linux/ on va le sauvegarder ailleurs.
+ cp .config ../config_noyo2.4.22-k7-smp_15_01_2004
+
+== On compile : ==
+ cd /usr/src/linux
+ fakeroot make-kpkg clean
+ fakeroot make-kpkg --append-to-version=-noyo-k7-smp-15-01-2004 --added_modules=nvidia-kernel kernel-image
+
+( je n'ai pas eu besoin de préciser --initrd et j'ai
+
+(note: ne pas oublier
+  fakeroot make-kpkg modules-image
+si on veut compiler les modules aussi (ce qu'on veut généralement)
+et si on veut générer un initrd (ce qu'on veut généralement aussi):
+  fakeroot make-kpkg --initrd --append-to-version=monnoyau kernel-image
+à la place de la ligne avec kernel-image ci-dessus
+) RonanLeHy
+
+== On compile : ==
+On installe :
+ cd /usr/src
+ dpkg -i kernel-image-noyo-k7-smp-15-01-2004_10.00.Custom_i386.deb
+
+On répond non à toutes les questions de Lilo et on ajoute les lignes qui vont bien dans //etc/lilo.conf/ et on lance
+ lilo -v

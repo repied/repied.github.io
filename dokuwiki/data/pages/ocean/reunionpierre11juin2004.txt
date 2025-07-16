@@ -1,0 +1,10 @@
+11 Juin 2004
+Pierre, Ronan
+
+Suite à la réunion de la semaine d'avant, tentative de mise au clair dans un cadre englobant des modèles de séquencement et de mélange de comportement. Réflexion sur la formulation bayésienne de l'apprentissage avec cette formalisation.
+
+Idées pour continuer :
+* essayer de clarifier la classification des comportements avec sélection qui semble apparaître : sélection, mélange, filtrage, fusion...
+* fignoler la formulation de l'apprentissage.
+
+Cette réunion a conduit à SequencingAndMixing et LearningSelectionModels.

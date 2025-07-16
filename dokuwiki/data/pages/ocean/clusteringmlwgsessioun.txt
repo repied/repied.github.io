@@ -1,0 +1,15 @@
+= MLWG Session 1: Clustering =
+
+Par Oliver Briczka, mardi 3 mai 2005 en C 207 à 16 heures
+
+=== Introduction ===
+
+Le clustering, ou bien comment faire des tas de données.
+
+=== Fichiers téléchargeables ===
+
+[Presentation au Format pdf http://emotion.inrialpes.fr/~dangauthier/MLWGStuff/Clustering2.pdf] 3 Mo.
+
+=== Références ===
+
+Pas de références

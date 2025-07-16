@@ -1,0 +1,8 @@
+
+<p>
+Well, X.Org currently only has X11R6.7, which is forked from XFree86 4.4RC2, but with some SI-tree changes (mainly from Sun merged), but there is a fork of that tree[0] called &lsquo;debrix&rsquo;, which is an all-modular build, but builds the same server, but with a completely incompatible driver loader (libdl), and all drivers built out-of-tree. freedesktop.org has the &lsquo;xserver&rsquo; tree, which contains KDrive (usually referred to as &lsquo;the fd.o xserver&rsquo;), but it is also capable of building XWin (Cygwin/X), and Xizzle DDXes - Xizzle being a fork of the Xorg DDX (xc/programs/Xserver/hw/xfree86, as opposed to all of xc/programs/Xserver), that builds modularly, but using the xserver/KDrive DIX. Unfortunately this didn&rsquo;t work out too well, so Xizzle is deprecated in favour of Debrix, despite having a cooler name.
+</p>
+
+<p>
+Daniel Stone, Re: Future of X packages in Debian, debian-devel
+</p>

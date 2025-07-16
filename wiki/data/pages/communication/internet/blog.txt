@@ -1,0 +1,10 @@
+====== Blog ======
+Le blog [[http://dangauthier.free.fr/wordpress]] servira a donner des infos au jour le jour de notre trip.
+Pour le mettre a jour, c est facile, cliquer sur Meta/Site Admin
+Puis se logger en "admin", V@l#2red pour le mot de passe.
+
+ensuite pour poster : menu write /write post.
+
+Pour l instant tout le meonde se loggue en "admin", mais apres, je créerai un utilisateur pour chacun, ce sera plus sympa de signer ses posts.
+
+Sinon, il faudra aussi changer d hebergeur, car free n accepte pas ftp de l etranger.

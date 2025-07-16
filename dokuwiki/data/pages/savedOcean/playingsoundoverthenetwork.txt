@@ -1,0 +1,20 @@
+=== solution esd ===
+On cherche à jouer des mp3 sur une machine (arturo), avec xmms, avec une sortie son sur une autre machine sur le réseau (choops). On utilise esd, le démon son d'Enlightenment et de Gnome (apt-get install esound).
+
+Sur choops:
+ choops> esd -public -tcp
+
+Sur arturo:
+ arturo> xmms
+Dans le menu Options -> Preferences -> Audio I/O Plugins -> Output Plugin : choisir eSound. Cliquer sur Configure (juste en-dessous). Cliquer sur Use Remote Host, et entrer choops. (Il peut y avoir besoin de couper et de relancer xmms pour que les changements prennent effet.) Il n'y a plus qu'à jouer, tout va partir sur le réseau, et sortir par les haut-parleurs de choops.
+
+Je n'ai pas trouvé comment ajuster le niveau sonore à partir d'arturo (la barre de volume de xmms ne semble pas marcher).
+
+=== solution streaming ===
+C'est le meme probleme en un peu plus dur. On veut jouer des mp3 qui se trouvent sur une machine _Windows_ (celle d'Audrey), mais que le son sorte sur une machine linux (choops).
+* installer un serveur qui fait du streaming mp3 sur la machine ou se trouvent les mp3, par exemple [Slimp3 http://www.slimdevices.com/pi_features.html] (portable, ecrit en Perl, controle par une interface web: http://machinedaudrey:9000, paquet Debian qui s'appelle slimp3) ;
+* faire jouer le stream sur choops :
+  choops> mpg321 http://machinedaudrey:9000/stream.mp3
+(On peut aussi utiliser xmms ou mplayer pour lire le stream, mais choops n'a ni l'un ni l'autre.)
+
+Note : Slimp3 a du mal a lire autre chose que des mp3 (wma, ogg...). Normalement il devrait pouvoir quand Lame est la, mais je n'y suis pas arrive.

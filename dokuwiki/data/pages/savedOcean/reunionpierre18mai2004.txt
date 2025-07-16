@@ -1,0 +1,15 @@
+Réunion 18 Mai 2004.
+
+Pierre, Ronan.
+
+= résumé des épisodes précédents =
+(réunion 2 semaines avant) Il n'est pas souhaitable ni faisable de centrer la thèse autour de l'apprentissage de comportements élémentaires.
+
+= la ficelle =
+L'apprentissage de séquencements et mélanges de comportements. Le sous-problème principal (au moins pour le séquencement) est de reconnaître des comportements. Il est intéressant pour l'apprentisssage de mesurer des distributions sur la reconnaissance.
+
+= à faire =
+Pour la prochaine réunion, Mercredi 2 Juin, 10h.
+* écrire les modèles bayésiens d'apprentissage: reconnaissance, séquencement, mélange (cf [DEA Julien http://www-laplace.imag.fr/publications/Rayons/Diard99a.pdf] en particulier)
+* définir les expériences pour tester ces modèles, avec un oeil sur ce qui est disponible/faisable
+* faire un plan de recherches bibliographiques: liste des sujets à creuser, références

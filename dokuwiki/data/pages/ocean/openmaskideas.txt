@@ -1,0 +1,8 @@
+* OpenMASK objects controlled in Perl. Problem: templates? (baaad idea)
+* slideshow engine in OpenMASK, scriptable in Perl
+* a generic OM object that, on creation, dynamically loads a real OM object as a plugin (with loading on event, on init...) => more dynamic, more independance at compilation (no relinking of main app each time you modify an object), just load the code you need
+* an OM scene inspector, that lists objects, and their connections, with nice output by graphviz, or something
+* an OM object inspector, that lists available events (needs support from objects), and allows to send them events dynamically with a simple interface
+* support from objects could consist in a helper to register events for objects: add an event, with this name and value, with this callback, description, public or not -- it would automatically make the method that lists events
+* to facilitate that, an OM object that tunnels OM events (both ways) through a pipe / a socket -- this would allow for writing GUIs that control objects with events in any language (wink wink, nudge nudge, know what I mean)
+* the flock could create/destroy objects on demand (on event)

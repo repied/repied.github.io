@@ -1,0 +1,17 @@
+Voici une liste de packages pour bien demarrer sur fedora core:
+
+==== apt-get ====
+Les instructions pour l'installer dans le [wiki http://www.fedora.us/wiki/FedoraHOWTO]
+
+==== Synaptic ====
+Synaptic est une interface graphique pour apt-get. Pour l'installer, simplement :
+ $ apt-get install synaptic 
+
+==== Livna ====
+[Livna http://rpm.livna.org] est un repository de add-on packages pour red hat et fedora core par les volontaires.
+
+==== URL Utiles ====
+* http://fedora.redhat.com/
+* http://www.fedora.us/
+* http://fedoranews.org/
+* http://www.fedorafaq.org/

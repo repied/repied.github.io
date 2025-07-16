@@ -1,0 +1,42 @@
+For the lazy and impatient, go directly to ProBTBinaries, which has a ProBT build that should run out of the box. This page is about compiling the beast.
+
+On Mac OS X, you can compile ProBT with make, but you won't have the Python bindings then. This describes the necessary steps to compile and use these Python bindings. Tested on fluo (iBook, Mac OS X 10.3), YMMV.
+
+= compiling ProBT on Mac OS X with SCons =
+* make sure your gcc is recent -- for instance use XCode tools (from http://connect.apple.com) plus the November 2004 update
+* get scons-local from [here http://www.scons.org/download.php], uncompress (no need to compile or install) in
+ ~/soft/ # or anywhere else
+* get [Python http://python.org/download/] (note: ProBT is not tested with Python 2.4, I have used 2.2/2.3 only), configure, make, make install:
+ % ./configure
+ % make
+ % su bossfluo # or whatever administrator account -- give the password when asked
+ % sudo make install
+* get [Swig http://www.swig.org/download.html] (download the .tar.gz for the last release), configure, make, make install
+* compile ProBT with scons:
+ # do this in the ProBT dir (the one with pl/, kpl/, lib/...)
+ python ~/soft/scons.py
+
+You might also need to adjust some variables in the SConstruct file for ProBT.
+
+= using PyPL on Mac OS X =
+
+ % export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/Users/lehy/src/probt/PL/source/lib
+ % export PYTHONPATH=${LD_LIBRARY_PATH}:/Users/lehy/src/probt/PL/source/lib/python
+
+ # This is a hack. Without it, the STL deadlocks during the loading of ProBT. 
+ % export GLIBCPP_FORCE_NEW=1
+
+ % python
+ Python 2.3 (#1, Sep 13 2003, 00:49:11)
+ [GCC 3.3 20030304 (Apple Computer, Inc. build 1495)] on darwin
+ Type "help", "copyright", "credits" or "license" for more information.
+ >>> import pl
+ >>> from pl import *
+ >>> a = plSymbol('a', plIntegerType(0,5))
+ >>> print a
+ {a}
+
+
+Note for myself: if you want to move libraries around, you have to jumps through hoops to have MacOS X find the shared library.
+ install_name_tool -change build/_nobanner_longdouble_debug/libpl.dylib lib/libpl.dylib _plmodule.so
+will have the system look for libpl.dylib in lib/.

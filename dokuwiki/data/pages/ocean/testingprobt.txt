@@ -1,0 +1,25 @@
+ cd source/python
+ make test
+
+Voir aussi le fichier README qui est là. Les tests sont dans le répertoire [=t/]. Dans chaque fichier [=.t], il y a une série de tests pour une classe donnée. Les tests ressemblent en général à ça : code Python, code C++, sortie attendue. Par exemple :
+
+ python_cxx(<<PYTHON, <<CXX, <<OUT, "simple plJointDistribution");
+ import pl
+ s1 = pl.plSymbol("toto", pl.plIntegerType(38, 42))
+ s2 = pl.plSymbol("tata", pl.plIntegerType(30, 49))
+ u = pl.plUniform(s2)
+ t = pl.plKernelTable(s1, s2)
+ j = pl.plJointDistribution(s1 ^ s2, u * t)
+ print j
+ PYTHON
+ plSymbol s1("toto", plIntegerType(38, 42));
+ plSymbol s2("tata", plIntegerType(30, 49));
+ plKernelTable t(s1, s2);
+ plUniform u(s2);
+ plJointDistribution j(s1 ^ s2, u * t);
+ cout << j << endl;
+ CXX
+ P(toto tata) =  { P(tata)P(toto | tata) }
+ OUT
+
+Une bonne idée : faire tourner la suite de tests à chaque fois que vous voulez commettre une modification. Ecrire les tests pour une fonctionnalité avant de l'implémenter.

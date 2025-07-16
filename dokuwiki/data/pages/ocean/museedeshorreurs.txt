@@ -1,0 +1,67 @@
+Juste un résumé de ce qu'il ne faut pas faire si on veut écrire du code réutilisable. Surtout si c'est moi qui suis censé le réutiliser. D'oh. <cartman>Don't do that to me, or else, I'll [kick httpr://../kick.mp3] you in the nuts!</cartman>
+
+* utiliser des variables globales:
+  extern PsOpenMASKWidget* mainWidget;
+* un switch qui n'en est pas un:
+  if ( event->eventId == "QTSLIDERDT"){
+        PsValuedEvent<int>* valuedEvent = dynamic_cast<PsValuedEvent<int>*>( event ) ;
+        mainWidget->Slider_DT->setValue(valuedEvent->value);
+  }
+  if ( event->eventId == "QTUPDATEGRASSDRAWING"){
+        PsValuedEvent<bool>* valuedEvent = dynamic_cast<PsValuedEvent<bool>*>( event ) ;
+        mainWidget->CheckBox_UpdateGrassDrawing->setChecked(valuedEvent->value);
+  }
+  if ( event->eventId == "QTVISGROUND"){
+        PsValuedEvent<bool>* valuedEvent = dynamic_cast<PsValuedEvent<bool>*>( event ) ;
+        mainWidget->CheckBox_VisuGround->setChecked(valuedEvent->value);
+  }
+* des noms d'évènements illisibles:
+  if ( event->eventId == "QTNBMAXGRASSESPERPATCHE"){
+* des classes nommées avec un nom générique (juste des exemples modifiés), ou juste choisi complètement au hasard (c'est plus drôle si on utilise des préfixes qui n'ont rien à voir avec ce qu'on fait):
+  PsQTEventHandler, PsOpenMASKWidget, PsvOpenGLParamSensitiveInputHandler
+* pas de README
+* pas de doc Doxygen
+* une lib standard (libxml2) entière incluse dans l'arbre des sources
+* une utilisation antédiluvienne du préprocesseur (Cédric fait remarquer à juste titre que ça n'est pas si grave que ça -- je dis juste qu'un const double éventuellement encapsulé dans une classe serait plus sympathique à l'oeil):
+  #define COEF_QT_GRASS_WIDTH 0.0001
+* ne pas utiliser le préprocesseur là où ça serait utile:
+  if (oldCrushDamping!=paramSharedData->_crushDamping)
+          setGrassCrushingDamping(paramSharedData->_crushDamping);
+  oldCrushDamping=paramSharedData->_crushDamping;
+
+  if (oldGrassHeight!=paramSharedData->_grassHeight)
+        setGrassHeight((int) paramSharedData->_grassHeight);
+  oldGrassHeight=paramSharedData->_grassHeight;
+
+  if (oldGrassWidth!=paramSharedData->_grassWidth)
+        setGrassWidth((int) paramSharedData->_grassWidth);
+  oldGrassWidth=paramSharedData->_grassWidth;
+  [100 lignes de plus copiées-collées]
+* indenter le code comme si on codait sous Notepad:
+  void initGrassForestWind()
+  {
+  windInit(groundGetArea(),groundGetMaxHeight());
+  grassInit(groundGetArea(),
+          grassGetNumberPatchesInLength(),
+          grassGetNumberPatchesInWidth(),
+          grassGetFileDensityMap());
+  //pour reinitialiser la hauteur...
+  short numberTrees=forestGetNumberOfTrees();
+  ForestTree* trees = new ForestTree[numberTrees];
+  forestGetTrees(trees);
+  forestSetTrees(numberTrees,trees);
+  delete[] trees; 
+  }
+* mettre des commentaires clairs comme du pétrole irakien, dans un français douteux:
+  //////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////
+  //-----------------------------------------------------------------------
+  //--------------fonctions definient dans les librairies------------------
+  //-----------------------------------------------------------------------
+* coder sur plus de 1300 colonnes:
+  _paramSharedData = new( pfGetSharedArena() )
+  PsvParamSharedData(_inputData.getAnim(), _inputData.getAnimDT(), _inputData.getUpdateGrassDrawing(), _inputData.getVisuGround(), _inputData.getVisuTrees(), _inputData.getVisuWire(), _inputData.getVisuSky(), _inputData.getVisuGrass(), _inputData.getVisuGusts(), _inputData.getVisuGrassDensity(), _inputData.getVisuGrassNodes(), _inputData.getRockSize(), _inputData.getRockSpeed(), _inputData.getRockBound(), _inputData.getRockMvtAuto(), _inputData.getRockCrushingPower(), _inputData.getRockCrushingPowerExp(), _inputData.getRockCrushingMysteryParam(), _inputData.getRockCrushingPropagation(), _inputData.getGroundHeight(), _inputData.getGroundSize(), _inputData.getNbPatches1(), _inputData.getNbPatches2(), _inputData.getGrassDist3D(), _inputData.getGrassDist2D5(), _inputData.getGrassDist2D(), _inputData.getGrassPolyg3D(), _inputData.getGrassPolyg2D5(), _inputData.getGrassAjustement2D5(), _inputData.getNbMaxGrassesPerPatche(), _inputData.getCrushTimeMax(), _inputData.getCrushDamping(), _inputData.getGrassHeight(), _inputData.getGrassWidth(), _inputData.getGrassNoise(), _inputData.getGrassTexture3D(), _inputData.getGrass3DAntiAliasing(), _inputData.getSizeTexture2D5(), _inputData.getGrass2D5AntiAliasing(), _inputData.getBreezeSpeed(), _inputData.getBreezePower(), _inputData.getGustSpeed(), _inputData.getGustPower(), _inputData.getNbTrees(), _inputData.getNbPgMax());
+* utiliser des chemins dans les #include:
+  #include "../libGround/GroundInterface.h"

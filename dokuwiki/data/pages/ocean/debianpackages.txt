@@ -1,0 +1,66 @@
+* Mettre à jour tous les paquets installés :
+  apt-get update
+  apt-get upgrade
+
+* Rechercher un package sur un bout de son nom ou de sa description (par exemple ici on cherche 'build') :
+  apt-cache search build
+
+* Voir des infos sur un paquet (versions disponibles, dépendances, dépendances inverses) :
+  apt-cache showpkg texmacs
+
+* Rechercher le paquet contenant un fichier donné, par exemple gnome.h :
+  apt-file search gnome.h
+
+* Si apt-file n'est pas installé, pour l'installer :
+  apt-get install apt-file
+  apt-file update # à faire de temps en temps pour mettre à jour la liste des fichiers 
+                  # dans les paquets
+
+* Installer un paquet :
+  apt-get install ftjam
+
+* Le désinstaller :
+  apt-get remove ftjam
+
+* Le désinstaller en effaçant aussi les fichiers de config, logs, etc.:
+  apt-get remove --purge ftjam
+
+* Télécharger les sources d'un package, par exemple glade-2, dans un sous-répertoire du répertoire courant :
+  apt-get source glade-2
+
+* Installer les dépendances de construction de ce package :
+  apt-get build-dep glade-2
+
+* Construire un .deb de ce package :
+  cd glade-2*
+  debian/rules binary-arch
+  cd ..
+
+* Aller lire la doc installée avec un package:
+  cd /usr/share/doc/ftjam
+  ls
+
+* Consulter la liste des fichiers installés avec un package (installé sur le système) :
+  dpkg -L glade-2
+
+* Chercher les paquets installés qui sont 'on hold' (pas de mise à jour, garder la version courante) :
+  dpkg-query -l | egrep '^h'
+
+* Reconfigurer un paquet (par exemple apache ou xfree86-common) :
+  dpkg-reconfigure apache
+
+* Sauver la liste des packages installés sur une machine:
+  dpkg --get-selections > myselections
+
+* Utiliser cette liste pour installer ces packages sur une autre machine:
+  dpkg --set-selections < myselections
+  dselect # puis faire Install
+
+* Une interface plus complète pour installer des paquets (pour des détails, voir UsingDSelect) :
+  dselect
+
+* Installer un .deb:
+  dpkg -i kernel-image-2.4.20_grenat.1_i386.deb
+
+* Faire un .deb à partir d'un RPM:
+  fakeroot alien rp8_linux20_libc6_i386_cs2.seattle.rpm

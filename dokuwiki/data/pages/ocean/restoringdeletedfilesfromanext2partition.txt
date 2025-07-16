@@ -1,0 +1,20 @@
+Pour restaurer des fichiers depuis les sauvegardes d'andrinople faites toutes les nuits, voir RestoringDeletedFilesFromBackups. Cette page couvre le cas où les fichiers à restaurer ne sont pas sur andrinople, mais sur une partition locale ext2.
+
+Je travaille sur une partition locale, /dev/hda6, qui est montée sur /scratch2. Par erreur (avec un [=make clean] mal placé), j'ai effacé le fichier sur lequel je travaillais depuis plusieurs jours ([=heCedric.cpp]), et que je n'avais pas mis récemment sur le CVS (et pour lequel emacs ne semblait pas m'avoir fait de backup récent). 
+
+== plan A: debugfs ==
+ > su
+ % umount /dev/hda6 # à faire le plus vite possible
+ % debugfs /dev/hda6
+ % lsdel
+A ce point, chercher dans la liste l'entrée qui correspond au fichier effacé (en fonction de la taille, de l'utilisateur, et de la date). Noter le premier nombre, qui est l'inode.
+ % dump <inode> /tmp/heCedric_recovered.cpp
+A ce point, ça peut marcher. Ou pas. Moi pas, le fichier avait déjà été en partie écrasé (quelques secondes après son effacement).
+
+== plan B: on the bare metal ==
+ % perl -e 'while(<>){print, last if /#include "heCedric.h"/};while(<>){s/\n//;print;<STDIN>}' /dev/hda6
+Le principe: on lit directement depuis [=/dev/hda6], jusqu'à trouver une ligne caractéristique du début du fichier qui nous intéresse (ici '#include "heCedric.h"'). Ensuite, on imprime les lignes lues une par une, en attendant à chaque fois que l'utilisateur appuie sur Entrée.
+
+Comme ça, je fais défiler le fichier à restaurer, et j'appuie sur Control-C quand j'ai atteint la fin. Après, il n'y a plus qu'à copier-coller depuis la console vers emacs.
+
+La fin de mon fichier était écrasée, mais j'ai pu la reconstituer à partir d'une vieille version dans le CVS.

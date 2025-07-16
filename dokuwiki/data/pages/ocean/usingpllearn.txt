@@ -1,0 +1,101 @@
+= Distribution non conditionelle =
+Pour apprendre P(A), comme une distribution de Laplace (= histogramme avec un a priori uniforme) (distribution non conditionnelle) :
+* tu tu crées un plLearnKLaplace(A)
+* tu ajoutes des observations avec addNewPoint
+* quand tu as besoin de la distribution résultante pour l'utiliser dans un modèle, tu la récupères avec get_distribution() (ça renvoie un plKernel).
+
+ // Exemple avec une Gaussienne a une dimension au lieu d'une Laplace
+ #include <pl.h>
+ #include <plLearn.h>
+ #include <plLearn1dNormal.h>
+ #include <math.h>
+ #define PI 3.1415927
+ int main()
+ {
+  plRealType angleType(-PI,PI,40);
+  plSymbol A("A", angleType);
+  plLearn1dNormal P_A( A );
+  P_A.addNewPoint(0.2);
+  P_A.addNewPoint(0.3);
+  P_A.addNewPoint(0.3);
+  plKernel P_res = P_A.get_distribution();
+  plValues val(A);
+  P_res.draw(val);
+  cout << val<<endl;
+  P_res.plot("test.gnuplot");
+ }	
+
+
+= Distribution conditionelle =
+== Généralités ==
+Pour apprendre P(A | B), avec chaque P(A | [B=b]) une distribution de Laplace :
+* tu te crées un plCndLearnObject<plLearnKLaplace>(A, B)
+* tu ajoutes des observations avec addNewPoint
+* pour récupérer le plCndKernel (distribution conditionnelle) qui correspond, tu fais get_kernel_map() (en fait ça renvoie un plKernelMap, qui est une sorte de plCndKernel).
+   // Exemple
+ #include <pl.h>
+ #include <plLearn.h>
+ #include <plLearn1dNormal.h>
+ #include <math.h>
+ #define PI 3.1415927
+ int main()
+ {
+       // Apprendre 3 gaussiennes conditionellement a une variable B
+     plRealType angleType(-PI,PI,40);
+     plSymbol A("A", angleType);
+     plIntegerType nazeType(1,3);
+     plSymbol B("B", nazeType);
+     plVariable AB = A^B;
+     plValues valAB(AB);
+       // definition de P(A|B) comme 3 gaussiennes a apprendre
+     plCndLearnObject<plLearn1dNormal> P_A_B_Learnt(A, B);
+       // on apprend une donnee pour B=2
+     valAB[A]= 0.2;
+     valAB[B]= 2; 
+     P_A_B_Learnt.addNewPoint(valAB);
+       // on apprend une autre donnee pour B=2
+     valAB[A]= 0.3;
+     valAB[B]= 2;
+     P_A_B_Learnt.addNewPoint(valAB);
+       //on cree le CndKernel a partir de l objet appris
+     plCndKernel P_A_B = P_A_B_Learnt.get_kernel_map();
+       // on recupere la distribution P(A|B=2)
+     valAB[B]=2;
+     plKernel P_A_B2 = P_A_B.instantiate(valAB);
+     P_A_B2.plot("testA_B2.gnuplot");
+ }
+== Comment atteindre des methodes de *T* ==
+Quand on apprend un objet conditionel P = plCndLearnObject<T>(A^Z, B) sont chaque distributions non conditionnelles est de type *T* (ex plLearnNdNormal) , comment appeller des méthodes spécifique a *T* sur une des objets (ex getCovariance) ?
+Peut être que je dis nimporte quoi, mais si on fait un .get_kernel_map() puis un .instantiate(), on n'a jamais accès a ces méthodes de T.
+La solution est d'attaquer directement le plCndLearnObject, qui est une *map* (au sens STL). Chaque entrée de la map est un objet de type T indexé par un valeur de B.
+Pour l'exemple de l'accès a la matrice de covariance d'une gaussienne coinditionnelle 2D apprise, en résumé ca donne
+ (((P.get_map()).find(value.to_data_values()))->second).getCovariance()
+En plus compréhensible:
+
+ // ici j ai l objet plCndLearnObject<plLearnNdNormal> se nommant P.
+ // je recupere une reference const sur la map implemenat la conditionnalité
+ const map<plDataValues, plLearnNdNormal>& carte = P.get_map();
+ // je construit un iterateur sur les maps
+ map<plDataValues, plLearnNdNormal>::const_iterator i;
+ // je cherche l'element de la map correspondanta a le plValue 0 pour B
+ plValues valB(B);
+ valB[B] = 0;
+ i = carte.find((valB.to_data_values())); // i pointe sur le bon element de la map
+ // Maintenant (i->second) est l'objet apprenant P(A Z |B=0)
+ plLearnNdNormal PLearn = i->second;
+ // je peux enfin afficher sa matrice de covariance
+ cout << "PLearn.getCovariance()="<<PLearn.getCovariance();
+ //pour le plotter , faut en faire un kernel
+ plKernel Pk = PLearn.get_distribution();
+ Pk.plot("pk.gnuplot");
+= Autre exemples =
+A part les Laplace, sont disponibles pour le moment :
+* plLearnKHistogram pour un histogramme sur une variable dont le domaine de définition est connu ;
+* plLearnKLidstone pour les Lidstone (= Laplace avec un a priori (uniforme) à poids réglable) sur des variables dont le domaine de définition est connu ;
+* plLearn1dNormal et plLearnNdNormal pour les gaussiennes à 1 et n dimensions ;
+* plLearnUnKHistogram et plLearnUnKLaplace pour un histogramme / une Laplace sur une variable dont le domaine de définition n'est pas connu.
+
+Sinon, il y a des fichiers exemples dans "PL/source/pl/test".
+
+= Cas particuliers des plLearnUnK* =
+Pour plLearnUnKHistogram et plLearnUnKLaplace. L'idée du domaine de définition inconnu, c'est que des fois c'est pendant l'apprentissage que tu découvres les cas possibles de tes variables. C'est a dire qu'une fois la collection de données terminée, un symbol est créé a partir du min et du max des données. Mais, dixit Yguel, c'est pas propre.

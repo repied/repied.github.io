@@ -1,0 +1,22 @@
+= Setting up a system to run Maple =
+
+* Make sure the Java JRE is installed and usable somewhere.
+
+* Make sure you mount soft-serv. On some systems, [=automount] takes care of that; on others, you may need to add to [=/etc/fstab]:
+ soft-serv:/softs/Linux  /softs nfs defaults,soft,intr   0    0
+
+* Make sure you have this library installed :
+ libstdc++-libc6.1-1.so.2
+
+On Debian systems :
+ apt-get install libstdc++2.9-glibc2.1
+(as of 05/11/2005)
+
+* Make sure you PATH environment variable contains [=/soft/bin]:
+That is, in tcsh/csh:
+ setenv PATH $PATH:/softs/bin
+Or in bash/zsh:
+ export PATH=$PATH:/softs/bin
+
+* Run xmaple:
+ xmaple

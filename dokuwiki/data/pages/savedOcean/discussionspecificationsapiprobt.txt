@@ -1,0 +1,89 @@
+= Questions =
+* What is a plConditionalExpression?
+
+= réflexions sur ProBT =
+
+Quand une question ou suggestion a sa réponse, supprimez-la de cette page, créez une page qui résume la réponse, et mettez un lien vers celle-ci dans ProBT.
+
+== Ahh si on pouvait ... 
+
+=== plSymbol, plType, plValues ===
+
+* une façon de construire les plValues incrémentalement:
+  void plValues::add_variable(const plVariable& v);
+
+...séparer les symboles des noms de types, les noms de types des intervalles. Pouvoir créer des objets intermédiaires à tous les niveaux entre le type et le symbole et pouvoir ajouter et modifier de nouvelles informations à un objet intermédiaire de ce type.
+
+Pouvoir créer une plValues à partir d'un type simplement. Et d'automatiquement associer une plValues à un plSymbol et de faire l'API convenant.
+
+L'intérêt : pouvoir apprendre certaines informations sur une variable que l'on a nommée, sur laquelle on a travaillé (qui fait partie d'une décomposition que l'on a spécifiée par exemple) ; pouvoir faire référence à un type commun, sans qu'il soit défini, qui peut être défini par la suite voir de manière dynamique.
+
+Par exemple, pour l'instant je fais de l'apprentissage et je ne connais pas l'ensemble de définition d'une variable. Du coup je défini un type bidon :
+ plIntegerType bidon(0,1);
+et je construit des symbols bidons :
+ plSymbol bidon_ID("id bidon", bidon);*
+et des plValues sur ce symbole (ce qui peut paraître bizarre car je vais dépasser les bornes mais pl ne râle pas et heureusement car ce procédé est nécessaire, jusqu'à ce que quelqu'un trouve un formalisme idoine)
+ plValues id_val(bidon_ID);
+puis j'apprend ce type dans un pl!LearnQQchose en utilisant la méthode [=addpoint]
+ id_val[bidon_ID] = 36;
+ plLearnQQchose.addpoint(id_val);
+Pour que les choses soit plus correctes au moins syntaxiquement il faudrait pouvoir faire les mêmes choses mais en commençant par :
+ plUndefinedIntegerType bidon();
+Pouvoir ensuite instancier ce type pour en faire un type défini et conserver la chaîne des objets en dépendant. Pour pouvoir après apprentissage de nouveaux exemples par exemples instancier de nouveau le type, et modifier toute la chaîne d'objets qui en dépendent...
+
+=== plValues, plDataValues ===
+...rendre pl!DataValues publique, faciliter le passage de plValues à plDataValues.
+
+=== cohérence d'une description PBR ===
+...avoir une analyse de correction des modèles écrits : concordance et définitions des types.
+
+=== TODO plLearn ===
+* mettre les methode remplissant des plKernelTable (aujourd'hui foncteurs de plCndLearnObject ou fonction dans plLearn1dNormal.cpp) dans plKernelTable.h et .cpp
+
+=== variables et valeurs ===
+D'un point de vue API il est génant d'utiliser de manière séparée les plSymbol et les plValues. On a envie après avoir défini un plSymbol S de pouvoir écrire des choses comme S=4 et manipuler S comme une valeur.
+Cela reviendrait à réécrire toutes les fonctions qui prennent en argument  un plSymbol ou une plValues (ou faire une surcouche) mais dans la totalité des cas que j'ai envisagé il n'y a pas de confusion possible entre symbole et valeur. 
+* Je m'explique :
+** Dans le constructeur d'une plJointDistribution on n'utilise jamais de plValues en premier argument
+** Dans le constructeur d'une plProbTable pareil.
+** Dans le constructeur d'un plKernelTable on n'utilise que des symboles et dans le push c'est toujours une plValues qu'on utilise comme deuxième argument.
+* D'après mon expérience il n'y a pas deux signatures d'une même méthode de !ProBt qui sont telles que pour passer de l'une à l'autre il suffise de remplacer pl!Symbol par pl!Value. 
+
+Voyez-vous des fonctions dont la sémantique peut être confuse ?
+
+=== sérialisation/désérialisation ===
+Il faudrait un moyen de stocker (en dur) le résultats de travaux pl : résultats d'apprentissage, d'inférence, models, programme bayésiens, décomposition. Et possibilité de les /loader/ par la suite. Pour ne pas tout perdre si le processeur lâche par exemple.
+
+Il pourrait s'agir au minimum de pouvoir serialiser/deserialiser une distribution (sauf s'il y a un externalMachin dedans bien sur), et au mieux de pouvoir serialiser un programme complet (variables, decomposition, formes parametriques, tout le toutim). -- RonanLeHy
+
+== constantes dans ProBT ==
+Beaucoup parmi les constantes de plMath.h sont définis à la main et dépendent du compilateur, de la représentation des nombres etc ...
+il faudrait définir dans quels cas elles servent et écrire des scripts qui les calculent et génèrent automatiquement le plMath.h
+Peut-être faut-il décider d'autre stratégies, par exemple : 
+ #define PL_MIN_LOGP     4.941e-324f   \* the smallest number p such that log( p ) > -INF *\
+que Kamel a remplacé par :
+ l = log( P );
+  if ( ERANGE !=  errno ) 
+   {
+     H -= P * l;
+   }
+dans kpl1dHistogram.cpp (shannon_entropie) car log(P) place errno à ERANGE si 
+ ERANGE The argument x is zero.  The log of zero is not defined (minus infinity).
+dixit page de manuel de log.
+
+=== gestion des erreurs ===
+Bon, j'ai une ou deux doléances sur la gestion des erreurs dans PL. J'écris ça pour avoir votre avis, pas pour suggérer que quelqu'un d'autre devrait régler ces problèmes pour moi :). -- RonanLeHy
+* je n'ai pas trouvé d'operator<< pour imprimer une plError sur un stream une fois que je l'ai attrapée (je pourrai l'écrire quand j'aurai le temps)
+* les erreurs telles qu'elles existent ne sont pas d'un très grand secours:
+** les messages ne sont pas très explicites, et ne mentionnent pas les variables incriminées. J'améliore ce genre de messages quand je tombe dessus.
+** Il y a des message cryptiques comme:
+  Impossible to build a table. A Map will be built
+Qu'est-ce que le pôvre utilisateur que je suis peut faire de ça? Je ne sais pas où ça se passe, ni quand, ni pourquoi. Et quand je cherche, je trouve:
+  catch(...){//Memory allocation problem
+    cerr << "Impossible to build a table. A Map will be built" << endl;
+    // [...]
+  }
+Ce qui veut dire qu'il y a probablement eu un problème d'allocation, je suppose, mais alors il me semble qu'on devrait me mettre au courant ("cannot allocate memory" ou un truc du genre).
+
+=== bugtracking ===
+A quand un outil de gestion des problèmes pour pl (type [RT http://www.bestpractical.com/rt/]/[bugzilla http://www.bugzilla.org/]/...)?

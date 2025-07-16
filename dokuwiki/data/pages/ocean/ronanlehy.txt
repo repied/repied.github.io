@@ -1,0 +1,55 @@
+=== That's me. Ronan Le Hy. ===
+
+httpr://../ronan_southpark_beige.png ([là http://www.comedycentral.com/southparkgames/character/])
+
+* rlehy@free.fr, lehy@imag.fr
+* http://www.inrialpes.fr/sharp/people/lehy, http://ocean, http://bayesien.org
+
+* bureau :
+** E214, poste 55 42
+** tel : 04 76 61 55 42 
+** fax : 04 76 61 52 10
+** adresse :
+ e-Motion/GRAVIR, INRIA Rhône Alpes
+ ZIRST -- 655, avenue de l'Europe
+ Montbonnot
+ 38334 SAINT ISMIER Cedex
+
+* à Londres :
+** tel : 04 76 48 24 66
+** portable : 06 64 15 82 99
+** adresse :
+ 14, rue de Londres
+ 38000 - Grenoble
+
+=== Mes notes personnelles (mais publiques) ===
+* PerlIdeas
+* SWIGIdeas
+* OpenMASKIdeas
+* PhdIDeas
+* NotesSeminaireGroupeModeles
+
+* NotesRobea
+* MyPapers (Ronan's)
+* GreatPrinciples
+
+* QuoteFile
+
+* PerlBeauties
+* GccHorrors
+* MuseeDesHorreurs du C/C++
+* TrollsAndFlamewars
+* ExplainXServers
+
+* RonansBookmarks
+* TicsDeLangage
+* AuSujetDuLogo
+
+* iMochoneKwikiAdministration
+
+* SujetsDeDiscussion
+
+=== Random stuff ===
+* http://openstuff.net
+* http://www.lafraise.com
+* http://and.then.com

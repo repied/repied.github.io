@@ -1,0 +1,19 @@
+
+<p>
+C&rsquo;est dans la doc de plComputableObject:
+</p>
+<pre class="code">plVariablesConjunction get_head_plvariables () const</pre>
+
+<p>
+mais faut pas se gourer parce qu&rsquo;il y a aussi :
+</p>
+<pre class="code">plVariablesConjunction get_known_plvariables () const
+plVariablesConjunction get_search_plvariables () const</pre>
+
+<p>
+ bon si on veut construire une plValue pour faire des push à partir d&rsquo;un  plKernelTable (c&rsquo;est un type de plComputableObject) on doit construire sa plValues ainsi :
+</p>
+
+<p>
+ plKernelTable t;  plValues val(t.get_known_plvariables ());  val[0] = ...;  val[1] = ...;  t.push(montableau, val);
+</p>
