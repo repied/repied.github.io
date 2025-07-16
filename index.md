@@ -1,6 +1,12 @@
-<!-- ---
+---
 title: "This is the title of index page"
---- -->
+---
+
+Here I link to old websites
+- [yamlb]({{ site.baseurl }}{% yamlb/index.html %})
+- [dijon]({{ site.baseurl }}{% dijon/index.html %})
+...
+
 
 # This is index.md file JEKYLL
 ## A subtitle
