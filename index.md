@@ -1,6 +1,6 @@
----
+<!-- ---
 title: "This is the title of index page"
----
+--- -->
 
 # This is index.md file JEKYLL
 ## A subtitle
