@@ -1,3 +1,0 @@
-====== Sisäänkirjautuminen ======
-Et ole tällä hetkellä kirjautunut sisään!. Anna käyttäjätunnus ja salasana alle, kirjautuaksesi 
-sisään. Muista että cookiet pitää olla päällä, jotta sisäänkirjautuminen onnistuu.
