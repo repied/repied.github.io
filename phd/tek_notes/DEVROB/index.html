@@ -1,0 +1,1228 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 11">
+<meta name=Originator content="Microsoft Word 11">
+<link rel=File-List href="Developmental_Robotics_fichiers/filelist.xml">
+<link rel=Preview href="Developmental_Robotics_fichiers/preview.wmf">
+<title>Developmental Robotics</title>
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Template>Normal</o:Template>
+  <o:LastAuthor>dangauth</o:LastAuthor>
+  <o:Revision>2</o:Revision>
+  <o:TotalTime>306</o:TotalTime>
+  <o:Created>2005-03-31T12:38:00Z</o:Created>
+  <o:LastSaved>2005-03-31T12:38:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>2074</o:Words>
+  <o:Characters>11410</o:Characters>
+  <o:Company>INRIA Rhone Alpes</o:Company>
+  <o:Lines>95</o:Lines>
+  <o:Paragraphs>26</o:Paragraphs>
+  <o:CharactersWithSpaces>13458</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:DisplayHorizontalDrawingGridEvery>0</w:DisplayHorizontalDrawingGridEvery>
+  <w:DisplayVerticalDrawingGridEvery>0</w:DisplayVerticalDrawingGridEvery>
+  <w:UseMarginsForDrawingGridOrigin/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:UseWord2002TableStyleRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Helvetica;
+	panose-1:2 11 6 4 2 2 2 2 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536902279 -2147483648 8 0 511 0;}
+@font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;
+	mso-font-charset:2;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:0 268435456 0 0 -2147483648 0;}
+@font-face
+	{font-family:Times-Roman;
+	panose-1:0 0 0 0 0 0 0 0 0 0;
+	mso-font-alt:"Times New Roman";
+	mso-font-charset:77;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:auto;
+	mso-font-signature:50331648 0 0 0 1 0;}
+@font-face
+	{font-family:"Copperplate Gothic Light";
+	panose-1:2 14 5 7 2 2 6 2 4 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:3 0 0 0 1 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+h1
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	font-size:16.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:Helvetica;
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:16.0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	mso-bidi-font-weight:normal;}
+h2
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	font-size:14.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+h3
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:3;
+	font-size:13.0pt;
+	font-family:Arial;
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	mso-bidi-font-weight:normal;}
+h4
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:4;
+	font-size:14.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	mso-bidi-font-weight:normal;}
+h5
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:5;
+	font-size:13.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	mso-bidi-font-weight:normal;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+h6
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:6;
+	font-size:11.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	mso-bidi-font-weight:normal;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:7;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:8;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-style:italic;
+	mso-bidi-font-style:normal;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-next:Normal;
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	mso-outline-level:9;
+	font-size:11.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoList, li.MsoList, div.MsoList
+	{mso-style-noshow:yes;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:14.15pt;
+	margin-bottom:.0001pt;
+	text-indent:-14.15pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoListBullet2, li.MsoListBullet2, div.MsoListBullet2
+	{mso-style-update:auto;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:32.15pt;
+	margin-bottom:.0001pt;
+	text-indent:-18.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l1 level1 lfo9;
+	tab-stops:list 32.15pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoListBullet3, li.MsoListBullet3, div.MsoListBullet3
+	{mso-style-update:auto;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:46.3pt;
+	margin-bottom:.0001pt;
+	text-indent:-18.0pt;
+	mso-pagination:widow-orphan;
+	mso-list:l0 level1 lfo10;
+	tab-stops:list 46.3pt;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	font-size:22.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.MsoClosing, li.MsoClosing, div.MsoClosing
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:216.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoSignature, li.MsoSignature, div.MsoSignature
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:216.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:3.0pt;
+	margin-left:0cm;
+	text-align:center;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:12.0pt;
+	font-family:Arial;
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoSalutation, li.MsoSalutation, div.MsoSalutation
+	{mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.MsoDate, li.MsoDate, div.MsoDate
+	{mso-style-next:Normal;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.LetterSenderName, li.LetterSenderName, div.LetterSenderName
+	{mso-style-name:"Letter Sender Name";
+	mso-style-update:auto;
+	mso-style-parent:"";
+	margin-top:12.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:-18.0pt;
+	margin-bottom:.0001pt;
+	text-indent:13.5pt;
+	mso-pagination:none;
+	mso-outline-level:1;
+	font-size:26.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Copperplate Gothic Light";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:#FF9900;
+	mso-font-kerning:14.0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.LetterSenderAddress, li.LetterSenderAddress, div.LetterSenderAddress
+	{mso-style-name:"Letter Sender Address";
+	mso-style-update:auto;
+	mso-style-parent:"";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:-18.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-indent:13.5pt;
+	mso-pagination:none;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Copperplate Gothic Light";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:#993366;
+	mso-font-kerning:14.0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.LetterDate, li.LetterDate, div.LetterDate
+	{mso-style-name:"Letter Date";
+	mso-style-update:auto;
+	mso-style-parent:"";
+	margin-top:6.0pt;
+	margin-right:18.0pt;
+	margin-bottom:12.0pt;
+	margin-left:18.0pt;
+	mso-pagination:none;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Copperplate Gothic Light";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:14.0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.LetterRecipientAddress, li.LetterRecipientAddress, div.LetterRecipientAddress
+	{mso-style-name:"Letter Recipient Address";
+	mso-style-update:auto;
+	mso-style-parent:"";
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Copperplate Gothic Light";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	color:black;
+	mso-font-kerning:14.0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.LetterBody, li.LetterBody, div.LetterBody
+	{mso-style-name:"Letter Body";
+	mso-style-update:auto;
+	mso-style-parent:"";
+	margin-top:0cm;
+	margin-right:18.0pt;
+	margin-bottom:0cm;
+	margin-left:18.0pt;
+	margin-bottom:.0001pt;
+	mso-pagination:none;
+	mso-outline-level:1;
+	font-size:14.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Copperplate Gothic Light";
+	mso-fareast-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-font-kerning:14.0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+p.ReferenceLine, li.ReferenceLine, div.ReferenceLine
+	{mso-style-name:"Reference Line";
+	mso-style-parent:"Corps de texte";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:EN-US;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:-126;
+	mso-list-type:simple;
+	mso-list-template-ids:1423610662;}
+@list l0:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:"Liste à puces 3";
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:46.3pt;
+	mso-level-number-position:left;
+	margin-left:46.3pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l1
+	{mso-list-id:-125;
+	mso-list-type:simple;
+	mso-list-template-ids:-1593688924;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-style-link:"Liste à puces 2";
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:32.15pt;
+	mso-level-number-position:left;
+	margin-left:32.15pt;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l2
+	{mso-list-id:49036595;
+	mso-list-type:hybrid;
+	mso-list-template-ids:400183534 66569 197641 328713 66569 197641 328713 66569 197641 328713;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:225191806;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-2017531858 66569 197641 328713 66569 197641 328713 66569 197641 328713;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:316224911;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-611264948 66569 197641 328713 66569 197641 328713 66569 197641 328713;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l4:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l5
+	{mso-list-id:387149041;
+	mso-list-type:hybrid;
+	mso-list-template-ids:878893432 66569 197641 328713 66569 197641 328713 66569 197641 328713;}
+@list l5:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l6
+	{mso-list-id:661854749;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1889776374 66569 197641 328713 66569 197641 328713 66569 197641 328713;}
+@list l6:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l6:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l7
+	{mso-list-id:911550393;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1769687502 66569 197641 328713 66569 197641 328713 66569 197641 328713;}
+@list l7:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l8
+	{mso-list-id:960962799;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1269435906 66569 197641 328713 66569 197641 328713 66569 197641 328713;}
+@list l8:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l8:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l9
+	{mso-list-id:988825133;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-366679862 66569 197641 328713 66569 197641 328713 66569 197641 328713;}
+@list l9:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+@list l10
+	{mso-list-id:1508058713;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1194684486 66569 197641 328713 66569 197641 328713 66569 197641 328713;}
+@list l10:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Tableau Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]-->
+</head>
+
+<body lang=FR link=blue vlink=purple style='tab-interval:36.0pt'>
+
+<div class=Section1>
+
+<p class=MsoTitle><span lang=EN-US>Developmental Robotics</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>AAAI
+Spring Symposium</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>Stanford
+University</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>Palo
+Alto, California</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>21-23
+March 2005</span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal align=center style='text-align:center'><span lang=EN-US>Pierre.Dangauthier@imag.fr</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><u><span lang=EN-US>Abstract</span></u><span lang=EN-US>:<o:p></o:p></span></b></p>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US>This document presents some personal notes on the
+Developmental Robotics symposium held in Stanford and organized by the American
+Association for Artificial Intelligence. It’s not intended to be exhaustive nor
+well organized, but it’s rather a mix between my personal thoughts, key ideas,
+discussed issues and quotations related to Developmental Robotics. I have a hard
+copy of the presented papers.<o:p></o:p></span></b></p>
+
+<h1 style='text-align:justify;tab-stops:right 432.0pt'><span lang=EN-US>General
+information<span style='mso-tab-count:1'>                                                               </span></span></h1>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>This Workshop
+was composed of 8 symposia:</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l9 level1 lfo3;
+     tab-stops:list 36.0pt'><span lang=EN-US>AI Technologies for Homeland
+     Security </span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l9 level1 lfo3;
+     tab-stops:list 36.0pt'><span lang=EN-US>Challenges to Decision Support in
+     a Changing World </span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l9 level1 lfo3;
+     tab-stops:list 36.0pt'><span lang=EN-US>Developmental Robotics </span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l9 level1 lfo3;
+     tab-stops:list 36.0pt'><span lang=EN-US>Dialogical Robots: Verbal
+     Interaction with Embodied Agents</span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l9 level1 lfo3;
+     tab-stops:list 36.0pt'><span lang=EN-US>Knowledge Collection from
+     Volunteer Contributors (KCVC05) </span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l9 level1 lfo3;
+     tab-stops:list 36.0pt'><span lang=EN-US>Metacognition in Computation </span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l9 level1 lfo3;
+     tab-stops:list 36.0pt'><span lang=EN-US>Persistent Assistants: Living and
+     Working with AI </span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l9 level1 lfo3;
+     tab-stops:list 36.0pt'><span lang=EN-US>Reasoning with Mental and External
+     Diagrams.</span></li>
+</ul>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>The
+Developmental Robotics Symposium was organized by Douglas Blank and Lisa Meeden
+and was constituted by several papers sessions, posters and panel sessions.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Web Site: <a
+href="http://www.cs.brynmawr.edu/DevRob05/">http://www.cs.brynmawr.edu/DevRob05/</a></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Related
+conferences:</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l5 level1 lfo4;
+     tab-stops:list 36.0pt'><span lang=EN-US><a href="http://icdl.cc/">International
+     Conference on Development and Learning</a> </span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l5 level1 lfo4;
+     tab-stops:list 36.0pt'><span lang=EN-US><a
+     href="http://www.lucs.lu.se/Abstracts/LUCS_Studies/LUCS94.html">Epigenetic
+     Robotics 2</a> </span></li>
+</ul>
+
+<p class=MsoNormal style='text-align:justify'><b style='mso-bidi-font-weight:
+normal'><span lang=EN-US>Community</span></b><span lang=EN-US>: A common wish
+is to set up a community around DevRob, by several ways:</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l4 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=EN-US>A WIKI should be put on-line soon</span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l4 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=EN-US>Doug Blank recommends to use
+     common simulation tools</span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal style='text-align:justify;mso-list:l4 level2 lfo2;
+      tab-stops:list 72.0pt'><span lang=EN-US>PYRO (python robot programming,
+      easy to use for teaching and research) linked with:</span></li>
+  <li class=MsoNormal style='text-align:justify;mso-list:l4 level2 lfo2;
+      tab-stops:list 72.0pt'><span lang=EN-US>Player/Stage/gazebo: Open source
+      Robotic simulator platform, with dynamics, 2D, 3D…</span></li>
+ </ul>
+ <li class=MsoNormal style='text-align:justify;mso-list:l4 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=EN-US>A website presented by <span
+     class=SpellE>M.Weng</span>: <a href="http://www.mentaldev.com">www.mentaldev.com</a></span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l4 level1 lfo2;
+     tab-stops:list 36.0pt'><span lang=EN-US>What about organizing a DevRob
+     challenge on a simulator using PYRO? Details: Organizers provide a
+     simulator, but without explaining what is simulated: this simulator just
+     gives, say 10 real values (sensors inputs) at each time step and collect 5
+     real values. The 5 ones are motor commands. But the participants don’t
+     know what kind of world is simulated (2D, 3D, 67D…), nor the kind of
+     sensors they have, nor the kind of actuators they use. So they have to
+     design a cognizer that will discover that thought simulation. Now how to
+     decide who wins? (<span class=SpellE>hehehe</span>…)</span></li>
+</ul>
+
+<h1 style='text-align:justify'><span lang=EN-US>General ideas about
+Developmental robotics</span></h1>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>The only known
+system able to tackle <b style='mso-bidi-font-weight:normal'>muddy</b> tasks
+(vision, speech, driving, real world issues) is the brain. <b style='mso-bidi-font-weight:
+normal'>Biological inspiration</b> is a clue.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Everybody agree
+with the idea that a cognizer needs <b style='mso-bidi-font-weight:normal'>learning</b>
+to face real world problems. </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>«&nbsp;Common
+sense knowledge must be grounded on <b style='mso-bidi-font-weight:normal'>sensorimotor
+interaction&nbsp;</b>»</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>« Never start
+from scratch, but build on the old »</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Almost all
+presented works are based on reinforcement learning.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>“<b
+style='mso-bidi-font-weight:normal'>Open-ended learning</b>”: on line and
+forever learning.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>“<b
+style='mso-bidi-font-weight:normal'>Task general approach</b>”: We don’t
+specify a task to solve: the robot learns whatever it wants; build its own
+representation of its environment and of itself. And, finally, we hope that his
+learned world model will be powerful enough to solve muddy problems. At least
+it’s funny.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>We must <b
+style='mso-bidi-font-weight:normal'>avoid to reify</b> and to transpose our
+model of the world on the robot representation. This idea is close to Brooks’
+approach. Indeed, as far as we don’t have the same sensorimotor experience, we
+will never produce the same representation of the world. Even Time and Space
+notions are human! So what are the common foundations of cognizers? Information
+theory, statistics, mathematics. A DevRob fundamentalist should avoid giving
+any prior human knowledge to the robot, including about itself, its sensors
+geometry, its goals… Isn’t it too much? Or shouldn’t we make a progression in
+difficulties, and remove prior knowledge step by step?</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Before the
+development, the robot should have a <b style='mso-bidi-font-weight:normal'>structure</b>
+enabling a powerful enough expression power (“a dog will never talk”). Its body
+must be adapted to its ecology, and it has to have a good developmental
+program.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Learning by
+imitation and social interactions haven’t been discussed, however they seem to
+be crucial in the mental development of animals. Is it the next step?</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Continuing the
+life metaphor, our developmental program comes (maybe) from evolution: we were
+selected to be able to learn <b style='mso-bidi-font-weight:normal'>incrementally</b>.</span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>Controversial Topics </span></h2>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l7 level1 lfo11;
+     tab-stops:list 36.0pt'><b style='mso-bidi-font-weight:normal'><span
+     lang=EN-US>Frontiers</span></b><span lang=EN-US> of the cognitive agent
+     (remember J. Droulez with his Bayesian agent in last BIBA workshop): what
+     is intrinsic/extrinsic, inside/outside.</span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l7 level1 lfo11;
+     tab-stops:list 36.0pt'><span lang=EN-US>Do space and Time notions should
+     be learned? Where is time coming from for a robot?</span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l7 level1 lfo11;
+     tab-stops:list 36.0pt'><span lang=EN-US>Is it neo-behaviorism? We have to
+     be careful with ideological <b style='mso-bidi-font-weight:normal'>terminology</b>.
+     And with terminology in general.</span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l7 level1 lfo11;
+     tab-stops:list 36.0pt'><span lang=EN-US>The <b style='mso-bidi-font-weight:
+     normal'>evaluation</b> of that field is a big issue: complexity, realness
+     of emerged behaviors? Usability of metaphors for psychologists? Ability of
+     general task performing?</span></li>
+</ul>
+
+<h1 style='text-align:justify'><span lang=EN-US>Philosophical issues for
+Developmental Robotics</span></h1>
+
+<h2 style='text-align:justify'><span lang=EN-US>Evolving AI</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>General
+discussion about AI and real problems. <span class=SpellE>Pentti</span>
+Kanerva.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>We need a new
+kind of algorithm for computing in high dimensional spaces of real problems, we
+need to discover the secrets of High-D vectors, and for that mathematics are
+required, geometry and algebra.</span></p>
+
+<h3 style='text-align:justify'><span lang=EN-US>Claim 1:</span></h3>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>We must
+understand the brain, because it’s the only system succeeding with such high-D
+problems. It’s the technological challenge of the next century. As an analogy,
+it would have been impossible to succeed in celestial mechanics without
+understanding gravity, impossible to protect us against illness without
+microbiology, and to understand heredity without genetics.</span></p>
+
+<h3 style='text-align:justify'><span lang=EN-US>Claim 2</span></h3>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Developmental
+robotics is our best bet.</span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>How cognizers come to know
+their world and what this implies for cognitive robots</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Alexander Kovacs</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>We have to work
+at the raw level, and not at the phenomenological level, do not reify, leave
+the things implicit and let the robot build its own representations.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Do not fear to
+have a lot of sensory inputs, because it is the solution, it’s needed to build
+a good representation of the environment.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>Learning about the self and
+others through contingency</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>A robot learns
+to recognize itself in its video inputs: Kevin Gold</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>This has been
+achieved considering that the self is what is moving immediately after a motor
+order is given. So the robot passed the mirror test. It has been shown that
+some monkeys are extending their body mental image to the tool there are using.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>Toward learning the binding
+affordances of objects: A behavior-grounded approach</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Developmental
+approach to learning the manipulation of objects</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Alexander <span
+class=SpellE>Stoytchev</span></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Goal: have
+robots autonomously use tools to over pass their physical limitations. For that
+the robot tries longer and longer sequences of action.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>A developmental approach to
+grasping</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Lorenzo Natal</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Active learning
+through interaction allows:</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <ul style='margin-top:0cm' type=disc>
+  <li class=MsoNormal style='text-align:justify;mso-list:l8 level2 lfo1;
+      tab-stops:list 72.0pt'><span lang=EN-US>To relate different sensory
+      modalities together</span></li>
+  <li class=MsoNormal style='text-align:justify;mso-list:l8 level2 lfo1;
+      tab-stops:list 72.0pt'><span lang=EN-US>Autonomously drives exploration</span></li>
+  <li class=MsoNormal style='text-align:justify;mso-list:l8 level2 lfo1;
+      tab-stops:list 72.0pt'><span lang=EN-US>Establish casual links</span></li>
+ </ul>
+</ul>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Human are
+optimized for adaptation, not for performance.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>What we call
+“simple tasks” like grasping, has been learned with a lot of trials and efforts</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>For finding his
+hand in his video flow, the robot uses background difference and correlation
+with motor commands (neural net).</span></p>
+
+<h1 style='text-align:justify'><span lang=EN-US>Intrinsic Motivation</span></h1>
+
+<h2 style='text-align:justify'><span lang=EN-US>Auto-supervised learning in the
+Bayesian programming framework</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Pierre
+Dangauthier</span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>Intrinsically motivated
+reinforcement learning: A promising framework for developmental robot learning</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Andrew Stout,</span><span
+lang=EN-US style='font-family:Times-Roman;mso-hansi-font-family:Times-Roman;
+mso-bidi-font-family:"Times New Roman"'><o:p></o:p></span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>The Playground environment:
+Task-independent development of a curious robot</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Curiosity for
+Sony dog robot: Pierre-Yves Oudeyer</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Open-ended
+development can be driven either by human reward, either by intrinsic
+motivation.<span style='mso-spacerun:yes'>  </span>Motivation could come from:
+curiosity, surprise, challenge, novelty... But it’s not easy to measure those
+things, and different measure (correlation, information, entropy…) can lead to
+different appreciation of the novelty of a situation.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>The chosen
+solution (Same as Schmidhuber 1991) is pleasure of learning, that is to say
+reward=high decrease in error rate of predictions made on the world. If error
+rate is low but constant, the robot gets “bored” and then tries another new
+sensorimotor experience. If error rate is high and does not decrease, it means
+that this part of the environment is unpredictable, at least with the embedded
+learning algorithm. Then it’s frustrating and the robot looks for something
+else. See website for videos, it’s really impressive how the robot behave like
+a baby. </span></p>
+
+<h1 style='text-align:justify'><span lang=EN-US>Panel Session </span></h1>
+
+<h2 style='text-align:justify'><span lang=EN-US>Why developmental robotics?</span></h2>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l3 level1 lfo5;
+     tab-stops:list 36.0pt'><span lang=EN-US>Engineering answer: improving task
+     resolution</span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l3 level1 lfo5;
+     tab-stops:list 36.0pt'><span lang=EN-US>Life science: to provide a
+     metaphor of life by increasing behavioral complexity.</span></li>
+</ul>
+
+<h2 style='text-align:justify'><span lang=EN-US>How to evaluate results?</span></h2>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l10 level1 lfo6;
+     tab-stops:list 36.0pt'><span lang=EN-US>Engineering: if we develop models
+     of the world enabling, in the future to tackle a lot of different tasks.</span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l10 level1 lfo6;
+     tab-stops:list 36.0pt'><span lang=EN-US>Life science: if we provide useful
+     metaphors for psychologist, qualitative comparison with human development.
+     In this case psychologists should enter in the loop.</span></li>
+</ul>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>But theses two
+approaches can be contradictory. </span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>Tack-independent learning</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Robot generates
+its own goals and asks dynamically</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>It continuously
+adapts as environment changes</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Reinforcement
+learning (RL) is natural in this case. Its remains to find a good reward from:</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l6 level1 lfo7;
+     tab-stops:list 36.0pt'><span lang=EN-US>Extrinsic: a teacher (human)</span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l6 level1 lfo7;
+     tab-stops:list 36.0pt'><span lang=EN-US>Intrinsic: </span></li>
+ <ul style='margin-top:0cm' type=circle>
+  <li class=MsoNormal style='text-align:justify;mso-list:l6 level2 lfo7;
+      tab-stops:list 72.0pt'><span lang=EN-US>Resource driven: pain, food,
+      energy, restlessness</span></li>
+  <li class=MsoNormal style='text-align:justify;mso-list:l6 level2 lfo7;
+      tab-stops:list 72.0pt'><span lang=EN-US>Information driven: novelty,
+      boredom, curiosity</span></li>
+ </ul>
+ <li class=MsoNormal style='text-align:justify;mso-list:l6 level1 lfo7;
+     tab-stops:list 36.0pt'><span lang=EN-US>Combination of both</span></li>
+</ul>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>To robot should
+look for both opposites predictability and novelty, and it won’t oscillate
+between them because it learns.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Difference between
+novelty (never seen) and surprise (unexpected)</span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>Misc.</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Building blocks
+are a necessity; they should be learned with their hierarchy.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>There is 2 sort
+of complexity:</span></p>
+
+<ul style='margin-top:0cm' type=disc>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo8;
+     tab-stops:list 36.0pt'><span lang=EN-US>Computational: can’t think forever</span></li>
+ <li class=MsoNormal style='text-align:justify;mso-list:l2 level1 lfo8;
+     tab-stops:list 36.0pt'><span lang=EN-US>Experimental: can’t live forever.</span></li>
+</ul>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Emotions are a heuristic
+to survive.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Neurophysiology
+is incredibly complex; some people are glued for their all life studying base
+ganglia neurons? We need to know about neurophysiology and psychology, but not
+to be stuck on them.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>We provide
+metaphor of development, and not models, because a model should make
+predictions on a phenomenon of the world, and because a model should be based
+on data.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US><o:p>&nbsp;</o:p></span></p>
+
+<h1 style='text-align:justify'><span lang=EN-US>Developmental Architectures </span></h1>
+
+<h2 style='text-align:justify'><span lang=EN-US>Perceptual memory and learning:
+Recognizing, categorizing, and relating</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Stan Franklin</span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>A framework for the development
+of robot behavior</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span class=SpellE><span
+lang=EN-US>Roderic</span></span><span lang=EN-US> <span class=SpellE>Grupen</span></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>The
+possibilities (kinematics and dynamics) of the body lower the dimensionality of
+the search space (e.g. babies are short sighted, can’t move a lot). This is
+certainly not pure hazard, and can bean an important propriety of incremental
+development.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>In this work,
+the robot learns incrementally more complex behaviors, reusing simpler ones
+stored as “schemas”. Learning is done on the schema space, which is drastically
+smaller.</span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>Automatic language acquisition
+by an autonomous robot</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Stephen
+Levinson,</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>There is no
+brain without body, no isolated cognitive functions, language is acquired
+thought interaction with environment, and sensorimotor experience is essential.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Mental processes
+are largely based on associative memory.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>The language
+engine is primarily semantic, not <span class=SpellE>syntaxic</span>.</span></p>
+
+<h1 style='text-align:justify'><span lang=EN-US>Bootstrapping Commonsense
+Knowledge Through Sensorimotor Experience</span></h1>
+
+<h2 style='text-align:justify'><span lang=EN-US>Bootstrap Learning of
+Foundational Representations</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Learning its own
+sensor geometry. Patrick Beeson,</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>How to go from
+“pixel ontology” to “object ontology”? Reliable predictions are impossible at
+the pixel level, abstraction needed.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Objects are a
+concise reliable abstraction of the robot experience, so it’s impossible to be
+hand designed but it must be learned.</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Map learning with
+uninterpreted sensors (AIJ Pierce 97). Really impressive work because the robot
+founds itself that he has sensors located all around him, just looking at their
+mutual correlations and using PCA.</span></p>
+
+<h1 style='text-align:justify'><span lang=EN-US>Psychologically-Inspired Models
+of Development</span></h1>
+
+<h2 style='text-align:justify'><span lang=EN-US>An embodied mechanism for
+autonomous action selection and dynamic motivation</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Lee <span
+class=SpellE>Mccauley</span></span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Constructivist
+learning (Piaget) Conscientiousness (<span class=SpellE>Baars</span>)</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Learning of
+(context-action-result) triples from near zero knowledge</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>I heard The Bad
+Word in this talk: “consciousness”, but I didn’t get the associated ideas.</span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>Towards a what-and-where model
+of infants' object representations</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Matthew
+Schlesinger</span></p>
+
+<h1 style='text-align:justify'><span lang=EN-US>Tasks and developmental
+robotics</span></h1>
+
+<h2 style='text-align:justify'><span lang=EN-US>An emergent framework for
+self-motivation in developmental robotics</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Douglas Blank</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Problem of evaluation
+of our results, if task independence. Measuring the complexity of the learned
+internal representation isn’t a good idea because it can’t be compared across
+models, and because complexity of representation isn’t necessarily linked to
+complexity of behaviors. The only measure is behavior (neo-behaviorism?), and
+Turing-like tests needed. </span></p>
+
+<h2 style='text-align:justify'><span lang=EN-US>Muddy tasks and the necessity
+of autonomous mental development (AMD)</span></h2>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>Juyang Weng</span></p>
+
+<p class=MsoNormal style='text-align:justify'><span lang=EN-US>“Muddiness” is
+qualifying how a problem is difficult to solve by a computer. Chess is a
+“clean” task but vision, language processing, speech are muddy tasks. Very
+muddy tasks are difficult to both humans and computers (creation of knew
+knowledge, scientific and artistic invention…). Traditional programming and AI
+techniques failed with muddy tasks. Muddiness is defined as the product of
+several factors like size of inputs, size of outputs, uncertainty, rawness of
+inputs, clarity of goal (see paper)… Weng believes that AMD isn’t just another
+AI technique promised to failure, but that AMD is necessary for really muddy
+tasks. For instance DARPA Grand Challenge is muddy in a lot of ways (except
+goal), and is therefore an interesting challenge for the community.</span></p>
+
+</div>
+
+</body>
+
+</html>
