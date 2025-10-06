@@ -28,7 +28,7 @@
 				"earshinov.filter-lines",
 				"github.copilot-chat",
 				"github.copilot",
-				"github.vscode-pull-request-github",
+				// "github.vscode-pull-request-github",
 				"github.vscode-github-actions",
 				// "google.geminicodeassist",
 				// "googlecloudtools.cloudcode",
