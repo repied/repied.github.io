@@ -2,7 +2,7 @@
 title: "Websites history"
 ---
 
-# 1998
+# 1998-2001
 [Fleur de bitume](free/frame.html)
 
 # 2006
@@ -18,18 +18,7 @@ title: "Websites history"
 [Tour du monde](tdm/jijipida.html)
 
 # 2024
-[CV](https://sites.google.com/site/pierredangauthier/cv)
-
-
-# TODO
-- [ ] robor rapport as pdf
-  - faire de md + images que jeklyy rendra en html propres  
-- phd ?
-- wikis ?
-- faire un index propre
-- checker que ca marche avec github
-
-
+[CV](https://sites.google.com/site/pierredangauthier/home)
 
 
 # Jekyll syntax
