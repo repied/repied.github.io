@@ -5,7 +5,7 @@ title: "Websites history"
 # 1998-2001
 [Fleur de bitume](free/frame.html)
 
-# 2006
+# 2006-2007
 [Yet another machine learning blog](yamlb/index.html)
 
 # 2007
