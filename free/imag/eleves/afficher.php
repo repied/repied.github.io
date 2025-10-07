@@ -8,46 +8,46 @@
 <p>&nbsp;<P>
 
 <CENTER>
-	Voici un résumé de toutes les fiches des élèves de la base de données.
+	Voici un rÃ©sumÃ© de toutes les fiches des Ã©lÃ¨ves de la base de donnÃ©es.
 </CENTER>
 <p>
 
-<?
+<?php
 require 'database.inc.php'; // ouverture de la connection avec la base
 
-//Calcul de la requet en fonction du tri souhaité
+//Calcul de la requÃªte en fonction du tri souhaitÃ©
 
-if ($ordre !="") {			//pas d'odre de tri
+if ($ordre !="") {			//pas d'ordre de tri
 	$requete = "SELECT numero,nom,prenom FROM $table ORDER BY ".$ordre.$sens;
-}else {						//un ordre de tri a ete clické
+}else {						//un ordre de tri a Ã©tÃ© cliquÃ©
 	$requete = "SELECT numero,nom,prenom FROM $table";
 }
 
-$resultat = requete( $requete );		//calcul des resultats
+$resultat = requete( $requete );		//calcul des rÃ©sultats
 $nb_res = mysql_num_rows($resultat);
 echo "<P><CENTER>Il y a <B>$nb_res</B> fiche".($nb_res >1 ?"s":"")." dans la base.</CENTER><P>";
 ?>
-<TABLE align="center">					<!-- Presentation es resultats -->
+<TABLE align="center">					<!-- PrÃ©sentation des rÃ©sultats -->
 	<TR bgcolor="#0000BB" align="center">
 		<TD bgcolor="#0000BB">
 			<FONT COLOR="#FFFFFF">
 				<A HREF='index.php3?to=afficher&ordre=numero&sens='><IMG SRC="fleche_haut_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE CROISSANT"></A>
-				<B>Nº</B>
-				<A HREF='index.php3?to=afficher&ordre=numero&sens= DESC'><IMG SRC="fleche_bas_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE DECROISSANT"></A>
+				<B>NÂ°</B>
+				<A HREF='index.php3?to=afficher&ordre=numero&sens= DESC'><IMG SRC="fleche_bas_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE DÃ‰CROISSANT"></A>
 			</FONT>
 		</TD>
 		<TD>
 			<FONT COLOR="#FFFFFF">
 				<A HREF='index.php3?to=afficher&ordre=nom&sens='><IMG SRC="fleche_haut_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE CROISSANT"></A>
 				<B>Nom</B>
-				<A HREF='index.php3?to=afficher&ordre=nom&sens= DESC'><IMG SRC="fleche_bas_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE DECROISSANT"></A>
+				<A HREF='index.php3?to=afficher&ordre=nom&sens= DESC'><IMG SRC="fleche_bas_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE DÃ‰CROISSANT"></A>
 			</FONT>
 		</TD>
 		<TD>
 			<FONT COLOR="#FFFFFF">
 				<A HREF='index.php3?to=afficher&ordre=prenom&sens='><IMG SRC="fleche_haut_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE CROISSANT"></A>
-				<B>Prénom</B>
-				<A HREF='index.php3?to=afficher&ordre=prenom&sens= DESC'><IMG SRC="fleche_bas_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE DECROISSANT"></A>
+				<B>PrÃ©nom</B>
+				<A HREF='index.php3?to=afficher&ordre=prenom&sens= DESC'><IMG SRC="fleche_bas_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE DÃ‰CROISSANT"></A>
 			</FONT>
 		</TD>
 	</TR>
@@ -84,5 +84,5 @@ mysql_close();
 <P>
 
 <CENTER>
-	Vous pouvez classer ces fiches en cliquant sur une des flèches.
+	Vous pouvez classer ces fiches en cliquant sur une des flÃ¨ches.
 </CENTER>

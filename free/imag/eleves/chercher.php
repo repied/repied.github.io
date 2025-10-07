@@ -7,7 +7,7 @@
 <p>
 
 <CENTER>
-	Une plusieurs fiches selon <B>un ou plusieurs</B> critères.
+	Une plusieurs fiches selon <B>un ou plusieurs</B> critÃ¨res.
 </CENTER>
 <BR>
 
@@ -19,7 +19,7 @@
 			<TD bgcolor="#CCCCFF"><INPUT TYPE="text" NAME="nom_form" ></TD>
 		</TR>
 		<TR>
-			<TD bgcolor="#0000BB"><FONT COLOR="white">Prenom :</FONT></TD>
+			<TD bgcolor="#0000BB"><FONT COLOR="white">PrÃ©nom :</FONT></TD>
 			<TD bgcolor="#CCCCFF"><INPUT TYPE="text" NAME="prenom_form" ></TD>
 		</TR>
 		<TR>
@@ -55,11 +55,11 @@
 if ( ($condition != "")||($nom_form !="")||($prenom_form !="")||($adresse_form !="")||($note_form !="") ){//un des champs est NON vide : la recherche est lancee
 	require 'database.inc.php';
 
-	if ($condition == "") {	// si oui ca veut dire que c'est la 1ere fois, cad  y a pas d'ordre définit
+	if ($condition == "") {	// si oui ca veut dire que c'est la 1ere fois, cad  y a pas d'ordre dï¿½finit
 
 			// Maintenant on construit la variable $condition
 
-		$condition = "";									// initialisation à la chaine vide
+		$condition = "";									// initialisation ï¿½ la chaine vide
 
 		$tab=array("nom","prenom","adresse","note");		//tous les champs
 		$j=0;												//indice du tablo des chps non vides
@@ -74,7 +74,7 @@ if ( ($condition != "")||($nom_form !="")||($prenom_form !="")||($adresse_form !
 		$nb_champ_non_vides=$j;								//$j est le nb_champ_non_vides apres la boucle ci dessus
 
 		$i=0;												//indice de parcours du tablo $tab_non_vide
-		while ($i < ($nb_champ_non_vides-1) ) {				// -1 pour s'arreter à l'avnt dernier
+		while ($i < ($nb_champ_non_vides-1) ) {				// -1 pour s'arreter ï¿½ l'avnt dernier
 			$nom_du_champ_du_formulaire=$tab_non_vide[$i]."_form";
 
 			$condition = $condition.$tab_non_vide[$i]." LIKE '".$$nom_du_champ_du_formulaire."' ".$et_ou_form." ";		// ATTENTION : Utilisation de variables dynamiques cad "$$"
@@ -87,9 +87,9 @@ if ( ($condition != "")||($nom_form !="")||($prenom_form !="")||($adresse_form !
 
 		$requete = "SELECT numero,nom,prenom FROM $table WHERE $condition ";
 
-	} //fin du if ($condition=="") : cad que ce n'est pas la premiere fois qu'on vient sur cette page (2 cas possibles: un ordre définit ou bien on revient d'une suppression ou d'une modification)
-	elseif ($ordre != "") {			//cad qu'un ordre est définit (on a cliqué sur une des flèches)
-		$condition=preg_replace("|\\\|","",$condition);		//sert a enlever les \ ajouté par le passage de parametres
+	} //fin du if ($condition=="") : cad que ce n'est pas la premiere fois qu'on vient sur cette page (2 cas possibles: un ordre dï¿½finit ou bien on revient d'une suppression ou d'une modification)
+	elseif ($ordre != "") {			//cad qu'un ordre est dï¿½finit (on a cliquï¿½ sur une des flï¿½ches)
+		$condition=preg_replace("|\\\|","",$condition);		//sert a enlever les \ ajoutï¿½ par le passage de parametres
 		$requete = "SELECT numero,nom,prenom FROM $table WHERE $condition ORDER BY ".$ordre.$sens;
 	}
 	else {							//cad qu'on revient d'une suppression ou d'une modification
@@ -98,15 +98,15 @@ if ( ($condition != "")||($nom_form !="")||($prenom_form !="")||($adresse_form !
 
 	}
 
-		// Maintenant que la requete a faire est déterminée , on a plus qu'à afficher les résultats
+		// Maintenant que la requete a faire est dï¿½terminï¿½e , on a plus qu'ï¿½ afficher les rï¿½sultats
 
-	$resultat = requete( $requete );	//questionnement de la base de données
+	$resultat = requete( $requete );	//questionnement de la base de donnï¿½es
 	$nb_res = mysql_num_rows($resultat);
 	if ($nb_res >0) {
-		echo "<CENTER>Il y a <B>$nb_res</B> élève".($nb_res >1 ?"s":"")." dont le profil correspond à la recherche</CENTER>";
+		echo "<CENTER>Il y a <B>$nb_res</B> ï¿½lï¿½ve".($nb_res >1 ?"s":"")." dont le profil correspond ï¿½ la recherche</CENTER>";
 		?>
 		<CENTER>
-			<H4><FONT COLOR="4242FF">Résultat de la recherche :</FONT></H4>
+			<H4><FONT COLOR="4242FF">Rï¿½sultat de la recherche :</FONT></H4>
 		</CENTER>
 
 		<TABLE align="center">
@@ -114,7 +114,7 @@ if ( ($condition != "")||($nom_form !="")||($prenom_form !="")||($adresse_form !
 				<TD>
 					<FONT COLOR="white">
 						<A HREF="index.php3?to=chercher&ordre=numero&sens=&condition=<?echo $condition;?>"><IMG SRC="fleche_haut_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE CROISSANT"></A>
-						<B>Nº</B>
+						<B>Nï¿½</B>
 						<A HREF="index.php3?to=chercher&ordre=numero&sens= DESC&condition=<?echo $condition;?>"><IMG SRC="fleche_bas_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE DECROISSANT"></A>
 					</FONT>
 				</TD>
@@ -128,7 +128,7 @@ if ( ($condition != "")||($nom_form !="")||($prenom_form !="")||($adresse_form !
 				<TD>
 					<FONT COLOR="white">
 						<A HREF="index.php3?to=chercher&ordre=prenom&sens=&condition=<?echo $condition?>"><IMG SRC="fleche_haut_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE CROISSANT"></A>
-						<B>Prénom</B>
+						<B>Prï¿½nom</B>
 						<A HREF="index.php3?to=chercher&ordre=prenom&sens= DESC&condition=<?echo $condition?>"><IMG SRC="fleche_bas_icone.gif" WIDTH="12" HEIGHT="14" BORDER=0 ALT="TRIER PAR ORDRE DECROISSANT"></A>
 					</FONT>
 				</TD>
@@ -136,7 +136,7 @@ if ( ($condition != "")||($nom_form !="")||($prenom_form !="")||($adresse_form !
 		<?
 		while( $row = mysql_fetch_array( $resultat ) ) {
 			?>
-			<TR bgcolor="#CCCCFF" align="center">	<!-- une ligne de tableau par resultat trouvé -->
+			<TR bgcolor="#CCCCFF" align="center">	<!-- une ligne de tableau par resultat trouvï¿½ -->
 				<TD> <? echo "$row[numero]";?> </TD>
 				<TD> <? echo "$row[nom]";?> </TD>
 				<TD> <? echo "$row[prenom]";?> </TD>
@@ -162,7 +162,7 @@ if ( ($condition != "")||($nom_form !="")||($prenom_form !="")||($adresse_form !
 		}	// fin du while
 		echo '</TABLE>';
 	} else {
-		echo "<CENTER><B>Aucun</B> profil ne correspond à votre recherche</CENTER>"; // zero resultats
+		echo "<CENTER><B>Aucun</B> profil ne correspond ï¿½ votre recherche</CENTER>"; // zero resultats
 	}
 
 	mysql_free_result($resultat);	//dans tous les cas on ferme la connection MYSQL

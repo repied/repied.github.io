@@ -1,10 +1,10 @@
- <!-- ce code est difficile à lire -->
+<!-- ce code est difficile Ã  lire -->
 
-<?
+<?php
 require 'database.inc.php';			// ouverture de la connection avec la base
 
 	// si les champs du formulaire ne sont pas vides c'est parce qu'on vient de demander d'enregistrer un changement
-	// le lignes suivantes permettent de mettre la base de donnée à jour avant de réafficher la page de modification
+	// le lignes suivantes permettent de mettre la base de donnÃ©e Ã  jour avant de rÃ©afficher la page de modification
 if ( $nom_form != '' ) {
 	$requete="UPDATE $table SET nom='$nom_form' WHERE numero='$fiche'";
 	requete( $requete );
@@ -27,7 +27,7 @@ if ( $note_form != '' ) {
 }
 
 $requete = "SELECT * FROM $table WHERE numero='$fiche' ";
-$resultat = requete( $requete );		//on recupère la fiche (éventuellement modifiée)
+$resultat = requete( $requete );		//on rÃ©cupÃ¨re la fiche (Ã©ventuellement modifiÃ©e)
 $row = mysql_fetch_array( $resultat );	//puis on l'affiche
 ?>
 
@@ -35,10 +35,10 @@ $row = mysql_fetch_array( $resultat );	//puis on l'affiche
 <FONT COLOR="#4242FF">		<!-- titre de la page -->
 	<CENTER>
 		<H1>
-			Fiche complète <I>modifiable</I> de l'élève</FONT> 
+			Fiche complÃ¨te <I>modifiable</I> de l'Ã©lÃ¨ve</FONT> 
 			<FONT COLOR='black'>
 				<B>
-					<? echo $row[nom]." ".$row[prenom];?>
+					<?php echo $row[nom]." ".$row[prenom];?>
 				</B>
 			</FONT>
 		</H1>
@@ -89,7 +89,7 @@ $row = mysql_fetch_array( $resultat );	//puis on l'affiche
 
 <?
 if ($fiche_mise_a_jour == "oui") {
-	echo "<P><CENTER>La fiche a bien été enregistrée.</CENTER>";	//message de confirmation
+	echo "<P><CENTER>La fiche a bien ï¿½tï¿½ enregistrï¿½e.</CENTER>";	//message de confirmation
 	$fiche_mise_a_jour="";   //RAZ de cette variable
 }
 

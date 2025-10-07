@@ -1,4 +1,4 @@
-<?
+<?php
 	require 'database.inc.php';			// ouverture de la connection avec la base
 	$requete = "SELECT * FROM $table WHERE numero='$fiche' ";
 	$resultat = requete( $requete );
@@ -8,7 +8,7 @@
 <BR>
 <FONT COLOR="#4242FF">
 	<CENTER>
-		<H1>Fiche complËte de l'ÈlËve</FONT> <FONT COLOR='black'><B><? echo $row[nom]." ".$row[prenom]; ?></FONT></B></H1>
+		<H1>Fiche compl√®te de l'√©l√®ve</FONT> <FONT COLOR='black'><B><?php echo $row['nom']." ".$row['prenom']; ?></FONT></B></H1>
 	</CENTER>
 </FONT>
 
@@ -17,24 +17,24 @@
 
 <TABLE align="center">
 	<TR>
-		<TD bgcolor="#0000BB"><FONT COLOR="white">Numero de fiche:</FONT></TD>
-		<TD bgcolor="#CCCCFF"><?echo "$row[numero]"?></TD>
+		<TD bgcolor="#0000BB"><FONT COLOR="white">Num√©ro de fiche:</FONT></TD>
+		<TD bgcolor="#CCCCFF"><?php echo "$row[numero]" ?></TD>
 	</TR>
 	<TR>
 		<TD bgcolor="#0000BB"><FONT COLOR="white">Nom :</FONT></TD>
-		<TD bgcolor="#CCCCFF"><?echo "$row[nom]"?></TD>
+		<TD bgcolor="#CCCCFF"><?php echo "$row[nom]" ?></TD>
 	</TR>
 	<TR>
-		<TD bgcolor="#0000BB"><FONT COLOR="white">Prenom :</FONT></TD>
-		<TD bgcolor="#CCCCFF"><?echo "$row[prenom]"?></TD>
+		<TD bgcolor="#0000BB"><FONT COLOR="white">Pr√©nom :</FONT></TD>
+		<TD bgcolor="#CCCCFF"><?php echo "$row[prenom]" ?></TD>
 	</TR>
 	<TR>
 		<TD bgcolor="#0000BB"><FONT COLOR="white">Adresse :</FONT></TD>
-		<TD bgcolor="#CCCCFF"><?echo "$row[adresse]"?></TD>
+		<TD bgcolor="#CCCCFF"><?php echo "$row[adresse]" ?></TD>
 	</TR>
 	<TR>
 		<TD bgcolor="#0000BB"><FONT COLOR="white">Note :</FONT></TD>
-		<TD bgcolor="#CCCCFF"><?echo "$row[note]"?></TD>
+		<TD bgcolor="#CCCCFF"><?php echo "$row[note]" ?></TD>
 	</TR>
 </TABLE>
 <P>
@@ -42,14 +42,13 @@
 <TABLE width="100%">
 	<TR align="center">
 		<TD align="center">
-			<A HREF="<? echo "index.php3?to=".$from;?>&condition=<?echo $condition;?>">
+			<A HREF="<?php echo "index.php3?to=".$from;?>&condition=<?php echo $condition;?>">
 				<IMG SRC="retour.gif" WIDTH="70" HEIGHT="30" BORDER="0" ALT="RETOUR">
 			</A>
 		</TD>
 	</TR>
 </TABLE>
-<?
+<?php
 	mysql_free_result($resultat);
 	mysql_close();
 ?>
-
