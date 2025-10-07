@@ -3,15 +3,10 @@ title: "Websites history"
 ---
 
 # 1998
-[Fleur de bitume](free/frame.html). **Ant Robot** and **water waves** (1998, in french).
-
-TODO:
-- [ ] fix accents
-- [ ] robor rapport as pdf
-- [ ] pyramide info
+[Fleur de bitume](free/frame.html)
 
 # 2006
-[Yet another machine learning blog]
+[Yet another machine learning blog](yamlb/index.html)
 
 # 2007
 [INRIA Machine Learning working group]
@@ -20,13 +15,14 @@ TODO:
 [Ferrofluids](https://sites.google.com/site/pierredangauthier/noir)
 
 # 2014
-[Tour du monde](tdm/index.html)
+[Tour du monde](tdm/jijipida.html)
 
 # 2024
 [CV](https://sites.google.com/site/pierredangauthier/cv)
 
 
 # TODO
+- [ ] robor rapport as pdf
   - faire de md + images que jeklyy rendra en html propres  
 - phd ?
 - wikis ?
