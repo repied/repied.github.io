@@ -11,11 +11,11 @@
  
  // connexion au serveur de données
  @mysql_connect( $serveur , $login , $pass )
-  or erreur( 'Connexion au serveur de donn�es impossible<BR>' ) ;
+  or erreur( 'Connexion au serveur de données impossible<BR>' ) ;
  
  // Sélection de la base de données
  @mysql_select_db( $base )
-  or erreur( 'S�lection de la base de donn�e impossible<BR>' ) ;
+  or erreur( 'Sélection de la base de donnée impossible<BR>' ) ;
  
  // fonction pour faire des requêtes
  function requete( $requete )
