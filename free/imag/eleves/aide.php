@@ -10,8 +10,8 @@ Cliquez sur un des liens du <B>Menu</B> de droite :
 
 <UL>
 	<LI><A HREF="index.php3?to=afficher">Toutes les fiches</A> :<BR>
-		Pour <FONT COLOR="red">afficher</FONT> un résumé de toutes les fiches d'élèves présentes dans la base de donnée.<BR>
-		Vous pouvez ensuite en sélectionner une pour la <B>consulter</B> en détails, la <B>modifier</B> ou bien la <B>supprimer</B>.
+		Pour <FONT COLOR="red">afficher</FONT> un rï¿½sumï¿½ de toutes les fiches d'ï¿½lï¿½ves prï¿½sentes dans la base de donnï¿½e.<BR>
+		Vous pouvez ensuite en sÃ©lectionner une pour la <B>consulter</B> en dï¿½tails, la <B>modifier</B> ou bien la <B>supprimer</B>.
 		<p>&nbsp;
 
 	<LI><A HREF="index.php3?to=ajouter">Ajout</A> :<BR>
@@ -19,21 +19,21 @@ Cliquez sur un des liens du <B>Menu</B> de droite :
 		<p>&nbsp;
 
 	<LI><A HREF="index.php3?to=chercher">Recherche</A> :<BR>
-		<FONT COLOR="red">Rechercher</FONT> une <B>ou</B> plusieurs fiches selon un <B>ou</B> plusieurs critères.<BR>
-		Les caractères spéciaux <B>%</B> et <B>_</B> sont autorisés.
+		<FONT COLOR="red">Rechercher</FONT> une <B>ou</B> plusieurs fiches selon un <B>ou</B> plusieurs critï¿½res.<BR>
+		Les caractï¿½res spï¿½ciaux <B>%</B> et <B>_</B> sont autorisï¿½s.
 
 		<UL>
-			<LI> <B>_</B> &nbsp;remplace un caractère quelconque
-			<LI> <B>%</B> &nbsp;remplace plusieurs caractères quelconques
+			<LI> <B>_</B> &nbsp;remplace un caractï¿½re quelconque
+			<LI> <B>%</B> &nbsp;remplace plusieurs caractï¿½res quelconques
 		</UL>
 
-		Par exemple rechercher "<B>ch_t</B>" revient à chercher tous les "mots" de 4 lettres qui commencent par "ch" et finissent par "t".
+		Par exemple rechercher "<B>ch_t</B>" revient ï¿½ chercher tous les "mots" de 4 lettres qui commencent par "ch" et finissent par "t".
 		<BR>
 		Autre exemple : "<B>bat%</B>" recherche tous les mots qui commencent par "bat" quelque soit leur nombre de lettres.
 		<p>&nbsp;
 
 	<LI><A HREF="index.php3?to=aide">Aide</A> : Cette page.<BR>
-		Logiciel développé par <A HREF="mailto:Pierre.Dangauthier@ensimag.imag.fr">Pierre.Dangauthier@ensimag.imag.fr </A>pour Pyramide Informatique en Juillet 2001.<BR>
+		Logiciel dï¿½veloppï¿½ par <A HREF="mailto:Pierre.Dangauthier@ensimag.imag.fr">Pierre.Dangauthier@ensimag.imag.fr </A>pour Pyramide Informatique en Juillet 2001.<BR>
 		Technologies : PHP4, MySQL, Apache, Javascipt.
 </UL>
 

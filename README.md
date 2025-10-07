@@ -21,20 +21,3 @@ bundle install
 bundle exec jekyll build
 bundle exec jekyll serve
 ```
-
-
-# Content and TODO
-- free
-    - site noir: garder html
-        - rapport robot en un gros pdf
-        - fixer les accents    
-    - site pyramide: garder html
-    - index: mettre a jour les liens vers site academique
-- tdm
-  - faire de md + images que jeklyy rendra en html propres  
-- yamlb
-  - faire de md + images que jeklyy rendra en html propres  
-- phd ?
-- wikis ?
-- faire un index propre
-- checker que ca marche avec github
