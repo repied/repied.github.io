@@ -1,9 +1,9 @@
 <html>
 <head>
-<title>Pyrélève</title>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>PyrElÃ¨ve</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- Logicel developpé par pierre.dangauthier@ensimag.imag.fr pour Pyramide Informatique -->
+<!-- Logiciel dÃ©veloppÃ© par pierre.dangauthier@ensimag.imag.fr pour Pyramide Informatique -->
 <script language="javascript">
 	function script_aide(fich){	// ouvre une fenetre d'aide remplie par le texte contenu dans le fichier "fich"
 		fen_aide=window.open(fich,"fen_aide","toolbar=no,location=no,status=no,scrollbars=auto,resizable=yes,width=500,height=500,left=100,top=20");
@@ -32,7 +32,7 @@
 	  </CENTER>
     </td>
 
-<!-- Début du cadre principal en pseudo frame -->
+<!-- DÃ©but du cadre principal en pseudo frame -->
     <td valign="top" width="83%">
 	<?
 	if ($to==afficher) {
@@ -59,8 +59,8 @@
 	else {	//message d'accueil ($to est vide)
 		?>
 			<P>&nbsp;<P>&nbsp;<P>
-			<CENTER><H1><FONT COLOR="#4242FF"><B>Bienvenue sur PyrElève.</B></FONT></H1><BR>
-			<H3>Gestion de base de donnée éditée pour <A HREF="http://pyrinfo.com">Pyramide Informatique</A></H3>
+			<CENTER><H1><FONT COLOR="#4242FF"><B>Bienvenue sur PyrElÃ¨ve.</B></FONT></H1><BR>
+			<H3>Gestion de base de donnÃ©e Ã©ditÃ©e pour <A HREF="http://pyrinfo.com">Pyramide Informatique</A></H3>
 			<P>&nbsp;<P>
 			<APPLET CODE="PoolMenu" WIDTH="230" HEIGHT="177">
 					<param name=image value="grand_logo.jpg">

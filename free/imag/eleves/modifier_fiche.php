@@ -88,8 +88,9 @@ $row = mysql_fetch_array( $resultat );	//puis on l'affiche
 </FORM>
 
 <?
+
 if ($fiche_mise_a_jour == "oui") {
-	echo "<P><CENTER>La fiche a bien �t� enregistr�e.</CENTER>";	//message de confirmation
+	echo "<P><CENTER>La fiche a bien été enregistrée.</CENTER>"; // message de confirmation
 	$fiche_mise_a_jour="";   //RAZ de cette variable
 }
 
