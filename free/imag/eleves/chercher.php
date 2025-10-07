@@ -55,7 +55,7 @@
 if ( ($condition != "")||($nom_form !="")||($prenom_form !="")||($adresse_form !="")||($note_form !="") ){//un des champs est NON vide : la recherche est lancee
 	require 'database.inc.php';
 
-	if ($condition == "") {	// si oui ca veut dire que c'est la 1ere fois, cad  y a pas d'ordre d�finit
+	if ($condition == "") {	// si oui ca veut dire que c'est la 1ere fois, cad  y a pas d'ordre définit
 
 			// Maintenant on construit la variable $condition
 
@@ -87,8 +87,8 @@ if ( ($condition != "")||($nom_form !="")||($prenom_form !="")||($adresse_form !
 
 		$requete = "SELECT numero,nom,prenom FROM $table WHERE $condition ";
 
-	} //fin du if ($condition=="") : cad que ce n'est pas la premiere fois qu'on vient sur cette page (2 cas possibles: un ordre d�finit ou bien on revient d'une suppression ou d'une modification)
-	elseif ($ordre != "") {			//cad qu'un ordre est d�finit (on a cliqu� sur une des fl�ches)
+	} //fin du if ($condition=="") : cad que ce n'est pas la premiere fois qu'on vient sur cette page (2 cas possibles: un ordre définit ou bien on revient d'une suppression ou d'une modification)
+	elseif ($ordre != "") {			//cad qu'un ordre est définit (on a cliqu� sur une des fl�ches)
 		$condition=preg_replace("|\\\|","",$condition);		//sert a enlever les \ ajout� par le passage de parametres
 		$requete = "SELECT numero,nom,prenom FROM $table WHERE $condition ORDER BY ".$ordre.$sens;
 	}
