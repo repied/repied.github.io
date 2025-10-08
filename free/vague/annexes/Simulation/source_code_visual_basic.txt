@@ -1,0 +1,770 @@
+Attribute VB_Name = "Module1"
+Dim xinit() As Double
+Dim yinit() As Double
+Dim xpos() As Double
+Dim ypos() As Double
+Dim h As Double
+Dim l As Double
+Dim k As Double
+Dim b As Double
+Dim w As Double
+Dim temps As Double
+Dim m As Integer
+Dim n As Integer
+
+Dim cote As Double
+Dim air As Double
+
+Dim aux1 As Double
+Dim aux2 As Double
+Dim aux3 As Double
+Dim aux4 As Double
+Dim aux5 As Double
+
+Global t0 As Double
+
+
+Sub calcul(t As Double)
+
+aux1 = -k * b / (w * ch(k * h))
+aux2 = w * t
+aux3 = k * h
+
+For i = 1 To m      'voir si optimiser les -f(-x)
+    y0 = -yinit(i, 1)
+    aux4 = k * y0 + aux3
+    For j = 1 To n
+        x0 = xinit(1, j)
+        aux5 = k * x0 - aux2
+        xpos(i, j) = -aux1 * ch(aux4) * Cos(aux5) + x0
+        ypos(i, j) = -aux1 * sh(aux4) * Sin(aux5) - y0
+    Next j
+Next i
+
+End Sub
+
+Sub calcul_tablo_carre()
+
+ For i = 1 To m
+    For j = 1 To n
+        xpos(i, j) = xinit(i, j)    'remplit avec les coordonn�es initiales
+        ypos(i, j) = yinit(i, j)
+    Next j
+ Next i
+
+End Sub
+
+
+
+Function sh(argument)
+
+ sh = (Exp(argument) - Exp(-argument)) / 2
+
+End Function
+
+Function ch(argument)
+ 
+ ch = (Exp(argument) + Exp(-argument)) / 2
+
+End Function
+
+Sub initialise(champ_n As Integer, champ_m As Integer, champ_h As Double, _
+                champ_l As Double, champ_k As Double, champ_w As Double, _
+                champ_b As Double, champ_cote As Double, champ_air As Double)
+
+ h = Val(champ_h)
+ l = Val(champ_l)
+ k = Val(champ_k)
+ w = Val(champ_w)
+ b = Val(champ_b)
+ n = Val(champ_n)
+ m = Val(champ_m)
+ cote = Val(champ_cote)
+ air = Val(champ_air)
+
+ 
+ ReDim xinit(m, n)  'dimensionne les matrices
+ ReDim yinit(m, n)
+ ReDim xpos(m, n)
+ ReDim ypos(m, n)
+ 
+ init.gfx.ScaleWidth = (l + 2 * cote) 'redimensionne la fenetre
+ init.gfx.ScaleHeight = (h + air)
+ init.gfx.ScaleLeft = -cote         'decale la fenetre
+ init.gfx.ScaleTop = -air
+ 
+ For i = 1 To m
+    For j = 1 To n
+        xinit(i, j) = l * (j - 1) / n 'remplit les mat initiales
+        yinit(i, j) = h * (i - 1) / m
+    Next j
+ Next i
+
+End Sub
+
+
+
+Sub trace()
+init.gfx.Cls
+ For i = 1 To m - 1
+    For j = 1 To n - 1
+        init.gfx.Line (xpos(i, j), ypos(i, j))- _
+                      (xpos(i + 1, j), ypos(i + 1, j))  'vers le bas
+        init.gfx.Line (xpos(i, j), ypos(i, j))- _
+                      (xpos(i, j + 1), ypos(i, j + 1)) 'vers la droite
+    Next j
+    
+    init.gfx.Line (xpos(i, n), ypos(i, n))- _
+                  (xpos(i + 1, n), ypos(i + 1, n)) 'colonne manquante a droite
+    Next i
+
+ 
+ For j = 1 To n - 1
+    init.gfx.Line (xpos(m, j), ypos(m, j))- _
+                  (xpos(m, j + 1), ypos(m, j + 1)) 'ligne manquante en bas
+ Next j
+ 
+End Sub
+
+
+
+
+=================================
+VERSION 4.00
+Begin VB.Form main 
+   Caption         =   "Jolies vagues"
+   ClientHeight    =   2508
+   ClientLeft      =   3132
+   ClientTop       =   7488
+   ClientWidth     =   3432
+   Height          =   2892
+   Left            =   3084
+   LinkTopic       =   "Form1"
+   ScaleHeight     =   4.953
+   ScaleMode       =   0  'User
+   ScaleWidth      =   9.728
+   Top             =   7152
+   Width           =   3528
+   Begin VB.PictureBox gfx 
+      Height          =   2292
+      Left            =   120
+      ScaleHeight     =   2244
+      ScaleMode       =   0  'User
+      ScaleWidth      =   3204
+      TabIndex        =   0
+      Top             =   120
+      Width           =   3252
+   End
+End
+Attribute VB_Name = "main"
+Attribute VB_Creatable = False
+Attribute VB_Exposed = False
+
+Private Sub Bouton_Click()
+
+End Sub
+
+
+Private Sub Label1_Click()
+
+End Sub
+
+
+Private Sub Command1_Click()
+gfx.Cls
+End Sub
+
+
+
+==========================
+
+[SCC]
+SCC=This is a source code control file
+
+[Projet1.vbp]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>
+
+[VAGUE BETA 1.VBP]
+SCC_Project_Name=this project is not under source code control
+SCC_Aux_Path=<This is an empty string for the mssccprj.scc file>
+
+
+
+==============================
+
+Form=init.frm
+Module=Module1; Module1.bas
+Object={F9043C88-F6F2-101A-A3C9-08002B2F49FB}#1.2#0; COMDLG32.OCX
+Object={BDC217C8-ED16-11CD-956C-0000C04E4C0A}#1.0#0; TABCTL32.OCX
+Object={3B7C8863-D78F-101B-B9B5-04021C009402}#1.0#0; RICHTX32.OCX
+Object={6B7E6392-850A-101B-AFC0-4210102A8DA7}#1.3#0; COMCTL32.OCX
+Object={FAEEE763-117E-101B-8933-08002B2F4F5A}#1.0#0; DBLIST32.OCX
+Object={00028C01-0000-0000-0000-000000000046}#1.0#0; DBGRID32.OCX
+Object={F6125AB1-8AB1-11CE-A77F-08002B2F4E98}#1.0#0; MSRDC32.OCX
+Reference=*\G{BEF6E001-A874-101A-8BBA-00AA00300CAB}#2.0#0#C:\WINDOWS\SYSTEM\olepro32.dll#Standard OLE Types
+Reference=*\G{EE008642-64A8-11CE-920F-08002B369A33}#1.0#0#C:\WINDOWS\SYSTEM\MSRDO32.DLL#Microsoft Remote Data Object 1.0
+Reference=*\G{00025E01-0000-0000-C000-000000000046}#3.0#0#C:\PROGRAM FILES\FICHIERS COMMUNS\MICROSOFT SHARED\DAO\DAO3032.DLL#Microsoft DAO 3.0 Object Library
+ProjWinSize=609,3,240,169
+ProjWinShow=2
+IconForm="init"
+HelpFile=""
+ExeName32="Vagues final.exe"
+Path32="E:\pub\Pierre\Visual Basic progammes\Executables"
+Name="Projet1"
+HelpContextID="0"
+StartMode=0
+VersionCompatible32="0"
+MajorVer=1
+MinorVer=0
+RevisionVer=0
+AutoIncrementVer=0
+ServerSupportFiles=0
+
+
+====================================
+VERSION 4.00
+Begin VB.Form init 
+   BackColor       =   &H008080FF&
+   Caption         =   "Jolies Vagues"
+   ClientHeight    =   804
+   ClientLeft      =   36
+   ClientTop       =   3336
+   ClientWidth     =   12336
+   DrawMode        =   1  'Blackness
+   Height          =   1188
+   Icon            =   "init.frx":0000
+   Left            =   -12
+   LinkTopic       =   "Form2"
+   ScaleHeight     =   0.633
+   ScaleMode       =   0  'User
+   ScaleWidth      =   21.599
+   Top             =   3000
+   Width           =   12432
+   Begin VB.CommandButton Command4 
+      Caption         =   "Effacer"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   7.8
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   612
+      Left            =   2640
+      TabIndex        =   33
+      Top             =   5520
+      Width           =   852
+   End
+   Begin VB.Timer Timer1 
+      Enabled         =   0   'False
+      Interval        =   500
+      Left            =   2880
+      Top             =   1080
+   End
+   Begin VB.CommandButton Command3 
+      Caption         =   "Quitter"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   7.8
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   612
+      Left            =   3960
+      TabIndex        =   22
+      Top             =   8160
+      Width           =   2292
+   End
+   Begin VB.Frame Frame1 
+      BackColor       =   &H008080FF&
+      Caption         =   "Animation"
+      Height          =   2292
+      Left            =   480
+      TabIndex        =   21
+      Top             =   6360
+      Width           =   3132
+      Begin VB.TextBox champ_rapidification 
+         Height          =   288
+         Left            =   2280
+         TabIndex        =   28
+         Text            =   "5"
+         Top             =   960
+         Width           =   612
+      End
+      Begin VB.CommandButton Command7 
+         Caption         =   "Arr�ter"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   7.8
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   732
+         Left            =   1680
+         TabIndex        =   26
+         Top             =   1440
+         Width           =   1212
+      End
+      Begin VB.TextBox champ_deltat 
+         Height          =   288
+         Left            =   2280
+         TabIndex        =   24
+         Text            =   "10"
+         Top             =   480
+         Width           =   612
+      End
+      Begin VB.CommandButton Command6 
+         Caption         =   "D�marrer"
+         BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+            Name            =   "MS Sans Serif"
+            Size            =   9.6
+            Charset         =   0
+            Weight          =   700
+            Underline       =   0   'False
+            Italic          =   0   'False
+            Strikethrough   =   0   'False
+         EndProperty
+         Height          =   732
+         Left            =   120
+         TabIndex        =   23
+         Top             =   1440
+         Width           =   1332
+      End
+      Begin VB.Label Label8 
+         BackColor       =   &H008080FF&
+         Caption         =   "Pr��ision temporelle"
+         Height          =   372
+         Left            =   240
+         TabIndex        =   27
+         Top             =   960
+         Width           =   1692
+      End
+      Begin VB.Label Label7 
+         BackColor       =   &H008080FF&
+         Caption         =   "Delta t    (ms)"
+         Height          =   252
+         Left            =   240
+         TabIndex        =   25
+         Top             =   480
+         Width           =   972
+      End
+   End
+   Begin VB.PictureBox gfx 
+      BackColor       =   &H00C0C0FF&
+      ClipControls    =   0   'False
+      DrawMode        =   1  'Blackness
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   18
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   6972
+      Left            =   3720
+      ScaleHeight     =   6924
+      ScaleWidth      =   8244
+      TabIndex        =   20
+      Top             =   840
+      Width           =   8292
+   End
+   Begin VB.CommandButton Command2 
+      Caption         =   "Tracer"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   7.8
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   612
+      Left            =   1680
+      TabIndex        =   19
+      Top             =   5520
+      Width           =   852
+   End
+   Begin VB.TextBox champ_air 
+      Height          =   288
+      Left            =   2760
+      TabIndex        =   18
+      Text            =   "1"
+      Top             =   2880
+      Width           =   732
+   End
+   Begin VB.TextBox champ_cote 
+      Height          =   288
+      Left            =   2760
+      TabIndex        =   17
+      Text            =   "1"
+      Top             =   2520
+      Width           =   732
+   End
+   Begin VB.CommandButton Command1 
+      Caption         =   "Sans vents"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   7.8
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   612
+      Left            =   480
+      TabIndex        =   14
+      Top             =   5520
+      Width           =   1092
+   End
+   Begin VB.TextBox champ_b 
+      Height          =   288
+      Left            =   2760
+      TabIndex        =   13
+      Text            =   "0.1"
+      Top             =   5040
+      Width           =   732
+   End
+   Begin VB.TextBox champ_w 
+      Height          =   288
+      Left            =   2760
+      TabIndex        =   11
+      Text            =   "1"
+      Top             =   4680
+      Width           =   732
+   End
+   Begin VB.TextBox champ_k 
+      Height          =   288
+      Left            =   2760
+      TabIndex        =   9
+      Text            =   "1.5"
+      Top             =   4320
+      Width           =   732
+   End
+   Begin VB.TextBox champ_l 
+      Height          =   288
+      Left            =   2760
+      TabIndex        =   7
+      Text            =   "10"
+      Top             =   3840
+      Width           =   732
+   End
+   Begin VB.TextBox champ_h 
+      Height          =   288
+      Left            =   2760
+      TabIndex        =   5
+      Text            =   "3"
+      Top             =   3480
+      Width           =   732
+   End
+   Begin VB.TextBox champ_m 
+      Height          =   288
+      Left            =   2760
+      TabIndex        =   3
+      Text            =   "10"
+      Top             =   2040
+      Width           =   732
+   End
+   Begin VB.TextBox champ_n 
+      Height          =   288
+      Left            =   2760
+      TabIndex        =   1
+      Text            =   "20"
+      Top             =   1680
+      Width           =   732
+   End
+   Begin VB.Label Label6 
+      BackColor       =   &H008080FF&
+      Caption         =   "  TIPE   98/99"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   7.8
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   -1  'True
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   372
+      Left            =   10800
+      TabIndex        =   35
+      Top             =   240
+      Width           =   1092
+   End
+   Begin VB.Label Label10 
+      BackColor       =   &H008080FF&
+      Caption         =   "Temps �coul� :"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   12
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   252
+      Left            =   6720
+      TabIndex        =   34
+      Top             =   8040
+      Width           =   1932
+   End
+   Begin VB.Label Label9 
+      BackColor       =   &H008080FF&
+      Caption         =   "s"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   9.6
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   372
+      Left            =   7680
+      TabIndex        =   32
+      Top             =   8400
+      Width           =   372
+   End
+   Begin VB.Label visu_t 
+      BackColor       =   &H008080FF&
+      Caption         =   "0"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   9.6
+         Charset         =   0
+         Weight          =   400
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   372
+      Left            =   7080
+      TabIndex        =   31
+      Top             =   8400
+      Width           =   612
+   End
+   Begin VB.Label Label5 
+      BackColor       =   &H008080FF&
+      Caption         =   "Visualisateur de Houle"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "Algerian"
+         Size            =   25.8
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   732
+      Left            =   3120
+      TabIndex        =   30
+      Top             =   120
+      Width           =   7452
+   End
+   Begin VB.Label Label1 
+      BackColor       =   &H008080FF&
+      Caption         =   "Param�trage"
+      BeginProperty Font {0BE35203-8F91-11CE-9DE3-00AA004BB851} 
+         Name            =   "MS Sans Serif"
+         Size            =   12
+         Charset         =   0
+         Weight          =   700
+         Underline       =   0   'False
+         Italic          =   0   'False
+         Strikethrough   =   0   'False
+      EndProperty
+      Height          =   372
+      Left            =   840
+      TabIndex        =   29
+      Top             =   1080
+      Width           =   1812
+   End
+   Begin VB.Label Label4 
+      BackColor       =   &H008080FF&
+      Caption         =   "Taille de l'air     (m)"
+      Height          =   252
+      Left            =   480
+      TabIndex        =   16
+      Top             =   2880
+      Width           =   1692
+   End
+   Begin VB.Label Label3 
+      BackColor       =   &H008080FF&
+      Caption         =   "Taille des c�t�s (m)"
+      Height          =   252
+      Left            =   480
+      TabIndex        =   15
+      Top             =   2520
+      Width           =   1692
+   End
+   Begin VB.Label Label2 
+      BackColor       =   &H008080FF&
+      Caption         =   "Amplitude   (m)"
+      Height          =   252
+      Index           =   6
+      Left            =   480
+      TabIndex        =   12
+      Top             =   5040
+      Width           =   2052
+   End
+   Begin VB.Label Label2 
+      BackColor       =   &H008080FF&
+      Caption         =   "Pulsation temporelle  (rd/s)"
+      Height          =   252
+      Index           =   5
+      Left            =   480
+      TabIndex        =   10
+      Top             =   4680
+      Width           =   2292
+   End
+   Begin VB.Label Label2 
+      BackColor       =   &H008080FF&
+      Caption         =   "Pulsation spatiale  (rd/m)"
+      Height          =   252
+      Index           =   4
+      Left            =   480
+      TabIndex        =   8
+      Top             =   4320
+      Width           =   2052
+   End
+   Begin VB.Label Label2 
+      BackColor       =   &H008080FF&
+      Caption         =   "Largeur       (m)"
+      Height          =   252
+      Index           =   3
+      Left            =   480
+      TabIndex        =   6
+      Top             =   3840
+      Width           =   1692
+   End
+   Begin VB.Label Label2 
+      BackColor       =   &H008080FF&
+      Caption         =   "Profondeur   (m)"
+      Height          =   252
+      Index           =   2
+      Left            =   480
+      TabIndex        =   4
+      Top             =   3480
+      Width           =   1692
+   End
+   Begin VB.Label Label2 
+      BackColor       =   &H008080FF&
+      Caption         =   "Nombre de lignes"
+      Height          =   252
+      Index           =   1
+      Left            =   480
+      TabIndex        =   2
+      Top             =   2040
+      Width           =   1692
+   End
+   Begin VB.Label Label2 
+      BackColor       =   &H008080FF&
+      Caption         =   "Nombre de colonnes"
+      Height          =   252
+      Index           =   0
+      Left            =   480
+      TabIndex        =   0
+      Top             =   1680
+      Width           =   1812
+   End
+End
+Attribute VB_Name = "init"
+Attribute VB_Creatable = False
+Attribute VB_Exposed = False
+Private Sub Command1_Click()
+  Call initialise(champ_n, champ_m, champ_h, _
+                          champ_l, champ_k, champ_w, _
+                          champ_b, champ_cote, champ_air)
+  Call calcul_tablo_carre
+  Call trace
+  
+     
+End Sub
+
+Private Sub Text7_Change()
+
+End Sub
+
+
+Private Sub Command2_Click()
+  Call initialise(champ_n, champ_m, champ_h, _
+                          champ_l, champ_k, champ_w, _
+                          champ_b, champ_cote, champ_air)
+  Call calcul(1)
+  Call trace
+
+End Sub
+
+
+Private Sub Command3_Click()
+End
+End Sub
+
+
+
+
+
+Private Sub Command4_Click()
+init.gfx.Cls
+End Sub
+
+Private Sub Command5_Click()
+emps = 0
+End Sub
+
+
+Private Sub Command6_Click()
+    Call initialise(champ_n, champ_m, champ_h, _
+                          champ_l, champ_k, champ_w, _
+                          champ_b, champ_cote, champ_air)
+    t0 = Timer
+    init.Timer1.Enabled = True
+    init.Timer1.Interval = champ_deltat
+    
+End Sub
+
+
+Private Sub Command7_Click()
+    init.Timer1.Enabled = False
+End Sub
+
+Private Sub Data1_Validate(Action As Integer, Save As Integer)
+
+End Sub
+
+Private Sub Form_Load()
+    Call initialise(champ_n, champ_m, champ_h, _
+                          champ_l, champ_k, champ_w, _
+                          champ_b, champ_cote, champ_air)
+  
+End Sub
+
+
+Private Sub Timer1_Timer()
+    Call initialise(Val(champ_n), Val(champ_m), Val(champ_h), _
+                          Val(champ_l), Val(champ_k), Val(champ_w), _
+                          Val(champ_b), Val(champ_cote), Val(champ_air))
+    temps = champ_rapidification * (Timer - t0)
+    visu_t = Int(temps)
+    calcul (temps)
+    trace
+End Sub
+
+
+
+
+
