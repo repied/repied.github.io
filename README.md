@@ -22,6 +22,10 @@ Then to use [Jekyll](https://jekyllrb.com/docs/step-by-step/01-setup/) when ther
 bundle config set --local path '~/lib/gems' # need to install in user folder
 bundle update
 bundle install
+```
+Then one of 
+```
 bundle exec jekyll build
+bundle exec jekyll serve
 bundle exec jekyll serve --livereload
 ```
