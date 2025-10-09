@@ -1,7 +1,12 @@
 # remote_theme: pages-themes/cayman@v0.2.0
-remote_theme: pages-themes/midnight@v0.2.0
+# remote_theme: pages-themes/midnight@v0.2.0
+# remote_theme: "jekyll/minima@c6e74bb" # c6e74bb is release v2.5.2 from sept24
+# remote_theme: "jekyll/minima@1e8a445" # advised in readme
+remote_theme: "jekyll/minima" # should be v3
 
-title: repied's homepage
+
+
+# title: repied's homepage
 # description: xxx
 show_downloads: false
 
