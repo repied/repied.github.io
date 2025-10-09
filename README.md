@@ -1,12 +1,11 @@
 # Intro
 
-These pages are rendered automatically on git push by Github at [repied.github.io](http:\\repied.github.io) by Jekyll.
-
-The readme is not rendered by Jekyll because there is an index.md file. 
-
+These pages are rendered automatically on git push of the `release` branch by Github at [repied.github.io](http:\\repied.github.io).
 
 # Jekyll
 Jekyll is a Ruby Gem, it is a static site generator. It takes text written in your favorite markup language and uses layouts to create a static website.
+
+The readme is not rendered by Jekyll because there is an index.md file. 
 
 ### In a codespace 
 Jekyll is installed in the devcontainer.json image.

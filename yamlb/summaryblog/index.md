@@ -1,4 +1,4 @@
-# Blog Post Index (Converted from WordPress XML)
+# XML Blog Post
 
 Sorted by publication date (then title). Drafts (with original zero dates) are included. Each entry shows: pubDate | Title | Status | Type | File
 

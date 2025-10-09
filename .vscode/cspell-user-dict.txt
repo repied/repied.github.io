@@ -704,6 +704,7 @@ Reindex
 relativedelta
 relu
 renderjson
+repied
 repo
 requote
 reraise

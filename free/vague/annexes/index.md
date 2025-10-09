@@ -1,5 +1,7 @@
-# Annexes du projet 'vague'
-
+---
+title: "Annexes du projet 'vague'"
+---
+ 
 ## Dossier
 - [Présentation du dossier.pdf](./Dossier/Présentation du dossier.pdf)
 - [Notations.pdf](./Dossier/Notations.pdf)
