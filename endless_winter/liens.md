@@ -1,19 +1,21 @@
-# Liens
+---
+title: Liens
+---
 
-====== Page de liens internet ======
-* Site de la [[http://www.ffme.fr/expedition/agrement/index.htm|fmme]]: on peut se faire agréer l'expédition pour avoir assurance et pas payer TVA. Fait pour la Bolivie. Faut laisser la matos sur place. Sinon, y a d'autres conseils pour préparation expédition.
+# Page de liens internet 
+* Site de la [fmme](http://www.ffme.fr/expedition/agrement/index.htm): on peut se faire agréer l'expédition pour avoir assurance et pas payer TVA. Fait pour la Bolivie. Faut laisser la matos sur place. Sinon, y a d'autres conseils pour préparation expédition.
 
-* [[http://www.expe.com]] : un site de la fmme, avec infos sur montagnes du mondes et des fiches pays
+* [expe.com](http://www.expe.com) : un site de la fmme, avec infos sur montagnes du mondes et des fiches pays
 
-* [[http://www.couloirmag.com]] (en) plein d infos ski couloir
+* [couloirmag.com](http://www.couloirmag.com) (en) plein d infos ski couloir
 
-* [[http://www.thenorthface.com/eu/expeditions-feature.html|The Northface]] : d autres expeditions
+* [The Northface](http://www.thenorthface.com/eu/expeditions-feature.html) : d autres expeditions
 
-* [[http://www.abm.fr/avion/gvasommaire.html| Asso aventure du bout du monde]]: pas mal d info pour les glob trotteurs.
+* [Asso aventure du bout du monde](http://www.abm.fr/avion/gvasommaire.html): pas mal d info pour les glob trotteurs.
 
-* [[http://www.connaisseursvoyage.fr/| la derniere agence francaise a proposer des tour du monde]] a ce qu il parait... Devis gratuit, info prix pays, ...
+* [la derniere agence francaise a proposer des tour du monde](http://www.connaisseursvoyage.fr/) a ce qu il parait... Devis gratuit, info prix pays, ...
 
-* [[http://www.voyageforum.com/forum.cgi?forum=18;t=ABM|forum de voyageurs autour du monde]] -> mine d'informations diverses
+* [forum de voyageurs autour du monde](http://www.voyageforum.com/forum.cgi?forum=18;t=ABM) -> mine d'informations diverses
 
 * http://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Projet/G%C3%A9ographie/Montagnes  Pas mal d'infos sauf pour L'océanie...
 
@@ -27,7 +29,8 @@ www.nzski.com
 www.magicbus.co.nz
 
 - hébergement:
-www.stavyha.com                                                                         www.holidayparks.co.nz 
+www.stavyha.com                                                                         
+www.holidayparks.co.nz 
 
 - général pour backpackers:  
 www.kiwiexperience.com
@@ -35,11 +38,11 @@ www.flyingkiwi.com
 www.backpack.co.nz                 
 
 
-====== Projets similaires ======
+# Projets similaires 
 
-* [[http://www.endlesswinter.net|Endless Winter]]
+* [Endless Winter](http://www.endlesswinter.net)
 
-* [[http://www.riders-around-the-world.com/index.php|{{liens:ridersaroundtheworld.jpg}}]] **Riders around the world**
+* [Riders around the world](http://www.riders-around-the-world.com/index.php)
 * loi 1901, 2 rideurs, 18 mois, 200 stations
 * TDM des domaines seulement
 * vont publier Guide pratique des domaines skiables dans le monde (en octobre 2007)
@@ -48,12 +51,12 @@ www.backpack.co.nz
 * une rubrique de conseil pour preparer un tdm  
 
 
-====== Tours du monde ===========
+# Tours du monde
 * [[http://www.partageons-le-monde.org]] 1 an autour du monde pour aller parler avec des gosses.
-* [[http://despays.free.fr|Des Pays et des Hommes]] 10 mois en velo de france jusqu en Inde : pas mal d infos sur partenariats, 15 000 euros pour deux, infos sur vaccins.
-* [[http://pageperso.free.fr/showtheme.pl?theme=220&st=10|Rubrique TDm sur free]]: Plein de site de TDM amateurs francais. Y en a un paquet !!!!!
+* [Des Pays et des Hommes](http://despays.free.fr) 10 mois en velo de france jusqu en Inde : pas mal d infos sur partenariats, 15 000 euros pour deux, infos sur vaccins.
+* [Rubrique TDm sur free](http://pageperso.free.fr/showtheme.pl?theme=220&st=10): Plein de site de TDM amateurs francais. Y en a un paquet !!!!!
 
 
-====== Liens internet informations ======
-* [[Liens:Liens]]
-* [[Liens:projets similaires]]
+# Liens internet informations 
+* [Liens:Liens]
+* [Liens:projets similaires]

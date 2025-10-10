@@ -17,6 +17,7 @@ minima:
   hide_site_feed_link: true
   nav_pages:
     - about.md
+    - petrol.md
 
 plugins:
   - jekyll-sitemap

@@ -1,4 +1,6 @@
-# Communication
+---
+title: Communication
+---
 
 ## Prospection plaquette :
 
@@ -20,7 +22,7 @@ Sinon, il faudra aussi changer d hebergeur, car free n accepte pas ftp de l etra
 ## Site Web 
 Le site de presentation sera statique, faudra le faire beau.
 
-### Herbergeur 
+### Hebergeur 
 Il faut php, mysql et au moins 500 Mo pour mettre les photos.
   * Free : pb: on peut pas uploader en ftp de l etranger.
   * les autres sont payants

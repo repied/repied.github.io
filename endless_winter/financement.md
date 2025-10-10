@@ -1,59 +1,51 @@
-# Financement
-====== Financement ======
+---
+title: Financement
+---
+
+## Financement 
  Faire une [[Projet:association]] : utilité ?
   * Rédiger et éditer une plaquette ( rassembler infos, faire budget) (Ryl / JB)
   * Faire un site internet (Ptit)
   * Recenser les différentes bourses, les conditions d’admission, l’esprit et les dates limites. Faire un planning des envois. A mon avis faut qu’on ratisse hyper large, le projet est assez divers pr intéresser plein de gens différents  Manu
   * Recenser les différentes boites (ou autres) à qui demander du matos ou de l’argent. Bien cibler en fonction de nos besoins et de leur image. Bien leur faire croire qu’ils sont indispensables et intégrés au projet. Bien montrer ce qu’on est capable de rapporter en échange. A mon avis, la aussi faut aller chercher bcp de boites, ms en restant pertinents. Je pense qu’on sous estime la capacité des boites à sponsoriser ce genre de projets. Voir si une boite ne voudrait pas nous parrainer.   JB/Ryl
   * Recenser nos points d’entrée par contacts ds les boites pr maximiser nos chances  tous
-====== Les entreprises qui vont raker ======
+## Les entreprises qui vont raker 
 Il faut retenir leur attention et leur apporter qqc en échange, le plus souvent de la communication. La leur, la notre (film, diaporama, expo, habits portés…) et la tierce (radio, télé, journaux…). Pr qu’ils puissent communiquer la dessus, il faut que ça soit en accord avec leur image et leur philosophie d’entreprise.
 
-===== Pistes =====
-[[http://www.participez.com/dossier.php?id=3|Conseils de recherche de sponsors]]
+### Pistes 
+[Conseils de recherche de sponsors](http://www.participez.com/dossier.php?id=3)
 
-Info de [[http://www.connaisseursvoyage.fr/tour-du-monde-conseil.htm|Connaisseurs voyage]] (agence TDM) 
+Info de [Connaisseurs voyage](http://www.connaisseursvoyage.fr/tour-du-monde-conseil.htm) (agence TDM) 
   * Trouvez un job chez un éditeur de guide !!!
-  * [[http://www.fondations.com/]] offre déjà quelques pistes...
-  * sur le site de éfi jeunes, des [[http://www.defijeunes.fr/projet/pistes/autpiste.htm|pistes]].
-  * Pas mal d'adresses aussi sur le site de la [[http://www.fnh.org/|Fondation Nicolas Hulot]]
+  * [Fondations](http://www.fondations.com/) offre déjà quelques pistes...
+  * sur le site de éfi jeunes, des [pistes](http://www.defijeunes.fr/projet/pistes/autpiste.htm).
+  * Pas mal d'adresses aussi sur le site de la [Fondation Nicolas Hulot](http://www.fnh.org/)
 
 Magasins de grenoble : Espace montagne, la glisse, adrenaline ...
 
 Idee: raconter en live sur Skipass ou autres sites ski. Ptt qu ils payeront les cons.
-====== Budjet ======
+## Budjet 
 Ici c'est pour estimer le buget
 
-===== Dépenses =====
+### Dépenses 
 
-===== Recettes =====
+### Recettes 
 
-===== Comparaisons autres projets =====
+### Comparaisons autres projets 
 ==== Bolivie ====
 
 ==== Autres ====
-  * [[http://despays.free.fr/financement.php|Des pays et des hommes]]: 15 000 euros pour 2 pour 10 mois de velo+tente. leur budget detaillé est sur le site.
-  * [[http://annabelle.bailleul.free.fr/]] Billet TDM 2000 Eur, l'assurance tous risques à l'année 300 Eur environ (comprenant la caution en cas de prison, le capital décès, le rapatriement, les lunettes et le dentiste...). En tout  6750 pour 10 mois
+  * [Des pays et des hommes](http://despays.free.fr/financement.php): 15 000 euros pour 2 pour 10 mois de velo+tente. leur budget detaillé est sur le site.
+  * [Annabelle Bailleul](http://annabelle.bailleul.free.fr/): Billet TDM 2000 Eur, l'assurance tous risques à l'année 300 Eur environ (comprenant la caution en cas de prison, le capital décès, le rapatriement, les lunettes et le dentiste...). En tout  6750 pour 10 mois
    * //Selon les différents témoignages recueillis, un tour du monde peut coûter de 3 000 €(par la route et les transports locaux, logement chez l'habitant, etc.) à 60 000 € dans des conditions optimales, par personne et par an. La moyenne se situant plutôt autour de 9 000 €…//
 
 
-   ====== Bourses pour avoir pleins de sous ======
+## Bourses pour avoir pleins de sous 
 il faut avoir un beau dossier qui marque , fait rêver et est atypique.
 
+### Défi jeune 
 
-
-
-
-
-
-
-
-
-
-
-===== Défi jeune =====
-
- === J'ai pris l'Isère?! Serait-il plus judicieux de prendre Paris? ===
+=== J'ai pris l'Isère?! Serait-il plus judicieux de prendre Paris? ===
 
 
 Bourses Défi Jeunes 62, rue Saint-Lazare 75009 PARIS
@@ -117,13 +109,13 @@ Nombre de projets retenus : 20
 Au total 279134.15 € ont été distribués en Rhône-Alpes, soit en moyenne 2969.40 € par projet.
 === == == 
 **Pour les Yvelines : dates : 3 sessions**: == ===
-                         21 22 /03/06                                   
-                    13 14/06/06                                           
-                       7 8/11/06 ==
+21 22 /03/06                                   
+13 14/06/06                                           
+7 8/11/06 ==
 
 
-===== Polartech =====
-[[http://www.polartec.com/pulse/apply.php?applylanguage=326|Bourse polartech]]
+### Polartech 
+[Bourse polartech](http://www.polartec.com/pulse/apply.php?applylanguage=326)
 
 **Les vainqueurs doivent avant tout s’amuser et revenir vivants.**
 
@@ -142,8 +134,8 @@ Les formulaires rédigés par ordinateur doivent inclure toutes les questions ci
 
 
 
-===== Divers=====
-Voir sur le site de cette expé : [[http://despays.free.fr/partenaires.php|Des Pays et des Hommes]]
+### Divers
+Voir sur le site de cette expé : [Des Pays et des Hommes](http://despays.free.fr/partenaires.php)
 
 
 Bourse GHM:
