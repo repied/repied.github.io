@@ -1,3 +1,9 @@
+---
+layout: page
+title: Petrole
+permalink: /petrole/
+---
+
 # La fête est finie 
 « Celui qui croit qu'une croissance exponentielle peut continuer indéfiniment
 dans un monde fini est un fou, ou un économiste. » Kenneth Boulding

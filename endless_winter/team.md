@@ -3,7 +3,7 @@ title: Equipe
 ---
 
 # Cyril
-![ryl.jpg](./ryl.jpg) ![25_20ans_20-_2017_20sept_2005_20_41_.jpg](./25_20ans_20-_2017_20sept_2005_20_41_.jpg)
+![ryl.jpg](./ryl.jpg) 
 - Groupe sanguin : O- (ca peut servir)
 - don d’organes : oui, ceux qui restent
 - testament: je lègue tout au(x) survivant(s)
@@ -41,7 +41,6 @@ Responsable de
 
 
 # Emmanuel
-![réunionsalasses.jpg](./réunionsalasses.jpg)
 ![piaget_mai_2005_022.jpg](./piaget_mai_2005_022.jpg) et en accès libre sur le web :![manu.jpg](./manu.jpg)
 
 - Comment me joindre:

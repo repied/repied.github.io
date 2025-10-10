@@ -62,11 +62,11 @@ Y a des conseils pas mal.
 Resp. : Manu
  
 ### Info autres projets 
-- [[http://annabelle.bailleul.free.fr/]]: Assurance tous risques à l'année 300 Eur.
+- [Assurance tous risques à l'année 300 Eur](http://annabelle.bailleul.free.fr/) 
 - caution en cas de prison
 - le capital décès
 - le rapatriement
-- les lunettes et le dentiste... [http://annabelle.bailleul.free.fr/]
+- les lunettes et le dentiste... 
 
 # Association 
 Doit en faire une loi 1901 ? Pour quoi faire ?

@@ -1,6 +1,6 @@
 ---
 title: Freeride 
-----
+---
 # Qu est ce qu on va skier ? 
 
 ## Objectif  : 
