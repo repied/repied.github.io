@@ -17,10 +17,10 @@ title: "Websites"
 - 2007: [INRIA Machine Learning working group](./phd/mlwg/index.html)
 <p></p>
 
-- XXXX [Random notes]((./phd/tek_notes/))
+- XXXX [Technical notes](./phd/tek_notes/index.html)
 <p></p>
 
-- XXXX [Ph.D. defense]((./phd/soutenance/index.html))
+- XXXX [Ph.D. defense](./phd/soutenance/index.html)
 <p></p>
 
 - 2012: [Ferrofluids](https://sites.google.com/site/pierredangauthier/noir)
