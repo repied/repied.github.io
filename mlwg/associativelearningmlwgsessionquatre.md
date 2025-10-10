@@ -1,8 +1,11 @@
-= MLWG Session 4 : Associative memories: New results and applications =
+---
+title: MLWG Session 4  Associative memories New results and applications
+---
+
 
 Par Humberto Sossa, le mercrdedi 1er juin 2005 en salle C207 à 15 heures
 
-=== Introduction ===
+## Introduction
 Humberto Sossa, hsossa@cic.ipn.mx, Centro de Investigación en Computación (CIC) del Instituto Politécnico Nacional (IPN), Mexico.
 
 *Abstract*:
@@ -25,11 +28,3 @@ Applications go from
 1) reconstruction of images contaminated, for example, with mixed noise.
 2) object classification.
 3) word recognition. 
-
-=== Fichiers téléchargeables ===
-
-[pdf de la presentation  http://emotion.inrialpes.fr/~dangauthier/MLWGStuff/MLWG_4_Associative_mem.pdf] 6.3 Mo.
-
-=== Références ===
-
-xxxx

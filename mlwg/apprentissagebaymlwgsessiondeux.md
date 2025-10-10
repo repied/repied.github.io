@@ -1,12 +1,14 @@
-= MLWG Session 2: Apprentissage bayésien =
+---
+title: MLWG Session 2 Apprentissage bayésien
+---
 
 Par Pierre Dangauthier, mercredi 18 mai 2005 en C 207 à 16 heures
 
-=== Introduction ===
+## Introduction 
 
 L'apprentissage bayésien tente d'apporter une théorie mathématique solide pour guider nos construction de programmes apprenants. Il s'agit ici d'utiliser les notions mathématiques de probabilités et des notions de statistique dans le but d'apprendre des modèles à partir de données, puis d'utiliser ces modèles afin d'établir des prédictions.
 
-Dans la communauté des statisticiens, deux écoles se distinguent, les fréquencistes et les bayésiens (voir [wikipedia http://en.wikipedia.org/wiki/Bayesian_probability] pour plus d'info). 
+Dans la communauté des statisticiens, deux écoles se distinguent, les fréquencistes et les bayésiens (voir [wikipedia](http://en.wikipedia.org/wiki/Bayesian_probability) pour plus d'info). 
 
 Beaucoup de techniques d'apprentissage peuvent se reformuler en tant qu'approximations, restrictions de la solution bayésienne.
 
@@ -32,12 +34,9 @@ With all of these advantages, Bayesian learning is a strong program. However, th
 *Integration In Bayesian learning*, the posterior is computed by an integral, and the optimal thing to do is to predict according to this integral. This phenomena seems to be far more general. *Bagging, Boosting, Svm, and Neural Networks* all take advantage of this idea to some extent. The phenomena is more general: you can average over many different classification predictors to improve performance. Sources: Zoubin, Caruana
 
 
-=== Fichiers téléchargeables ===
 
-[PDF de la presentation http://emotion.inrialpes.fr/~dangauthier/MLWGStuff/MLWG2_BayesianLearning_dangauthier.pdf]
-
-=== Références ===
-[Un chapitre par Zoubin Ghahramani sur l'apprentissage non supervisé http://emotion.inrialpes.fr/~dangauthier/MLWGStuff/ChapitreUnsupervisedLearningZoubin.pdf]
+## Références 
+[Un chapitre par Zoubin Ghahramani sur l'apprentissage non supervisé](http://emotion.inrialpes.fr/~dangauthier/MLWGStuff/ChapitreUnsupervisedLearningZoubin.pdf)
 
 
-[Information Theory, Inference, and Learning Algorithms http://www.inference.phy.cam.ac.uk/mackay/itila/book.html], livre en ligne de David Mackay.
+[Information Theory, Inference, and Learning Algorithms](http://www.inference.phy.cam.ac.uk/mackay/itila/book.html), livre en ligne de David Mackay.
