@@ -28,3 +28,10 @@ bundle exec jekyll build
 bundle exec jekyll serve
 bundle exec jekyll serve --livereload
 ```
+
+# Adding news posts
+
+New md files in ./posts named like `2016-05-19-codeblocks-ahoy.md` will be added as links in the generated ./_layouts/home.html from ./index.md.
+
+# Adding new page
+All .md which are not in ./_posts are generated according to the ./_layouts/page.html

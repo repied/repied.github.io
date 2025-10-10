@@ -1,5 +1,5 @@
 ---
-title: "List of historical websites"
+title: "Old websites"
 ---
 
 - 1998-2001: [Fleur de bitume](free/frame.html). A black-themed frame-based pure-html hand-coded website, in French.
@@ -17,8 +17,6 @@ title: "List of historical websites"
 - XXXX [Random notes]((./phd/tek_notes/))
 
 - XXXX [Ph.D. defense]((./phd/soutenance/index.html))
-
-
 
 - 2012: [Ferrofluids](https://sites.google.com/site/pierredangauthier/noir)
 

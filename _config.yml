@@ -9,12 +9,12 @@ remote_theme: "jekyll/minima" # should be v3
 # description: DDDDDDDDDDDDDDDDDDDDD
 show_downloads: false
 
-author:
-  name: repied
-  email: pierre.dangauthier@gmail.com
+#author:
+#  name: repied
 
 minima:
-#   skin: dark # not working
+  skin: auto
+  hide_site_feed_link: true
   nav_pages:
     - about.md
 
@@ -23,7 +23,7 @@ plugins:
   - jekyll-remote-theme 
 
 
-# FROM MINIMA
+# config examples from minima
 # Site-wide settings
 # ------------------
 #
@@ -116,33 +116,3 @@ plugins:
 #     list. Set below key to `true` to not have the link to feed rendered as
 #     part of social-links list.
 #   hide_site_feed_link: false
-
-
-######### minima demo site
-# title: Minima Demo Site
-# author:
-#   name: GitHub User
-#   email: your-email@domain.com
-# description: >
-#   Write an awesome description for your new site here. You can edit this
-#   line in _config.yml. It will appear in your document head meta (for
-#   Google search results) and in your feed.xml site description.
-
-# minima:
-#   date_format: "%b %-d, %Y"
-#   social_links:
-#     - { icon: "github", title: "Minima Theme repository at GitHub", url: "https://github.com/jekyll/minima" }
-#     - { icon: "x-twitter", title: "Jekyll profile at X (formerly Twitter)", url: "https://x.com/jekyllrb" }
-#   show_excerpts: true
-
-# # Build settings
-# baseurl: /minima
-# remote_theme: jekyll/minima
-# plugins:
-#   - jekyll-feed
-#   - jekyll-remote-theme
-#   - jekyll-seo-tag
-
-# sass:
-#   quiet_deps: true
-#   silence_deprecations: [import]
