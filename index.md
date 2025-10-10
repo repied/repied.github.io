@@ -2,10 +2,7 @@
 title: "Websites"
 ---
 
-- 1998-2001: [Fleur de bitume](free/frame.html). A black-themed frame-based pure-html hand-coded website, in French.
-   - Gravity waves
-   - Insect-inspired robot
-   - Web programming 101, from the last millennium
+- 1998-2001: [Fleur de bitume](free/frame.html)
 <p></p>
 
 - 2006-2007: [An early machine learning blog](yamlb/index.html)
