@@ -1,7 +1,0 @@
-====== Organisation ======
-  * [[Organisation:Planning preparation]]
-  * [[Organisation:Repartition des taches]]
-  * [[Organisation:Preparation personnelle]]
-    * [[Organisation:Preparation personnelle:formation montagne]]
-    * [[Organisation:Preparation personnelle:formation medecine]]
-    * [[Organisation:Preparation personnelle:formation physique]]
