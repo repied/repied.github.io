@@ -16,4 +16,4 @@ title: "Websites"
 
 - 2012 [Ferrofluids](https://sites.google.com/site/pierredangauthier/noir)
 
-- 2014 [Tour du monde](tdm/jijipida.html)
+- 2014 [Tour du monde](tdm/index.html)
