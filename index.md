@@ -14,15 +14,16 @@ title: "Websites"
    - check attachements and images
 <p></p>
 
-- 2004 [Technical notes](./phd/tek_notes/index.html)
+- 2004 [2 unpublished notes](./phd/tek_notes/index.html)
 <p></p>
 
-- 2007: [INRIA Machine Learning working group](./mlwg/index.html)
+- 2006: [Machine Learning working group](./phd//mlwg/index.html)
 <p></p>
 
 
-- XXXX [Ph.D. defense](./phd/soutenance/index.html)
+- 2007 [Ph.D. defense](./phd/defense/index.html)
 <p></p>
+
 
 - 2012: [Ferrofluids](https://sites.google.com/site/pierredangauthier/noir)
 <p></p>

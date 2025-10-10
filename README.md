@@ -28,10 +28,14 @@ bundle exec jekyll build
 bundle exec jekyll serve
 bundle exec jekyll serve --livereload
 ```
+# Minima jekyll template
+Minima is used as a remote theme (i.e. it is fetched during rendering from minima github), but I also have copied locally htmls for _layout and _includes, which could be changed, but have not been changed. Those local ones take precedence to the github versions.
 
 # Adding news posts
 
-New md files in ./posts named like `2016-05-19-codeblocks-ahoy.md` will be added as links in the generated ./_layouts/home.html from ./index.md.
+New .md files in ./posts named like `2016-05-19-codeblocks-ahoy.md` will rendered as 'post' and  liked in the generated ./_layouts/home.html from ./index.md.
 
 # Adding new page
 All .md which are not in ./_posts are generated according to the ./_layouts/page.html
+An example is about.md.
+Pages are linked in the header, if they are mentioned in _config.yml
