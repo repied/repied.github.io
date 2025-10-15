@@ -2,6 +2,11 @@
 title: "jijipida"
 --- 
 
+https://www.dailymotion.com/video/k7yElpQH714UJobiDXJ
+le site est now live
+y a aussi video remerciemnts, des plongee du rescue center....
+
+
 Ce site présente notre [aventure autour du monde](http://planificateur.a-contresens.net/itineraire/1241#carte-itineraire) de 2014-2015.
 
 - [Lettre 1 13/08 Bali](Lettre 1 13_08 Bali - jijipida.html)

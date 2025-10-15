@@ -17,3 +17,8 @@ title: "Websites"
 - 2012 [Ferrofluids](https://sites.google.com/site/pierredangauthier/noir)
 
 - 2014 [Tour du monde](tdm/index.html)
+todo
+find the missing letters
+edit links to images in all letters html
+fix navigation in index.html letter
+copy this navigation to all letters
