@@ -37,6 +37,10 @@ def cdata_content(elem, tag):
     tt = tt.replace(
         "https://emotion.inrialpes.fr/people/dangauthier/images/", "../../media/"
     )
+    tt = tt.replace(
+        "http://emotion.inrialpes.fr/people/dangauthier/images/", "../../media/"
+    )
+    tt = tt.replace("http://emotion.inrialpes.fr/~dangauthier/images/", "../../media/")
     return tt
 
 
@@ -109,25 +113,23 @@ def main(xml: str):
 
         md_lines = index_lines = [
             "---",
-            f"title: {title or '(no title)'}",
+            f"title: {title.replace(':', ' ') or '(no title)'}",
             "---",
             "",
         ]
-        md_lines.append(f"# {title or '(no title)'}")
-        md_lines.append("")
-        md_lines.append(f"*Original link:* {link}")
-        md_lines.append(f"*pubDate:* {pubDate}")
+        md_lines.append(f"|*Original link*| {link}|")
+        # md_lines.append(f"|*pubDate*| {pubDate}|")
         if pubDateIso:
-            md_lines.append(f"*pubDateIso:* {pubDateIso}")  # Add pubDateIso to output
-        md_lines.append(
-            f"*post_id:* {post_id}  *status:* {status}  *type:* {post_type}"
-        )
+            md_lines.append(f"|*Date*| {pubDateIso}|")  # Add pubDateIso to output
+        # md_lines.append(f"|*post_id*| {post_id}|")
+        md_lines.append(f"|*Status*| {status}|")
+        # md_lines.append(f"|*type*| {post_type}|")
         if description:
             md_lines.append("\n**Description**")
             md_lines.append("")
             md_lines.append(description)
         if content:
-            md_lines.append("\n**Content**")
+            # md_lines.append("\n**Content**")
             md_lines.append("")
             # Do not modify content: write as-is. Ensure we don't inadvertently escape.
             md_lines.append(content)
@@ -140,10 +142,10 @@ def main(xml: str):
         index_entries.append((pubDate, pubDateIso, title, filename))
 
     # Create index.md
-    index_entries.sort(key=lambda x: (x[1], x[2]))
+    index_entries.sort(key=lambda x: (x[1], x[2]), reverse=True)
     index_lines = [
         "---",
-        "title: Yet Another Machine Learning Blog (as of 14 Mar 2007)",
+        "title: Yet Another Machine Learning Blog",
         "---",
         "",
     ]
