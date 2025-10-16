@@ -2,10 +2,10 @@
 title: "Yet another machine learning blog"
 ---
 
-[./blog](./blog)
+[./blog manual extracted](./blog)
 
 
-[./summaryblog](./summaryblog)
+[./summaryblog from xml](./summaryblog)
 
 # list of blog
 
