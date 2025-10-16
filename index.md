@@ -4,7 +4,7 @@
 
 - 2004 [2 unpublished notes](./phd/tek_notes/index.html)
 
-- 2006 [Yet Another Machine Learning Blog](yamlb/index.html)
+- 2006 [Yet Another Machine Learning Blog](yamlb/blog_xml_python/extracted/index.md)
 
 - 2007 [Machine Learning working group](./phd//mlwg/index.html)
 

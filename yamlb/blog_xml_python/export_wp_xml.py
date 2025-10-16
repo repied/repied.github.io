@@ -1,6 +1,7 @@
 import re
 import sys
 import xml.etree.ElementTree as ET
+from datetime import datetime  # Import datetime
 from html import unescape
 from pathlib import Path
 
@@ -50,6 +51,20 @@ def main(xml: str):
         title = extract_text(item, "title")
         link = extract_text(item, "link")
         pubDate = extract_text(item, "pubDate")
+
+        # Parse pubDate and format to YYYY-MM-DD
+        pubDateIso = ""
+        if pubDate:
+            try:
+                # Example format: "Thu, 01 Jan 1970 00:00:00 +0000"
+                dt_object = datetime.strptime(pubDate, "%a, %d %b %Y %H:%M:%S %z")
+                pubDateIso = dt_object.strftime("%Y-%m-%d")
+            except ValueError:
+                print(
+                    f"Warning: Could not parse pubDate '{pubDate}' for post '{title}'",
+                    file=sys.stderr,
+                )
+
         description = extract_text(item, "description")  # often empty
         content = cdata_content(
             item, "{http://purl.org/rss/1.0/modules/content/}encoded"
@@ -88,15 +103,19 @@ def main(xml: str):
 
         # Build markdown preserving raw HTML within content body
         slug = slugify(title or "", post_id)
-        # filename = f"{pubDate[:10] if pubDate else 'undated'}-{slug}.md"
         filename = f"{slug}.md"
         out_path = OUT_DIR / filename
 
         md_lines = [HEADER]
+        md_lines.append(f"""---
+{title or "(no title)"}
+---""")
         md_lines.append(f"# {title or '(no title)'}")
         md_lines.append("")
         md_lines.append(f"*Original link:* {link}")
         md_lines.append(f"*pubDate:* {pubDate}")
+        if pubDateIso:
+            md_lines.append(f"*pubDateIso:* {pubDateIso}")  # Add pubDateIso to output
         md_lines.append(
             f"*post_id:* {post_id}  *status:* {status}  *type:* {post_type}"
         )
@@ -115,14 +134,18 @@ def main(xml: str):
             md_lines.append("\n".join(comment_blocks))
 
         out_path.write_text("\n".join(md_lines), encoding="utf-8")
-        index_entries.append((pubDate, title, filename))
+        index_entries.append((pubDate, pubDateIso, title, filename))
 
     # Create index.md
-    index_entries.sort(key=lambda x: (x[0], x[1]))
-    index_lines = [HEADER, "# Index of imported WordPress posts", ""]
-    for pd, title, fn in index_entries:
+    index_entries.sort(key=lambda x: (x[0], x[2]))
+    index_lines = [
+        HEADER,
+        "---\ntitle: Yet Another Machine Learning Blog (as of 14 Mar 2007)\n---",
+        "",
+    ]
+    for pd, pdIso, title, fn in index_entries:
         display = title or "(no title)"
-        index_lines.append(f"- [{display}]({fn}) — {pd}")
+        index_lines.append(f"- {pdIso} : [{display}]({fn})")
     (OUT_DIR / "index.md").write_text("\n".join(index_lines), encoding="utf-8")
 
 
