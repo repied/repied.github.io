@@ -9,9 +9,6 @@ from pathlib import Path
 DEFAULT_XML = "./yamlb/blog_xml_python/wordpress.2008-05-20_blog_yamlb_before_adding_inria_blog.xml"
 OUT_DIR = Path("./yamlb/blog_xml_python/extracted/")
 
-HEADER = """"""
-
-
 SAFE_FILENAME_RE = re.compile(r"[^A-Za-z0-9._-]+")
 
 
@@ -36,7 +33,11 @@ def cdata_content(elem, tag):
     t = elem.find(tag)
     if t is None or t.text is None:
         return ""
-    return t.text  # keep raw (already inside CDATA originally)
+    tt = t.text
+    tt = tt.replace(
+        "https://emotion.inrialpes.fr/people/dangauthier/images/", "../../media/"
+    )
+    return tt
 
 
 def main(xml: str):
@@ -106,10 +107,12 @@ def main(xml: str):
         filename = f"{slug}.md"
         out_path = OUT_DIR / filename
 
-        md_lines = [HEADER]
-        md_lines.append(f"""---
-{title or "(no title)"}
----""")
+        md_lines = index_lines = [
+            "---",
+            f"title: {title or '(no title)'}",
+            "---",
+            "",
+        ]
         md_lines.append(f"# {title or '(no title)'}")
         md_lines.append("")
         md_lines.append(f"*Original link:* {link}")
@@ -124,7 +127,7 @@ def main(xml: str):
             md_lines.append("")
             md_lines.append(description)
         if content:
-            md_lines.append("\n**Content (verbatim)**")
+            md_lines.append("\n**Content**")
             md_lines.append("")
             # Do not modify content: write as-is. Ensure we don't inadvertently escape.
             md_lines.append(content)
@@ -137,10 +140,11 @@ def main(xml: str):
         index_entries.append((pubDate, pubDateIso, title, filename))
 
     # Create index.md
-    index_entries.sort(key=lambda x: (x[0], x[2]))
+    index_entries.sort(key=lambda x: (x[1], x[2]))
     index_lines = [
-        HEADER,
-        "---\ntitle: Yet Another Machine Learning Blog (as of 14 Mar 2007)\n---",
+        "---",
+        "title: Yet Another Machine Learning Blog (as of 14 Mar 2007)",
+        "---",
         "",
     ]
     for pd, pdIso, title, fn in index_entries:
