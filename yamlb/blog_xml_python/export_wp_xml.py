@@ -34,13 +34,16 @@ def cdata_content(elem, tag):
     if t is None or t.text is None:
         return ""
     tt = t.text
-    tt = tt.replace(
-        "https://emotion.inrialpes.fr/people/dangauthier/images/", "../../media/"
-    )
-    tt = tt.replace(
-        "http://emotion.inrialpes.fr/people/dangauthier/images/", "../../media/"
-    )
-    tt = tt.replace("http://emotion.inrialpes.fr/~dangauthier/images/", "../../media/")
+    links_to_replace = [
+        "http://emotion.inrialpes.fr/%7Edangauthier/blog/wp-content/uploads/2006/05/",
+        "http://emotion.inrialpes.fr/~dangauthier/blog/wp-content/uploads/2006/04/",
+        "https://emotion.inrialpes.fr/people/dangauthier/images/",
+        "http://emotion.inrialpes.fr/people/dangauthier/images/",
+        "http://emotion.inrialpes.fr/~dangauthier/images/",
+        "https://emotion.inrialpes.fr/~dangauthier/blog/wp-content/uploads/2006/04/",
+    ]
+    for link in links_to_replace:
+        tt = tt.replace(link, "../../media/")
     return tt
 
 
@@ -96,22 +99,25 @@ def main(xml: str):
                 c, "{http://wordpress.org/export/1.0/}comment_approved"
             )
             block = [
+                "",
                 "---",
-                f"comment_id: {cid}",
-                f"author: {cauthor}",
-                f"date: {cdate}",
-                f"approved: {approved}",
+                # f"- comment_id: {cid}",
+                f"- author: **{cauthor}**",
+                f"- date: {cdate}",
+                # f"approved: {approved}",
                 "",
                 ccontent or "",
             ]
             comment_blocks.append("\n".join(block))
+
+        num_comments = len(comment_blocks)  # Count the number of comments
 
         # Build markdown preserving raw HTML within content body
         slug = slugify(title or "", post_id)
         filename = f"{slug}.md"
         out_path = OUT_DIR / filename
 
-        md_lines = index_lines = [
+        md_lines = [
             "---",
             f"title: {title.replace(':', ' ') or '(no title)'}",
             "---",
@@ -134,14 +140,16 @@ def main(xml: str):
             # Do not modify content: write as-is. Ensure we don't inadvertently escape.
             md_lines.append(content)
         if comment_blocks:
-            md_lines.append("\n**Comments**")
+            md_lines.append("# Comments")
             md_lines.append("")
             md_lines.append("\n".join(comment_blocks))
 
         out_path.write_text("\n".join(md_lines), encoding="utf-8")
-        index_entries.append((pubDate, pubDateIso, title, filename))
+        index_entries.append(
+            (pubDate, pubDateIso, title, filename, num_comments)
+        )  # Add num_comments here
 
-    # Create index.md
+    # Create index.md of all posts
     index_entries.sort(key=lambda x: (x[1], x[2]), reverse=True)
     index_lines = [
         "---",
@@ -149,9 +157,12 @@ def main(xml: str):
         "---",
         "",
     ]
-    for pd, pdIso, title, fn in index_entries:
+    for pd, pdIso, title, fn, num_comments in index_entries:  # Unpack num_comments
         display = title or "(no title)"
-        index_lines.append(f"- {pdIso} : [{display}]({fn})")
+        comment_info = f" ({num_comments} comments)" if num_comments > 0 else ""
+        index_lines.append(
+            f"- {pdIso} : [{display}]({fn}){comment_info}"
+        )  # Include comment_info
     (OUT_DIR / "index.md").write_text("\n".join(index_lines), encoding="utf-8")
 
 
