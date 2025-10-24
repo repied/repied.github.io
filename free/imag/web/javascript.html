@@ -1,0 +1,53 @@
+<html>
+<body bgcolor="#FFFFFF" text="#000000" link="#6600FF" vlink="#6600FF" alink="#FFFF00">
+<h1 align="center">Javascript</h1>
+<p>&nbsp;</p>
+<p>Cel&agrave; consiste &agrave; ajouter des (petits) bouts de code au HTML qui 
+  seront envoy&eacute;s au client (Netscape) et ex&eacute;cut&eacute; par celui-ci.</p>
+<p>Cel&agrave; sert &agrave; donner un peu plus d'<b>interactivit&eacute;</b>, 
+  v&eacute;rifier que tous les champs d'un formulaire ont bien &eacute;t&eacute;s 
+  remplis avant de l'envoyer, grossir un image lors d'un clic, changer l'aspect 
+  d'un bouton quand la souris passe dessus.</p>
+<p>Sa syntaxe ressemble au C et &agrave; Java (mais ce n'est pas un langage orient&eacute; 
+  objet)</p>
+<p><b>Probl&egrave;mes</b> : Comme les scripts peuvent &ecirc;tre interpr&eacute;t&eacute;s 
+  par des clients tr&egrave;s diff&eacute;rents, il y a souvent des <font color="#FF0000">probl&egrave;mes 
+  de compatibilit&eacute;</font>.<br>
+  Il faut donc programmer tr&egrave;s <b>proprement</b> et tester avec plusieurs 
+  navigateurs diff&eacute;rents.</p>
+<p>Voici un <a href="http://richard.geneva-link.ch/951s.html" target="_top">tutoriel</a> 
+  bien fait, du m&ecirc;me auteur que celui pour HTML.</p>
+<p><b>Exemple :</b></p>
+<ul>
+  <li>Voici le source:</li>
+</ul>
+<p><font color="#FF0000">&lt;SCRIPT LANGUAGE="Javascript"&gt; </font><br>
+  &lt;!-- ;<br>
+  function actif(){document.images["bouton1"].src="bouton_enfonce.gif"};<br>
+  function passif(){document.images["bouton1"].src="bouton_normal.gif"}; <br>
+  // --&gt; <font color="#FF0000">&lt;/SCRIPT&gt;</font><br>
+  <br>
+  <font color="#FF0000">&lt;A HREF="INTRO.html" <font color="#CC3399">onmouseOver</font>="actif();" 
+  <font color="#CC3399">onmouseOut</font>="passif();"&gt;<br>
+  </font>&lt;IMG SRC="bouton_normal.gif" NAME="bouton1"&gt;<font color="#FF0000">&lt;/A&gt; 
+  </font></p>
+<ul>
+  <li>Et voil&agrave; le r&eacute;sultat</li>
+</ul>
+<p> 
+  <script language="Javascript">
+  <!-- ;
+  function actif(){document.images["bouton1"].src="bouton_enfonce.gif"};
+  function passif(){document.images["bouton1"].src="bouton_normal.gif"};
+  // -->
+</script>
+  <a href="INTRO.html" onMouseOver="actif();" onMouseOut="passif();"><img src="bouton_normal.gif" name="bouton1"></a> 
+</p>
+<p>&nbsp;</p>
+<p>Remarque : d'autres language de srcipts existent : <a href="test%20VBS.html">un 
+  exemple en VBscript</a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp; </p>
+</html>

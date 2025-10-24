@@ -1,0 +1,51 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <LINK REL="stylesheet" TYPE="text/css" HREF="mon_style.css">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#6600FF" vlink="#6600FF" alink="#FFFF00">
+  <h1 align="center">Les Feuilles de style</h1>
+  <p align="center">(ou fichier<font color="#FF0000">.<b>css</b></font>)</p>
+  <p>Il s'agit en gros de d&eacute;finir de nouveaux param&egrave;tres pour toutes
+    les balises HTML.</p>
+  <p>Le plus simple est de cr&eacute;er un fichier texte en plus des fichiers HTML
+    qui va contenir des d&eacute;finitions de style, de mise en page.<br>
+    Ainsi on aura plus qu'&agrave; faire appel &agrave; ce style &agrave; chaque
+    fois que l'on en aura besoin.</p>
+  <p>Pour avoir une documentation de référence, le mieux est de chercher sur Google.</p>
+  <p><b>Exemple :</b></p>
+  <ul>
+    <li>Soit le fichier de style : <b>mon_style.css</b> qui contient le code suivant
+      d&eacute;finissant <code>style_cool</code>:</li>
+  </ul>
+  <p><code>.style_cool {color:green;font-size:10px;}</code></p>
+  <ul>
+    <li>Soit le fichier HTML <b>test.html</b> qui utilise <b>mon_style.css</b> et
+      qui contient le code suivant :</li>
+  </ul>
+  <p>
+    <font color="#FF0000">Entre les balises &lt;HEAD&gt; et &lt;/HEAD&gt; on appelle
+      la feuille de style</font> <br>
+    &lt;<code>LINK REL="stylesheet" TYPE="text/css" HREF="mon_style.css"&gt; <br>
+  </code>
+    <font color="#FF0000"><br>
+      Dans le corps (&lt;BODY&gt;) on l'utilse avec CLASS<br>
+    </font><code>&lt;P&gt;Je suis un paragraphe classique&lt;/P&gt;<br>
+  &lt;P <font color="#CC3399">CLASS="style_cool"</font>&gt;Je suis un paragraphe 
+  personnalis&eacute; par le style : style_cool&lt;/P&gt;</code>
+  </p>
+  <ul>
+    <li>Le r&eacute;sultat est alors</li>
+  </ul>
+  <p>
+  <P>Je suis un paragraphe classique</P>
+  <P CLASS="style_cool">Je suis un paragraphe personnalis&eacute; par le style : style_cool</P>
+  <p></p>
+  <ul>
+    <li>Ce principe est tr&egrave;s utile pour d&eacute;finir une<b> charte graphique</b>
+      globale pour un gros site.</li>
+  </ul>
+
+</html>

@@ -1,0 +1,60 @@
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Une étude de la houle : Théorie</title>
+</head>
+
+<BODY BGCOLOR="#000000" text="#999999" link="#FF8000" alink="#3549FF" vlink="#FF0080">
+	<h1 class="center">THÉORIE</h1>
+	<p class="center">&nbsp;</p>
+	<p>Sans rentrer dans les détails, voici les principales étapes de notre approche.<br>
+		Ces considérations simples de mécanique des fluides sont du niveau de math Spé.<br>
+		Elles nous permettent d'obtenir des équations explicites de la trajectoire d'une particule d'eau au passage
+		d'une vague par grand fond et pour de petites amplitudes.</p>
+
+	<h2>a) <u>Hypothèses :</u></h2>
+	<ul>
+		<li>Écoulement parfait, incompressible, homogène, P₀ = cst, pas de tension superficielle, A &lt;&lt; L</li>
+	</ul>
+
+	<h2>b) <u>Approximations :</u></h2>
+	<ul>
+		<li>A &lt;&lt; L &rarr; Dv/Dt = dv/dt</li>
+		<li>rot v = cst = 0 (Lagrange)</li>
+		<li>v = grad Φ</li>
+		<li><b>Linéarisation</b> (cadre d’Airy)</li>
+		<li>T = cst</li>
+	</ul>
+
+	<h2>c) <u>Équations :</u></h2>
+	<ul>
+		<li>PFD &rarr; grad (Φ + gz + P/m) = 0</li>
+		<li>Bilan de masse &rarr; div v = 0</li>
+		<li>On pose <b>Φ = f(z) g(kx-wt)</b></li>
+		<li>f(z) = a sinh kz + b cosh kz</li>
+		<li>g(kx-wt) = cos(kx-wt)</li>
+	</ul>
+
+	<h2>d) <u>Conditions limites :</u></h2>
+	<ul>
+		<li>Vitesse verticale nulle au fond</li>
+		<li>Surface P = P₀</li>
+		<li>a = b th(kh)</li>
+		<li>Relation de dispersion : <b><i>w² = g k th(kh)</i></b></li>
+	</ul>
+
+	<h2>e) <u>Trajectoires :</u></h2>
+	<ul>
+		<li><b>x = x₀ - kb / (w cosh(kh)) cosh k(z₀+h) cos(kx₀-wt)</b></li>
+		<li><b>z = z₀ - kb / (w cosh(kh)) sinh k(z₀+h) sin(kx₀-wt)</b></li>
+	</ul>
+
+	<p>Et donc on en conclue que la trajectoire est une <b>ellipse</b> (un cercle en eau très profonde).</p>
+	<h4>Ceci répond bien à notre problème : il y a bien un transfert horizontal de matière !!!</h4>
+	<div class="center">
+		<img src="../images/trajec.gif" width="430" height="163" alt="Trajectoire de l'eau" border="0">
+	</div>
+</body>
+
+</html>

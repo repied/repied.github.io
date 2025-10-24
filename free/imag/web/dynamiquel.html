@@ -1,0 +1,79 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+</head>
+
+<body bgcolor="#FFFFFF" text="#000000" link="#6600FF" vlink="#6600FF" alink="#FFFF00">
+  <h1 align="center">Pages dynamiques</h1>
+  <p>&nbsp;</p>
+  <p>Il s'agit d'ajouter du code php (gratuit) ou asp (Microsoft) dans la page
+    h&eacute;berg&eacute;e par le serveur.</p>
+  <p>Ce code PHP va <b>g&eacute;n&eacute;rer</b> une page en code HTML qui sera
+    envoy&eacute;e au client.<br>
+    Ainsi l'internaute ne pourra jamais voir ce code PHP, il aura disparu de la
+    page quand il recevra celle-ci.</p>
+  <p><b>Exemple :</b></p>
+  <ul>
+    <li>Si la page source sur le serveur contient :<br>
+      <code><font color="#990099">&lt;?php<br>
+    echo &quot;</font><font color="#FF0000">&lt;bold&gt;</font></code>Hello World<code><font color="#FF0000">&lt;/bold&gt;<font color="#990099">&quot;</font><br>
+    <font color="#990099">?&gt;</font></font></code>
+    </li>
+    <li>L'internaute recevera la page dont le source est<br>
+      <code><font color="#FF0000">&lt;bold&gt;</font></code>Hello
+      World<code><font color="#FF0000">&lt;/bold&gt;</font></code>
+    </li>
+    <li>Et qui s'affichera dans son client :<br>
+      <b>Hello World </b>
+    </li>
+  </ul>
+  <p>Mais PHP montre vraiment ses possibilit&eacute;s quand il est interfac&eacute;
+    avec une <b>base de donn&eacute;e </b>:</p>
+  <ul>
+    <li>Publications de nouvelles</li>
+    <li>Enregistrement dans une base de donn&eacute;es venant d'un formulaire</li>
+    <li>Moteur de recherche</li>
+    <li>Caddie &eacute;lectronique</li>
+    <li>Portail avec personnalisation du contenu</li>
+  </ul>
+  <p>Pour pouvoir d&eacute;velopper un site dynamique il faut donc installer un
+    <b>seveur web</b> sur son PC
+  </p>
+  <p>Personal Web Serveur de Microsoft est sur le CD de W98 mais le plus simple
+    est d'utiliser le trio suivant:</p>
+  <ul>
+    <li>
+      <font color="#FF0000">Apache</font> (serveur du monde unix mais existe aussi
+      sous W9X)
+    </li>
+    <li>
+      <font color="#FF0000">PHP3</font>
+    </li>
+    <li>
+      <font color="#FF0000">Mysql</font> (gestinnaire de base de donn&eacute;e
+      gratuit qui s'interface facilement avec PHP)
+    </li>
+  </ul>
+  <p>En effet on peut trouver sur le net un <b>pack</b> tout simple &agrave; installer
+    et pr&eacute;-configur&eacute; pour Windows 98 appell&eacute;<font color="#FF0000"> <I>EasyPHP</I></font>
+    (Disponible
+    sur le site de <A HREF="http://phpinfo.net" target="_top">phpinfo.net</A> ).</p>
+  <p>Documentations :</p>
+  <ul>
+    <li>Tutoriel php3 : <a
+        href="http://linux-france.org/article/devl/php3/tut/php3_tut.html">http://linux-france.org/article/devl/php3/tut/php3_tut.html</a>
+    </li>
+    <li>Pour avoir une documentation de référence, le mieux est de chercher sur Google.
+    </li>
+  </ul>
+  <p>
+  <H3>Exemple de site dynamique :</H3>
+  </p>
+  Voici un <A HREF="#"
+    onClick='window.open("../eleves/index.php3","fen_eleves","toolbar=yes,location=no,status=no,scrollbars=auto,resizable=yes,width=700,height=500,left=20,top=20");'>lien</A>
+  vers le (petit) logiciel PyrElève pour réseau local que j'ai réalisé en juillet 2001 pour la société <A
+    HREF="http://pyrinfo.free.fr" target="_blank">Pyramide informatique</A>.
+  Note: ce logiciel nécessite que le serveur soit capable d'executer du PHP.
+
+</html>

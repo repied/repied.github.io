@@ -1,0 +1,47 @@
+<HTML>
+
+<HEAD>
+  <TITLE>Insecte robot : Construction</TITLE>
+</HEAD>
+
+<BODY BGCOLOR="#000000" text="#999999" link="#FF8000" alink="#3549FF" vlink="#FF0080">
+
+
+  <TABLE>
+    <TR>
+      <TD></TD>
+    </TR>
+  </TABLE>
+  <CENTER>
+    <h1>Construction</h1>
+    <P>
+  </CENTER>
+
+  <h2>Structure</h2>
+  Nous voulions réaliser un robot totalement autonome (énergie et commande) se déplaçant sur 6 pattes.<BR>
+  Il devait pouvoir marcher en ligne droite mais être suffisamment flexible pour, en changeant de programme
+  , être capable de tourner, monter, éviter des obstacles ...<BR>
+  Pour cela les 6 pattes devaient être indépendantes.<P>
+
+  <h2>Pattes</h2>
+  <CENTER><IMG SRC="../images/patte.jpg" WIDTH=186 HEIGHT=300 ALT="photo patte" BORDER=0>
+    <p>
+  </CENTER>
+  Deux systèmes de patte étaient possibles : soit une patte en une seule partie, commandée par un
+  seul servomoteur, et qui ne se soulève pas, soit une patte en parallélogramme.<BR>
+  La deuxième possibilité nous parut meilleure car elle avait l'avantage d'avoir deux degrés de
+  liberté permettant des mouvements plus complexes.<P>
+
+
+  <h2>Partie opérative</h2>
+  <B>Alimentation en énergie :</B><BR>
+  Batteries rechargeables de 7,5 volts embarquées.<BR>
+  <B>Actionneurs :</B><BR>
+  Servomoteurs : asservis en position, compacts et faciles à commander
+  par un signal rectangulaire à rapport cyclique variable.
+
+  <h2>Partie commande</h2>
+  <CENTER><IMG SRC="../images/dehaut.jpg" WIDTH=300 HEIGHT=225 ALT="photo" BORDER=0>
+    <p>
+  </CENTER>
+  On choisit des microcontrôleur
