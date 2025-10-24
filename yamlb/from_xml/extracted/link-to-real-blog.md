@@ -14,4 +14,4 @@ Please go there.
 
 This address ( http://yamlb.wordpress.com) will be used later (fall 2007)
 
-Pierre - $latex P(\Pi | \Delta)$
+Pierre - $P(\Pi \| \Delta)$

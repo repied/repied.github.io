@@ -16,7 +16,7 @@ In the correct bayesian method, one should consider carefully his priors, so a a
 
 In other word, maximising the likelihood of a model as no fundamental justification, the likelihood is just a function, and doesn't represents any sort of "belief" or "probability". The only correct way is to think to it in terms of posterior with flat prior. Likelihood maximisation was a heuristic in orthodox statistics (for example in parameter estimation), and this is all it can be.
 
-Once you have a good prior, then you can think that your posterior is the product of a prior and a likelihood, and then you can think to those 2 terms as being some function of the model P(M|D)=CST* P(D|M) P(M)= CST * f1(M) * f2(M). Then its correct to reason on them, for instance for thinking to the so-called <strong>automatic Occam razor</strong>, who'll be the subject of another post.
+Once you have a good prior, then you can think that your posterior is the product of a prior and a likelihood, and then you can think to those 2 terms as being some function of the model $P(M\|D)=CST* P(D\|M) P(M)= CST * f1(M) * f2(M)$. Then its correct to reason on them, for instance for thinking to the so-called <strong>automatic Occam razor</strong>, who'll be the subject of another post.
 
 # Comments
 

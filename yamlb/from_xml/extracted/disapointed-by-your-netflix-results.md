@@ -7,6 +7,7 @@ title: Disapointed by your Netflix results ?
 |*Status*| publish|
 
 <img align="middle" alt="occam_razor" src="../../media/occam_razor_small.jpg" />
+
 # Comments
 
 

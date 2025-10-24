@@ -33,9 +33,14 @@ Maybe you've seen this before, Wainwright shows a very cool way to derive messag
 
 Some corrections/precisions:
 
-Belief propagation is exact on trees (de-localization of computations), expectation propagation and variational method are similar in the sense they are both minimizing a KL divergence between the true posterior p and an approximate one (q). But EP tries to (locally) minimize KL(p,q) and variational minimizes KL(q,p). This makes a difference, because the first leads to a "conservative", "secure", "inclusive" approximation, and variational results are too confident.
+Belief propagation is exact on trees (de-localization of computations), expectation propagation and variational method are similar in the sense they are both minimizing a KL divergence between the true posterior p and an approximate one (q). 
+
+But EP tries to (locally) minimize KL(p,q) and variational minimizes KL(q,p). This makes a difference, because the first leads to a "conservative", "secure", "inclusive" approximation, and variational results are too confident.
+
 Mean Field is a simple variational method.
+
 Also EM can be understood in the framework of variational approximation.
+
 Loopy Belief propagation can be seen as a special case of EP with a fully factorized approximation family.
 There are also all those "free energy minimization" methods, Kikuchi approximation, Generalised  belief propagation and Tree reweightseted BP stuff. 
 
