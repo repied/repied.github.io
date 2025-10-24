@@ -5,8 +5,8 @@
 remote_theme: "jekyll/minima" # should be v3
 
 
-# title: repied's homepage # Will be repied.github.io otherwise
-# description: DDDDDDDDDDDDDDDDDDDDD
+title: repied.github.io # github pages makes it 'repied' if not defined here
+description: "" # Will appear at the bottom of each page
 show_downloads: false
 
 #author:

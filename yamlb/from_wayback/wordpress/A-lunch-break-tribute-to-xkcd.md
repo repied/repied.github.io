@@ -11,14 +11,16 @@ Implementation of [http://xkcd.com/314/](http://xkcd.com/314/) with [UK data](ht
 
 Results maybe a bit optimistic (or pessimistic, depending on your utility function) due to the definition “single = alive unmarried non-widow”.
 
-![Results](../../media/datingPool.png)
+![Results](/yamlb/media/datingPool.png)
 
 # Comments
 
 > [...] xkbd, και μαθηματική τεκμηρίωση (τρόπος του λέγειν) στο Yet Another Machine Learning Blog. « Iron butterfly A slight case of overbombing [...]
+
 Pingback by Ερωτοκυνηγός at Tijuana Del Amor — March 4, 2009
 
 
 
 > Hehe, good one. Geeky jokes are always funny :)
+
 Comment by Jai Pillai — July 23, 2010
