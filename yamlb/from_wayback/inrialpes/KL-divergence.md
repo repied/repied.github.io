@@ -27,7 +27,6 @@ The information theory justification seems weaker to me because it takes place i
 Finally I’m still not sure of my derivation from Log Likelihood minimisation, especially in the continous case.
 
 # Comments 
-RSS feed for comments on this post. TrackBack URI
 
 It looks like it seems to be a good measure of surprise in the human visual cortex (see Laurent Itti’s work at USC)
 http://nuit-blanche.blogspot.com/2005/12/quantifying-wows-and-autism-how-many.html

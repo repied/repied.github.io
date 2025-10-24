@@ -9,7 +9,6 @@ title: Funny AI history fact
 Ray J. [Solomonoff](https://web.archive.org/web/20071126132651/http://world.std.com/~rjs/) in [THE UNIVERSAL DISTRIBUTION AND MACHINE LEARNING](https://web.archive.org/web/20071126132651/http://world.std.com/%7Erjs/kollect.pdf)
 
 # Comments 
-RSS feed for comments on this post. TrackBack URI
 
 What are the odds?!
 

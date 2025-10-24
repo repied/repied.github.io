@@ -10,8 +10,7 @@ I’ll probably post other announcements soon.
 
 (even if, strictly speaking it’s not really in my own carrer interest to attract other candidates/competitors ;-) )
 
-1 Comment »
-RSS feed for comments on this post. TrackBack URI
+# Comments
 
 Thanks Pierre for the post. Further details regarding vacancies in Machine Learning Group, ULB, Belgium:
 
