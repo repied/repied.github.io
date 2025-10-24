@@ -45,7 +45,6 @@ From [emotion.inrialpes.fr](https://web.archive.org/web/20080409023549/http://em
 - 2006-06-19 : [The US FDA is becoming progressively more Bayesian](./from_xml/extracted/the-us-fda-is-becoming-progressively-more-bayesian.md)
 - 2006-06-15 : [Mathematical encyclopaedia](./from_xml/extracted/mathematical-encyclopaedia.md) (1 comments)
 - 2006-06-07 : [On-line machine learning journals](./from_xml/extracted/on-line-machine-learning-journals.md)
-- 2006-05-30 : [MCMC_java_capture](./from_xml/extracted/mcmc_java_capture.md)
 - 2006-05-30 : [MCMC methods in a nutshell](./from_xml/extracted/mcmc-methods-in-a-nutshell.md) (2 comments)
 - 2006-05-23 : [Exotic probabilities](./from_xml/extracted/exotic-probabilities.md) (4 comments)
 - 2006-05-22 : [NIPS paper evaluation criteria](./from_xml/extracted/nips-paper-evaluation-criteria.md) (1 comments)
@@ -87,3 +86,4 @@ From [emotion.inrialpes.fr](https://web.archive.org/web/20080409023549/http://em
 - 1970-01-01 : [DRAFT Dictretisation](./from_xml/extracted/dictretisation.md)
 - 1970-01-01 : [DRAFT Develeopmental robotics](./from_xml/extracted/develeopmental-robotics.md)
 - 1970-01-01 : [DRAFT Conditionning is projection](./from_xml/extracted/conditionning-is-projection.md)
+
