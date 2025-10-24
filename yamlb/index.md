@@ -1,6 +1,8 @@
 ---
 title: "Yet another machine learning blog"
 ---
+## Original screenshot
+![Blog screenshot](./yamlb_look_and_feel.png)
 
 ## Recovered from web.archive.org
 
