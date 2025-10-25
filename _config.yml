@@ -5,7 +5,7 @@
 remote_theme: "jekyll/minima" # should be v3
 
 
-title: "" # repied.github.io # github pages makes it 'repied' if not defined here
+title: "" #repied.github.io # github pages makes it 'repied' if not defined here
 description: "" # Will appear at the bottom of each page
 show_downloads: false
 
@@ -15,16 +15,7 @@ show_downloads: false
 minima:
   skin: auto
   hide_site_feed_link: true
-  nav_pages:
-    - /free/frame.html
-    - /endless_winter/index.md
-    - /phd/tek_notes/index.html
-    - /yamlb/index.md
-    - /phd//mlwg/index.html
-    - /phd/defense/index.html
-    # - https://sites.google.com/site/pierredangauthier/noir
-    - /tdm/index.md
-    # - https://github.com/repied/timeline/blob/main/README.md
+  # nav_pages:
     # - about.md
     # - petrole.md
 
