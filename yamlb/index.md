@@ -1,10 +1,10 @@
 ---
 title: "Yet another machine learning blog"
 ---
-## Original screenshot
-![Blog screenshot](./yamlb_look_and_feel.png)
 
-## Recovered from web.archive.org
+<img src="./yamlb_look_and_feel.png" alt="Blog screenshot" width="200"/>
+
+## From web.archive.org
 
 From [yamlb.wordpress.com](https://web.archive.org/web/20100903054210/http://yamlb.wordpress.com/)
 
@@ -31,7 +31,7 @@ From [emotion.inrialpes.fr](https://web.archive.org/web/20080409023549/http://em
 - 2007-04-19 : [Valencia 1 Bayesian statistics proceedings for free](./from_wayback/inrialpes/Valencia-1-Bayesian-Statistics-proceedings-for-free.md)
 - 2007-04-16 : [Machine learning videos](./from_wayback/inrialpes/Machine-learning-videos.md) 
 
-## Extracted from XML archive
+## From XML archive
 
 - 2007-03-14 : [Link to real blog](./from_xml/extracted/link-to-real-blog.md)
 - 2007-03-09 : [Ranking conferences](./from_xml/extracted/ranking-conferences.md)
@@ -86,4 +86,3 @@ From [emotion.inrialpes.fr](https://web.archive.org/web/20080409023549/http://em
 - 1970-01-01 : [DRAFT Dictretisation](./from_xml/extracted/dictretisation.md)
 - 1970-01-01 : [DRAFT Develeopmental robotics](./from_xml/extracted/develeopmental-robotics.md)
 - 1970-01-01 : [DRAFT Conditionning is projection](./from_xml/extracted/conditionning-is-projection.md)
-
