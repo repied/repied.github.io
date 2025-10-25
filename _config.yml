@@ -19,6 +19,8 @@ minima:
   #   - about.md
   #   - petrole.md
 
+pages: ""
+
 plugins:
   - jekyll-sitemap
   - jekyll-remote-theme 
