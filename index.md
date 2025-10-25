@@ -1,5 +1,3 @@
-Websites archives
-
 - 1998 [Fleur de bitume](free/frame.html) 
 
 - 2002 [Endless Winter Project](./endless_winter/index.md)
