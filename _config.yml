@@ -16,15 +16,15 @@ minima:
   skin: auto
   hide_site_feed_link: true
   nav_pages:
-    - ./free/frame.html
-    - ./endless_winter/index.md
-    - ./phd/tek_notes/index.html
-    - ./yamlb/index.md
-    - ./phd//mlwg/index.html
-    - ./phd/defense/index.html
-    - https://sites.google.com/site/pierredangauthier/noir
-    - ./tdm/index.md
-    - https://github.com/repied/timeline/blob/main/README.md
+    - /free/frame.html
+    - /endless_winter/index.md
+    - /phd/tek_notes/index.html
+    - /yamlb/index.md
+    - /phd//mlwg/index.html
+    - /phd/defense/index.html
+    # - https://sites.google.com/site/pierredangauthier/noir
+    - /tdm/index.md
+    # - https://github.com/repied/timeline/blob/main/README.md
     # - about.md
     # - petrole.md
 
