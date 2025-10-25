@@ -16,7 +16,7 @@ minima:
   skin: auto
   hide_site_feed_link: true
   nav_pages:
-    - # a `-` with nothing to make sure there is no nav bar
+    # - # a `-` with nothing to make sure there is no nav bar
     # - about.md
     # - petrole.md
 
