@@ -2,7 +2,7 @@
 title: "Yet another machine learning blog"
 ---
 
-<img src="./yamlb_look_and_feel.png" alt="Blog screenshot" width="200"/>
+<img src="./yamlb_look_and_feel.png" alt="Blog screenshot" width="500"/>
 
 ## From web.archive.org
 

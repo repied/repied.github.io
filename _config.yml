@@ -15,7 +15,7 @@ show_downloads: false
 minima:
   skin: auto
   hide_site_feed_link: true
-  # nav_pages:
+  nav_pages:
     # - about.md
     # - petrole.md
 
