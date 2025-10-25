@@ -15,11 +15,9 @@ show_downloads: false
 minima:
   skin: auto
   hide_site_feed_link: true
-  # nav_pages:
+  # nav_pages: # Not I removed the nav from the theme in header.html
   #   - about.md
   #   - petrole.md
-
-pages: ""
 
 plugins:
   - jekyll-sitemap
