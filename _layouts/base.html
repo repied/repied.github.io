@@ -8,7 +8,6 @@
     {%- if page.toc -%}
     <div class="wrapper toc-enabled">
       <aside class="toc" aria-label="On-page navigation" role="navigation">
-        <h2 class="toc-title">On this page</h2>
         <nav class="toc-nav"></nav>
       </aside>
       <div class="toc-content">
@@ -27,21 +26,35 @@
 
   <!-- inline minimal CSS for the per-page TOC -->
   <style>
-    .wrapper.toc-enabled {
-      display: flex;
-      gap: 1.5rem;
-      align-items: flex-start;
+    :root {
+      --toc-width: 220px;
+      --toc-gap: 1.5rem;
+      --content-max-width: 740px;
+      /* adjust this to match your site's original content width */
     }
 
+    /* keep wrapper flow normal and center content */
+    .wrapper.toc-enabled {
+      display: block;
+      position: relative;
+      /* ensure there's some left padding on very small viewports so content isn't fully covered */
+      padding-left: calc(var(--toc-width) + var(--toc-gap));
+    }
+
+    /* the TOC stays sticky but is visually moved to the left of the centered content */
     .toc {
-      width: 220px;
-      flex: 0 0 220px;
+      width: var(--toc-width);
       position: sticky;
       top: 1rem;
       padding: 0.5rem 1rem;
       max-height: calc(100vh - 2rem);
       overflow: auto;
       border-right: 1px solid rgba(0, 0, 0, 0.06);
+
+      /* move the TOC left of the centered content area */
+      left: calc(50% - (var(--content-max-width) / 2) - var(--toc-width) - var(--toc-gap));
+      /* ensure the element participates normally for sticky positioning */
+      transform: translateZ(0);
     }
 
     .toc-title {
@@ -70,7 +83,10 @@
       font-size: 0.9rem;
     }
 
+    /* keep main content width as before by constraining and centering it */
     .toc-content {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
       flex: 1;
     }
 
@@ -82,10 +98,18 @@
     @media (max-width:900px) {
       .wrapper.toc-enabled {
         display: block;
+        padding-left: 0;
+        /* remove left padding on small screens */
       }
 
       .toc {
         display: none;
+        left: auto;
+      }
+
+      .toc-content {
+        max-width: 100%;
+        margin: 0;
       }
     }
   </style>
