@@ -2,16 +2,156 @@
 <html lang="{{ page.lang | default: site.lang | default: 'en' }}">
 {%- include head.html -%}
 
-<body>
+<body data-toc="{{ page.toc | default: false }}">
   {%- include header.html -%}
   <main class="page-content" aria-label="Content">
+    {%- if page.toc -%}
+    <div class="wrapper toc-enabled">
+      <aside class="toc" aria-label="On-page navigation" role="navigation">
+        <h2 class="toc-title">On this page</h2>
+        <nav class="toc-nav"></nav>
+      </aside>
+      <div class="toc-content">
+        {{ content }}
+      </div>
+    </div>
+    {%- else -%}
     <div class="wrapper">
       {{ content }}
     </div>
+    {%- endif -%}
   </main>
 
   {%- include footer.html -%}
   {%- include sub-footer.html -%}
+
+  <!-- inline minimal CSS for the per-page TOC -->
+  <style>
+    .wrapper.toc-enabled {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .toc {
+      width: 220px;
+      flex: 0 0 220px;
+      position: sticky;
+      top: 1rem;
+      padding: 0.5rem 1rem;
+      max-height: calc(100vh - 2rem);
+      overflow: auto;
+      border-right: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .toc-title {
+      font-size: 0.9rem;
+      margin: 0 0 0.5rem;
+    }
+
+    .toc-nav ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc-nav li {
+      margin: 0.25rem 0;
+    }
+
+    .toc-nav a {
+      color: inherit;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+
+    .toc-nav .toc-level-3 {
+      margin-left: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .toc-content {
+      flex: 1;
+    }
+
+    .toc-nav a.active {
+      font-weight: 600;
+      text-decoration: underline;
+    }
+
+    @media (max-width:900px) {
+      .wrapper.toc-enabled {
+        display: block;
+      }
+
+      .toc {
+        display: none;
+      }
+    }
+  </style>
+
+  <!-- small script to build TOC from page headings (h1,h2,h3) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      if (document.body.dataset.toc !== 'true') return;
+      var container = document.querySelector('.toc-content') || document.querySelector('.wrapper');
+      if (!container) return;
+      // prefer .post-content if present (posts/pages use this class)
+      var content = container.querySelector('.post-content') || container;
+      var headings = content.querySelectorAll('h1,h2,h3');
+      if (!headings.length) return;
+      var nav = document.querySelector('.toc-nav');
+      var ul = document.createElement('ul');
+
+      // helper to slugify headings to ids
+      function slugify(text) {
+        return text.toString().toLowerCase()
+          .trim()
+          .replace(/[^\w\s-]/g, '') // remove non-word
+          .replace(/\s+/g, '-')     // spaces to -
+          .replace(/-+/g, '-');     // collapse dashes
+      }
+
+      headings.forEach(function (h) {
+        var level = parseInt(h.tagName.substring(1), 10);
+        var text = h.textContent.trim();
+        var id = h.id || slugify(text);
+        // ensure id is unique
+        var uniqueId = id;
+        var i = 1;
+        while (document.getElementById(uniqueId)) { uniqueId = id + '-' + i++; }
+        h.id = uniqueId;
+
+        var li = document.createElement('li');
+        li.className = 'toc-level-' + level;
+        var a = document.createElement('a');
+        a.href = '#' + uniqueId;
+        a.textContent = text;
+        li.appendChild(a);
+        ul.appendChild(li);
+      });
+
+      nav.appendChild(ul);
+
+      // optional: highlight current section as user scrolls
+      try {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            var id = entry.target.id;
+            var link = nav.querySelector('a[href="#' + id + '"]');
+            if (!link) return;
+            if (entry.isIntersecting) {
+              nav.querySelectorAll('a').forEach(function (n) { n.classList.remove('active'); });
+              link.classList.add('active');
+            }
+          });
+        }, { root: null, rootMargin: '0px 0px -60% 0px', threshold: [0] });
+        headings.forEach(function (h) { observer.observe(h); });
+      } catch (e) {
+        // IntersectionObserver unsupported: ignore highlighting
+      }
+    });
+  </script>
 </body>
 
 </html>

@@ -1,5 +1,6 @@
 ---
 title: "Yet another machine learning blog"
+toc: true
 ---
 
 <div style="text-align: center;">
