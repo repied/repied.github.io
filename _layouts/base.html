@@ -35,10 +35,16 @@
 
     /* keep wrapper flow normal and center content */
     .wrapper.toc-enabled {
-      display: block;
+      display: flex;
+      /* Changed from block to flex for column layout */
       position: relative;
       /* ensure there's some left padding on very small viewports so content isn't fully covered */
-      padding-left: calc(var(--toc-width) + var(--toc-gap));
+      /* padding-left: calc(var(--toc-width) + var(--toc-gap)); */
+      /* Removed */
+      justify-content: center;
+      /* Center the combined TOC and content block */
+      align-items: flex-start;
+      /* Align sticky TOC to the top */
     }
 
     /* the TOC stays sticky but is visually moved to the left of the centered content */
@@ -52,9 +58,13 @@
       border-right: 1px solid rgba(0, 0, 0, 0.06);
 
       /* move the TOC left of the centered content area */
-      left: calc(50% - (var(--content-max-width) / 2) - var(--toc-width) - var(--toc-gap));
+      /* left: calc(50% - (var(--content-max-width) / 2) - var(--toc-width) - var(--toc-gap)); */
+      /* Removed */
       /* ensure the element participates normally for sticky positioning */
-      transform: translateZ(0);
+      /* transform: translateZ(0); */
+      /* Removed */
+      margin-right: var(--toc-gap);
+      /* Add margin to create space between TOC and content */
     }
 
     .toc-title {
@@ -87,7 +97,10 @@
     .toc-content {
       max-width: var(--content-max-width);
       margin: 0 auto;
-      flex: 1;
+      flex-shrink: 0;
+      /* Prevent content from shrinking */
+      flex-grow: 1;
+      /* Allow content to grow within its column */
     }
 
     .toc-nav a.active {
@@ -98,6 +111,7 @@
     @media (max-width:900px) {
       .wrapper.toc-enabled {
         display: block;
+        /* Revert to block display on small screens */
         padding-left: 0;
         /* remove left padding on small screens */
       }
