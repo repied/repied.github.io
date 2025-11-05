@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Covid-19 infection fatality rates illustrated</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" type="text/css" href="./static/mycss.css">
+</head>
+
+<body>
+    <div class="body_outer">
+        <H2>
+            Covid-19 infection fatality rates illustrated
+        </H2>
+
+        <form id="calc-form" class="container">
+            <div class="row">
+                <div class="col-25">
+                    <label for="age_select">Age :</label>
+                </div>
+                <div class="col-75">
+                    <select id="age_select" name=age_select>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-25">
+                    <label for="sex_select">Sex :</label>
+                </div>
+                <div class="col-75">
+                    <select id="sex_select" name=sex_select>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+        <div id="results" class="container" style="display: none;">
+        </div>
+    </div>
+    <script src="./static/script.js"></script>
+</body>
+
+</html>
