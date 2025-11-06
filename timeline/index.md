@@ -1,5 +1,5 @@
 ---
-title: Timeline of the Universe
+title: Timeline
 --- 
 
 |-------------------------------------|----------------------|------|-----|
@@ -168,3 +168,5 @@ title: Timeline of the Universe
 | Heat death of the universe          |  10^10^120           |      |     |
 | Time needed for quantum new big bang|  10^10^10^56         |      |     |
 |-------------------------------------|----------------------|------|-----|
+
+Made in 2024
