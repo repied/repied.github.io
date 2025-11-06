@@ -27,20 +27,20 @@ title: Timeline of the Universe
 | Fish                                | -530,000,000         | +12  |     |
 | Vertebrate                          | -520,000,000         |      |     |
 | Land Plant                          | -500,000,000         |      |     |
-|*1st mass extinction (ice swings)    | -443,000,000         |      | 800 |
+|*1st mass extinction (ice swings)*   | -443,000,000         |      | 800 |
 | Trees                               | -385,000,000         | +8   | 1600|
 | Tetrapods                           | -375,000,000         | +6   |     |
-|*2nd extinction (plants, cooling)    | -359,000,000         | -4   | 200 |
+|*2nd extinction (plants, cooling)*   | -359,000,000         | -4   | 200 |
 | Reptile                             | -310,000,000         | -2   | 400 |
-|*3rd extinction (volcanos, warming)  | -252,000,000         | +10  | 1000|
+|*3rd extinction (volcanos, warming)* | -252,000,000         | +10  | 1000|
 | Start of oil formation              | -252,000,000         | +10  |     |
 | Mammal                              | -250,000,000         | +6   |     |
 | Dinosaur                            | -230,000,000         | +4   |     |
-|*4th extinction (volcanos, warming)  | -201,000,000         | +4   | 1000|
+|*4th extinction (volcanos, warming)* | -201,000,000         | +4   | 1000|
 | Bird                                | -150,000,000         | +4   | 800 |
 | Flowers                             | -130,000,000         | +4   |     |
 | Grass                               | -70,000,000          | +10  |     |
-|*5th extinction (asteroid, cooling)  | -66,000,000          | +10  | 400 |
+|*5th extinction (asteroid, cooling)* | -66,000,000          | +10  | 400 |
 | Primate                             | -55,000,000          | +12  | 1000|
 | Horses, whales, bats                | -50,000,000          | +12  | 1000|
 | Continents in current shape         | -40,000,000          | +6   | 900 |
@@ -128,7 +128,7 @@ title: Timeline of the Universe
 | 90% coral reefs dead                |  2,050               | +2   | 600 |
 | 10.4 billions humans                |  2,080               | +3   |     |
 | Depleted Fossil fuel reserves       |  2,100               | +4   | 850 |
-|*6th mass extinction (by humans)     |  2,200               | +5   |     |
+|*6th mass extinction (by humans)*    |  2,200               | +5   |     |
 | Magnetic field flipped              |  3,000               |      |     |
 | Gamma Cephei star replaces Polaris  |  3,200               |      |     |
 | Greenland ice sheet fully melted    |  7,000               |      |     |
@@ -141,7 +141,7 @@ title: Timeline of the Universe
 | Next glaciation ends, if any        |  113,000             | -8   |     |
 | Glass objects decomposed            |  1,000,000           |      |     |
 | Coral reefs recover                 |  2,000,000           |      |     |
-|*Life recovers from 6th extinction   |  10,000,000          |      |     |
+|*Life recovers from 6th extinction*  |  10,000,000          |      |     |
 | Mediterranean basin closed          |  50,000,000          |      |     |
 | Sun 1% brighter every 10^8 years    |  100,000,000         |      |     |
 | New supercontinent                  |  300,000,000         |      |     |
