@@ -219,3 +219,4 @@ git_ignore_me_*
 
 # Jekyll rendered site
 _site/
+.jekyll-metadata

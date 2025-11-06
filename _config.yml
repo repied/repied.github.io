@@ -23,6 +23,19 @@ plugins:
   - jekyll-sitemap
   - jekyll-remote-theme 
 
+exclude: 
+  - .vscode
+  - .devcontainer
+  - .gitignore
+  - .venv
+  - .python-version
+  - uv.clock 
+  - pyproject.toml
+  - Gemfile
+  - Gemfile.lock
+  - LICENSE
+  - README.md
+
 
 google_analytics: GTM-NLLGHBZK
 

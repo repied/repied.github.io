@@ -52,11 +52,9 @@ bundle config set --local path '~/lib/gems' # need to install in user folder
 bundle update
 bundle install
 ```
-Then one of 
+Then to watch, rebuild, serve and trigger browser livereload:
 ```
-bundle exec jekyll build
-bundle exec jekyll serve
-bundle exec jekyll serve --livereload
+bundle exec jekyll serve --incremental --watch --livereload
 ```
 # Minima jekyll template
 Minima is used as a remote theme (i.e. it is fetched during rendering from minima github), but I also have copied locally htmls for _layout and _includes, which could be changed, but have not been changed. Those local ones take precedence to the github versions.
