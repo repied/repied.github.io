@@ -44,7 +44,7 @@ Jekyll is installed in the devcontainer.json image.
 You need to install [Ruby and setup Jekyll](https://jekyllrb.com/docs/installation/ubuntu/) :
 ```
 sudo apt-get install ruby-full build-essential zlib1g-dev
-gem install jekyll bundler
+gem install jekyll bundler jekyll-seo-tag
 ```
 Then to use [Jekyll](https://jekyllrb.com/docs/step-by-step/01-setup/) when there is already a Gemfile.
 ```
