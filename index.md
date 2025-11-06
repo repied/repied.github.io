@@ -16,6 +16,6 @@
 
 - 2020 [covid19-vs-skydiving](covid19-vs-skydiving/index.html)
 
-- 2024 [Timeline of the Universe](https://github.com/repied/timeline/blob/main/README.md)
+- 2024 [Timeline of the Universe](./timeline/index.md)
 
 - 2025 [Diving Decompression Gradient Factors](./paliers/index.html)

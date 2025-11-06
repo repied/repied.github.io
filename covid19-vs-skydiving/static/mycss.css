@@ -80,3 +80,17 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #4569a0;
 }
+
+.warning {
+    background-color: #fff3cd;
+    /* Light yellow background */
+    color: #856404;
+    /* Dark yellow text */
+    border: 1px solid #ffeeba;
+    /* Slightly darker yellow border */
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 0.9em;
+}

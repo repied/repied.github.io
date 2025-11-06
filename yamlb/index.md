@@ -3,6 +3,8 @@ title: "Yet another machine learning blog"
 toc: true
 ---
 
+2006 to 2009
+
 <div style="text-align: center;">
   <img src="./yamlb_look_and_feel.png" alt="Blog screenshot" width="500" />
 </div>
