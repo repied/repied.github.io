@@ -37,8 +37,17 @@ exclude:
   - README.md
 
 
-google_analytics: GTM-NLLGHBZK
+google_analytics: G-W2YD6XQDM5
 
+# <!-- Google tag (gtag.js) -->
+# <script async src="https://www.googletagmanager.com/gtag/js?id=G-W2YD6XQDM5"></script>
+# <script>
+#   window.dataLayer = window.dataLayer || [];
+#   function gtag(){dataLayer.push(arguments);}
+#   gtag('js', new Date());
+
+#   gtag('config', 'G-W2YD6XQDM5');
+# </script>
 
 # config examples from minima
 # Site-wide settings
