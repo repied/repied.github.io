@@ -749,6 +749,7 @@ scandi
 Scattergl
 scatterplot
 schatz
+schreiner
 schtasks
 scikit
 scipy
