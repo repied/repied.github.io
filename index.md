@@ -18,4 +18,4 @@
 
 - 2024 [Timeline of the Universe](./timeline/index.md)
 
-- 2025 [Diving Decompression Gradient Factors](./paliers/index.html)
+- 2025 [Diving Decompression Algo](./paliers/index.html)
