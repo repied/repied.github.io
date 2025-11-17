@@ -1,7 +1,5 @@
 ---
-layout: page
 title: Petrole
-permalink: /petrole/
 ---
 
 Note rédigée vers 2005.
@@ -69,4 +67,3 @@ En conclision, gagner un max de tune, etre flexible sur son metier pour ne pas s
   * [aprespetrole.online.fr](http://aprespetrole.online.fr/index.html): Quels seront les changements face à l'abscence de pétrole. Ce site fait l'hypothèse d'une disparition rapide et totale du pétrole, et prévois une destruction complète du système mondial. Plus d'électricité, plus d'eau, plus de nourriture, exode massifs vers les campagnes et le Sud. Il présente aussi des recommandations, des "plan ORSEC" pour les villages et les individus. La supposition que la crise arrivera d'un coup (comme dans Ravage) est fausse, et certaines prévision le sont aussi. Plus science fiction que science.
   * [le loup derriere la porte](http://wolf.readinglitho.co.uk/francais/index.html) Chiffre les réserves et estime le début de la fin.  Il n'affirme pas que ce sera la fin du pétrole, mais que ce sera la fin du pétrole pas chèr et abondant. Très bien documenté. il propose aussi quelques profécies sur le déroulement et la suite de la crise. Très bon site.
   * [oleocene.org](http://www.oleocene.org/) Scenarios plus realiste d un transition lente, avec contexte geopolitique. avec wiki.
-
