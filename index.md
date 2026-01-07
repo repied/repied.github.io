@@ -22,4 +22,4 @@
 
 - 2025 [Diving Decompression Algo](./paliers/index.html)
 
-- 202666666ulation emprunt](/emprunt-js/index.html)
+- 2026 [Simulation emprunt](/emprunt-js/index.html)
