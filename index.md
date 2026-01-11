@@ -22,4 +22,6 @@
 
 - 2025 [Diving Decompression Algo](./paliers/index.html)
 
+- 2025 [Aranet sensor bluetooth reader](./paliers/sensor-pilot/)
+
 - 2026 [Simulation emprunt](/emprunt-js/index.html)
