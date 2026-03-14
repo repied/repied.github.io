@@ -20,12 +20,12 @@
 
 - 2024 [Timeline of the Universe](./timeline/index.md)
 
-- 2025 [Diving Decompression Algo](./paliers/index.html)
+- 2025 Diving: [Diving Decompression Visualisation](./paliers/index.html)
 
 - 2026 [Simulation emprunt](/emprunt-js/index.html)
    
-- 2026 [Examen N3](/examen-n3/index.html)
+- 2026 Diving: [Examen N3](/examen-n3/index.html)
 
-- 2026 [Tables](/tables/index.html)
-- 
-- 2026 [Analyseur Remontées Assistées](/Analyseur-ipd/index.html)
+- 2026 Diving: [Tables](/tables/index.html)
+ 
+- 2026 Diving: [Analyseur Remontées Assistées](/Analyseur-ipd/index.html)
