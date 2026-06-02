@@ -26,6 +26,6 @@
    
 - 2026 Diving: [Examen N3](/examen-n3/index.html)
 
-- 2026 Diving: [Tables](/tables/index.html)
- 
 - 2026 Diving: [Analyseur Remontées Assistées](/Analyseur-ipd/index.html)
+ 
+- 2026 Diving: [Planif](https://planif.plongee.app/intro.html)
